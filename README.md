@@ -19,6 +19,7 @@ Open `http://127.0.0.1:4000`. The Gemfile pins the Jekyll and Markdown versions 
 - Professional details and profile links live in `_data/profile.yml`.
 - Store images in `assets/images/` and reference their complete site-relative paths.
 - Keep the existing post slugs when editing titles to preserve published links.
+- Use `hide_title: true` when a cover illustration already contains the title. The post keeps an accessible heading and uses a compact back-link/metadata row; omit the flag to show the normal title.
 
 ## Equations
 
@@ -34,7 +35,7 @@ npm test
 
 Alternatively, set `CHROMIUM_EXECUTABLE_PATH` to an already installed Chrome or Chromium binary.
 
-`npm test` verifies real equation output, accessibility, images and links, keyboard navigation, reduced motion, and page overflow across eight screen widths. `npm run test:math` runs just the equation regression. The site check writes desktop and mobile screenshots into the gitignored `.impeccable/review/` directory.
+`npm test` verifies real equation output, accessibility, images and links, keyboard navigation, reduced motion, and page overflow across eight screen widths. It also protects the compact type scale, 44px action targets, narrow desktop sidebar, and illustration-first post headers. `npm run test:math` runs just the equation regression. The site check writes desktop and mobile screenshots into the gitignored `.impeccable/review/` directory.
 
 ## Profile and asset sources
 

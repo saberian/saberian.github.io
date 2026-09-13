@@ -12,42 +12,59 @@ colors:
 typography:
   section:
     fontFamily: "Hanken Grotesk, sans-serif"
-    fontSize: "36px"
+    fontSize: "28px"
     fontWeight: 650
     lineHeight: 1.2
     letterSpacing: "-.025em"
   headline:
     fontFamily: "Hanken Grotesk, sans-serif"
-    fontSize: "clamp(40px, 4.6vw, 68px)"
+    fontSize: "40px"
     fontWeight: 700
-    lineHeight: 1.07
-    letterSpacing: "-.035em"
+    lineHeight: 1.15
+    letterSpacing: "-.025em"
   title:
     fontFamily: "Hanken Grotesk, sans-serif"
-    fontSize: "30px"
+    fontSize: "22px"
     fontWeight: 700
-    lineHeight: 1.25
-    letterSpacing: "-.025em"
+    lineHeight: 1.3
+    letterSpacing: "-.015em"
   body:
     fontFamily: "Source Serif 4, Georgia, serif"
-    fontSize: "21px"
+    fontSize: "18px"
     fontWeight: 400
-    lineHeight: 1.75
+    lineHeight: 1.7
   interface:
     fontFamily: "Hanken Grotesk, sans-serif"
-    fontSize: "18px"
+    fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.5
   label:
     fontFamily: "Hanken Grotesk, sans-serif"
-    fontSize: "17px"
+    fontSize: "14px"
     fontWeight: 400
     lineHeight: 1.5
   action:
     fontFamily: "Hanken Grotesk, sans-serif"
-    fontSize: "18px"
+    fontSize: "15px"
     fontWeight: 400
     lineHeight: 1.5
+  identity:
+    fontFamily: "Hanken Grotesk, sans-serif"
+    fontSize: "20px"
+    fontWeight: 650
+    lineHeight: 1.5
+    letterSpacing: "-.03em"
+  date:
+    fontFamily: "Hanken Grotesk, sans-serif"
+    fontSize: "13px"
+    fontWeight: 400
+    lineHeight: 1.5
+  subheading:
+    fontFamily: "Hanken Grotesk, sans-serif"
+    fontSize: "26px"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "-.025em"
 spacing:
   "8": "8px"
   "16": "16px"
@@ -57,6 +74,10 @@ spacing:
   "56": "56px"
   "80": "80px"
 components:
+  desktop-profile:
+    backgroundColor: "{colors.cover}"
+    width: "250px"
+    padding: "32px 24px"
   navigation:
     backgroundColor: "{colors.cover}"
     textColor: "{colors.link}"
@@ -69,7 +90,11 @@ components:
   article-heading:
     backgroundColor: "{colors.cover}"
     textColor: "{colors.ink}"
-    padding: "48px 32px 62px"
+    padding: "32px 32px 40px"
+  article-heading-compact:
+    backgroundColor: "{colors.cover}"
+    textColor: "{colors.ink}"
+    padding: "16px 32px"
   related-writing:
     textColor: "{colors.link}"
 ---
@@ -93,7 +118,7 @@ Typography carries the hierarchy. Hanken Grotesk handles restrained headings and
 
 Extracted from `assets/site.css`, `index.html`, `_layouts/default.html`, `_layouts/post.html`, and `_includes/arrow.html`. Page composition and the approved visual reference remain in `.impeccable/surfaces/index-html.md`.
 
-The user requested smaller, simpler, non-repeating headings on September 13, 2026. This supersedes the oversized display typography in the original mockup. The name appears once in the header; Writing appears once as the homepage heading.
+The user requested smaller, simpler, non-repeating headings on September 13, 2026, then a substantially smaller overall font scale after reviewing on a 15-inch MacBook. This supersedes the oversized display typography in the original mockup. The name appears once in the header; Writing appears once as the homepage heading. Preserve the compact scale across breakpoints instead of reintroducing larger mobile overrides.
 
 ## Colors
 
@@ -118,12 +143,12 @@ The palette combines cool paper and blue-gray neutrals with a clear blue interac
 
 The frontmatter records the base desktop roles. Hanken Grotesk and Source Serif 4 are self-hosted variable WOFF2 fonts with `font-display: swap`.
 
-- **Section:** a modest Hanken Grotesk Writing heading. The author name stays in the shared header and is not repeated as a homepage hero.
-- **Headline / title:** Hanken Grotesk for article headings and essay titles. Article titles have a maximum measure of 20ch; index titles use `text-wrap: pretty`.
-- **Body:** Source Serif 4 for article prose. Paragraphs separate by 1.35em; emphasized prose uses weight 650.
-- **Interface / label / action:** Hanken Grotesk for navigation, metadata, and text actions. Dates use tabular numerals.
+- **Section:** a 28px Hanken Grotesk Writing heading. The author name stays in the shared header at 20px and is not repeated as a homepage hero.
+- **Headline / title:** Hanken Grotesk for optional 40px article headings and 22px essay titles. Article titles have a maximum measure of 24ch; index titles use `text-wrap: pretty`.
+- **Body:** 18px Source Serif 4 for article prose. Paragraphs separate by 1.35em; emphasized prose uses weight 650.
+- **Interface / label / action:** 16px Hanken Grotesk for introductions and summaries, 14px for secondary professional context and article metadata, and 15px for navigation and text actions. Index dates use 13px tabular numerals. Body copy uses normal tracking; title weight and color carry hierarchy without oversized text.
 
-Article subheadings use Hanken Grotesk at 32px and 26px, weight 700, with a 1.2 line height. At phone widths, prose becomes 19px with a 1.7 line height, the article headline becomes 40px, and essay titles become 26px. The Writing heading becomes 30px. The smallest breakpoint reduces the header name to 18px and article headline to 36px.
+Article subheadings use Hanken Grotesk at 26px and 22px, weight 700, with a 1.2 line height. At phone widths, prose becomes 17px, the optional article headline becomes 32px, the Writing heading becomes 26px, the header name becomes 18px, and navigation becomes 14px. Essay titles remain 22px and summaries remain 16px at every width. Print is an intentional separate medium: 12pt prose and a 36px optional headline. Browser zoom remains unrestricted; standalone actions retain 44px hit areas.
 
 **The Two Type Roles Rule.** Keep Hanken Grotesk on headings and interface text, and Source Serif 4 on long-form prose.
 
@@ -131,11 +156,11 @@ Article subheadings use Hanken Grotesk at 32px and 26px, weight 700, with a 1.2 
 
 Large surfaces use fluid gutters and open columns; articles use a centered reading measure. The shared horizontal gutter is 3.2vw, becomes 32px at tablet widths and 24px on phones, and tightens to 20px at the smallest breakpoint. At 1600px and above, it is capped at 52px.
 
-The homepage changes from a two-column grid to stacked sections at 900px. The header is 64px high; desktop sections start with 48px top padding. A compact portrait and professional context replace the oversized name block. At 540px, the profile, writing index, and header use compact arrangements; at 360px, header type and portrait sizes step down again.
+The homepage uses a fixed 250px desktop profile column with 24px horizontal padding, half the original wide-screen sidebar. The writing receives the remaining width. The homepage header name aligns with the profile's 24px inset on desktop. At 900px and below, sections stack at full width with the existing mobile gutters. The header is 56px high; desktop sections start with 32px top padding. A compact portrait and professional context replace the oversized name block. At 540px, the profile, writing index, and header use compact arrangements; at 360px, gutters and portrait sizes step down again.
 
-Article headings sit in a centered 960px container. Prose and article-end navigation share a maximum width of 740px, with 32px side clearance reduced to 24px on phones. Images fit their reading column; wide tables, code blocks, and display mathematics scroll horizontally inside their own containers.
+Optional visible article headings sit in a centered 960px container. Both current illustrated posts use `hide_title: true`: their title remains available to assistive technology, while the visible header becomes a compact back-link/metadata row with 16px vertical padding. The image begins 32px below this row. The compact header, prose, and article-end navigation share the 640px `--reading-width` token, measured at about 67ch with the loaded desktop prose font, with 32px side clearance reduced to 24px on phones. Summary lines are capped at 70ch. Images fit their reading column; wide tables, code blocks, and display mathematics scroll horizontally inside their own containers.
 
-Spacing is contextual rather than a strict modular scale. The frontmatter records repeated steps, while major breaks depend on the surface: short inline gaps, generous section spacing, and substantial separation between essays. Links used as standalone actions have a minimum height of 44px; phone header navigation and compact profile links do as well.
+Spacing is contextual rather than a strict modular scale. The frontmatter records repeated steps, while major breaks depend on the surface: short inline gaps, a 28px writing-list offset, and 24px margin/padding around essay separators. Links used as standalone actions have a minimum height of 44px; header navigation and compact profile links do as well.
 
 ## Elevation & Depth
 
@@ -154,7 +179,7 @@ Directional cues are inline SVG strokes with round caps and joins. Essay separat
 - **Navigation:** a mist-blue band with the author's navy name and blue text links. The homepage omits the redundant Writing navigation link; article pages retain it. LinkedIn appears in the header, with GitHub and RSS in the profile. Links gain underlines on hover.
 - **Essay action:** a blue text link and stroked SVG arrow. The action retains a 44px minimum height, and the arrow moves 5px to the right on hover or keyboard focus over 280ms using the declared ease-out curve.
 - **Essay entry:** a date, navy linked title, slate summary, and essay action in open document flow. Later entries receive a short pale rule and generous separation. Title color transitions over 180ms.
-- **Article heading:** a mist-blue region containing a back link, Hanken Grotesk title, and wrapping author/date/read-time metadata. It shares the palette with the cover surface while keeping the reading hierarchy distinct.
+- **Article heading:** illustrated posts suppress the duplicate visible title, retaining a visually hidden semantic h1 and a compact mist-blue row for the back link and wrapping author/date/read-time metadata. Posts without `hide_title` retain the optional visible Hanken Grotesk heading.
 - **Related writing:** the end-of-article text navigation uses a pale top rule, a brief closing line, and a subsequent essay link with the same SVG cue.
 
 All anchors share a blue 2px focus outline with a 6px offset. The skip link appears on focus. Inline prose links are underlined. Reduced-motion preference removes transitions and arrow movement and changes smooth scrolling to ordinary scrolling. Print styling removes site navigation and article-end navigation, uses black on white, and makes prose full-width at 12pt.

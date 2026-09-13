@@ -2,10 +2,10 @@
 layout: default
 ---
 <article class="post">
-  <header class="post-header">
+  <header class="post-header{% if page.hide_title %} post-header--compact{% endif %}">
     <div class="post-header-inner">
       <a class="back-link" href="{{ '/#writing' | relative_url }}"><span class="back-arrow">{% include arrow.html %}</span> All writing</a>
-      <h1>{{ page.title | escape }}</h1>
+      <h1{% if page.hide_title %} class="visually-hidden"{% endif %}>{{ page.title | escape }}</h1>
       <div class="post-meta">
         <span>{{ site.data.profile.name }}</span>
         <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>

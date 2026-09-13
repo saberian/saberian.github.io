@@ -40,6 +40,10 @@ try {
       assert.equal(await page.locator('.profile h1').count(), 0, 'Homepage profile must not repeat the site name as a large heading');
       assert.equal((await page.locator('h1').textContent()).trim(), 'Writing', 'Writing must be the homepage primary heading');
       assert.equal(await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Writing', exact: true }).count(), 0, 'Homepage navigation must not repeat Writing');
+    } else {
+      assert.equal(await page.locator('.post-header--compact').count(), 1, 'Illustrated posts must use the compact metadata header');
+      assert.equal(await page.locator('h1.visually-hidden').count(), 1, 'Keep the post title available to assistive technology without repeating the image title');
+      assert.equal(await page.getByRole('heading', { level: 1 }).count(), 1, 'The visually hidden title must remain in the accessibility tree');
     }
     assert.ok(await page.locator('link[rel="canonical"]').getAttribute('href'));
     assert.equal(await page.locator('img').evaluateAll(images => images.every(img => img.naturalWidth > 0 && img.hasAttribute('alt'))), true);
@@ -51,7 +55,27 @@ try {
       assert.ok(size.scroll <= size.width + 1, `${route.path} overflows at ${width}px: ${size.scroll}`);
       if (route.name === 'home') {
         const headingSize = await page.locator('h1').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
-        assert.ok(headingSize <= 36, `Homepage Writing heading must stay at or below 36px at ${width}px: ${headingSize}`);
+        assert.ok(headingSize <= 28, `Homepage Writing heading must stay at or below 28px at ${width}px: ${headingSize}`);
+        for (const [selector, expected] of [['.essay h2', 22], ['.essay p', 16], ['.writing-intro', 16], ['.profile-intro', 16], ['.profile-background', 14], ['.essay-link', 15]]) {
+          const sizes = await page.locator(selector).evaluateAll(elements => elements.map(el => parseFloat(getComputedStyle(el).fontSize)));
+          assert.ok(sizes.every(size => size === expected), `${selector} must use the compact ${expected}px role at ${width}px: ${sizes}`);
+        }
+        const navSize = await page.locator('.site-header nav').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+        assert.ok(navSize <= 15, `Navigation must remain compact at ${width}px: ${navSize}`);
+        const actionHeights = await page.locator('.essay-link, .profile-links a, .site-header nav a').evaluateAll(elements => elements.map(el => el.getBoundingClientRect().height));
+        assert.ok(actionHeights.every(height => height >= 44), 'Smaller type must preserve usable action targets');
+        const profileWidth = await page.locator('.profile').evaluate(el => el.getBoundingClientRect().width);
+        assert.ok(Math.abs(profileWidth - (width > 900 ? 250 : width)) < 1,
+          `Profile must be 250px on desktop and full-width when stacked at ${width}px: ${profileWidth}`);
+      } else {
+        const header = await page.locator('.post-header').boundingBox();
+        const title = await page.locator('h1').boundingBox();
+        assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
+        assert.ok(title.width <= 1 && title.height <= 1, 'The title must not create a visible banner');
+        assert.notEqual(await page.locator('h1').evaluate(el => getComputedStyle(el).clipPath), 'none');
+        const prose = await page.locator('.post-content').evaluate(el => ({ fontSize: parseFloat(getComputedStyle(el).fontSize), width: el.getBoundingClientRect().width }));
+        assert.equal(prose.fontSize, width <= 540 ? 17 : 18, `Article prose must use the compact reading scale at ${width}px`);
+        assert.ok(prose.width <= 640, `Smaller prose must keep a comfortable reading measure at ${width}px: ${prose.width}`);
       }
       if (width === 390 || width === 1440) {
         await page.evaluate(() => window.scrollTo(0, 0));

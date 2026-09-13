@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "What makes an RL task useful for an agent?"
+hide_title: true
 description: A practical first screen for useful reinforcement learning tasks.
 image: /assets/images/rl-task-cover.png
 math: true
