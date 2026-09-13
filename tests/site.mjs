@@ -44,6 +44,10 @@ try {
       assert.equal(await page.locator('.post-header--compact').count(), 1, 'Illustrated posts must use the compact metadata header');
       assert.equal(await page.locator('h1.visually-hidden').count(), 1, 'Keep the post title available to assistive technology without repeating the image title');
       assert.equal(await page.getByRole('heading', { level: 1 }).count(), 1, 'The visually hidden title must remain in the accessibility tree');
+      if (route.name === 'post') {
+        const previousPost = page.locator('.post-content').getByRole('link', { name: 'the previous post', exact: true });
+        assert.equal(await previousPost.getAttribute('href'), '/blog/what-is-rl-environemnt/', 'The opening reference must link to the RL environment article');
+      }
     }
     assert.ok(await page.locator('link[rel="canonical"]').getAttribute('href'));
     assert.equal(await page.locator('img').evaluateAll(images => images.every(img => img.naturalWidth > 0 && img.hasAttribute('alt'))), true);

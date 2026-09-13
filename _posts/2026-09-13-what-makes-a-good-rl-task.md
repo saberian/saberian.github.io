@@ -9,7 +9,7 @@ math: true
 
 ![An AI agent considering several homework assignments.](/assets/images/rl-task-cover.png)
 
-In the previous post, we discussed RL environments and how they let agents act and receive feedback. Here, we look at what makes a task useful for RL training.
+In [the previous post]({% post_url 2026-09-10-what-is-rl-environemnt %}), we discussed RL environments and how they let agents act and receive feedback. Here, we look at what makes a task useful for RL training.
 
 Ultimately, a task is valuable if including it in training improves performance on a held-out evaluation set, compared with an otherwise matched training run without that task. But testing every task this way requires repeated RL fine-tuning and evaluation, which is often prohibitively expensive. For many closed models, we also lack access to the weights or a suitable RL training interface. We need a more affordable way to identify promising tasks.
 
