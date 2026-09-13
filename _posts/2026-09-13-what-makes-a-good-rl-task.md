@@ -4,7 +4,7 @@ title: "What makes an RL task useful for an agent?"
 image: /rl-task-cover.png
 ---
 
-![An AI agent considering several homework assignments.](/rl-task-cover.png)
+![An AI agent considering several homework assignments.](/assets/images/rl-task-cover.png)
 
 In the previous post, we discussed RL environments and how they let agents act and receive feedback. Here, we look at what makes a task useful for RL training.
 
