@@ -1,0 +1,10 @@
+title: Ehsan
+description: Notes on AI, experiments, and things I’m learning.
+url: "https://saberian.github.io"
+baseurl: ""
+
+theme: minima
+permalink: /blog/:title/
+
+plugins:
+  - jekyll-feed
