@@ -1,7 +1,34 @@
 ---
-layout: home
-list_title: Writing
+layout: default
+home: true
 ---
-
-I explore AI and build things. Here I share experiments,
-findings, and questions I’m working through.
+<div class="home-layout">
+  <aside class="profile" aria-label="About Ehsan Saberian">
+    <div class="profile-introduction">
+      <img class="portrait" src="{{ '/assets/images/ehsan-saberian.png' | relative_url }}" width="460" height="460" alt="Ehsan Saberian" fetchpriority="high">
+      <p class="profile-intro">{{ site.data.profile.intro }}</p>
+      <div class="profile-background">
+        <p>Previously at Roblox, Netflix &amp; Yahoo</p>
+        <p title="{{ site.data.profile.education_detail }}">{{ site.data.profile.education }}</p>
+      </div>
+    </div>
+    <nav class="profile-links" aria-label="Ehsan's profiles">
+      <a href="{{ site.data.profile.github }}">GitHub</a>
+      <a href="{{ '/feed.xml' | relative_url }}" aria-label="Subscribe to essays via RSS">RSS</a>
+    </nav>
+  </aside>
+  <section class="writing" id="writing" aria-labelledby="writing-title">
+    <h1 id="writing-title">Writing</h1>
+    <p class="writing-intro">Experiments, findings, and questions I’m working through.</p>
+    <div class="essay-list">
+      {% for post in site.posts %}
+      <article class="essay">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d, %Y' }}</time>
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 22 }}</p>
+        <a class="essay-link" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | escape }}">Read essay {% include arrow.html %}</a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>

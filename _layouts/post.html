@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <div class="post-header-inner">
+      <a class="back-link" href="{{ '/#writing' | relative_url }}"><span class="back-arrow">{% include arrow.html %}</span> All writing</a>
+      <h1>{{ page.title | escape }}</h1>
+      <div class="post-meta">
+        <span>{{ site.data.profile.name }}</span>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+        {% assign words = content | number_of_words %}
+        {% assign minutes = words | divided_by: 220 | plus: 1 %}
+        <span>{{ minutes }} min read</span>
+      </div>
+    </div>
+  </header>
+  <div class="post-content">{{ content }}</div>
+  <footer class="post-end">
+    <p>Thanks for reading.</p>
+    <a href="{{ site.data.profile.linkedin }}">Connect with me on LinkedIn {% include arrow.html %}</a>
+    {% if page.previous or page.next %}
+    {% assign related = page.previous | default: page.next %}
+    <div class="related-post">
+      <h2>Keep reading</h2>
+      <a href="{{ related.url | relative_url }}">{{ related.title | escape }} {% include arrow.html %}</a>
+    </div>
+    {% endif %}
+  </footer>
+</article>
+<footer class="site-footer">
+  <a href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
+  <nav aria-label="Footer navigation">
+    <a href="{{ site.data.profile.github }}">GitHub</a>
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </nav>
+</footer>

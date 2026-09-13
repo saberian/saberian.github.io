@@ -1,0 +1,45 @@
+# Ehsan Saberian's website
+
+A static Jekyll site for GitHub Pages. The site deploys from `master` and preserves post URLs under `/blog/:title/`.
+
+## Develop locally
+
+Use Ruby 3.3 or newer with Bundler:
+
+```sh
+bundle install
+bundle exec jekyll serve
+```
+
+Open `http://127.0.0.1:4000`. The Gemfile pins the Jekyll and Markdown versions used by GitHub Pages. On this Mac, Homebrew's Ruby is at `/opt/homebrew/opt/ruby/bin`.
+
+## Edit content
+
+- Add posts to `_posts/YYYY-MM-DD-slug.md` with `layout: post`, `title`, and an optional `description` and `image`.
+- Professional details and profile links live in `_data/profile.yml`.
+- Store images in `assets/images/` and reference their complete site-relative paths.
+- Keep the existing post slugs when editing titles to preserve published links.
+
+## Equations
+
+Add `math: true` to a post's front matter. Use native kramdown math syntax: `$$r_i$$` for inline math and a standalone `$$` block around a display equation. kramdown converts this into delimiters understood by the locally hosted MathJax renderer. Do not use raw `\(...\)` or `\[...\]` in Markdown, because Markdown consumes those backslashes.
+
+With the site running, verify the equations in a real browser:
+
+```sh
+npm ci
+npx playwright install chromium
+npm test
+```
+
+Alternatively, set `CHROMIUM_EXECUTABLE_PATH` to an already installed Chrome or Chromium binary.
+
+`npm test` verifies real equation output, accessibility, images and links, keyboard navigation, reduced motion, and page overflow across eight screen widths. `npm run test:math` runs just the equation regression. The site check writes desktop and mobile screenshots into the gitignored `.impeccable/review/` directory.
+
+## Profile and asset sources
+
+The public profile at https://github.com/saberian, checked September 13, 2026, supplies the portrait, past employer names (Roblox, Netflix, Yahoo), and PhD details (computer vision and machine learning, UC San Diego). LinkedIn: https://www.linkedin.com/in/saberian/.
+
+The two post illustrations were supplied by the author. Font licenses are in `assets/fonts/`; MathJax's license and version documentation are in `assets/vendor/mathjax/`.
+
+Design planning, build caches, generated mockups, tests, and dependencies are excluded from the published site.

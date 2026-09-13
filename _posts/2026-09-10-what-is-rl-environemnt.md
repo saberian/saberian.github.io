@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "What is RL Environemnt"
+description: A simple explanation of the worlds agents learn in.
 image: /assets/images/what_is_rl_env.png
 ---
 

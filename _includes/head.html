@@ -1,0 +1,21 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+  {% assign description = page.description | default: site.description %}
+  <meta name="description" content="{{ description | escape }}">
+  <meta name="author" content="Ehsan Saberian">
+  <meta name="theme-color" content="#d6e5f7">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
+  <link rel="preload" href="{{ '/assets/fonts/hanken-grotesk-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:image" content="{{ page.image | default: '/assets/images/ehsan-saberian.png' | absolute_url }}">
+  <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+  {% feed_meta %}
+  {% if page.math %}{% include math.html %}{% endif %}
+</head>

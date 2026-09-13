@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T17:33:47.888Z",
+  "title": "Design System: Ehsan Saberian",
+  "extensions": {
+    "colorMeta": {
+      "link": {
+        "role": "primary",
+        "displayName": "Link Blue",
+        "tonalRamp": [
+          "oklch(15% 0.2017 265.32)",
+          "oklch(26% 0.2017 265.32)",
+          "oklch(38% 0.2017 265.32)",
+          "oklch(49% 0.2017 265.32)",
+          "oklch(61% 0.2017 265.32)",
+          "oklch(72% 0.2017 265.32)",
+          "oklch(84% 0.2017 265.32)",
+          "oklch(95% 0.2017 265.32)"
+        ]
+      },
+      "cover": {
+        "role": "neutral",
+        "displayName": "Mist Cover",
+        "tonalRamp": [
+          "oklch(15% 0.0294 252.95)",
+          "oklch(26% 0.0294 252.95)",
+          "oklch(38% 0.0294 252.95)",
+          "oklch(49% 0.0294 252.95)",
+          "oklch(61% 0.0294 252.95)",
+          "oklch(72% 0.0294 252.95)",
+          "oklch(84% 0.0294 252.95)",
+          "oklch(95% 0.0294 252.95)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Reading Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0025 165.08)",
+          "oklch(26% 0.0025 165.08)",
+          "oklch(38% 0.0025 165.08)",
+          "oklch(49% 0.0025 165.08)",
+          "oklch(61% 0.0025 165.08)",
+          "oklch(72% 0.0025 165.08)",
+          "oklch(84% 0.0025 165.08)",
+          "oklch(95% 0.0025 165.08)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0647 260.21)",
+          "oklch(26% 0.0647 260.21)",
+          "oklch(38% 0.0647 260.21)",
+          "oklch(49% 0.0647 260.21)",
+          "oklch(61% 0.0647 260.21)",
+          "oklch(72% 0.0647 260.21)",
+          "oklch(84% 0.0647 260.21)",
+          "oklch(95% 0.0647 260.21)"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Slate Text",
+        "tonalRamp": [
+          "oklch(15% 0.0461 259.18)",
+          "oklch(26% 0.0461 259.18)",
+          "oklch(38% 0.0461 259.18)",
+          "oklch(49% 0.0461 259.18)",
+          "oklch(61% 0.0461 259.18)",
+          "oklch(72% 0.0461 259.18)",
+          "oklch(84% 0.0461 259.18)",
+          "oklch(95% 0.0461 259.18)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Slate",
+        "tonalRamp": [
+          "oklch(15% 0.0333 259.55)",
+          "oklch(26% 0.0333 259.55)",
+          "oklch(38% 0.0333 259.55)",
+          "oklch(49% 0.0333 259.55)",
+          "oklch(61% 0.0333 259.55)",
+          "oklch(72% 0.0333 259.55)",
+          "oklch(84% 0.0333 259.55)",
+          "oklch(95% 0.0333 259.55)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Pale Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0122 247.96)",
+          "oklch(26% 0.0122 247.96)",
+          "oklch(38% 0.0122 247.96)",
+          "oklch(49% 0.0122 247.96)",
+          "oklch(61% 0.0122 247.96)",
+          "oklch(72% 0.0122 247.96)",
+          "oklch(84% 0.0122 247.96)",
+          "oklch(95% 0.0122 247.96)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Article headline",
+        "purpose": "Hanken Grotesk article titles, with a 20ch maximum measure."
+      },
+      "title": {
+        "displayName": "Essay title",
+        "purpose": "Linked essay titles in the writing index."
+      },
+      "body": {
+        "displayName": "Reading prose",
+        "purpose": "Long-form article content in Source Serif 4."
+      },
+      "interface": {
+        "displayName": "Interface text",
+        "purpose": "Base Hanken Grotesk UI text."
+      },
+      "label": {
+        "displayName": "Article metadata",
+        "purpose": "Author, date, and reading time; dates use tabular numerals."
+      },
+      "action": {
+        "displayName": "Essay action",
+        "purpose": "Read essay text links paired with a stroked SVG arrow."
+      },
+      "section": {
+        "displayName": "Writing heading",
+        "purpose": "A modest Hanken Grotesk heading, 36px desktop and 30px phone."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Directional cue easing, defined as --ease-out."
+      },
+      {
+        "name": "arrow-transition",
+        "value": "transform 280ms var(--ease-out)",
+        "purpose": "Moves essay and article-end arrows 5px right on hover or keyboard focus."
+      },
+      {
+        "name": "title-transition",
+        "value": "color 180ms ease-out",
+        "purpose": "Turns essay title links from ink to link blue on hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "prefers-reduced-motion removes transitions, animations, smooth scrolling, and arrow transforms."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "small-phone-max",
+        "value": "360px"
+      },
+      {
+        "name": "phone-max",
+        "value": "540px"
+      },
+      {
+        "name": "stacked-max",
+        "value": "900px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Main navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "The author name appears once; the homepage header keeps only LinkedIn.",
+      "html": "<header class=\"ds-header\"><a class=\"ds-name\" href=\"/\">Ehsan Saberian</a><nav aria-label=\"Main navigation\"><a href=\"https://www.linkedin.com/in/saberian/\">LinkedIn</a></nav></header>",
+      "css": ".ds-header{min-height:64px;padding:0 3.2vw;display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--cover,#d6e5f7);font-family:var(--sans,'Hanken Grotesk',sans-serif);line-height:1.5}.ds-header a{color:var(--link,#244dcc);font-size:18px;text-decoration:none}.ds-header .ds-name{color:var(--ink,#132646);font-size:24px;font-weight:650;letter-spacing:-.03em}.ds-header a:hover{text-decoration:underline;text-underline-offset:.2em}.ds-header a:focus-visible{outline:2px solid var(--link,#244dcc);outline-offset:6px;border-radius:2px}@media(max-width:900px){.ds-header{padding-inline:32px}}@media(max-width:540px){.ds-header{padding-inline:24px}.ds-header .ds-name{font-size:20px}.ds-header nav a{font-size:16px;display:inline-flex;align-items:center;min-height:44px}}@media(max-width:360px){.ds-header{padding-inline:20px}.ds-header .ds-name{font-size:18px}.ds-header nav a{font-size:15px}}"
+    },
+    {
+      "name": "Essay action",
+      "kind": "custom",
+      "refersTo": "essay-action",
+      "description": "An inline text action with a directional cue and an accessible focus state.",
+      "html": "<a class=\"ds-essay-action\" href=\"/blog/what-makes-a-good-rl-task/\">Read essay <svg class=\"ds-action-arrow\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-essay-action{display:inline-flex;gap:8px;align-items:center;min-height:44px;margin-top:12px;color:var(--link,#244dcc);font-family:var(--sans,'Hanken Grotesk',sans-serif);font-size:18px;line-height:1.5;text-decoration:none}.ds-action-arrow{flex-shrink:0;width:28px;height:28px;transition:transform 280ms var(--ease-out,cubic-bezier(.16,1,.3,1))}.ds-essay-action:hover{text-decoration:underline;text-underline-offset:.2em}.ds-essay-action:focus-visible{outline:2px solid var(--link,#244dcc);outline-offset:6px;border-radius:2px}.ds-essay-action:hover .ds-action-arrow,.ds-essay-action:focus-visible .ds-action-arrow{transform:translateX(5px)}@media(prefers-reduced-motion:reduce){.ds-action-arrow{transition:none;transform:none!important}}"
+    },
+    {
+      "name": "Essay entry",
+      "kind": "custom",
+      "refersTo": "essay-entry",
+      "description": "An open writing entry with a muted date, linked title, summary, and text action.",
+      "html": "<article class=\"ds-essay\"><time datetime=\"2026-09-13\">Sep 13, 2026</time><h2><a href=\"/blog/what-makes-a-good-rl-task/\">What makes an RL task useful for an agent?</a></h2><p>A practical first screen for useful reinforcement learning tasks.</p><a class=\"ds-entry-action\" href=\"/blog/what-makes-a-good-rl-task/\">Read essay <svg class=\"ds-entry-arrow\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a></article>",
+      "css": ".ds-essay{color:var(--ink,#132646);font-family:var(--sans,'Hanken Grotesk',sans-serif);line-height:1.5}.ds-essay time{color:var(--muted,#626e81);font-size:16px;font-variant-numeric:tabular-nums}.ds-essay h2{margin:8px 0 0;font-size:30px;font-weight:700;letter-spacing:-.025em;line-height:1.25;text-wrap:pretty}.ds-essay h2 a{color:var(--ink,#132646);text-decoration:none;transition:color 180ms ease-out}.ds-essay h2 a:hover{color:var(--link,#244dcc)}.ds-essay p{margin:8px 0 0;color:var(--secondary,#43536c);font-size:20px;letter-spacing:-.025em;line-height:1.5}.ds-essay a:focus-visible{outline:2px solid var(--link,#244dcc);outline-offset:6px;border-radius:2px}.ds-essay+.ds-essay{position:relative;margin-top:32px;padding-top:32px}.ds-essay+.ds-essay:before{content:'';position:absolute;top:0;left:0;width:208px;max-width:40%;height:1px;background:var(--rule,#dae1e8)}@media(max-width:540px){.ds-essay h2{font-size:26px}.ds-essay p{font-size:18px}.ds-essay+.ds-essay{margin-top:30px;padding-top:34px}}@media(prefers-reduced-motion:reduce){.ds-essay h2 a{transition:none}}.ds-entry-action{display:inline-flex;gap:8px;align-items:center;min-height:44px;margin-top:12px;color:var(--link,#244dcc);font-family:var(--sans,'Hanken Grotesk',sans-serif);font-size:18px;line-height:1.5;text-decoration:none}.ds-entry-arrow{flex-shrink:0;width:28px;height:28px;transition:transform 280ms var(--ease-out,cubic-bezier(.16,1,.3,1))}.ds-entry-action:hover{text-decoration:underline;text-underline-offset:.2em}.ds-entry-action:focus-visible{outline:2px solid var(--link,#244dcc);outline-offset:6px;border-radius:2px}.ds-entry-action:hover .ds-entry-arrow,.ds-entry-action:focus-visible .ds-entry-arrow{transform:translateX(5px)}@media(prefers-reduced-motion:reduce){.ds-entry-arrow{transition:none;transform:none!important}}"
+    },
+    {
+      "name": "Article heading",
+      "kind": "custom",
+      "refersTo": "article-heading",
+      "description": "A cover-colored title region with a back link and wrapping article metadata.",
+      "html": "<header class=\"ds-article-header\"><div class=\"ds-article-inner\"><a class=\"ds-back\" href=\"/#writing\"><svg class=\"ds-back-arrow\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg> All writing</a><h1>What makes an RL task useful for an agent?</h1><div class=\"ds-meta\"><span>Ehsan Saberian</span><time datetime=\"2026-09-13\">September 13, 2026</time></div></div></header>",
+      "css": ".ds-article-header{background:var(--cover,#d6e5f7);color:var(--ink,#132646);padding:48px 32px 62px;font-family:var(--sans,'Hanken Grotesk',sans-serif);line-height:1.5}.ds-article-inner{max-width:960px;margin-inline:auto}.ds-back{display:inline-flex;align-items:center;gap:7px;min-height:44px;margin-bottom:32px;color:var(--link,#244dcc);text-decoration:none;font-size:18px}.ds-back-arrow{width:28px;height:28px;flex-shrink:0;transform:rotate(180deg)}.ds-back:hover{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}.ds-back:focus-visible{outline:2px solid var(--link,#244dcc);outline-offset:6px;border-radius:2px}.ds-article-header h1{margin:0;font-family:var(--display,'Hanken Grotesk',sans-serif);font-size:clamp(40px,4.6vw,68px);font-weight:700;line-height:1.07;letter-spacing:-.035em;max-width:20ch;text-wrap:balance}.ds-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;font-size:17px;color:var(--secondary,#43536c);margin-top:28px}.ds-meta time{font-variant-numeric:tabular-nums}@media(max-width:900px){.ds-article-header{padding-top:24px;padding-bottom:40px}.ds-back{margin-bottom:24px}}@media(max-width:540px){.ds-article-header{padding-inline:24px}.ds-article-header h1{font-size:40px;line-height:1.1}.ds-meta{gap:7px 18px;font-size:15px;margin-top:22px}}@media(max-width:360px){.ds-article-header{padding-inline:20px}.ds-article-header h1{font-size:36px}}"
+    },
+    {
+      "name": "Related writing",
+      "kind": "custom",
+      "refersTo": "related-writing",
+      "description": "The article-end related essay link, using the existing text and arrow treatment.",
+      "html": "<div class=\"ds-related\"><h2>Keep reading</h2><a href=\"/blog/what-is-rl-environemnt/\">What is RL Environemnt <svg class=\"ds-related-arrow\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-related{margin-top:56px;color:var(--ink,#132646);font-family:var(--sans,'Hanken Grotesk',sans-serif);line-height:1.5}.ds-related h2{margin:0 0 12px;font-size:22px;font-weight:700;text-wrap:balance}.ds-related a{display:inline-flex;gap:8px;align-items:center;min-height:44px;color:var(--link,#244dcc);text-decoration:none;font-size:26px;font-weight:600;letter-spacing:-.025em;line-height:1.3}.ds-related-arrow{flex-shrink:0;width:28px;height:28px;transition:transform 280ms var(--ease-out,cubic-bezier(.16,1,.3,1))}.ds-related a:hover{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}.ds-related a:focus-visible{outline:2px solid var(--link,#244dcc);outline-offset:6px;border-radius:2px}.ds-related a:hover .ds-related-arrow,.ds-related a:focus-visible .ds-related-arrow{transform:translateX(5px)}@media(max-width:540px){.ds-related a{font-size:23px}}@media(prefers-reduced-motion:reduce){.ds-related-arrow{transition:none;transform:none!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Research Folio",
+    "overview": "A scientific monograph's dust jacket informs the visual language: mist-blue cover surfaces, navy ink, confident lettering, and plain image crops. Generous space and an unboxed writing index give the work a calm, personal setting.\n\nTypography carries the hierarchy. Hanken Grotesk handles restrained headings and navigation; Source Serif 4 gives sustained prose its own reading rhythm. The interface stays flat, with small directional movement on essay links.",
+    "keyCharacteristics": [
+      "Mist-blue cover surfaces and near-white reading paper.",
+      "Restrained sans-serif headings and titles, with serif article prose.",
+      "Square image crops, open text entries, and short dividing rules.",
+      "Text-led navigation with visible keyboard focus and restrained arrow motion."
+    ],
+    "rules": [
+      {
+        "name": "The Link Blue Rule",
+        "body": "Use blue to identify links and interaction states; essay titles begin in navy and turn blue on hover.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Type Roles Rule",
+        "body": "Keep Hanken Grotesk on headings and interface text, and Source Serif 4 on long-form prose.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use tonal surfaces, spacing, and rules for separation; retain the unboxed treatment of writing entries.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the two type roles and self-hosted font files.",
+      "Do keep writing entries open, with hierarchy established by type, whitespace, and short rules.",
+      "Do keep focus outlines visible and honor reduced-motion preferences.",
+      "Do contain wide equations, tables, and code within the article measure without clipping their content."
+    ],
+    "donts": [
+      "Don't turn the writing index into a grid of raised or rounded cards.",
+      "Don't repeat the author's name or Writing heading in an oversized homepage hero.",
+      "Don't replace the square portrait crop or the inline SVG directional cues with decorative framing or glyph icons."
+    ]
+  }
+}
