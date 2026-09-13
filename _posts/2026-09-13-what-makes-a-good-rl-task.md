@@ -31,6 +31,8 @@ $$
 S = \frac{\sigma_a}{\sigma_r}
 $$
 
+If the reference reward's standard deviation is zero, the ratio is undefined. If it is very small or estimated from too few runs, the ratio can be unstable; inspect the reward distributions and uncertainty before interpreting it.
+
 A ratio substantially above one suggests that agent attempts differ by more than the variation observed when reseeding the reference solution. If that reference provides a representative noise baseline, the ratio supports the interpretation that reward differences reflect meaningful differences in approach.
 
 This compares variation between agent approaches under fixed task randomness with the seed sensitivity of one reference solution. Other solutions may respond differently to random seeds, and limited samples make both estimates uncertain. Inspecting trajectories and rerunning representative agent solutions helps check whether higher rewards correspond to reliably better decisions.

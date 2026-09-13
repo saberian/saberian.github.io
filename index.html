@@ -3,16 +3,16 @@ layout: default
 home: true
 ---
 <div class="home-layout">
-  <aside class="profile" aria-label="About Ehsan Saberian">
+  <aside class="profile" aria-label="About {{ site.data.profile.name | escape }}">
     <div class="profile-introduction">
-      <img class="portrait" src="{{ '/assets/images/ehsan-saberian.png' | relative_url }}" width="460" height="460" alt="Ehsan Saberian" fetchpriority="high">
+      <img class="portrait" src="{{ site.data.profile.photo | relative_url }}" width="460" height="460" alt="{{ site.data.profile.name | escape }}" fetchpriority="high">
       <p class="profile-intro">{{ site.data.profile.intro }}</p>
       <div class="profile-background">
-        <p>Previously at Roblox, Netflix &amp; Yahoo</p>
-        <p title="{{ site.data.profile.education_detail }}">{{ site.data.profile.education }}</p>
+        <p>Previously at {{ site.data.profile.previous_employers | array_to_sentence_string: '&' | escape }}</p>
+        <p>{{ site.data.profile.education | escape }}<br>{{ site.data.profile.education_detail | escape }}</p>
       </div>
     </div>
-    <nav class="profile-links" aria-label="Ehsan's profiles">
+    <nav class="profile-links" aria-label="{{ site.data.profile.name | escape }}'s profiles">
       <a href="{{ site.data.profile.github }}">GitHub</a>
       <a href="{{ '/feed.xml' | relative_url }}" aria-label="Subscribe to essays via RSS">RSS</a>
     </nav>

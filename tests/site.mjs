@@ -9,6 +9,7 @@ const browser = await chromium.launch({
   ...(process.env.CHROMIUM_EXECUTABLE_PATH ? { executablePath: process.env.CHROMIUM_EXECUTABLE_PATH } : {})
 });
 const reviewDir = '.impeccable/review';
+const environmentTitle = 'What is an RL environment?';
 await mkdir(reviewDir, { recursive: true });
 const pages = [
   { path: '/', name: 'home' },
@@ -20,6 +21,7 @@ try {
   const context = await browser.newContext();
   const page = await context.newPage();
   const errors = [];
+  const canonicalURLs = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('requestfailed', request => errors.push(`Failed request: ${request.url()}`));
   page.on('response', response => {
@@ -40,6 +42,10 @@ try {
       assert.equal(await page.locator('.profile h1').count(), 0, 'Homepage profile must not repeat the site name as a large heading');
       assert.equal((await page.locator('h1').textContent()).trim(), 'Writing', 'Writing must be the homepage primary heading');
       assert.equal(await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Writing', exact: true }).count(), 0, 'Homepage navigation must not repeat Writing');
+      assert.equal(await page.locator('.essay h2').getByRole('link', { name: environmentTitle, exact: true }).getAttribute('href'), '/blog/what-is-rl-environemnt/', 'Correct the visible title without breaking the published URL');
+      assert.equal((await page.locator('.profile-background p').first().textContent()).trim(), 'Previously at Roblox, Netflix, & Yahoo');
+      assert.equal(await page.locator('.profile-background').getByText('Computer vision and machine learning', { exact: false }).isVisible(), true, 'Education details must be visible without hovering');
+      assert.equal(await page.locator('.profile-background [title]').count(), 0, 'Do not hide professional context in tooltips');
     } else {
       assert.equal(await page.locator('.post-header--compact').count(), 1, 'Illustrated posts must use the compact metadata header');
       assert.equal(await page.locator('h1.visually-hidden').count(), 1, 'Keep the post title available to assistive technology without repeating the image title');
@@ -47,9 +53,25 @@ try {
       if (route.name === 'post') {
         const previousPost = page.locator('.post-content').getByRole('link', { name: 'the previous post', exact: true });
         assert.equal(await previousPost.getAttribute('href'), '/blog/what-is-rl-environemnt/', 'The opening reference must link to the RL environment article');
+        assert.equal((await page.locator('.related-post a').textContent()).trim(), environmentTitle, 'Related writing must use the corrected title');
+        assert.equal(await page.locator('.post-content').getByText('standard deviation is zero, the ratio is undefined.', { exact: false }).isVisible(), true, 'Explain the zero-denominator limit of the spread ratio');
+      } else {
+        assert.equal((await page.locator('h1').textContent()).trim(), environmentTitle);
+        assert.equal(await page.title(), `${environmentTitle} · Ehsan Saberian`);
+        assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'), environmentTitle);
+        assert.equal((await page.locator('.post-content').textContent()).includes('the more detailed the reward, the better'), false, 'Do not claim that denser rewards are always better');
       }
     }
-    assert.ok(await page.locator('link[rel="canonical"]').getAttribute('href'));
+    const canonicalURL = new URL(await page.locator('link[rel="canonical"]').getAttribute('href'));
+    assert.equal(canonicalURL.pathname, route.path, 'Canonical URLs must preserve published paths');
+    canonicalURLs.push(canonicalURL.href);
+    assert.equal(await page.locator('meta[name="twitter:card"]').getAttribute('content'), 'summary_large_image');
+    for (const property of ['title', 'description', 'image']) {
+      assert.equal(await page.locator(`meta[name="twitter:${property}"]`).getAttribute('content'), await page.locator(`meta[property="og:${property}"]`).getAttribute('content'), `Sharing ${property} must stay consistent across metadata formats`);
+    }
+    const sharingImage = new URL(await page.locator('meta[name="twitter:image"]').getAttribute('content'));
+    assert.equal(sharingImage.origin, canonicalURL.origin, 'Sharing images must use the canonical site origin');
+    assert.ok(sharingImage.pathname.startsWith('/assets/images/'), 'Sharing images must use absolute image URLs');
     assert.equal(await page.locator('img').evaluateAll(images => images.every(img => img.naturalWidth > 0 && img.hasAttribute('alt'))), true);
     const a11y = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     assert.deepEqual(a11y.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(n => n.target) })), [], `${route.path} accessibility violations`);
@@ -105,8 +127,16 @@ try {
       await page.emulateMedia({ reducedMotion: 'no-preference' });
     }
   }
+  const sitemap = await page.request.get(new URL('/sitemap.xml', baseURL).href);
+  assert.equal(sitemap.status(), 200, 'The generated sitemap must resolve');
+  const sitemapText = await sitemap.text();
+  for (const url of canonicalURLs) assert.ok(sitemapText.includes(`<loc>${url}</loc>`), `Sitemap must list the canonical URL ${url}`);
+  assert.equal(sitemapText.includes('/404.html'), false, 'Do not list the error page in the sitemap');
+  const robots = await page.request.get(new URL('/robots.txt', baseURL).href);
+  assert.equal(robots.status(), 200, 'The generated robots.txt must resolve');
+  assert.ok((await robots.text()).includes(`Sitemap: ${new URL('/sitemap.xml', canonicalURLs[0]).href}`), 'robots.txt must point to the canonical sitemap');
   assert.deepEqual(errors, [], 'Site assets must load without errors');
-  console.log('Site checks passed: 3 routes, 8 viewport widths, WCAG checks, links, images, keyboard skip, and reduced motion.');
+  console.log('Site checks passed: 3 routes, 8 viewport widths, WCAG checks, titles, sharing metadata, sitemap, links, images, keyboard skip, and reduced motion.');
 } finally {
   await browser.close();
 }

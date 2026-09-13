@@ -16,10 +16,16 @@ Open `http://127.0.0.1:4000`. The Gemfile pins the Jekyll and Markdown versions 
 ## Edit content
 
 - Add posts to `_posts/YYYY-MM-DD-slug.md` with `layout: post`, `title`, and an optional `description` and `image`.
-- Professional details and profile links live in `_data/profile.yml`.
+- Professional details, employer names, portrait path, and profile links live in `_data/profile.yml`. Education details are displayed inline, not in a hover-only tooltip.
 - Store images in `assets/images/` and reference their complete site-relative paths.
 - Keep the existing post slugs when editing titles to preserve published links.
 - Use `hide_title: true` when a cover illustration already contains the title. The post keeps an accessible heading and uses a compact back-link/metadata row; omit the flag to show the normal title.
+
+The RL environment post keeps its original `/blog/what-is-rl-environemnt/` URL to preserve published links, even though its displayed title is now “What is an RL environment?”. Use Jekyll's `post_url` tag for references between posts.
+
+## Search and sharing
+
+`jekyll-sitemap` generates `/sitemap.xml` and `/robots.txt` during the build; the error page is excluded. Open Graph and Twitter Card metadata share the same page title, description, and image, falling back to site/profile data on the homepage. The plugin version is pinned to match GitHub Pages.
 
 ## Equations
 
@@ -35,7 +41,7 @@ npm test
 
 Alternatively, set `CHROMIUM_EXECUTABLE_PATH` to an already installed Chrome or Chromium binary.
 
-`npm test` verifies real equation output, accessibility, images and links, keyboard navigation, reduced motion, and page overflow across eight screen widths. It also protects the compact type scale, 44px action targets, narrow desktop sidebar, and illustration-first post headers. `npm run test:math` runs just the equation regression. The site check writes desktop and mobile screenshots into the gitignored `.impeccable/review/` directory.
+`npm test` verifies real equation output, accessibility, images and links, corrected titles, sharing metadata, sitemap/robots output, keyboard navigation, reduced motion, and page overflow across eight screen widths. It also protects the compact type scale, 44px action targets, narrow desktop sidebar, and illustration-first post headers. `npm run test:math` runs just the equation regression. The site check writes desktop and mobile screenshots into the gitignored `.impeccable/review/` directory.
 
 ## Profile and asset sources
 

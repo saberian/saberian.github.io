@@ -120,6 +120,8 @@ Extracted from `assets/site.css`, `index.html`, `_layouts/default.html`, `_layou
 
 The user requested smaller, simpler, non-repeating headings on September 13, 2026, then a substantially smaller overall font scale after reviewing on a 15-inch MacBook. This supersedes the oversized display typography in the original mockup. The name appears once in the header; Writing appears once as the homepage heading. Preserve the compact scale across breakpoints instead of reintroducing larger mobile overrides.
 
+The subsequent small cleanup preserves this layout and the published post URLs. Profile details and the portrait come from `_data/profile.yml`; the education field is visible inline on desktop and touch devices. The first post's displayed title is corrected to “What is an RL environment?”.
+
 ## Colors
 
 The palette combines cool paper and blue-gray neutrals with a clear blue interaction accent. Frontmatter values are the normative colors and retain the CSS custom-property names.

@@ -3,18 +3,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
   {% assign description = page.description | default: site.description %}
+  {% assign share_title = page.title | default: site.title %}
+  {% assign share_image = page.image | default: site.data.profile.photo | absolute_url %}
   <meta name="description" content="{{ description | escape }}">
-  <meta name="author" content="Ehsan Saberian">
+  <meta name="author" content="{{ site.data.profile.name | escape }}">
   <meta name="theme-color" content="#d6e5f7">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
   <link rel="preload" href="{{ '/assets/fonts/hanken-grotesk-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:title" content="{{ share_title | escape }}">
   <meta property="og:description" content="{{ description | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:site_name" content="{{ site.title | escape }}">
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-  <meta property="og:image" content="{{ page.image | default: '/assets/images/ehsan-saberian.png' | absolute_url }}">
+  <meta property="og:image" content="{{ share_image | escape }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ share_title | escape }}">
+  <meta name="twitter:description" content="{{ description | escape }}">
+  <meta name="twitter:image" content="{{ share_image | escape }}">
   <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
   {% feed_meta %}
   {% if page.math %}{% include math.html %}{% endif %}
