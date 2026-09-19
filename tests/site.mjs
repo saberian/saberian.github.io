@@ -56,7 +56,7 @@ try {
       const experimentTable = page.getByRole('table', { name: 'Agent experiment rounds and time use' });
       const spreadTable = page.getByRole('table', { name: 'Spread by model and harness' });
       assert.deepEqual(await page.locator('.post-content h2').allTextContents(), [
-        'Agents performance'
+        'Agent performance'
       ], 'Preserve the author’s simpler section structure');
       const evidenceSections = await page.locator('.post-content').evaluate(article =>
         [...article.querySelectorAll('img, table')].map(element => {
@@ -68,9 +68,9 @@ try {
         })
       );
       assert.deepEqual(evidenceSections, [
-        { tag: 'TABLE', section: 'Agents performance' },
-        { tag: 'IMG', section: 'Agents performance' },
-        { tag: 'TABLE', section: 'Agents performance' }
+        { tag: 'TABLE', section: 'Agent performance' },
+        { tag: 'IMG', section: 'Agent performance' },
+        { tag: 'TABLE', section: 'Agent performance' }
       ], 'Discuss experiment rounds and time before final scores, then spread');
       assert.equal(await page.locator('.post-content table').count(), 2, 'Keep the spread and agent-activity tables');
       assert.deepEqual(await spreadTable.locator('thead th').allTextContents(), ['Model / harness', 'Spread']);
@@ -83,13 +83,14 @@ try {
       assert.doesNotMatch(content, /Methods and limitations|Which attempts count\.|Counting experiments\.|Relative variation\./, 'Remove the methods section and its contents');
       assert.equal(/95%|confidence intervals?|F-distribution|degrees of freedom/.test(content), false, 'Do not restore the CI/F-test discussion');
       assert.ok(content.includes('their sample standard deviations were roughly two to four times as large.'), 'Keep the reported comparison with reference-seed variation');
-      assert.ok(content.includes('In the next post, we will go deeper into the agent trajectories'), 'Keep the saved draft’s trajectory-analysis follow-up');
+      assert.ok(content.includes('In the next post, we will examine the agent trajectories more closely'), 'Keep the saved draft’s trajectory-analysis follow-up');
       assert.match(content, /Ten of the 19 scored attempts exceeded the reference solution's\s+NDCG@10 of about 0\.018\./, 'Keep the saved draft’s rounded reference comparison');
       assert.ok(content.includes('mean of 0.01766'), 'Retain the precise reference mean alongside its training-seed variation');
       assert.ok(content.includes('Running the reference solution end-to-end takes about six minutes'), 'Distinguish running the reference from writing its implementation');
       assert.ok(content.includes('including data preparation, training, validation, ranking, and evaluation'), 'Clarify what the six-minute timing includes');
       assert.doesNotMatch(content, /seeds? for all agent attempts were always fixed|has no randomness|Building a reference solution end-to-end/, 'Do not restore the unsupported seed claim or misleading reliability/timing wording');
-      assert.ok(content.includes('we built an RL env for a coding agent (model + harness)'), 'Preserve the corrected opening from the saved draft');
+      assert.ok(content.includes('an RL environment we built for a coding agent (model + harness)'), 'Preserve the corrected opening from the saved draft');
+      assert.doesNotMatch(content, /\blookat\b|\bimprovments\b|\bThis suggest\b|with mean of 0\.01766 a sample|effort: We ran/, 'Do not reintroduce the copyedited typos or sentence fragments');
       assert.ok(content.includes('all 20 attempts'), 'Preserve the latest trajectory-review scope');
       assert.equal(content.includes('a human pass with a model reading alongside'), false, 'Do not restore the human-review sentence removed from the draft');
       assert.equal(content.includes('no comparison below mixes a model with a harness upgrade'), false, 'Do not restore the fixed-harness-version claim removed from the draft');
