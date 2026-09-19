@@ -11,8 +11,9 @@ assert.ok(title, 'The published post must retain its title');
 
 // Resolve the images actually linked in the chosen draft. Attachments can use
 // absolute filesystem paths; website drafts can use their /assets/ route.
-const imageReferences = [...new Set([...draft.matchAll(/\]\(([^\n)]+\/spread-scores\.(?:svg|png))\)/g)].map(match => match[1]))];
-assert.ok(imageReferences.some(reference => reference.endsWith('.svg')), 'The draft must reference its score figure');
+const imageReferences = [...new Set([...draft.matchAll(/\]\(([^\n)]+\.(?:svg|png))\)/g)].map(match => match[1]))];
+assert.ok(imageReferences.some(reference => basename(reference) === 'spread-scores.svg'), 'The draft must reference its score figure');
+assert.ok(imageReferences.some(reference => basename(reference) === 'spread-in-practice-cover.png'), 'The draft must reference the supplied cover');
 let normalizedDraft = draft.replace(/\] +\((https?:\/\/[^\n)]+)\)/g, ']($1)');
 for (const reference of imageReferences) {
   normalizedDraft = normalizedDraft.replaceAll(reference, `/assets/images/${basename(reference)}`);
@@ -22,7 +23,7 @@ for (const reference of imageReferences) {
   const draftFigure = await readFile(sourcePath);
   const siteFigure = await readFile(new URL(`../assets/images/${basename(reference)}`, import.meta.url));
   assert.ok(siteFigure.equals(draftFigure), `The site figure must match ${sourcePath} byte for byte`);
-  if (reference.endsWith('.svg')) {
+  if (basename(reference) === 'spread-scores.svg') {
     const mobilePath = sourcePath.replace(/\.svg$/, '-mobile.svg');
     assert.ok((await readFile(new URL('../assets/images/spread-scores-mobile.svg', import.meta.url))).equals(await readFile(mobilePath)),
       'The mobile chart must match the companion generated alongside the draft figure');
@@ -35,8 +36,12 @@ const responsiveFigure = post.match(/<picture>\s*<source media="\(max-width: 600
 assert.ok(responsiveFigure, 'The webpage must use the slide renderer’s desktop and mobile chart layouts');
 assert.equal(responsiveFigure[1], "{{ '/assets/images/spread-scores-mobile.svg' | relative_url }}");
 assert.equal(responsiveFigure[2], "{{ '/assets/images/spread-scores.svg' | relative_url }}");
+assert.match(post, /^hide_title: true$/m, 'The cover supplies the visible title; retain the accessible heading without duplicating it');
+assert.match(post, /^image: \/assets\/images\/spread-in-practice-cover\.png$/m, 'Use the supplied cover for sharing previews');
+assert.ok(post.includes('](/assets/images/spread-in-practice-cover.png){: width="1734" height="907" }'), 'Reserve the cover’s intrinsic dimensions');
 const normalizedPost = post
   .replace(responsiveFigure[0], () => `![${responsiveFigure[3]}](${responsiveFigure[2]})`)
+  .replaceAll('](/assets/images/spread-in-practice-cover.png){: width="1734" height="907" }', '](/assets/images/spread-in-practice-cover.png)')
   .replace(/^---\n[\s\S]*?\n---\n\n/, `# ${title}\n\n`)
   .replaceAll('{% post_url 2026-09-10-what-is-rl-environemnt %}', 'https://saberian.github.io/blog/what-is-rl-environemnt/')
   .replaceAll('{% post_url 2026-09-13-what-makes-a-good-rl-task %}', 'https://saberian.github.io/blog/what-makes-a-good-rl-task/')

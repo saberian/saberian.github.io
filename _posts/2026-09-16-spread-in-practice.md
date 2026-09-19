@@ -1,10 +1,13 @@
 ---
 layout: post
 title: "How consistent are coding agents at building a music recommender?"
+hide_title: true
 description: Measuring variation across coding-agent attempts at a two-tower music-recommendation task.
-image: /assets/images/spread-scores.png
+image: /assets/images/spread-in-practice-cover.png
 math: true
 ---
+
+![Five coding agents building music recommenders, with stacks of records of different heights.](/assets/images/spread-in-practice-cover.png){: width="1734" height="907" }
 
 In the previous posts, we introduced [RL environments]({% post_url 2026-09-10-what-is-rl-environemnt %}). Here, we look at a concrete example: an RL environment we built for a coding agent (model + harness) to develop a music recommender system.
 

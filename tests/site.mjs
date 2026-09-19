@@ -11,6 +11,8 @@ const browser = await chromium.launch({
 const reviewDir = '.impeccable/review';
 const environmentTitle = 'What is an RL environment?';
 const spreadTitle = 'How consistent are coding agents at building a music recommender?';
+const spreadCoverPath = '/assets/images/spread-in-practice-cover.png';
+const spreadCoverAlt = 'Five coding agents building music recommenders, with stacks of records of different heights.';
 await mkdir(reviewDir, { recursive: true });
 const pages = [
   { path: '/', name: 'home' },
@@ -52,7 +54,17 @@ try {
       assert.equal((await page.locator('h1').textContent()).trim(), spreadTitle);
       assert.equal(await page.title(), `${spreadTitle} · Ehsan Saberian`);
       assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'), spreadTitle);
-      assert.equal(await page.locator('h1.visually-hidden').count(), 0, 'Posts without title illustrations must show their title');
+      assert.equal(await page.locator('.post-header--compact').count(), 1, 'Use the existing illustrated-post layout');
+      assert.equal(await page.locator('h1.visually-hidden').count(), 1, 'Keep the title accessible without repeating the cover’s visible title');
+      const cover = page.getByRole('img', { name: spreadCoverAlt, exact: true });
+      assert.equal(await cover.getAttribute('src'), spreadCoverPath);
+      assert.equal(await page.locator('.post-content > p').first().locator('img').getAttribute('src'), spreadCoverPath, 'Place the cover before the introduction');
+      assert.equal(await cover.getAttribute('width'), String(await cover.evaluate(image => image.naturalWidth)), 'Reserve the cover’s intrinsic width');
+      assert.equal(await cover.getAttribute('height'), String(await cover.evaluate(image => image.naturalHeight)), 'Reserve the cover’s intrinsic height');
+      const coverResponse = await page.request.get(new URL(spreadCoverPath, baseURL).href);
+      assert.equal(coverResponse.status(), 200);
+      assert.deepEqual(await coverResponse.body(), await readFile(new URL(`..${spreadCoverPath}`, import.meta.url)), 'Serve the supplied cover unchanged');
+      assert.equal(new URL(await page.locator('meta[property="og:image"]').getAttribute('content')).pathname, spreadCoverPath, 'Use the new cover for sharing previews');
       const experimentTable = page.getByRole('table', { name: 'Agent experiment rounds and time use' });
       const spreadTable = page.getByRole('table', { name: 'Spread by model and harness' });
       assert.deepEqual(await page.locator('.post-content h2').allTextContents(), [
@@ -64,14 +76,15 @@ try {
           while (preceding && preceding.tagName !== 'H2') {
             preceding = preceding.previousElementSibling || (preceding.parentElement === article ? null : preceding.parentElement);
           }
-          return { tag: element.tagName, section: preceding?.textContent.trim() };
+          return { tag: element.tagName, section: preceding?.textContent.trim() ?? null };
         })
       );
       assert.deepEqual(evidenceSections, [
+        { tag: 'IMG', section: null },
         { tag: 'TABLE', section: 'Agent performance' },
         { tag: 'IMG', section: 'Agent performance' },
         { tag: 'TABLE', section: 'Agent performance' }
-      ], 'Discuss experiment rounds and time before final scores, then spread');
+      ], 'Lead with the cover, then retain experiment rounds, final scores, and spread in order');
       assert.equal(await page.locator('.post-content table').count(), 2, 'Keep the spread and agent-activity tables');
       assert.deepEqual(await spreadTable.locator('thead th').allTextContents(), ['Model / harness', 'Spread']);
       assert.equal(await spreadTable.locator('tbody tr').count(), 3);
@@ -173,9 +186,16 @@ try {
         assert.ok(Math.abs(profileWidth - (width > 900 ? 250 : width)) < 1,
           `Profile must be 250px on desktop and full-width when stacked at ${width}px: ${profileWidth}`);
       } else {
+        const header = await page.locator('.post-header').boundingBox();
+        const title = await page.locator('h1').boundingBox();
+        assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
+        assert.ok(title.width <= 1 && title.height <= 1, 'The title must not create a duplicate visible banner');
+        assert.notEqual(await page.locator('h1').evaluate(el => getComputedStyle(el).clipPath), 'none');
         if (route.name === 'spread') {
-          const headingSize = await page.locator('h1').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
-          assert.ok(headingSize <= (width <= 540 ? 32 : 40), 'Visible post headings must use the existing compact type scale');
+          const coverBounds = await page.getByRole('img', { name: spreadCoverAlt, exact: true }).boundingBox();
+          const articleBounds = await page.locator('.post-content').boundingBox();
+          assert.ok(Math.abs(coverBounds.width - articleBounds.width) < 1, `Fit the cover to the reading column at ${width}px`);
+          assert.ok(Math.abs(coverBounds.height - coverBounds.width * 907 / 1734) < 1, 'Keep the full cover uncropped and undistorted');
           const tableGeometry = await page.getByRole('table', { name: 'Spread by model and harness' }).evaluate(table => {
             const article = table.closest('.post-content').getBoundingClientRect();
             const frame = table.getBoundingClientRect();
@@ -193,12 +213,6 @@ try {
           if (!tableGeometry.overflows) assert.ok(Math.abs(tableGeometry.rowsCenter - tableGeometry.articleCenter) < 1, `Center the visible rows, not an empty full-width table box, at ${width}px`);
           assert.equal(tableGeometry.labelAlign, 'left', 'Keep model labels left-aligned within the centered table');
           assert.equal(tableGeometry.valueAlign, 'right', 'Keep spread values right-aligned within the centered table');
-        } else {
-          const header = await page.locator('.post-header').boundingBox();
-          const title = await page.locator('h1').boundingBox();
-          assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
-          assert.ok(title.width <= 1 && title.height <= 1, 'The title must not create a visible banner');
-          assert.notEqual(await page.locator('h1').evaluate(el => getComputedStyle(el).clipPath), 'none');
         }
         const prose = await page.locator('.post-content').evaluate(el => ({ fontSize: parseFloat(getComputedStyle(el).fontSize), width: el.getBoundingClientRect().width }));
         assert.equal(prose.fontSize, width <= 540 ? 17 : 18, `Article prose must use the compact reading scale at ${width}px`);
@@ -221,6 +235,7 @@ try {
         const name = route.name === 'home' ? (width === 390 ? 'mobile' : 'desktop') : `${route.name}-${width === 390 ? 'mobile' : 'desktop'}`;
         await page.screenshot({ path: `${reviewDir}/${name}.png`, fullPage: true, animations: 'disabled' });
         if (route.name === 'spread') {
+          await page.screenshot({ path: `${reviewDir}/spread-cover-${width === 390 ? 'mobile' : 'desktop'}.png`, animations: 'disabled' });
           const chart = page.locator('.post-content picture img');
           await chart.evaluate(image => image.decode());
           assert.equal((await chart.evaluate(image => image.currentSrc)).endsWith(width === 390 ? '/spread-scores-mobile.svg' : '/spread-scores.svg'), true, 'Serve the readable chart layout for the viewport');
