@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 
@@ -10,11 +10,13 @@ const browser = await chromium.launch({
 });
 const reviewDir = '.impeccable/review';
 const environmentTitle = 'What is an RL environment?';
+const spreadTitle = 'How consistent are coding agents at building a music recommender?';
 await mkdir(reviewDir, { recursive: true });
 const pages = [
   { path: '/', name: 'home' },
   { path: '/blog/what-makes-a-good-rl-task/', name: 'post' },
-  { path: '/blog/what-is-rl-environemnt/', name: 'environment' }
+  { path: '/blog/what-is-rl-environemnt/', name: 'environment' },
+  { path: '/blog/spread-in-practice/', name: 'spread' }
 ];
 
 try {
@@ -46,6 +48,82 @@ try {
       assert.equal((await page.locator('.profile-background p').first().textContent()).trim(), 'Previously at Roblox, Netflix, & Yahoo');
       assert.equal(await page.locator('.profile-background').getByText('Computer vision and machine learning', { exact: false }).isVisible(), true, 'Education details must be visible without hovering');
       assert.equal(await page.locator('.profile-background [title]').count(), 0, 'Do not hide professional context in tooltips');
+    } else if (route.name === 'spread') {
+      assert.equal((await page.locator('h1').textContent()).trim(), spreadTitle);
+      assert.equal(await page.title(), `${spreadTitle} · Ehsan Saberian`);
+      assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'), spreadTitle);
+      assert.equal(await page.locator('h1.visually-hidden').count(), 0, 'Posts without title illustrations must show their title');
+      const experimentTable = page.getByRole('table', { name: 'Agent experiment rounds and time use' });
+      const spreadTable = page.getByRole('table', { name: 'Spread by model and harness' });
+      assert.deepEqual(await page.locator('.post-content h2').allTextContents(), [
+        'Agents performance'
+      ], 'Preserve the author’s simpler section structure');
+      const evidenceSections = await page.locator('.post-content').evaluate(article =>
+        [...article.querySelectorAll('img, table')].map(element => {
+          let preceding = element;
+          while (preceding && preceding.tagName !== 'H2') {
+            preceding = preceding.previousElementSibling || (preceding.parentElement === article ? null : preceding.parentElement);
+          }
+          return { tag: element.tagName, section: preceding?.textContent.trim() };
+        })
+      );
+      assert.deepEqual(evidenceSections, [
+        { tag: 'TABLE', section: 'Agents performance' },
+        { tag: 'IMG', section: 'Agents performance' },
+        { tag: 'TABLE', section: 'Agents performance' }
+      ], 'Discuss experiment rounds and time before final scores, then spread');
+      assert.equal(await page.locator('.post-content table').count(), 2, 'Keep the spread and agent-activity tables');
+      assert.deepEqual(await spreadTable.locator('thead th').allTextContents(), ['Model / harness', 'Spread']);
+      assert.equal(await spreadTable.locator('tbody tr').count(), 3);
+      for (const value of ['4.25×', '2.12×', '2.87×']) assert.equal(await spreadTable.getByRole('cell', { name: value, exact: true }).count(), 1);
+      assert.deepEqual(await experimentTable.locator('thead th').allTextContents(), ['Model / harness', 'Avg. scored rounds', 'Avg. time used'], 'Keep the author’s three-column activity table');
+      assert.equal(await experimentTable.locator('tbody tr').count(), 3, 'The latest draft reviews 20 attempts in three groups');
+      // Kramdown renders straight apostrophes as typographic apostrophes.
+      const content = (await page.locator('.post-content').textContent()).replaceAll('’', "'");
+      assert.doesNotMatch(content, /Methods and limitations|Which attempts count\.|Counting experiments\.|Relative variation\./, 'Remove the methods section and its contents');
+      assert.equal(/95%|confidence intervals?|F-distribution|degrees of freedom/.test(content), false, 'Do not restore the CI/F-test discussion');
+      assert.ok(content.includes('their sample standard deviations were roughly two to four times as large.'), 'Keep the reported comparison with reference-seed variation');
+      assert.ok(content.includes('In the next post, we will go deeper into the agent trajectories'), 'Keep the saved draft’s trajectory-analysis follow-up');
+      assert.match(content, /Ten of the 19 scored attempts exceeded the reference solution's\s+NDCG@10 of about 0\.018\./, 'Keep the saved draft’s rounded reference comparison');
+      assert.ok(content.includes('mean of 0.01766'), 'Retain the precise reference mean alongside its training-seed variation');
+      assert.ok(content.includes('Running the reference solution end-to-end takes about six minutes'), 'Distinguish running the reference from writing its implementation');
+      assert.ok(content.includes('including data preparation, training, validation, ranking, and evaluation'), 'Clarify what the six-minute timing includes');
+      assert.doesNotMatch(content, /seeds? for all agent attempts were always fixed|has no randomness|Building a reference solution end-to-end/, 'Do not restore the unsupported seed claim or misleading reliability/timing wording');
+      assert.ok(content.includes('we built an RL env for a coding agent (model + harness)'), 'Preserve the corrected opening from the saved draft');
+      assert.ok(content.includes('all 20 attempts'), 'Preserve the latest trajectory-review scope');
+      assert.equal(content.includes('a human pass with a model reading alongside'), false, 'Do not restore the human-review sentence removed from the draft');
+      assert.equal(content.includes('no comparison below mixes a model with a harness upgrade'), false, 'Do not restore the fixed-harness-version claim removed from the draft');
+      assert.equal(content.includes('Astra'), false, 'Do not mix the older attachment’s four-model cohort into the current draft');
+      for (const pairing of ['Opus 5.0 on Claude Code 2.1.251', 'GPT-5.6-Sol on Codex CLI 0.147.0', 'Grok 4.6 on Grok Build 1.0.5']) {
+        assert.ok(content.includes(pairing), `Preserve the recorded harness version: ${pairing}`);
+      }
+      const figure = page.getByRole('img', { name: 'Final hidden NDCG@10 scores for 19 task attempts across three model/harness groups.', exact: true });
+      const figureResponse = await page.request.get(new URL(await figure.getAttribute('src'), baseURL).href);
+      assert.equal(figureResponse.status(), 200);
+      const figureSource = await figureResponse.text();
+      assert.equal(figureSource, await readFile(new URL('../assets/images/spread-scores.svg', import.meta.url), 'utf8'), 'The preview must serve the current figure, not a stale build');
+      assert.equal(figureSource.includes('Dots: individual scores'), false, 'Do not duplicate the article caption inside Figure 1');
+      assert.equal(figureSource.includes('The lines are not confidence intervals.'), false, 'The figure must omit its embedded caption');
+      const figureExplanation = page.locator('.post-content p').filter({ hasText: /^Figure 1 shows the hidden-test NDCG@10 score/ });
+      assert.equal(await figureExplanation.count(), 1, 'Explain the dots once before the figure, as in the author’s draft');
+      assert.equal(await figure.evaluate(image => image.closest('picture').previousElementSibling?.textContent.startsWith('Figure 1 shows')), true, 'Keep the figure explanation directly before the image');
+      assert.equal(content.includes('Figure 1. Each dot shows'), false, 'Do not restore a duplicate caption below the figure');
+      assert.equal(await figure.evaluate(image => image.closest('a') === null), true, 'The latest draft uses a standalone SVG figure');
+      for (const model of ['Opus 5.0', 'GPT-5.6-Sol', 'Grok 4.6']) assert.ok(figureSource.includes(model));
+      assert.doesNotMatch(figureSource, /S = |Spread|Final scores and spread|Fixed reference|0\.035661/, 'Figure 1 uses slide 6’s dots-only format and the blog cohort');
+      assert.equal((figureSource.match(/<circle /g) || []).length, 19, 'Keep the blog’s 19 scored attempts, not the older slide’s 20');
+      assert.ok(figureSource.includes('Helvetica Neue, Helvetica, Arial, sans-serif'), 'Use the slide renderer’s portable font stack');
+      const mobileSource = await page.request.get(new URL('/assets/images/spread-scores-mobile.svg', baseURL).href);
+      assert.equal(mobileSource.status(), 200);
+      assert.equal(await mobileSource.text(), await readFile(new URL('../assets/images/spread-scores-mobile.svg', import.meta.url), 'utf8'));
+      assert.equal(figureSource.includes('Astra'), false, 'The chart must match the three-model cohort');
+      assert.equal(await page.getByText('5.3 scored experiment rounds per attempt', { exact: true }).count(), 1);
+      assert.equal(await page.locator('.post-content').getByRole('link', { name: 'task brief used for this experiment is available on GitHub' }).count(), 0, 'Do not restore the task-brief link removed by the author');
+      assert.equal(await page.locator('.post-content').getByRole('link', { name: 'previous post', exact: true }).getAttribute('href'), '/blog/what-makes-a-good-rl-task/', 'Preserve the previous-post link');
+      assert.equal(await page.locator('.post-content mjx-container[display="true"]').count(), 1, 'The spread equation must render as display math');
+      assert.equal(await page.locator('.post-content mjx-assistive-mml mfrac').count(), 1, 'The spread equation must preserve its accessible fraction');
+      assert.equal(await page.locator('.post-content [data-mjx-error], .post-content merror').count(), 0);
+      assert.equal(await page.locator('.post-content').getByRole('link', { name: 'reproducible notebook' }).count(), 0, 'The latest draft does not include a notebook link');
     } else {
       assert.equal(await page.locator('.post-header--compact').count(), 1, 'Illustrated posts must use the compact metadata header');
       assert.equal(await page.locator('h1.visually-hidden').count(), 1, 'Keep the post title available to assistive technology without repeating the image title');
@@ -94,28 +172,77 @@ try {
         assert.ok(Math.abs(profileWidth - (width > 900 ? 250 : width)) < 1,
           `Profile must be 250px on desktop and full-width when stacked at ${width}px: ${profileWidth}`);
       } else {
-        const header = await page.locator('.post-header').boundingBox();
-        const title = await page.locator('h1').boundingBox();
-        assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
-        assert.ok(title.width <= 1 && title.height <= 1, 'The title must not create a visible banner');
-        assert.notEqual(await page.locator('h1').evaluate(el => getComputedStyle(el).clipPath), 'none');
+        if (route.name === 'spread') {
+          const headingSize = await page.locator('h1').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+          assert.ok(headingSize <= (width <= 540 ? 32 : 40), 'Visible post headings must use the existing compact type scale');
+          const tableGeometry = await page.getByRole('table', { name: 'Spread by model and harness' }).evaluate(table => {
+            const article = table.closest('.post-content').getBoundingClientRect();
+            const frame = table.getBoundingClientRect();
+            const rows = table.tBodies[0].getBoundingClientRect();
+            return {
+              articleCenter: article.x + article.width / 2,
+              frameCenter: frame.x + frame.width / 2,
+              rowsCenter: rows.x + rows.width / 2,
+              overflows: table.scrollWidth > table.clientWidth + 1,
+              labelAlign: getComputedStyle(table.tBodies[0].rows[0].cells[0]).textAlign,
+              valueAlign: getComputedStyle(table.tBodies[0].rows[0].cells[1]).textAlign
+            };
+          });
+          assert.ok(Math.abs(tableGeometry.frameCenter - tableGeometry.articleCenter) < 1, `Center the spread table within the reading column at ${width}px`);
+          if (!tableGeometry.overflows) assert.ok(Math.abs(tableGeometry.rowsCenter - tableGeometry.articleCenter) < 1, `Center the visible rows, not an empty full-width table box, at ${width}px`);
+          assert.equal(tableGeometry.labelAlign, 'left', 'Keep model labels left-aligned within the centered table');
+          assert.equal(tableGeometry.valueAlign, 'right', 'Keep spread values right-aligned within the centered table');
+        } else {
+          const header = await page.locator('.post-header').boundingBox();
+          const title = await page.locator('h1').boundingBox();
+          assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
+          assert.ok(title.width <= 1 && title.height <= 1, 'The title must not create a visible banner');
+          assert.notEqual(await page.locator('h1').evaluate(el => getComputedStyle(el).clipPath), 'none');
+        }
         const prose = await page.locator('.post-content').evaluate(el => ({ fontSize: parseFloat(getComputedStyle(el).fontSize), width: el.getBoundingClientRect().width }));
         assert.equal(prose.fontSize, width <= 540 ? 17 : 18, `Article prose must use the compact reading scale at ${width}px`);
         assert.ok(prose.width <= 640, `Smaller prose must keep a comfortable reading measure at ${width}px: ${prose.width}`);
+      }
+      if (route.name === 'spread' && width === 390) {
+        for (const table of await page.locator('.post-content table').all()) {
+          const overflows = await table.evaluate(el => el.scrollWidth > el.clientWidth);
+          if (!overflows) continue;
+          await table.focus();
+          await page.keyboard.press('ArrowRight');
+          await page.waitForFunction(el => el.scrollLeft > 0, await table.elementHandle());
+          await table.evaluate(el => { el.scrollLeft = 0; el.blur(); });
+        }
+        const tableA11y = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+        assert.deepEqual(tableA11y.violations.map(({ id }) => id), [], 'The mobile comparison tables must support accessible scrolling');
       }
       if (width === 390 || width === 1440) {
         await page.evaluate(() => window.scrollTo(0, 0));
         const name = route.name === 'home' ? (width === 390 ? 'mobile' : 'desktop') : `${route.name}-${width === 390 ? 'mobile' : 'desktop'}`;
         await page.screenshot({ path: `${reviewDir}/${name}.png`, fullPage: true, animations: 'disabled' });
+        if (route.name === 'spread') {
+          const chart = page.locator('.post-content picture img');
+          await chart.evaluate(image => image.decode());
+          assert.equal((await chart.evaluate(image => image.currentSrc)).endsWith(width === 390 ? '/spread-scores-mobile.svg' : '/spread-scores.svg'), true, 'Serve the readable chart layout for the viewport');
+          await chart.screenshot({ path: `${reviewDir}/spread-chart-${width === 390 ? 'mobile' : 'desktop'}.png` });
+          const equation = page.locator('.post-content mjx-container[display="true"]');
+          await equation.evaluate(element => window.scrollTo(0, window.scrollY + element.getBoundingClientRect().top - 16));
+          const equationBounds = await equation.boundingBox();
+          const tableBounds = await page.getByRole('table', { name: 'Spread by model and harness' }).boundingBox();
+          const articleBounds = await page.locator('.post-content').boundingBox();
+          await page.screenshot({
+            path: `${reviewDir}/spread-table-${width === 390 ? 'mobile' : 'desktop'}.png`,
+            clip: { x: articleBounds.x, y: equationBounds.y, width: articleBounds.width, height: tableBounds.y + tableBounds.height - equationBounds.y }
+          });
+        }
       }
     }
+    for (const href of await page.locator('a[href^="/"]').evaluateAll(links => [...new Set(links.map(a => a.getAttribute('href').split('#')[0] || '/'))])) {
+      const linked = await page.request.get(new URL(href, baseURL).href);
+      assert.equal(linked.status(), 200, `Internal link ${href} must resolve`);
+    }
     if (route.name === 'home') {
-      assert.equal(await page.locator('.essay').count(), 2);
-      assert.deepEqual(await page.locator('.essay time').allTextContents(), ['Sep 13, 2026', 'Sep 10, 2026']);
-      for (const href of await page.locator('a[href^="/"]').evaluateAll(links => [...new Set(links.map(a => a.getAttribute('href').split('#')[0] || '/'))])) {
-        const linked = await page.request.get(new URL(href, baseURL).href);
-        assert.equal(linked.status(), 200, `Internal link ${href} must resolve`);
-      }
+      assert.equal(await page.locator('.essay').count(), 3);
+      assert.deepEqual(await page.locator('.essay time').allTextContents(), ['Sep 16, 2026', 'Sep 13, 2026', 'Sep 10, 2026']);
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => document.activeElement.textContent.trim()), 'Skip to content');
       await page.keyboard.press('Enter');
@@ -136,7 +263,7 @@ try {
   assert.equal(robots.status(), 200, 'The generated robots.txt must resolve');
   assert.ok((await robots.text()).includes(`Sitemap: ${new URL('/sitemap.xml', canonicalURLs[0]).href}`), 'robots.txt must point to the canonical sitemap');
   assert.deepEqual(errors, [], 'Site assets must load without errors');
-  console.log('Site checks passed: 3 routes, 8 viewport widths, WCAG checks, titles, sharing metadata, sitemap, links, images, keyboard skip, and reduced motion.');
+  console.log(`Site checks passed: ${pages.length} routes, 8 viewport widths, WCAG checks, titles, sharing metadata, sitemap, links, images, keyboard skip, and reduced motion.`);
 } finally {
   await browser.close();
 }
