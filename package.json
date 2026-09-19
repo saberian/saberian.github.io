@@ -5,7 +5,9 @@
   "scripts": {
     "test": "node tests/math.mjs && node tests/site.mjs",
     "test:math": "node tests/math.mjs",
-    "test:site": "node tests/site.mjs"
+    "test:site": "node tests/site.mjs",
+    "test:spread-draft": "node tests/spread-draft.mjs",
+    "render:spread-preview": "node scripts/render-spread-preview.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

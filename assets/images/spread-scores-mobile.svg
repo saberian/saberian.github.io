@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 430" role="img" aria-labelledby="title desc">
+<title id="title">Two-tower build: scores by model and harness</title>
+<desc id="desc">19 scored task attempts. Opus 5.0 uses Claude Code; GPT-5.6-Sol uses Codex; Grok 4.6 uses Grok Build. Higher hidden NDCG@10 is better.</desc>
+<g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<text x="16" y="24" font-size="21" fill="#16181a" font-weight="600">Opus 5.0</text>
+<text x="16" y="47" font-size="17" fill="#5f6861" >Claude Code</text>
+<line x1="20" y1="57" x2="20" y2="107" stroke="#dce1d8"/>
+<line x1="105" y1="57" x2="105" y2="107" stroke="#dce1d8"/>
+<line x1="190" y1="57" x2="190" y2="107" stroke="#dce1d8"/>
+<line x1="275" y1="57" x2="275" y2="107" stroke="#dce1d8"/>
+<line x1="360" y1="57" x2="360" y2="107" stroke="#dce1d8"/>
+<circle cx="97.885" cy="82" r="5.5" fill="#ce4e3c"><title>run-002-opus-high-2026-08-28T17-34-10 (Claude Code): 0.009163</title></circle>
+<circle cx="107.184" cy="66" r="5.5" fill="#ce4e3c"><title>run-005-opus-high-2026-08-28T20-00-08 (Claude Code): 0.010257</title></circle>
+<circle cx="137.079" cy="82" r="5.5" fill="#ce4e3c"><title>run-003-opus-high-2026-08-28T18-24-23 (Claude Code): 0.013774</title></circle>
+<circle cx="221.433" cy="82" r="5.5" fill="#ce4e3c"><title>run-004-opus-high-2026-08-28T19-11-32 (Claude Code): 0.023698</title></circle>
+<circle cx="278.663" cy="82" r="5.5" fill="#ce4e3c"><title>run-001-opus-high-2026-08-28T16-39-51 (Claude Code): 0.030431</title></circle>
+<line x1="16" y1="115" x2="364" y2="115" stroke="#dce1d8"/>
+<text x="16" y="146" font-size="21" fill="#16181a" font-weight="600">GPT-5.6-Sol</text>
+<text x="16" y="169" font-size="17" fill="#5f6861" >Codex</text>
+<line x1="20" y1="179" x2="20" y2="229" stroke="#dce1d8"/>
+<line x1="105" y1="179" x2="105" y2="229" stroke="#dce1d8"/>
+<line x1="190" y1="179" x2="190" y2="229" stroke="#dce1d8"/>
+<line x1="275" y1="179" x2="275" y2="229" stroke="#dce1d8"/>
+<line x1="360" y1="179" x2="360" y2="229" stroke="#dce1d8"/>
+<circle cx="122.621" cy="204" r="5.5" fill="#306f91"><title>run-010-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.012073</title></circle>
+<circle cx="146.599" cy="204" r="5.5" fill="#306f91"><title>run-003-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.014894</title></circle>
+<circle cx="148.053" cy="188" r="5.5" fill="#306f91"><title>run-008-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.015065</title></circle>
+<circle cx="161.585" cy="204" r="5.5" fill="#306f91"><title>run-004-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.016657</title></circle>
+<circle cx="163.497" cy="188" r="5.5" fill="#306f91"><title>run-005-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.016882</title></circle>
+<circle cx="186.473" cy="204" r="5.5" fill="#306f91"><title>run-006-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.019585</title></circle>
+<circle cx="199.044" cy="188" r="5.5" fill="#306f91"><title>run-007-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.021064</title></circle>
+<circle cx="200.956" cy="204" r="5.5" fill="#306f91"><title>run-001-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.021289</title></circle>
+<circle cx="229.771" cy="204" r="5.5" fill="#306f91"><title>run-002-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.024679</title></circle>
+<circle cx="246.236" cy="204" r="5.5" fill="#306f91"><title>run-009-gpt-5-6-sol-high-2026-08-31T11-04-49 (Codex): 0.026616</title></circle>
+<line x1="16" y1="237" x2="364" y2="237" stroke="#dce1d8"/>
+<text x="16" y="268" font-size="21" fill="#16181a" font-weight="600">Grok 4.6</text>
+<text x="16" y="291" font-size="17" fill="#5f6861" >Grok Build</text>
+<line x1="20" y1="301" x2="20" y2="351" stroke="#dce1d8"/>
+<line x1="105" y1="301" x2="105" y2="351" stroke="#dce1d8"/>
+<line x1="190" y1="301" x2="190" y2="351" stroke="#dce1d8"/>
+<line x1="275" y1="301" x2="275" y2="351" stroke="#dce1d8"/>
+<line x1="360" y1="301" x2="360" y2="351" stroke="#dce1d8"/>
+<circle cx="120.291" cy="326" r="5.5" fill="#667d1f"><title>run-001-grok-4-6-high-2026-08-28T17-26-50 (Grok Build): 0.011799</title></circle>
+<circle cx="198.194" cy="326" r="5.5" fill="#667d1f"><title>run-004-grok-4-6-high-2026-08-28T17-27-11 (Grok Build): 0.020964</title></circle>
+<circle cx="229.372" cy="326" r="5.5" fill="#667d1f"><title>run-003-grok-4-6-high-2026-08-28T17-27-04 (Grok Build): 0.024632</title></circle>
+<circle cx="235.943" cy="310" r="5.5" fill="#667d1f"><title>run-002-grok-4-6-high-2026-08-28T17-26-57 (Grok Build): 0.025405</title></circle>
+<text x="20" y="380" font-size="15" fill="#5f6861" text-anchor="middle">0.00</text>
+<text x="105" y="380" font-size="15" fill="#5f6861" text-anchor="middle">0.01</text>
+<text x="190" y="380" font-size="15" fill="#5f6861" text-anchor="middle">0.02</text>
+<text x="275" y="380" font-size="15" fill="#5f6861" text-anchor="middle">0.03</text>
+<text x="360" y="380" font-size="15" fill="#5f6861" text-anchor="middle">0.04</text>
+<text x="190" y="415" font-size="16" fill="#5f6861" text-anchor="middle">Hidden NDCG@10 · Higher is better</text>
+</g></svg>
