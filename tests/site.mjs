@@ -164,6 +164,12 @@ try {
     assert.deepEqual(a11y.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(n => n.target) })), [], `${route.path} accessibility violations`);
     for (const width of [320, 390, 768, 900, 901, 1280, 1440, 1600]) {
       await page.setViewportSize({ width, height: width < 900 ? 844 : 1000 });
+      // A picture may select a new source at this breakpoint. Measure its
+      // decoded layout, not the previous image while the network is pending.
+      await page.evaluate(async () => {
+        await new Promise(resolve => requestAnimationFrame(resolve));
+        await Promise.all([...document.images].map(image => image.decode()));
+      });
       const size = await page.evaluate(() => ({ width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
       assert.ok(size.scroll <= size.width + 1, `${route.path} overflows at ${width}px: ${size.scroll}`);
       if (route.name === 'home') {
