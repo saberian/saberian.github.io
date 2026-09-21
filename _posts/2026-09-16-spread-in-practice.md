@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "How consistent are coding agents at building a music recommender?"
+permalink: /blog/how-consistent-are-coding-agents/
+redirect_from: /blog/spread-in-practice/
 hide_title: false
 description: Measuring variation across coding-agent attempts at a two-tower music-recommendation task.
 image: /assets/images/spread-scores.png

@@ -18,10 +18,17 @@ Open `http://127.0.0.1:4000`. The Gemfile pins the Jekyll and Markdown versions 
 - Add posts to `_posts/YYYY-MM-DD-slug.md` with `layout: post`, `title`, and an optional `description` and `image`.
 - Professional details, employer names, portrait path, and profile links live in `_data/profile.yml`. Education details are displayed inline, not in a hover-only tooltip.
 - Store images in `assets/images/` and reference their complete site-relative paths.
-- Keep the existing post slugs when editing titles to preserve published links.
+- Keep source filenames stable. When intentionally changing a URL, set `permalink` and `redirect_from` in the post's front matter so existing links still work.
 - Use `hide_title: true` when a cover illustration already contains the title. The post keeps an accessible heading and uses a compact back-link/metadata row; omit the flag to show the normal title.
 
 The RL environment post keeps its original `/blog/what-is-rl-environemnt/` URL to preserve published links, even though its displayed title is now “What is an RL environment?”. Use Jekyll's `post_url` tag for references between posts.
+
+The music-recommender article uses `/blog/how-consistent-are-coding-agents/`.
+Its source remains `_posts/2026-09-16-spread-in-practice.md`. The GitHub Pages-supported
+`jekyll-redirect-from` plugin generates a redirect at `/blog/spread-in-practice/`.
+The redirect layout preserves query parameters and fragments in the browser,
+works on the current host for local previews, and provides a no-JavaScript fallback.
+Canonical links, the index, sharing metadata, the feed and the sitemap use the new URL.
 
 After syncing the spread article from its working draft or an attached Markdown file, run `npm run test:spread-draft -- /absolute/path/to/spread-in-practice.md`. This compares the entire post and every referenced SVG/PNG with the explicitly selected draft, allowing only the site's link, math, image-sizing, and accessible-table formatting. Absolute filesystem image paths are resolved from the draft; `/assets/` references resolve from the draft's neighboring `images/blog` directory. Rebuild Jekyll and run `npm test` to check the served page, cover, and figure as well.
 

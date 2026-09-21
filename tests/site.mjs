@@ -11,6 +11,8 @@ const browser = await chromium.launch({
 const reviewDir = '.impeccable/review';
 const environmentTitle = 'What is an RL environment?';
 const spreadTitle = 'How consistent are coding agents at building a music recommender?';
+const spreadPath = '/blog/how-consistent-are-coding-agents/';
+const oldSpreadPath = '/blog/spread-in-practice/';
 const spreadSharingImagePath = '/assets/images/spread-scores.png';
 const spreadFigureAlt = 'Final hidden NDCG@10 scores for 19 task attempts across three model/harness groups.';
 await mkdir(reviewDir, { recursive: true });
@@ -18,7 +20,7 @@ const pages = [
   { path: '/', name: 'home' },
   { path: '/blog/what-makes-a-good-rl-task/', name: 'post' },
   { path: '/blog/what-is-rl-environemnt/', name: 'environment' },
-  { path: '/blog/spread-in-practice/', name: 'spread' }
+  { path: spreadPath, name: 'spread' }
 ];
 
 try {
@@ -47,6 +49,7 @@ try {
       assert.equal((await page.locator('h1').textContent()).trim(), 'Writing', 'Writing must be the homepage primary heading');
       assert.equal(await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Writing', exact: true }).count(), 0, 'Homepage navigation must not repeat Writing');
       assert.equal(await page.locator('.essay h2').getByRole('link', { name: environmentTitle, exact: true }).getAttribute('href'), '/blog/what-is-rl-environemnt/', 'Correct the visible title without breaking the published URL');
+      assert.equal(await page.locator('.essay h2').getByRole('link', { name: spreadTitle, exact: true }).getAttribute('href'), spreadPath, 'The index must use the new canonical article URL');
       assert.equal((await page.locator('.profile-background p').first().textContent()).trim(), 'Previously at Roblox, Netflix, & Yahoo');
       assert.equal(await page.locator('.profile-background').getByText('Computer vision and machine learning', { exact: false }).isVisible(), true, 'Education details must be visible without hovering');
       assert.equal(await page.locator('.profile-background [title]').count(), 0, 'Do not hide professional context in tooltips');
@@ -151,6 +154,7 @@ try {
     assert.equal(await page.locator('.post-end, .related-post').count(), 0, 'Omit the closing prompts and related-writing section');
     const canonicalURL = new URL(await page.locator('link[rel="canonical"]').getAttribute('href'));
     assert.equal(canonicalURL.pathname, route.path, 'Canonical URLs must preserve published paths');
+    assert.equal(await page.locator('meta[property="og:url"]').getAttribute('content'), canonicalURL.href, 'Sharing URLs must match the canonical URL');
     canonicalURLs.push(canonicalURL.href);
     assert.equal(await page.locator('meta[name="twitter:card"]').getAttribute('content'), 'summary_large_image');
     for (const property of ['title', 'description', 'image']) {
@@ -281,11 +285,35 @@ try {
   const sitemapText = await sitemap.text();
   for (const url of canonicalURLs) assert.ok(sitemapText.includes(`<loc>${url}</loc>`), `Sitemap must list the canonical URL ${url}`);
   assert.equal(sitemapText.includes('/404.html'), false, 'Do not list the error page in the sitemap');
+  assert.equal(sitemapText.includes(oldSpreadPath), false, 'Do not index the retired article URL');
+  const feed = await page.request.get(new URL('/feed.xml', baseURL).href);
+  assert.equal(feed.status(), 200);
+  const feedText = await feed.text();
+  assert.ok(feedText.includes(new URL(spreadPath, canonicalURLs[0]).href), 'The feed must publish the new article URL');
+  assert.equal(feedText.includes(oldSpreadPath), false, 'The feed must not retain the old URL');
+  const redirect = await page.request.get(new URL(oldSpreadPath, baseURL).href);
+  assert.equal(redirect.status(), 200, 'GitHub Pages serves a static redirect document');
+  assert.ok((await redirect.text()).includes(`href="${new URL(spreadPath, canonicalURLs[0]).href}"`), 'The redirect must advertise the canonical destination');
+  for (const oldPath of [oldSpreadPath, oldSpreadPath.slice(0, -1)]) {
+    const destination = new URL(`${spreadPath}?utm_source=linkedin#agent-performance`, baseURL).href;
+    await page.goto(new URL(`${oldPath}?utm_source=linkedin#agent-performance`, baseURL).href);
+    await page.waitForURL(destination);
+    assert.equal(await page.locator('h1').textContent(), spreadTitle, 'Old shared links must reach the article');
+  }
+  const noScriptContext = await browser.newContext({ javaScriptEnabled: false });
+  try {
+    const noScriptPage = await noScriptContext.newPage();
+    await noScriptPage.goto(new URL(oldSpreadPath, baseURL).href);
+    await noScriptPage.waitForURL(new URL(spreadPath, baseURL).href);
+    assert.equal(await noScriptPage.locator('h1').textContent(), spreadTitle, 'The redirect must work without JavaScript');
+  } finally {
+    await noScriptContext.close();
+  }
   const robots = await page.request.get(new URL('/robots.txt', baseURL).href);
   assert.equal(robots.status(), 200, 'The generated robots.txt must resolve');
   assert.ok((await robots.text()).includes(`Sitemap: ${new URL('/sitemap.xml', canonicalURLs[0]).href}`), 'robots.txt must point to the canonical sitemap');
   assert.deepEqual(errors, [], 'Site assets must load without errors');
-  console.log(`Site checks passed: ${pages.length} routes, 8 viewport widths, WCAG checks, titles, sharing metadata, sitemap, links, images, keyboard skip, and reduced motion.`);
+  console.log(`Site checks passed: ${pages.length} routes, 8 viewport widths, WCAG checks, titles, sharing metadata, sitemap, feed, redirects, links, images, keyboard skip, and reduced motion.`);
 } finally {
   await browser.close();
 }
