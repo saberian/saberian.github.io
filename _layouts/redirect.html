@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting…</title>
+    <link rel="canonical" href="{{ page.redirect.to | escape }}">
+    <meta name="robots" content="noindex">
+    {% assign redirect_path = page.redirect.to | remove_first: site.url %}
+    <script>
+      const destination = new URL({{ redirect_path | jsonify }}, window.location.href);
+      destination.search = window.location.search;
+      destination.hash = window.location.hash;
+      window.location.replace(destination.href);
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url={{ redirect_path | escape }}"></noscript>
+  </head>
+  <body>
+    <p>This post has moved. <a href="{{ redirect_path | escape }}">Continue to the article.</a></p>
+  </body>
+</html>

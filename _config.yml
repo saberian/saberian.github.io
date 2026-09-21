@@ -8,6 +8,7 @@ permalink: /blog/:title/
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 markdown: kramdown
 kramdown:

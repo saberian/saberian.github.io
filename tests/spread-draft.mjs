@@ -8,6 +8,8 @@ const draft = await readFile(draftPath, 'utf8');
 const post = await readFile(new URL('../_posts/2026-09-16-spread-in-practice.md', import.meta.url), 'utf8');
 const title = post.match(/^title: "([^"]+)"$/m)?.[1];
 assert.ok(title, 'The published post must retain its title');
+assert.match(post, /^permalink: \/blog\/how-consistent-are-coding-agents\/$/m, 'The URL must match the current title');
+assert.match(post, /^redirect_from: \/blog\/spread-in-practice\/$/m, 'Keep old shared links working');
 
 // Resolve the images actually linked in the chosen draft. Attachments can use
 // absolute filesystem paths; website drafts can use their /assets/ route.
