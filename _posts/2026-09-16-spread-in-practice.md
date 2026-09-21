@@ -1,13 +1,18 @@
 ---
 layout: post
 title: "How consistent are coding agents at building a music recommender?"
-hide_title: true
+hide_title: false
 description: Measuring variation across coding-agent attempts at a two-tower music-recommendation task.
-image: /assets/images/spread-in-practice-cover.png
+image: /assets/images/spread-scores.png
 math: true
 ---
 
-![Five coding agents building music recommenders, with stacks of records of different heights.](/assets/images/spread-in-practice-cover.png){: width="1734" height="907" }
+<picture>
+  <source media="(max-width: 600px)" srcset="{{ '/assets/images/spread-scores-mobile.svg' | relative_url }}" width="380" height="430">
+  <img src="{{ '/assets/images/spread-scores.svg' | relative_url }}" width="1040" height="300" alt="Final hidden NDCG@10 scores for 19 task attempts across three model/harness groups.">
+</picture>
+
+*Figure 1. Each dot represents one independent attempt with a 60-minute budget. Higher hidden-test NDCG@10 scores are better.*
 
 In the previous posts, we introduced [RL environments]({% post_url 2026-09-10-what-is-rl-environemnt %}). Here, we look at a concrete example: an RL environment we built for a coding agent (model + harness) to develop a music recommender system.
 
@@ -32,14 +37,7 @@ The agents averaged **5.3 scored experiment rounds per attempt**. A round is an 
 | Grok 4.6 / Grok Build | 4.2 | 56.0 min |
 {: tabindex="0" aria-label="Agent experiment rounds and time use" }
 
-Figure 1 shows the hidden-test NDCG@10 score of each submitted solution. Each dot represents one independent attempt with a 60-minute budget. Higher scores are better.
-
-<picture>
-  <source media="(max-width: 600px)" srcset="{{ '/assets/images/spread-scores-mobile.svg' | relative_url }}" width="380" height="430">
-  <img src="{{ '/assets/images/spread-scores.svg' | relative_url }}" width="1040" height="300" alt="Final hidden NDCG@10 scores for 19 task attempts across three model/harness groups.">
-</picture>
-
-Even with the same model and harness, the recommendation quality of the submitted solutions varied substantially. For example, Opus's hidden NDCG@10 ranged from about 0.0092 to 0.0304, more than a threefold difference.
+As Figure 1 shows, even with the same model and harness, the recommendation quality of the submitted solutions varied substantially. For example, Opus's hidden NDCG@10 ranged from about 0.0092 to 0.0304, more than a threefold difference.
 
 Ten of the 19 scored attempts exceeded the reference solution's NDCG@10 of about 0.018. The agents could produce strong solutions but did not do so consistently. Ideally, an agent should consistently produce solutions that meet or exceed the reference's quality.
 

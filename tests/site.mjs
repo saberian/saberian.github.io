@@ -11,8 +11,8 @@ const browser = await chromium.launch({
 const reviewDir = '.impeccable/review';
 const environmentTitle = 'What is an RL environment?';
 const spreadTitle = 'How consistent are coding agents at building a music recommender?';
-const spreadCoverPath = '/assets/images/spread-in-practice-cover.png';
-const spreadCoverAlt = 'Five coding agents building music recommenders, with stacks of records of different heights.';
+const spreadSharingImagePath = '/assets/images/spread-scores.png';
+const spreadFigureAlt = 'Final hidden NDCG@10 scores for 19 task attempts across three model/harness groups.';
 await mkdir(reviewDir, { recursive: true });
 const pages = [
   { path: '/', name: 'home' },
@@ -54,17 +54,12 @@ try {
       assert.equal((await page.locator('h1').textContent()).trim(), spreadTitle);
       assert.equal(await page.title(), `${spreadTitle} · Ehsan Saberian`);
       assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'), spreadTitle);
-      assert.equal(await page.locator('.post-header--compact').count(), 1, 'Use the existing illustrated-post layout');
-      assert.equal(await page.locator('h1.visually-hidden').count(), 1, 'Keep the title accessible without repeating the cover’s visible title');
-      const cover = page.getByRole('img', { name: spreadCoverAlt, exact: true });
-      assert.equal(await cover.getAttribute('src'), spreadCoverPath);
-      assert.equal(await page.locator('.post-content > p').first().locator('img').getAttribute('src'), spreadCoverPath, 'Place the cover before the introduction');
-      assert.equal(await cover.getAttribute('width'), String(await cover.evaluate(image => image.naturalWidth)), 'Reserve the cover’s intrinsic width');
-      assert.equal(await cover.getAttribute('height'), String(await cover.evaluate(image => image.naturalHeight)), 'Reserve the cover’s intrinsic height');
-      const coverResponse = await page.request.get(new URL(spreadCoverPath, baseURL).href);
-      assert.equal(coverResponse.status(), 200);
-      assert.deepEqual(await coverResponse.body(), await readFile(new URL(`..${spreadCoverPath}`, import.meta.url)), 'Serve the supplied cover unchanged');
-      assert.equal(new URL(await page.locator('meta[property="og:image"]').getAttribute('content')).pathname, spreadCoverPath, 'Use the new cover for sharing previews');
+      assert.equal(await page.locator('h1.visually-hidden').count(), 0, 'Show the article title as text above the chart');
+      assert.equal(await page.locator('.post-content img').count(), 1, 'Show the chart once, without a separate illustrated cover');
+      const sharingResponse = await page.request.get(new URL(spreadSharingImagePath, baseURL).href);
+      assert.equal(sharingResponse.status(), 200);
+      assert.deepEqual(await sharingResponse.body(), await readFile(new URL(`..${spreadSharingImagePath}`, import.meta.url)), 'Serve the chart sharing preview unchanged');
+      assert.equal(new URL(await page.locator('meta[property="og:image"]').getAttribute('content')).pathname, spreadSharingImagePath, 'Use the chart for sharing previews');
       const experimentTable = page.getByRole('table', { name: 'Agent experiment rounds and time use' });
       const spreadTable = page.getByRole('table', { name: 'Spread by model and harness' });
       assert.deepEqual(await page.locator('.post-content h2').allTextContents(), [
@@ -82,9 +77,8 @@ try {
       assert.deepEqual(evidenceSections, [
         { tag: 'IMG', section: null },
         { tag: 'TABLE', section: 'Agent performance' },
-        { tag: 'IMG', section: 'Agent performance' },
         { tag: 'TABLE', section: 'Agent performance' }
-      ], 'Lead with the cover, then retain experiment rounds, final scores, and spread in order');
+      ], 'Lead with the chart, then retain the activity and spread tables in order');
       assert.equal(await page.locator('.post-content table').count(), 2, 'Keep the spread and agent-activity tables');
       assert.deepEqual(await spreadTable.locator('thead th').allTextContents(), ['Model / harness', 'Spread']);
       assert.equal(await spreadTable.locator('tbody tr').count(), 3);
@@ -111,17 +105,18 @@ try {
       for (const pairing of ['Opus 5.0 on Claude Code 2.1.251', 'GPT-5.6-Sol on Codex CLI 0.147.0', 'Grok 4.6 on Grok Build 1.0.5']) {
         assert.ok(content.includes(pairing), `Preserve the recorded harness version: ${pairing}`);
       }
-      const figure = page.getByRole('img', { name: 'Final hidden NDCG@10 scores for 19 task attempts across three model/harness groups.', exact: true });
+      const figure = page.getByRole('img', { name: spreadFigureAlt, exact: true });
       const figureResponse = await page.request.get(new URL(await figure.getAttribute('src'), baseURL).href);
       assert.equal(figureResponse.status(), 200);
       const figureSource = await figureResponse.text();
       assert.equal(figureSource, await readFile(new URL('../assets/images/spread-scores.svg', import.meta.url), 'utf8'), 'The preview must serve the current figure, not a stale build');
       assert.equal(figureSource.includes('Dots: individual scores'), false, 'Do not duplicate the article caption inside Figure 1');
       assert.equal(figureSource.includes('The lines are not confidence intervals.'), false, 'The figure must omit its embedded caption');
-      const figureExplanation = page.locator('.post-content p').filter({ hasText: /^Figure 1 shows the hidden-test NDCG@10 score/ });
-      assert.equal(await figureExplanation.count(), 1, 'Explain the dots once before the figure, as in the author’s draft');
-      assert.equal(await figure.evaluate(image => image.closest('picture').previousElementSibling?.textContent.startsWith('Figure 1 shows')), true, 'Keep the figure explanation directly before the image');
-      assert.equal(content.includes('Figure 1. Each dot shows'), false, 'Do not restore a duplicate caption below the figure');
+      const figureExplanation = page.locator('.post-content p').filter({ hasText: /^Figure 1\. Each dot represents/ });
+      assert.equal(await figureExplanation.count(), 1, 'Explain the dots once below the lead chart');
+      assert.equal(await figure.evaluate(image => image.closest('picture') === image.closest('.post-content').firstElementChild), true, 'Place the chart at the top, before the introduction');
+      assert.equal(await figure.evaluate(image => image.closest('picture').nextElementSibling?.textContent.startsWith('Figure 1. Each dot represents')), true, 'Keep the caption directly below the chart');
+      assert.ok(content.includes('As Figure 1 shows, even with the same model and harness'), 'Keep the detailed interpretation in the results section');
       assert.equal(await figure.evaluate(image => image.closest('a') === null), true, 'The latest draft uses a standalone SVG figure');
       for (const model of ['Opus 5.0', 'GPT-5.6-Sol', 'Grok 4.6']) assert.ok(figureSource.includes(model));
       assert.doesNotMatch(figureSource, /S = |Spread|Final scores and spread|Fixed reference|0\.035661/, 'Figure 1 uses slide 6’s dots-only format and the blog cohort');
@@ -145,7 +140,6 @@ try {
       if (route.name === 'post') {
         const previousPost = page.locator('.post-content').getByRole('link', { name: 'the previous post', exact: true });
         assert.equal(await previousPost.getAttribute('href'), '/blog/what-is-rl-environemnt/', 'The opening reference must link to the RL environment article');
-        assert.equal((await page.locator('.related-post a').textContent()).trim(), environmentTitle, 'Related writing must use the corrected title');
         assert.equal(await page.locator('.post-content').getByText('standard deviation is zero, the ratio is undefined.', { exact: false }).isVisible(), true, 'Explain the zero-denominator limit of the spread ratio');
       } else {
         assert.equal((await page.locator('h1').textContent()).trim(), environmentTitle);
@@ -154,6 +148,7 @@ try {
         assert.equal((await page.locator('.post-content').textContent()).includes('the more detailed the reward, the better'), false, 'Do not claim that denser rewards are always better');
       }
     }
+    assert.equal(await page.locator('.post-end, .related-post').count(), 0, 'Omit the closing prompts and related-writing section');
     const canonicalURL = new URL(await page.locator('link[rel="canonical"]').getAttribute('href'));
     assert.equal(canonicalURL.pathname, route.path, 'Canonical URLs must preserve published paths');
     canonicalURLs.push(canonicalURL.href);
@@ -188,14 +183,15 @@ try {
       } else {
         const header = await page.locator('.post-header').boundingBox();
         const title = await page.locator('h1').boundingBox();
-        assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
-        assert.ok(title.width <= 1 && title.height <= 1, 'The title must not create a duplicate visible banner');
-        assert.notEqual(await page.locator('h1').evaluate(el => getComputedStyle(el).clipPath), 'none');
         if (route.name === 'spread') {
-          const coverBounds = await page.getByRole('img', { name: spreadCoverAlt, exact: true }).boundingBox();
+          const headingSize = await page.locator('h1').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+          assert.ok(headingSize <= (width <= 540 ? 32 : 40), 'Use the existing compact title scale');
+          assert.ok(title.width > 1 && title.height > 1, 'The chart-led article needs a visible text title');
+          const coverBounds = await page.getByRole('img', { name: spreadFigureAlt, exact: true }).boundingBox();
           const articleBounds = await page.locator('.post-content').boundingBox();
-          assert.ok(Math.abs(coverBounds.width - articleBounds.width) < 1, `Fit the cover to the reading column at ${width}px`);
-          assert.ok(Math.abs(coverBounds.height - coverBounds.width * 907 / 1734) < 1, 'Keep the full cover uncropped and undistorted');
+          assert.ok(Math.abs(coverBounds.width - articleBounds.width) < 1, `Fit the lead chart to the reading column at ${width}px`);
+          const chartRatio = width <= 600 ? 430 / 380 : 300 / 1040;
+          assert.ok(Math.abs(coverBounds.height - coverBounds.width * chartRatio) < 1, 'Keep the responsive chart uncropped and undistorted');
           const tableGeometry = await page.getByRole('table', { name: 'Spread by model and harness' }).evaluate(table => {
             const article = table.closest('.post-content').getBoundingClientRect();
             const frame = table.getBoundingClientRect();
@@ -213,6 +209,10 @@ try {
           if (!tableGeometry.overflows) assert.ok(Math.abs(tableGeometry.rowsCenter - tableGeometry.articleCenter) < 1, `Center the visible rows, not an empty full-width table box, at ${width}px`);
           assert.equal(tableGeometry.labelAlign, 'left', 'Keep model labels left-aligned within the centered table');
           assert.equal(tableGeometry.valueAlign, 'right', 'Keep spread values right-aligned within the centered table');
+        } else {
+          assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
+          assert.ok(title.width <= 1 && title.height <= 1, 'Illustrated titles must not create a duplicate visible banner');
+          assert.notEqual(await page.locator('h1').evaluate(el => getComputedStyle(el).clipPath), 'none');
         }
         const prose = await page.locator('.post-content').evaluate(el => ({ fontSize: parseFloat(getComputedStyle(el).fontSize), width: el.getBoundingClientRect().width }));
         assert.equal(prose.fontSize, width <= 540 ? 17 : 18, `Article prose must use the compact reading scale at ${width}px`);

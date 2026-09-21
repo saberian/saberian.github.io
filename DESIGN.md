@@ -95,8 +95,6 @@ components:
     backgroundColor: "{colors.cover}"
     textColor: "{colors.ink}"
     padding: "16px 32px"
-  related-writing:
-    textColor: "{colors.link}"
 ---
 
 # Design System: Ehsan Saberian
@@ -137,7 +135,7 @@ The palette combines cool paper and blue-gray neutrals with a clear blue interac
 - **Navy Ink (`ink`):** primary text, titles, and the site name.
 - **Slate Text (`secondary`):** introductions, summaries, professional context, and article metadata.
 - **Muted Slate (`muted`):** dates in the writing index.
-- **Pale Rule (`rule`):** separators, table row borders, and the article end boundary.
+- **Pale Rule (`rule`):** essay separators and table row borders.
 
 **The Link Blue Rule.** Use blue to identify links and interaction states; essay titles begin in navy and turn blue on hover.
 
@@ -160,7 +158,7 @@ Large surfaces use fluid gutters and open columns; articles use a centered readi
 
 The homepage uses a fixed 250px desktop profile column with 24px horizontal padding, half the original wide-screen sidebar. The writing receives the remaining width. The homepage header name aligns with the profile's 24px inset on desktop. At 900px and below, sections stack at full width with the existing mobile gutters. The header is 56px high; desktop sections start with 32px top padding. A compact portrait and professional context replace the oversized name block. At 540px, the profile, writing index, and header use compact arrangements; at 360px, gutters and portrait sizes step down again.
 
-Optional visible article headings sit in a centered 960px container. Both current illustrated posts use `hide_title: true`: their title remains available to assistive technology, while the visible header becomes a compact back-link/metadata row with 16px vertical padding. The image begins 32px below this row. The compact header, prose, and article-end navigation share the 640px `--reading-width` token, measured at about 67ch with the loaded desktop prose font, with 32px side clearance reduced to 24px on phones. Summary lines are capped at 70ch. Images fit their reading column; wide tables, code blocks, and display mathematics scroll horizontally inside their own containers.
+Optional visible article headings sit in a centered 960px container. Both current illustrated posts use `hide_title: true`: their title remains available to assistive technology, while the visible header becomes a compact back-link/metadata row with 16px vertical padding. The image begins 32px below this row. The compact header and prose share the 640px `--reading-width` token, measured at about 67ch with the loaded desktop prose font, with 32px side clearance reduced to 24px on phones. Summary lines are capped at 70ch. Images fit their reading column; wide tables, code blocks, and display mathematics scroll horizontally inside their own containers.
 
 Spacing is contextual rather than a strict modular scale. The frontmatter records repeated steps, while major breaks depend on the surface: short inline gaps, a 28px writing-list offset, and 24px margin/padding around essay separators. Links used as standalone actions have a minimum height of 44px; header navigation and compact profile links do as well.
 
@@ -182,9 +180,9 @@ Directional cues are inline SVG strokes with round caps and joins. Essay separat
 - **Essay action:** a blue text link and stroked SVG arrow. The action retains a 44px minimum height, and the arrow moves 5px to the right on hover or keyboard focus over 280ms using the declared ease-out curve.
 - **Essay entry:** a date, navy linked title, slate summary, and essay action in open document flow. Later entries receive a short pale rule and generous separation. Title color transitions over 180ms.
 - **Article heading:** illustrated posts suppress the duplicate visible title, retaining a visually hidden semantic h1 and a compact mist-blue row for the back link and wrapping author/date/read-time metadata. Posts without `hide_title` retain the optional visible Hanken Grotesk heading.
-- **Related writing:** the end-of-article text navigation uses a pale top rule, a brief closing line, and a subsequent essay link with the same SVG cue.
+- **Article ending:** posts end after their prose, followed by the shared site footer. The author requested removing the closing thanks, LinkedIn prompt, and related-writing section on September 21, 2026. Writing and LinkedIn remain available in the header.
 
-All anchors share a blue 2px focus outline with a 6px offset. The skip link appears on focus. Inline prose links are underlined. Reduced-motion preference removes transitions and arrow movement and changes smooth scrolling to ordinary scrolling. Print styling removes site navigation and article-end navigation, uses black on white, and makes prose full-width at 12pt.
+All anchors share a blue 2px focus outline with a 6px offset. The skip link appears on focus. Inline prose links are underlined. Reduced-motion preference removes transitions and arrow movement and changes smooth scrolling to ordinary scrolling. Print styling removes site navigation, uses black on white, and makes prose full-width at 12pt.
 
 ## Do's and Don'ts
 
