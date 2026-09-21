@@ -13,7 +13,7 @@ assert.ok(title, 'The published post must retain its title');
 // absolute filesystem paths; website drafts can use their /assets/ route.
 const imageReferences = [...new Set([...draft.matchAll(/\]\(([^\n)]+\.(?:svg|png))\)/g)].map(match => match[1]))];
 assert.ok(imageReferences.some(reference => basename(reference) === 'spread-scores.svg'), 'The draft must reference its score figure');
-assert.ok(imageReferences.some(reference => basename(reference) === 'spread-in-practice-cover.png'), 'The draft must reference the supplied cover');
+assert.equal(imageReferences.some(reference => basename(reference) === 'spread-in-practice-cover.png'), false, 'The chart replaces the illustrated cover');
 let normalizedDraft = draft.replace(/\] +\((https?:\/\/[^\n)]+)\)/g, ']($1)');
 for (const reference of imageReferences) {
   normalizedDraft = normalizedDraft.replaceAll(reference, `/assets/images/${basename(reference)}`);
@@ -36,12 +36,10 @@ const responsiveFigure = post.match(/<picture>\s*<source media="\(max-width: 600
 assert.ok(responsiveFigure, 'The webpage must use the slide renderer’s desktop and mobile chart layouts');
 assert.equal(responsiveFigure[1], "{{ '/assets/images/spread-scores-mobile.svg' | relative_url }}");
 assert.equal(responsiveFigure[2], "{{ '/assets/images/spread-scores.svg' | relative_url }}");
-assert.match(post, /^hide_title: true$/m, 'The cover supplies the visible title; retain the accessible heading without duplicating it');
-assert.match(post, /^image: \/assets\/images\/spread-in-practice-cover\.png$/m, 'Use the supplied cover for sharing previews');
-assert.ok(post.includes('](/assets/images/spread-in-practice-cover.png){: width="1734" height="907" }'), 'Reserve the cover’s intrinsic dimensions');
+assert.match(post, /^hide_title: false$/m, 'Show the article title as text above the chart');
+assert.match(post, /^image: \/assets\/images\/spread-scores\.png$/m, 'Use the chart for sharing previews');
 const normalizedPost = post
   .replace(responsiveFigure[0], () => `![${responsiveFigure[3]}](${responsiveFigure[2]})`)
-  .replaceAll('](/assets/images/spread-in-practice-cover.png){: width="1734" height="907" }', '](/assets/images/spread-in-practice-cover.png)')
   .replace(/^---\n[\s\S]*?\n---\n\n/, `# ${title}\n\n`)
   .replaceAll('{% post_url 2026-09-10-what-is-rl-environemnt %}', 'https://saberian.github.io/blog/what-is-rl-environemnt/')
   .replaceAll('{% post_url 2026-09-13-what-makes-a-good-rl-task %}', 'https://saberian.github.io/blog/what-makes-a-good-rl-task/')

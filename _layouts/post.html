@@ -16,17 +16,6 @@ layout: default
     </div>
   </header>
   <div class="post-content">{{ content }}</div>
-  <footer class="post-end">
-    <p>Thanks for reading.</p>
-    <a href="{{ site.data.profile.linkedin }}">Connect with me on LinkedIn {% include arrow.html %}</a>
-    {% if page.previous or page.next %}
-    {% assign related = page.previous | default: page.next %}
-    <div class="related-post">
-      <h2>Keep reading</h2>
-      <a href="{{ related.url | relative_url }}">{{ related.title | escape }} {% include arrow.html %}</a>
-    </div>
-    {% endif %}
-  </footer>
 </article>
 <footer class="site-footer">
   <a href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
