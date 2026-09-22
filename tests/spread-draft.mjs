@@ -11,6 +11,23 @@ assert.ok(title, 'The published post must retain its title');
 assert.match(post, /^permalink: \/blog\/how-consistent-are-coding-agents\/$/m, 'The URL must match the current title');
 assert.match(post, /^redirect_from: \/blog\/spread-in-practice\/$/m, 'Keep old shared links working');
 
+// Current Verimium imports preserve the complete Jekyll source. Keep accepting
+// the earlier plain-Markdown draft below, but compare imported copies exactly.
+if (draft.startsWith('---\n')) {
+  assert.equal(post, draft, `The complete Jekyll source must match ${draftPath} byte for byte`);
+  const images = new Set([...draft.matchAll(/\/assets\/images\/([a-zA-Z0-9_-]+\.(?:svg|png))/g)].map(match => match[1]));
+  for (const image of ['spread-scores.svg', 'spread-scores-mobile.svg', 'spread-scores.png']) {
+    assert.ok(images.has(image), `The imported draft must retain ${image}`);
+  }
+  for (const name of images) {
+    const sourcePath = resolve(dirname(draftPath), '../images/blog', name);
+    const siteImage = await readFile(new URL(`../assets/images/${name}`, import.meta.url));
+    assert.ok(siteImage.equals(await readFile(sourcePath)), `The site image must match ${sourcePath} byte for byte`);
+  }
+  console.log(`Draft sync passed: complete Jekyll source and all referenced images match ${draftPath}`);
+  process.exit(0);
+}
+
 // Resolve the images actually linked in the chosen draft. Attachments can use
 // absolute filesystem paths; website drafts can use their /assets/ route.
 const imageReferences = [...new Set([...draft.matchAll(/\]\(([^\n)]+\.(?:svg|png))\)/g)].map(match => match[1]))];

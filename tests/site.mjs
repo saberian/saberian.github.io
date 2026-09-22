@@ -93,6 +93,10 @@ try {
       assert.doesNotMatch(content, /Methods and limitations|Which attempts count\.|Counting experiments\.|Relative variation\./, 'Remove the methods section and its contents');
       assert.equal(/95%|confidence intervals?|F-distribution|degrees of freedom/.test(content), false, 'Do not restore the CI/F-test discussion');
       assert.ok(content.includes('their sample standard deviations were roughly two to four times as large.'), 'Keep the reported comparison with reference-seed variation');
+      const takeaway = page.locator('.post-content strong').filter({ hasText: /^This suggests that stronger attempts/ });
+      assert.equal(await takeaway.count(), 1, 'Emphasize the reliability takeaway once');
+      assert.equal((await takeaway.textContent()).replaceAll('’', "'"), "This suggests that stronger attempts made better decisions and that there is room to improve agents' reliability in making these design and modeling decisions.", 'Highlight exactly the requested sentence');
+      assert.equal(await takeaway.evaluate(element => Number(getComputedStyle(element).fontWeight) > Number(getComputedStyle(element.parentElement).fontWeight)), true, 'The takeaway must look bolder than its surrounding paragraph');
       assert.ok(content.includes('In the next post, we will examine the agent trajectories more closely'), 'Keep the saved draft’s trajectory-analysis follow-up');
       assert.match(content, /Ten of the 19 scored attempts exceeded the reference solution's\s+NDCG@10 of about 0\.018\./, 'Keep the saved draft’s rounded reference comparison');
       assert.ok(content.includes('mean of 0.01766'), 'Retain the precise reference mean alongside its training-seed variation');

@@ -32,6 +32,10 @@ Canonical links, the index, sharing metadata, the feed and the sitemap use the n
 
 After syncing the spread article from its working draft or an attached Markdown file, run `npm run test:spread-draft -- /absolute/path/to/spread-in-practice.md`. This compares the entire post and every referenced SVG/PNG with the explicitly selected draft, allowing only the site's link, math, image-sizing, and accessible-table formatting. Absolute filesystem image paths are resolved from the draft; `/assets/` references resolve from the draft's neighboring `images/blog` directory. Rebuild Jekyll and run `npm test` to check the served page, cover, and figure as well.
 
+The check also accepts the complete Jekyll source now used by Verimium's
+`posts/spread-in-practice.md`. In that case, the Markdown (including front matter)
+and all referenced images must match byte for byte; no formatting differences are allowed.
+
 ## Search and sharing
 
 `jekyll-sitemap` generates `/sitemap.xml` and `/robots.txt` during the build; the error page is excluded. Open Graph and Twitter Card metadata share the same page title, description, and image, falling back to site/profile data on the homepage. The plugin version is pinned to match GitHub Pages.
