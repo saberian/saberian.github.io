@@ -58,4 +58,4 @@ $$
 | Grok 4.6 / Grok Build | 2.87× |
 {: .table-centered tabindex="0" aria-label="Spread by model and harness" }
 
-As the table shows, agent scores varied substantially more than the fixed reference did across training seeds: their sample standard deviations were roughly two to four times as large. This suggests that stronger attempts made better decisions and that there is room to improve agents' reliability in making these design and modeling decisions. In the next post, we will examine the agent trajectories more closely to study those decisions and identify areas for improvement.
+As the table shows, agent scores varied substantially more than the fixed reference did across training seeds: their sample standard deviations were roughly two to four times as large. **This suggests that stronger attempts made better decisions and that there is room to improve agents' reliability in making these design and modeling decisions.** In the next post, we will examine the agent trajectories more closely to study those decisions and identify areas for improvement.
