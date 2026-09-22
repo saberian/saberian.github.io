@@ -197,12 +197,21 @@ try {
       } else {
         const header = await page.locator('.post-header').boundingBox();
         const title = await page.locator('h1').boundingBox();
+        const headerInner = await page.locator('.post-header-inner').boundingBox();
+        const articleBounds = await page.locator('.post-content').boundingBox();
+        assert.ok(Math.abs(headerInner.x - articleBounds.x) < 1, `Align the article header with the prose at ${width}px`);
+        assert.ok(Math.abs(headerInner.width - articleBounds.width) < 1, `Use one reading column for the header and prose at ${width}px`);
+        assert.ok(Math.abs(headerInner.x + headerInner.width / 2 - width / 2) < 1, `Center the article header at ${width}px`);
         if (route.name === 'spread') {
           const headingSize = await page.locator('h1').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
-          assert.ok(headingSize <= (width <= 540 ? 32 : 40), 'Use the existing compact title scale');
+          assert.equal(headingSize, width <= 540 ? 32 : 40, 'Preserve the existing compact title scale');
           assert.ok(title.width > 1 && title.height > 1, 'The chart-led article needs a visible text title');
+          assert.ok(Math.abs(title.x - articleBounds.x) < 1 && Math.abs(title.width - articleBounds.width) < 1, `Let the title use the full centered reading column at ${width}px`);
+          if (width >= 768) {
+            const lineHeight = await page.locator('h1').evaluate(el => parseFloat(getComputedStyle(el).lineHeight));
+            assert.ok(title.height <= 2 * lineHeight + 1, `Do not squeeze the desktop title into three narrow lines at ${width}px`);
+          }
           const coverBounds = await page.getByRole('img', { name: spreadFigureAlt, exact: true }).boundingBox();
-          const articleBounds = await page.locator('.post-content').boundingBox();
           assert.ok(Math.abs(coverBounds.width - articleBounds.width) < 1, `Fit the lead chart to the reading column at ${width}px`);
           const chartRatio = width <= 600 ? 430 / 380 : 300 / 1040;
           assert.ok(Math.abs(coverBounds.height - coverBounds.width * chartRatio) < 1, 'Keep the responsive chart uncropped and undistorted');
