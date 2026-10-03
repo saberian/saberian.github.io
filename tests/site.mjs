@@ -12,6 +12,8 @@ const reviewDir = '.impeccable/review';
 const environmentTitle = 'What is an RL environment?';
 const spreadTitle = 'How consistent are coding agents at building a music recommender?';
 const spreadPath = '/blog/how-consistent-are-coding-agents/';
+const languagePath = '/blog/why-program-llms-in-words/';
+const languageTitle = 'Why program LLMs in words?';
 const oldSpreadPath = '/blog/spread-in-practice/';
 const spreadSharingImagePath = '/assets/images/spread-scores.png';
 const spreadFigureAlt = 'Final hidden NDCG@10 scores for 19 task attempts across three model/harness groups.';
@@ -20,7 +22,8 @@ const pages = [
   { path: '/', name: 'home' },
   { path: '/blog/what-makes-a-good-rl-task/', name: 'post' },
   { path: '/blog/what-is-rl-environemnt/', name: 'environment' },
-  { path: spreadPath, name: 'spread' }
+  { path: spreadPath, name: 'spread' },
+  { path: languagePath, name: 'language' }
 ];
 
 try {
@@ -50,6 +53,7 @@ try {
       assert.equal(await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Writing', exact: true }).count(), 0, 'Homepage navigation must not repeat Writing');
       assert.equal(await page.locator('.essay h2').getByRole('link', { name: environmentTitle, exact: true }).getAttribute('href'), '/blog/what-is-rl-environemnt/', 'Correct the visible title without breaking the published URL');
       assert.equal(await page.locator('.essay h2').getByRole('link', { name: spreadTitle, exact: true }).getAttribute('href'), spreadPath, 'The index must use the new canonical article URL');
+      assert.equal(await page.locator('.essay h2').getByRole('link', { name: languageTitle, exact: true }).getAttribute('href'), languagePath);
       assert.equal((await page.locator('.profile-background p').first().textContent()).trim(), 'Previously at Roblox, Netflix, & Yahoo');
       assert.equal(await page.locator('.profile-background').getByText('Computer vision and machine learning', { exact: false }).isVisible(), true, 'Education details must be visible without hovering');
       assert.equal(await page.locator('.profile-background [title]').count(), 0, 'Do not hide professional context in tooltips');
@@ -140,6 +144,11 @@ try {
       assert.equal(await page.locator('.post-content mjx-assistive-mml mfrac').count(), 1, 'The spread equation must preserve its accessible fraction');
       assert.equal(await page.locator('.post-content [data-mjx-error], .post-content merror').count(), 0);
       assert.equal(await page.locator('.post-content').getByRole('link', { name: 'reproducible notebook' }).count(), 0, 'The latest draft does not include a notebook link');
+    } else if (route.name === 'language') {
+      assert.equal(await page.locator('h1').textContent(), languageTitle);
+      assert.equal(await page.title(), `${languageTitle} · Ehsan Saberian`);
+      assert.equal(await page.locator('.prompt-lab').count(), 2);
+      assert.equal(await page.locator('.prompt-lab [data-controls]:visible').count(), 2);
     } else {
       assert.equal(await page.locator('.post-header--compact').count(), 1, 'Illustrated posts must use the compact metadata header');
       assert.equal(await page.locator('h1.visually-hidden').count(), 1, 'Keep the post title available to assistive technology without repeating the image title');
@@ -232,6 +241,10 @@ try {
           if (!tableGeometry.overflows) assert.ok(Math.abs(tableGeometry.rowsCenter - tableGeometry.articleCenter) < 1, `Center the visible rows, not an empty full-width table box, at ${width}px`);
           assert.equal(tableGeometry.labelAlign, 'left', 'Keep model labels left-aligned within the centered table');
           assert.equal(tableGeometry.valueAlign, 'right', 'Keep spread values right-aligned within the centered table');
+        } else if (route.name === 'language') {
+          assert.ok(title.width > 1 && title.height > 1, 'Show the new article’s text title');
+          assert.equal(await page.locator('h1').evaluate(el => parseFloat(getComputedStyle(el).fontSize)), width <= 540 ? 32 : 40);
+          assert.ok(Math.abs(title.x - articleBounds.x) < 1 && Math.abs(title.width - articleBounds.width) < 1);
         } else {
           assert.ok(header.height <= 180, `Post header must stay compact at ${width}px: ${header.height}`);
           assert.ok(title.width <= 1 && title.height <= 1, 'Illustrated titles must not create a duplicate visible banner');
@@ -280,8 +293,8 @@ try {
       assert.equal(linked.status(), 200, `Internal link ${href} must resolve`);
     }
     if (route.name === 'home') {
-      assert.equal(await page.locator('.essay').count(), 3);
-      assert.deepEqual(await page.locator('.essay time').allTextContents(), ['Sep 16, 2026', 'Sep 13, 2026', 'Sep 10, 2026']);
+      assert.equal(await page.locator('.essay').count(), 4);
+      assert.deepEqual(await page.locator('.essay time').allTextContents(), ['Oct 3, 2026', 'Sep 16, 2026', 'Sep 13, 2026', 'Sep 10, 2026']);
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => document.activeElement.textContent.trim()), 'Skip to content');
       await page.keyboard.press('Enter');
@@ -303,6 +316,7 @@ try {
   assert.equal(feed.status(), 200);
   const feedText = await feed.text();
   assert.ok(feedText.includes(new URL(spreadPath, canonicalURLs[0]).href), 'The feed must publish the new article URL');
+  assert.ok(feedText.includes(new URL(languagePath, canonicalURLs[0]).href), 'Publish the language-space article in the feed');
   assert.equal(feedText.includes(oldSpreadPath), false, 'The feed must not retain the old URL');
   const redirect = await page.request.get(new URL(oldSpreadPath, baseURL).href);
   assert.equal(redirect.status(), 200, 'GitHub Pages serves a static redirect document');

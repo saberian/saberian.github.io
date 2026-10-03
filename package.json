@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/math.mjs && node tests/site.mjs",
+    "test": "node --test tests/prompt-math.mjs && node tests/math.mjs && node tests/site.mjs && node tests/prompt-lab.mjs",
     "test:math": "node tests/math.mjs",
     "test:site": "node tests/site.mjs",
+    "test:prompt-lab": "node --test tests/prompt-math.mjs && node tests/prompt-lab.mjs",
     "test:spread-draft": "node tests/spread-draft.mjs",
     "render:spread-preview": "node scripts/render-spread-preview.mjs"
   },

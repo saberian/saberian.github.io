@@ -1,0 +1,52 @@
+<figure class="prompt-lab" data-attention aria-labelledby="attention-title">
+  <figcaption id="attention-title">Change a key. Change the mixture.</figcaption>
+  <p class="lab-intro">One attention head, one fixed query, three keys. Rotate the prompt key while everything else stays fixed.</p>
+  <div class="attention-layout">
+    <svg class="attention-plane" viewBox="0 0 240 215" role="img" aria-labelledby="attention-chart-title attention-chart-desc">
+      <title id="attention-chart-title">A rotating prompt key and a fixed query</title>
+      <desc id="attention-chart-desc">The query points right. The prompt key starts at 60 degrees. Greater alignment gives the prompt value more weight.</desc>
+      <circle class="lab-guide" cx="120" cy="135" r="90"/>
+      <path class="lab-axis" d="M18 135H224 M120 32V189"/>
+      <path class="query-arm" d="M120 135H165 M158 129L165 135L158 141"/>
+      <g class="key-arm" data-key-arm style="transform: rotate(-60deg)">
+        <path d="M120 135H210 M202 129L210 135L202 141"/>
+        <circle cx="210" cy="135" r="4"/>
+      </g>
+      <circle class="lab-origin" cx="120" cy="135" r="3"/>
+      <text class="lab-svg-label" x="153" y="159">query</text>
+      <text class="lab-svg-label" x="120" y="207" text-anchor="middle">query = [1, 0]</text>
+    </svg>
+    <div class="attention-scores">
+      <div class="score-heading"><span>Key</span><span>Score</span><span>Weight</span></div>
+      <div class="score-row" data-score-row>
+        <span>Prompt</span><span data-score>0.707</span><strong data-weight>57.6%</strong>
+        <span class="weight-track" aria-hidden="true"><span data-bar style="transform: scaleX(0.5759753452)"></span></span>
+      </div>
+      <div class="score-row" data-score-row>
+        <span>Input A</span><span data-score>0.000</span><strong data-weight>28.4%</strong>
+        <span class="weight-track" aria-hidden="true"><span data-bar style="transform: scaleX(0.2839954097)"></span></span>
+      </div>
+      <div class="score-row" data-score-row>
+        <span>Input B</span><span data-score>-0.707</span><strong data-weight>14.0%</strong>
+        <span class="weight-track" aria-hidden="true"><span data-bar style="transform: scaleX(0.1400292450)"></span></span>
+      </div>
+      <p class="lab-formula">score = (query · key) / √2<br>weights = softmax(scores)</p>
+    </div>
+  </div>
+  <div class="lab-controls" data-controls hidden>
+    <label class="lab-slider-label" for="key-angle"><span>Prompt key angle</span><output for="key-angle" data-angle>60°</output></label>
+    <input id="key-angle" type="range" min="0" max="180" step="5" value="60" aria-describedby="attention-note">
+    <div class="lab-range-ends" aria-hidden="true"><span>Aligned · 0°</span><span>Opposed · 180°</span></div>
+    <button type="button" data-attention-reset>Reset angle</button>
+  </div>
+  <div class="lab-result" role="status" aria-live="polite" aria-atomic="true">
+    <span>Mixed value</span><strong data-mixed>[0.44, 0.28]</strong>
+    <span class="lab-result-detail" data-key>Prompt key = [1.00, 1.73]</span>
+  </div>
+  <details class="lab-details">
+    <summary>See the fixed values</summary>
+    <p>Input keys: A = [0, 1], B = [-1, 0]. Value vectors: prompt = [1, 0], A = [0, 1], B = [-1, 0]. The result is their attention-weighted sum. Every key shown is in the query’s available context.</p>
+  </details>
+  <p class="lab-note" id="attention-note">Toy calculation, not a model’s reasoning trace. Real keys are learned projections of hidden states; this example changes one key directly to isolate the mechanism.</p>
+  <p class="lab-fallback" data-fallback>Static view at 60°. Enable JavaScript to rotate the key.</p>
+</figure>

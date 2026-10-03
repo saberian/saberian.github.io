@@ -22,6 +22,8 @@
   <meta name="twitter:description" content="{{ description | escape }}">
   <meta name="twitter:image" content="{{ share_image | escape }}">
   <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+  {% for stylesheet in page.stylesheets %}<link rel="stylesheet" href="{{ stylesheet | relative_url }}">{% endfor %}
+  {% for module in page.modules %}<script type="module" src="{{ module | relative_url }}"></script>{% endfor %}
   {% feed_meta %}
   {% if page.math %}{% include math.html %}{% endif %}
 </head>
