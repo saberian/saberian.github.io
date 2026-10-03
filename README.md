@@ -36,6 +36,26 @@ The check also accepts the complete Jekyll source now used by Verimium's
 `posts/spread-in-practice.md`. In that case, the Markdown (including front matter)
 and all referenced images must match byte for byte; no formatting differences are allowed.
 
+## Interactive article figures
+
+The post at `/blog/why-program-llms-in-words/` includes two browser-only teaching
+examples: scaled dot-product attention and continuous versus vocabulary-constrained
+prompt vectors. Their coordinates and loss are explicitly synthetic, not measured
+LLM activations or performance results.
+
+`_includes/attention-demo.html` and `_includes/embedding-demo.html` contain complete
+static initial states. `assets/prompt-math.js` defines the calculations, while
+`assets/prompt-lab.js` progressively enables the controls. Front-matter
+`stylesheets` and `modules` load these assets only on the relevant post, using
+Jekyll's `relative_url` filter so project-site base paths work too. There are no
+runtime dependencies, API keys, or inference requests.
+
+Both examples support keyboard input, reduced motion, and print. Animations start
+only on request, end after 12 steps, and pause when offscreen or the page is hidden.
+The figures remain readable when JavaScript is unavailable. Run
+`npm run test:prompt-lab` against the local server to test the math and interactions;
+these checks also run as part of `npm test`.
+
 ## Search and sharing
 
 `jekyll-sitemap` generates `/sitemap.xml` and `/robots.txt` during the build; the error page is excluded. Open Graph and Twitter Card metadata share the same page title, description, and image, falling back to site/profile data on the homepage. The plugin version is pinned to match GitHub Pages.

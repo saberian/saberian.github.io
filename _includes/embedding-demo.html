@@ -1,0 +1,45 @@
+<figure class="prompt-lab" data-embedding aria-labelledby="embedding-title">
+  <figcaption id="embedding-title">A learned vector need not be a word.</figcaption>
+  <p class="lab-intro">The circles are fixed vocabulary choices. The diamond can move between them. Take gradient steps toward a toy target, then snap to the nearest token.</p>
+  <svg class="embedding-plane" viewBox="0 0 360 280" role="img" aria-labelledby="embedding-chart-title embedding-chart-desc">
+    <title id="embedding-chart-title">Discrete vocabulary points and a continuous prompt vector</title>
+    <desc id="embedding-chart-desc">Six invented token embeddings occupy a two-dimensional plane. The prompt starts at summarize, [-1.4, -1.2]. The target is [0.9, 1.2], between vocabulary points.</desc>
+    <path class="lab-axis" d="M28 140H332 M180 22V250"/>
+    <ellipse class="lab-guide" cx="243" cy="68" rx="35" ry="30"/>
+    <ellipse class="lab-guide" cx="243" cy="68" rx="56" ry="48"/>
+    <path class="gradient-path" data-path d="M82 212"/>
+    <g class="vocabulary-points">
+      <circle cx="82" cy="212" r="5"/><text x="82" y="237" text-anchor="middle">summarize</text>
+      <circle cx="99.5" cy="80" r="5"/><text x="88" y="75" text-anchor="end">classify</text>
+      <circle cx="180" cy="41" r="5"/><text x="170" y="29" text-anchor="end">translate</text>
+      <circle cx="285" cy="116" r="5"/><text x="295" y="110">extract</text>
+      <circle cx="197.5" cy="173" r="5"/><text x="183" y="190" text-anchor="end">compare</text>
+      <circle cx="271" cy="209" r="5"/><text x="282" y="233">explain</text>
+    </g>
+    <path class="target-mark" d="M237 68H249 M243 62V74"/>
+    <text class="lab-svg-label" x="257" y="57">target</text>
+    <path class="snap-path" data-snap-path d="M82 212L82 212" hidden/>
+    <path class="continuous-ghost" data-ghost d="M0 -7L7 0L0 7L-7 0Z" style="transform: translate(82px, 212px)" hidden/>
+    <path class="prompt-point" data-point d="M0 -7L7 0L0 7L-7 0Z" style="transform: translate(82px, 212px)"/>
+    <text class="lab-svg-label" x="180" y="272" text-anchor="middle">Illustrative 2D embedding space</text>
+  </svg>
+  <div class="lab-legend" aria-hidden="true"><span><svg viewBox="0 0 16 16"><circle class="token-dot" cx="8" cy="8" r="4"/></svg>Vocabulary</span><span><svg viewBox="0 0 16 16"><path class="prompt-point" d="M8 2L14 8L8 14L2 8Z"/></svg>Prompt</span></div>
+  <div class="lab-controls" data-controls hidden>
+    <div class="lab-actions">
+      <button type="button" data-step>Take a step</button>
+      <button type="button" data-play>Animate steps</button>
+      <button type="button" data-reset>Reset</button>
+    </div>
+    <label class="lab-toggle"><input type="checkbox" data-snap> Snap to nearest token</label>
+  </div>
+  <div class="lab-result" role="status" aria-live="polite" aria-atomic="true">
+    <span data-step-label>Step 0 of 12</span><strong data-position>[-1.40, -1.20]</strong>
+    <span class="lab-result-detail" data-embedding-status>Continuous vector · toy loss 5.525</span>
+  </div>
+  <details class="lab-details">
+    <summary>What is being optimized?</summary>
+    <p>A synthetic quadratic: L(p) = ½ ‖p − t‖², with target t = [0.9, 1.2]. Each step uses p ← p − 0.25(p − t). Nearest-token selection uses Euclidean distance. Real soft prompts optimize a model’s task loss, not distance to a known point.</p>
+  </details>
+  <p class="lab-note">Invented coordinates, not measured embeddings. The path shows actual gradient descent on this toy loss, not an LLM experiment. GEPA searches text; it does not snap vectors to words.</p>
+  <p class="lab-fallback" data-fallback>Static starting point. Enable JavaScript to step, animate, or snap the vector.</p>
+</figure>
