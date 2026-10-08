@@ -36,6 +36,10 @@ The check also accepts the complete Jekyll source now used by Verimium's
 `posts/spread-in-practice.md`. In that case, the Markdown (including front matter)
 and all referenced images must match byte for byte; no formatting differences are allowed.
 
+## Learning projects
+
+[Coding post-training](coding-post-training/README.md) defines a hands-on SFT, DPO, PPO, and GRPO experiment using a 4B language model, execution-based Python rewards, and a $30 Modal pilot budget. Project files and training artifacts are excluded from the published website.
+
 ## Search and sharing
 
 `jekyll-sitemap` generates `/sitemap.xml` and `/robots.txt` during the build; the error page is excluded. Open Graph and Twitter Card metadata share the same page title, description, and image, falling back to site/profile data on the homepage. The plugin version is pinned to match GitHub Pages.

@@ -280,8 +280,11 @@ try {
       assert.equal(linked.status(), 200, `Internal link ${href} must resolve`);
     }
     if (route.name === 'home') {
-      assert.equal(await page.locator('.essay').count(), 3);
-      assert.deepEqual(await page.locator('.essay time').allTextContents(), ['Sep 16, 2026', 'Sep 13, 2026', 'Sep 10, 2026']);
+      assert.equal(await page.locator('.essay').count(), 4);
+      assert.deepEqual(await page.locator('.essay time').allTextContents(), ['Oct 8, 2026', 'Sep 16, 2026', 'Sep 13, 2026', 'Sep 10, 2026']);
+      assert.equal(await page.locator('.essay h2').getByRole('link', {
+        name: 'Understanding LLM post-training with PPO, DPO, GRPO and OPO', exact: true
+      }).getAttribute('href'), '/blog/understanding-llm-post-training/');
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => document.activeElement.textContent.trim()), 'Skip to content');
       await page.keyboard.press('Enter');

@@ -1,0 +1,5 @@
+{
+  "Leetcode_20446_I": "Prompt says ABCA requires one deletion, while its specification and tests require zero.",
+  "Prefill_41667_I": "Tests require None for an empty array; the problem does not specify empty-array behavior.",
+  "Filter_36361_I": "Problem restricts implementation techniques; output-only tests cannot enforce those requirements."
+}

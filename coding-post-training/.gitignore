@@ -1,0 +1,22 @@
+# Local environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Downloaded data, model weights, and detailed run artifacts
+data/
+checkpoints/
+runs/
+wandb/
+*.safetensors
+*.pt
+*.pth
+
+# Credentials belong in local environments or Modal Secrets
+.env
+.env.*
+!.env.example

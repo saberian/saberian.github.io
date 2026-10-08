@@ -1,0 +1,84 @@
+{
+  "dataset": "KodCode/KodCode-Light-RL-10K",
+  "revision": "dcf78a8bbba9a613b596ce993c4921a38687dfcc",
+  "source_sha256": "cd777b078dd700d7e87c2f42ae2cb1d28de91625da92066fffda219eb9193c93",
+  "selection": "First 10 eligible records sorted by SHA256([42, question_id]); development only",
+  "examined_rejections": {
+    "Manual audit: Prompt says ABCA requires one deletion, while its specification and tests require zero.": 1,
+    "Unsupported test body": 11,
+    "Outside initial pure-function scope": 19,
+    "Unsupported case value": 3,
+    "Manual audit: Tests require None for an empty array; the problem does not specify empty-array behavior.": 1,
+    "Invalid family metadata": 5,
+    "Unsupported test module statement": 1,
+    "Manual audit: Problem restricts implementation techniques; output-only tests cannot enforce those requirements.": 1,
+    "malformed node or string on line 8: <ast.BinOp object at 0x10e512010>": 1
+  },
+  "sample_sha256": "22b6ae0f735d9129e412276c5cf1056a4e8d7546efab886af0e4332b474911ac",
+  "reserved_development": [
+    {
+      "id": "Leetcode_10560_I",
+      "source_seed_ids": [
+        "688",
+        "6",
+        "1904"
+      ]
+    },
+    {
+      "id": "Prefill_42300_I",
+      "source_seed_ids": [
+        "magpie_prefill_42300"
+      ]
+    },
+    {
+      "id": "Filter_53590_I",
+      "source_seed_ids": [
+        "Qwen2.5-72B-Instruct_110076"
+      ]
+    },
+    {
+      "id": "Prefill_37862_I",
+      "source_seed_ids": [
+        "magpie_prefill_37862"
+      ]
+    },
+    {
+      "id": "Filter_27101_I",
+      "source_seed_ids": [
+        "Qwen2-72B-Instruct_65610"
+      ]
+    },
+    {
+      "id": "Prefill_30676_I",
+      "source_seed_ids": [
+        "magpie_prefill_30676"
+      ]
+    },
+    {
+      "id": "Filter_15048_I",
+      "source_seed_ids": [
+        "Llama-3.3-70B-Instruct_38599"
+      ]
+    },
+    {
+      "id": "Filter_10671_I",
+      "source_seed_ids": [
+        "Llama-3.3-70B-Instruct_28551"
+      ]
+    },
+    {
+      "id": "Leetcode_2546_I",
+      "source_seed_ids": [
+        "437",
+        "2384",
+        "746"
+      ]
+    },
+    {
+      "id": "Filter_61800_I",
+      "source_seed_ids": [
+        "Qwen2.5-Coder-32B-Instruct_124982"
+      ]
+    }
+  ]
+}

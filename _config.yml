@@ -19,6 +19,7 @@ exclude:
   - vendor
   - node_modules
   - tests
+  - coding-post-training
   - package.json
   - package-lock.json
   - Gemfile
