@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" width="1024pt" height="744pt" viewBox="0 0 1024 744" version="1.1" role="img" aria-labelledby="chart-title chart-description">
+ <title id="chart-title">How often each gap appeared</title><desc id="chart-description">Documented gaps across 30 reviewed attempts. Implementation errors: 21; Poor resource management: 20; Poor time management: 15; Misinterpreting results: 13; Poor experiment tracking and reproducibility: 9; Delivery failures and task violations: 7; Poor experiment design: 6; Insufficient validation: 6; Insufficient problem exploration: 5; Information leakage: 2. Categories overlap and include repaired errors. Resource management includes one strongly supported inference.</desc><metadata>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <ns2:Agent>
+      <dc:title>plot-agent-gap-frequency.py</dc:title>
+     </ns2:Agent>
+    </dc:creator>
+   </ns2:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 744  L 1024 744  L 1024 0  L 0 0  z " style="fill: #ffffff" />
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 442 110  L 442 661  " clip-path="url(#pb01ccd4e80)" style="fill: none; stroke: #d8d6ce; stroke-width: 0.7; stroke-linecap: square" />
+   </g>
+   <g id="line2d_2">
+    <path d="M 617.333333 110  L 617.333333 661  " clip-path="url(#pb01ccd4e80)" style="fill: none; stroke: #d8d6ce; stroke-width: 0.7; stroke-linecap: square" />
+   </g>
+   <g id="line2d_3">
+    <path d="M 792.666667 110  L 792.666667 661  " clip-path="url(#pb01ccd4e80)" style="fill: none; stroke: #d8d6ce; stroke-width: 0.7; stroke-linecap: square" />
+   </g>
+   <g id="line2d_4">
+    <path d="M 968 110  L 968 661  " clip-path="url(#pb01ccd4e80)" style="fill: none; stroke: #d8d6ce; stroke-width: 0.7; stroke-linecap: square" />
+   </g>
+   <g id="gap-0" data-gap="Implementation errors" data-count="21">
+    <path d="M 442 121  L 810.2 121  L 810.2 143  L 442 143  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-1" data-gap="Poor resource management" data-count="20">
+    <path d="M 442 174  L 792.666667 174  L 792.666667 196  L 442 196  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-2" data-gap="Poor time management" data-count="15">
+    <path d="M 442 227  L 705 227  L 705 249  L 442 249  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-3" data-gap="Misinterpreting results" data-count="13">
+    <path d="M 442 280  L 669.933333 280  L 669.933333 302  L 442 302  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-4" data-gap="Poor experiment tracking and reproducibility" data-count="9">
+    <path d="M 442 333  L 599.8 333  L 599.8 355  L 442 355  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-5" data-gap="Delivery failures and task violations" data-count="7">
+    <path d="M 442 402  L 564.733333 402  L 564.733333 424  L 442 424  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-6" data-gap="Poor experiment design" data-count="6">
+    <path d="M 442 471  L 547.2 471  L 547.2 493  L 442 493  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-7" data-gap="Insufficient validation" data-count="6">
+    <path d="M 442 524  L 547.2 524  L 547.2 546  L 442 546  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-8" data-gap="Insufficient problem exploration" data-count="5">
+    <path d="M 442 577  L 529.666667 577  L 529.666667 599  L 442 599  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="gap-9" data-gap="Information leakage" data-count="2">
+    <path d="M 442 630  L 477.066667 630  L 477.066667 652  L 442 652  z " clip-path="url(#pb01ccd4e80)" style="fill: #667d1f" />
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 28px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="61.612" transform="rotate(-0 32 61.612)">How often each gap appeared</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 19px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #62635b" x="32" y="84.0205" transform="rotate(-0 32 84.0205)">Attempts with a documented gap · out of 30</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 20px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #62635b" x="442" y="690.39" transform="rotate(-0 442 690.39)">0</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 20px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: middle; fill: #62635b" x="617.333333" y="690.39" transform="rotate(-0 617.333333 690.39)">10</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 20px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: middle; fill: #62635b" x="792.666667" y="690.39" transform="rotate(-0 792.666667 690.39)">20</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 20px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: middle; fill: #62635b" x="968" y="690.39" transform="rotate(-0 968 690.39)">30</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="137.687344" transform="rotate(-0 32 137.687344)">Implementation errors</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="820.2" y="140.338" transform="rotate(-0 820.2 140.338)">21</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="190.555" transform="rotate(-0 32 190.555)">Poor resource management</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="802.666667" y="193.338" transform="rotate(-0 802.666667 193.338)">20</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="243.555" transform="rotate(-0 32 243.555)">Poor time management</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="715" y="246.338" transform="rotate(-0 715 246.338)">15</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="296.555" transform="rotate(-0 32 296.555)">Misinterpreting results</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="679.933333" y="299.338" transform="rotate(-0 679.933333 299.338)">13</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; fill: #12120f" transform="translate(32 335.2022)">Poor experiment tracking and</text>
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; fill: #12120f" transform="translate(32 363.930144)">reproducibility</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="609.8" y="352.338" transform="rotate(-0 609.8 352.338)">9</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; fill: #12120f" transform="translate(32 404.3122)">Delivery failures and task</text>
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; fill: #12120f" transform="translate(32 435.087175)">violations</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="574.733333" y="421.338" transform="rotate(-0 574.733333 421.338)">7</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="487.555" transform="rotate(-0 32 487.555)">Poor experiment design</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="557.2" y="490.338" transform="rotate(-0 557.2 490.338)">6</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="542.822031" transform="rotate(-0 32 542.822031)">Insufficient validation</text>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="557.2" y="543.338" transform="rotate(-0 557.2 543.338)">6</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="593.775" transform="rotate(-0 32 593.775)">Insufficient problem exploration</text>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="539.666667" y="596.338" transform="rotate(-0 539.666667 596.338)">5</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="32" y="646.642656" transform="rotate(-0 32 646.642656)">Information leakage</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Helvetica Neue', 'DejaVu Sans'; text-anchor: start; fill: #12120f" x="487.066667" y="649.338" transform="rotate(-0 487.066667 649.338)">2</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb01ccd4e80">
+   <rect x="32" y="32" width="960" height="680" />
+  </clipPath>
+ </defs>
+</svg>

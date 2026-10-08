@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/math.mjs && node tests/site.mjs",
+    "test": "node tests/math.mjs && node tests/site.mjs && node tests/agent-trajectories.mjs",
     "test:math": "node tests/math.mjs",
     "test:site": "node tests/site.mjs",
     "test:spread-draft": "node tests/spread-draft.mjs",

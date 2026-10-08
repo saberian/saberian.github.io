@@ -36,6 +36,16 @@ The check also accepts the complete Jekyll source now used by Verimium's
 `posts/spread-in-practice.md`. In that case, the Markdown (including front matter)
 and all referenced images must match byte for byte; no formatting differences are allowed.
 
+## Verimium trajectory review
+
+`_posts/2026-10-05-agent-trajectories.md` republishes Verimium's
+[agent trajectory review](https://verimium.com/blog/agent-trajectories), synced
+from `mmoghimi/pitch` commit `f8f6aa8e`. Preserve its prose and chart assets when
+syncing updates. Adapt heading levels for the post layout, keep model sections
+in native keyboard-accessible disclosures, use `post_url` for the preceding
+personal-site article, and retain absolute Verimium URLs for benchmark evidence.
+`npm test` includes desktop/mobile, disclosure, chart, and link checks for this post.
+
 ## Search and sharing
 
 `jekyll-sitemap` generates `/sitemap.xml` and `/robots.txt` during the build; the error page is excluded. Open Graph and Twitter Card metadata share the same page title, description, and image, falling back to site/profile data on the homepage. The plugin version is pinned to match GitHub Pages.
