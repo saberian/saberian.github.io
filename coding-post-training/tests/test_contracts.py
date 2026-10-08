@@ -1,13 +1,26 @@
 import json
 import subprocess
 import sys
+import shutil
+import tempfile
 import unittest
+from pathlib import Path
 
 from data import extract_cases, messages
 from evaluator import DRIVER, grade_payload
 
 
 class Contracts(unittest.TestCase):
+    def test_cloud_source_bundle_imports_without_checkout(self):
+        from modal_app import RUNTIME_MODULES
+        root = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as directory:
+            for module in ("modal_app", *RUNTIME_MODULES):
+                shutil.copy(root / f"{module}.py", directory)
+            subprocess.run([sys.executable, "-I", "-c",
+                f"import sys; sys.path.insert(0, {directory!r}); import modal_app"],
+                cwd=directory, capture_output=True, text=True, check=True, timeout=10)
+
     def test_no_solutions_or_cases_in_prompt(self):
         prompt = messages({"question": "Add one", "signature": "def f(x):",
             "reference_solution": "SECRET_SOLUTION", "cases": ["SECRET_TEST"]})

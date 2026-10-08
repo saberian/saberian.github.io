@@ -11,9 +11,10 @@ from data import MODEL, MODEL_REVISION, DATA_REVISION, ROOT, digest, messages
 from evaluator import evaluate
 
 app = modal.App("coding-post-training-baseline")
+RUNTIME_MODULES = ("data", "evaluator")
 results_volume = modal.Volume.from_name("coding-post-training-results", create_if_missing=True)
 sandbox_image = modal.Image.debian_slim(python_version="3.12")
-cpu_image = modal.Image.debian_slim(python_version="3.12").uv_sync(str(ROOT), uv_version="0.10.10").add_local_python_source("data", "evaluator")
+cpu_image = modal.Image.debian_slim(python_version="3.12").uv_sync(str(ROOT), uv_version="0.10.10").add_local_python_source(*RUNTIME_MODULES)
 
 
 def cache_model():
@@ -30,7 +31,7 @@ def cache_model():
 gpu_image = (
     modal.Image.debian_slim(python_version="3.12")
     .uv_sync(str(ROOT), extras=["inference"], uv_version="0.10.10")
-    .add_local_python_source("data", copy=True)
+    .add_local_python_source(*RUNTIME_MODULES, copy=True)
     .run_function(cache_model, cpu=2, memory=16384, timeout=600)
 )
 _loaded = None
