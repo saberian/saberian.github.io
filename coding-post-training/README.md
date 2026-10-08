@@ -1,6 +1,6 @@
 # Learning LLM post-training through Python code generation
 
-Project specification · October 8, 2026 · **Status: baseline runner implemented; no training has run.**
+Project specification · October 8, 2026 · **Status: first 10-problem baseline completed; no training has run.**
 
 This project teaches SFT, DPO, PPO, and GRPO by adapting a 4B-parameter language model to solve short Python programming problems. The model receives a problem and function signature, writes an implementation, and receives a reward from executing that implementation against tests.
 
@@ -56,6 +56,16 @@ uv run modal volume get coding-post-training-results RUN_ID.json runs/RUN_ID.jso
 ```
 
 The baseline uses the same `uv.lock` for local checks and cloud images, with the `inference` extra enabled only where required. Dataset download and local contract checks are implemented; full data curation, robust held-out evaluation, and all training stages remain later milestones.
+
+### First observed baseline — October 8, 2026
+
+The [completed Modal run](https://modal.com/apps/cpbookbuilder/main/ap-FSh074g06OilNM6dM9r9qy) executed commit `62ae49b8` after a missing-module image packaging error was corrected and covered by an isolated import regression test. Both cloud apps are stopped. The [aggregate report](reports/baseline-2026-10-08.json) records the revisions, sample hash, metrics, and per-problem statuses; complete outputs remain in ignored `runs/` and the Modal results Volume.
+
+All six evaluator probes and all ten reference programs passed. The model completed all ten responses within the token allowance, but **every response included Markdown code fences**. Under the predeclared raw-Python contract, every response therefore received `syntax_error` and reward 0. The code inside the fences was not executed. This result establishes a formatting failure, not that the model cannot solve these programming problems.
+
+The run generated 1,375 tokens in about 42.1 seconds, with roughly 49.3 seconds inside GPU function calls and peak allocated GPU memory of 8.16 GB decimal (about 7.60 GiB). These are inference measurements, not training-memory estimates. The active GPU-function resource estimate is about $0.037; it excludes image builds, startup/idle time, evaluator sandboxes, storage, and the unsuccessful initial image build, so it is not the final bill.
+
+The next teaching step is to distinguish output-format compliance from functional correctness. Any future diagnostic that extracts fenced code must be labeled separately and preserve this original result. Do not silently change the reward contract or call this a post-training result.
 
 ## 2. Problem definition
 

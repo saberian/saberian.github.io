@@ -1,0 +1,106 @@
+{
+  "run_id": "baseline-20261008T222157Z-62ae49b8",
+  "revision": "62ae49b8abd05cc1ad5dadc9ad0fb0772834271b",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "dataset_revision": "dcf78a8bbba9a613b596ce993c4921a38687dfcc",
+  "sample_sha256": "22b6ae0f735d9129e412276c5cf1056a4e8d7546efab886af0e4332b474911ac",
+  "status": "completed",
+  "greedy_accuracy": 0.0,
+  "elapsed_seconds": 106.0932306,
+  "modal_url": "https://modal.com/apps/cpbookbuilder/main/ap-FSh074g06OilNM6dM9r9qy",
+  "scope": "10 development smoke problems; no training; strict raw-Python output contract",
+  "evaluator_probes_passed": 6,
+  "reference_problems_passed": 10,
+  "reference_cases_passed": 66,
+  "all_outputs_markdown_fenced": true,
+  "generated_tokens": 1375,
+  "generation_seconds": 42.12527417999999,
+  "gpu_function_seconds": 49.277111047999995,
+  "peak_allocated_bytes": 8164849152,
+  "peak_reserved_bytes": 8225030144,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "versions": {
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "accelerate": "1.15.0",
+    "modal": "1.6.1"
+  },
+  "gpu_image_id": "im-JvzV0dO0F6AC0sENMAOJgv",
+  "cpu_image_id": "im-hUT9Tv0MUEZqb0BE3caAYk",
+  "cost_note": "Actual billing not yet established. Active GPU-function estimate excludes startup, idle time, builds, sandboxes, storage and failed initial build.",
+  "active_gpu_function_estimate_usd": 0.037239698361194555,
+  "results": [
+    {
+      "id": "Leetcode_10560_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 136,
+      "generation_seconds": 4.6911338570000005
+    },
+    {
+      "id": "Prefill_42300_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 147,
+      "generation_seconds": 4.287535078999998
+    },
+    {
+      "id": "Filter_53590_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 190,
+      "generation_seconds": 5.702215716999998
+    },
+    {
+      "id": "Prefill_37862_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 219,
+      "generation_seconds": 6.711986770999999
+    },
+    {
+      "id": "Filter_27101_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 73,
+      "generation_seconds": 2.2249251730000026
+    },
+    {
+      "id": "Prefill_30676_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 52,
+      "generation_seconds": 1.5697245940000002
+    },
+    {
+      "id": "Filter_15048_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 138,
+      "generation_seconds": 4.198307952
+    },
+    {
+      "id": "Filter_10671_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 103,
+      "generation_seconds": 3.1206010289999995
+    },
+    {
+      "id": "Leetcode_2546_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 252,
+      "generation_seconds": 7.660999097000001
+    },
+    {
+      "id": "Filter_61800_I",
+      "status": "syntax_error",
+      "reward": 0,
+      "generated_tokens": 65,
+      "generation_seconds": 1.9578449109999951
+    }
+  ],
+  "interpretation": "All generated answers failed syntax parsing because of Markdown fences. Code inside the fences was not executed. This is output-contract accuracy, not a standalone measure of algorithmic correctness."
+}
