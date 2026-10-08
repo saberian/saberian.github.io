@@ -1,8 +1,29 @@
-"""Trusted grading logic. Candidate code executes only in a Modal Sandbox."""
+"""Shared extraction/grading. Execution is delegated to an isolated runtime."""
 
 import ast
 import json
+import re
 from data import json_value
+
+EVALUATOR_VERSION = "python-output-v2"
+
+
+def extract_python(response):
+    """Accept raw source or exactly one whole-response ```python block.
+
+    Strip fence delimiters only, never repair code or search prose for snippets.
+    Raw source is returned byte-for-byte unchanged. Outer whitespace around a
+    fenced block is permitted; nested/multiple fence lines are not.
+    """
+    if not isinstance(response, str) or not response.strip() or len(response.encode()) > 65536:
+        raise ValueError("Empty or oversized response")
+    text = response.strip()
+    if text.startswith("```"):
+        match = re.fullmatch(r"```python[ \t]*\r?\n(.*?)\r?\n```", text, flags=re.DOTALL)
+        if not match or not match[1].strip() or re.search(r"(?m)^[ \t]*```", match[1]):
+            raise ValueError("Expected one complete Python block with no surrounding prose")
+        return match[1], "fenced_python"
+    return response, "raw_python"
 
 # This driver and its supervisor run INSIDE the disposable sandbox. Neither sees
 # expected answers. The controller outside the sandbox owns all comparisons.
@@ -72,13 +93,31 @@ def grade_payload(payload, cases):
     return result
 
 
-def evaluate(problem, code, app, image):
-    import modal
+def evaluate_with_runner(problem, response, runner):
+    """The common policy for local replay and future cloud/RL evaluations."""
+    metadata = {"evaluator_version": EVALUATOR_VERSION, "output_format": "rejected", "raw_format_compliant": False}
+    failure = {"reward": 0, "passed_cases": 0, "total_cases": len(problem["cases"])}
+    try:
+        code, output_format = extract_python(response)
+        metadata["output_format"] = output_format
+    except ValueError:
+        return {**metadata, **failure, "status": "format_error"}
     try:
         ast.parse(code)
     except SyntaxError:
-        return {"status": "syntax_error", "reward": 0, "passed_cases": 0, "total_cases": len(problem["cases"])}
+        return {**metadata, **failure, "status": "syntax_error"}
+    metadata["raw_format_compliant"] = output_format == "raw_python"
     request = {"code": code, "entry_point": problem["entry_point"], "inputs": [c["args"] for c in problem["cases"]]}
+    payload, runtime_metadata = runner(request)
+    return {**metadata, **grade_payload(payload, problem["cases"]), **runtime_metadata}
+
+
+def evaluate(problem, response, app, image):
+    return evaluate_with_runner(problem, response, lambda request: run_modal(request, app, image))
+
+
+def run_modal(request, app, image):
+    import modal
     # Credentials, model/data volumes, expected answers and scoring never enter.
     sandbox = modal.Sandbox.create("sleep", "60", app=app, image=image,
         timeout=60, cpu=(1, 1), memory=(512, 512), block_network=True,
@@ -96,8 +135,6 @@ def evaluate(problem, code, app, image):
             payload = json.loads(raw)
         except ValueError as exc:
             raise RuntimeError("Evaluator protocol failed; sample unscored") from exc
-        result = grade_payload(payload, problem["cases"])
-        result["sandbox_id"] = sandbox.object_id
-        return result
+        return payload, {"sandbox_id": sandbox.object_id}
     finally:
         sandbox.terminate()

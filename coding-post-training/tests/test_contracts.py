@@ -7,10 +7,46 @@ import unittest
 from pathlib import Path
 
 from data import extract_cases, messages
-from evaluator import DRIVER, grade_payload
+from evaluator import DRIVER, extract_python, evaluate_with_runner, grade_payload
 
 
 class Contracts(unittest.TestCase):
+    def test_extraction_preserves_code_and_accepts_single_python_fence(self):
+        code = 'def f(x):\n    return x + 1\n'
+        self.assertEqual(extract_python(code), (code, 'raw_python'))
+        self.assertEqual(extract_python('  \n```python\n' + code + '\n```\n'), (code, 'fenced_python'))
+
+    def test_unsupported_formats_never_reach_execution(self):
+        def unexpected_runner(request):
+            self.fail('Rejected response reached execution')
+        responses = ['', '```python\n```', '```python\ndef f(x): return x',
+            '```javascript\nfunction f() {}\n```', '```\ndef f(x): return x\n```',
+            'Explanation\n```python\ndef f(x): return x\n```',
+            '```python\ndef f(x): return x\n```\nExplanation',
+            '```python\ndef f(x): return x\n```\n```python\nx = 1\n```',
+            '```python\ndef f(:\n```']
+        problem = {'entry_point': 'f', 'cases': [{'args': [1], 'expected': 1}]}
+        for response in responses:
+            with self.subTest(response=response):
+                result = evaluate_with_runner(problem, response, unexpected_runner)
+                self.assertEqual(result['reward'], 0)
+                self.assertFalse(result['raw_format_compliant'])
+
+    def test_raw_and_fenced_code_share_identical_grading(self):
+        requests = []
+        def runner(request):
+            requests.append(request)
+            self.assertEqual(set(request), {'code', 'entry_point', 'inputs'})
+            return {'status': 'ok', 'output': '[2]'}, {}
+        problem = {'entry_point': 'f', 'cases': [{'args': [1], 'expected': 2}]}
+        code = 'def f(x): return x + 1'
+        raw = evaluate_with_runner(problem, code, runner)
+        fenced = evaluate_with_runner(problem, '```python\n' + code + '\n```', runner)
+        self.assertEqual(requests[0], requests[1])
+        self.assertEqual(raw['reward'], fenced['reward'])
+        self.assertTrue(raw['raw_format_compliant'])
+        self.assertFalse(fenced['raw_format_compliant'])
+
     def test_cloud_source_bundle_imports_without_checkout(self):
         from modal_app import RUNTIME_MODULES
         root = Path(__file__).resolve().parents[1]

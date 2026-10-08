@@ -1,6 +1,6 @@
 # Learning LLM post-training through Python code generation
 
-Project specification · October 8, 2026 · **Status: first 10-problem baseline completed; no training has run.**
+Project specification · October 8, 2026 · **Status: baseline and local evaluator-v2 replay completed; no training has run.**
 
 This project teaches SFT, DPO, PPO, and GRPO by adapting a 4B-parameter language model to solve short Python programming problems. The model receives a problem and function signature, writes an implementation, and receives a reward from executing that implementation against tests.
 
@@ -47,7 +47,7 @@ uv run modal run --detach modal_app.py
 
 `modal_app.py` first runs evaluator probes and validates all ten reference solutions in isolated, network-blocked CPU sandboxes. The trusted controller holds expected outputs. Each candidate gets a 512 MiB sandbox with no secrets or shared mounts; its child process has a 2-second CPU limit, 10-second wall limit, 384 MiB address-space limit, and 64 KiB file/output limits. These measured-pilot settings replace the earlier proposed per-call limits. A sandbox is terminated in `finally`, with a 60-second platform lifetime as a fallback. Infrastructure failures get one retry, then fail the run as unscored.
 
-Only prompts reach the GPU. The job generates one greedy completion per problem, first for one canary and then for the remaining nine. Incorrect model answers are legitimate baseline observations and do not block the remaining samples. Generated programs never execute on the GPU worker or the local computer. Model weights download during CPU image preparation. The GPU function uses one A100 80GB, max concurrency one, no automatic retries, two calls of at most 600 seconds each, and a two-second idle window. The coordinator has a 30-minute timeout; no serving endpoint is deployed. Allow up to $3 for initial image/setup and this baseline within the overall $30 budget; runtime limits bound work but are not a provider-enforced dollar cap. Check billed usage before another run.
+Only prompts reach the GPU. The job generates one greedy completion per problem, first for one canary and then for the remaining nine. Incorrect model answers are legitimate baseline observations and do not block the remaining samples. Generated programs never execute directly on the GPU worker or the host computer: cloud evaluation uses Modal Sandboxes, and local replay uses restricted Docker containers. Model weights download during CPU image preparation. The GPU function uses one A100 80GB, max concurrency one, no automatic retries, two calls of at most 600 seconds each, and a two-second idle window. The coordinator has a 30-minute timeout; no serving endpoint is deployed. Allow up to $3 for initial image/setup and this baseline within the overall $30 budget; runtime limits bound work but are not a provider-enforced dollar cap. Check billed usage before another run.
 
 The local launch manifest records the Modal app/call IDs. Intermediate and final reports persist in the `coding-post-training-results` Modal Volume, and a successful run also saves its report under ignored `runs/`. Reports include the code revision, model/data revisions, sample hash, sandbox IDs, per-case counts, generated code, token counts, latency, package versions, and peak GPU allocation/reservation. No optimizer or adapter is created: this measures the untouched model. Retrieve a report after a local disconnect with:
 
@@ -65,13 +65,42 @@ All six evaluator probes and all ten reference programs passed. The model comple
 
 The run generated 1,375 tokens in about 42.1 seconds, with roughly 49.3 seconds inside GPU function calls and peak allocated GPU memory of 8.16 GB decimal (about 7.60 GiB). These are inference measurements, not training-memory estimates. The active GPU-function resource estimate is about $0.037; it excludes image builds, startup/idle time, evaluator sandboxes, storage, and the unsuccessful initial image build, so it is not the final bill.
 
-The next teaching step is to distinguish output-format compliance from functional correctness. Any future diagnostic that extracts fenced code must be labeled separately and preserve this original result. Do not silently change the reward contract or call this a post-training result.
+This original report is preserved unchanged. The separately versioned replay below distinguishes output-format compliance from functional correctness; neither report is a post-training result.
+
+### Local replay with evaluator v2
+
+At the user's request, `python-output-v2` accepts raw Python unchanged or one complete, lowercase `python` Markdown code block spanning the entire response (surrounding whitespace allowed). It removes only the two fence lines, without rewriting code. Empty responses, other fence labels, unlabeled fences, multiple/nested blocks, surrounding explanations, malformed fences, and invalid Python are rejected before execution. The prompt still requests raw Python, and compliance with that preference is measured separately.
+
+Re-evaluating the exact saved responses gave:
+
+| Measure | Result |
+| --- | ---: |
+| Original strict end-to-end accuracy | 0/10 |
+| Raw-format compliance | 0/10 |
+| Functional accuracy after extraction | **10/10** |
+| Individual cases passed after extraction | **66/66** |
+| Reference solutions revalidated locally | 10/10 |
+| Additional generations / Modal calls | 0 / 0 |
+
+The [v2 replay report](reports/baseline-2026-10-08-replay-v2.json) records the original response-file hash, per-response hashes, evaluator source hashes, immutable Docker image identity, and case counts. The original responses, tests, model weights, and baseline report were not changed. These ten development problems are a pipeline smoke test, so 100% does not establish general coding performance. Their high success rate suggests we should inspect task difficulty before investing in RL; greedy success alone does not establish whether sampled GRPO groups would have reward variance.
+
+To replay a saved run locally, with Docker running:
+
+```sh
+docker pull python:3.12.10-slim-bookworm
+RUN_DOCKER_TESTS=1 uv run python -m unittest discover -s tests -v
+uv run python reevaluate.py \
+  --run runs/baseline-20261008T222157Z-62ae49b8.json \
+  --output runs/replay-v2.json
+```
+
+The replay refuses to overwrite an existing report or a source artifact, checks that the responses match the prepared sample, revalidates references, and records partial progress if infrastructure fails. It does not import the Modal app, load a model, or make cloud calls. Each Docker container runs as a non-root user with no network, host mounts, or forwarded credentials; a read-only filesystem, capped temporary filesystem, and memory/process/CPU/time/output limits bound execution. Containers are removed after each candidate, including failures. The local and Modal paths share extraction, the execution driver/supervisor, and trusted result comparison; only the isolation backend differs. Future cloud runs also report evaluator version and raw-format compliance.
 
 ## 2. Problem definition
 
 **Input:** an English specification, a Python function signature, and any public examples supplied with the problem.
 
-**Output:** Python source defining the required function. Imports from an approved standard-library subset and helper functions are allowed. No explanation, Markdown fences, interactive input, file access, network access, or test-running code is requested.
+**Output:** Python source defining the required function. Imports from an approved standard-library subset and helper functions are allowed. The prompt requests raw code without explanations or Markdown. Evaluator v2 additionally accepts one complete Python code block, while tracking raw-format compliance separately. Interactive input, file access, network access, and test-running code are outside the task.
 
 **Success:** the response finishes within the generation limit, satisfies the output contract, and passes every private test case for that problem within execution limits. Passing finite tests is evidence of correctness, not a proof.
 
@@ -167,7 +196,7 @@ The evaluator is part of the experiment, not an incidental helper. A flawed veri
 
 Proposed execution design:
 
-1. Parse the output with a fixed rule: accept raw Python source only. Record malformed output separately. Do not repair model code before scoring.
+1. Parse with the versioned `python-output-v2` rule above: accept raw Python or one complete Python Markdown block. Remove fence delimiters only, report raw-format compliance separately, and reject unsupported formats. Do not repair model code before scoring. The original baseline used the earlier raw-only rule and remains unchanged.
 2. Run each candidate in a fresh isolated CPU sandbox with network disabled, no secrets, no dataset/checkpoint mounts, and bounded resources. Python `exec`, an AST check, or a subprocess alone is not the isolation boundary. [Modal Sandboxes](https://modal.com/docs/guide/sandboxes)
 3. Keep private assertions, expected outputs, and scoring in a trusted controller outside the candidate's process. Send test inputs through a bounded JSON protocol and compare returned values in the controller. Do not deserialize candidate-controlled pickle objects.
 4. Start with a proposed 1 CPU, 512 MiB memory, 2-second limit per call, 10-second total execution limit per candidate, and 64 KiB output cap. Measure sandbox startup separately. Calibrate these limits on reference solutions, then freeze them for all methods.

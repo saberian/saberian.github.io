@@ -8,7 +8,7 @@ from pathlib import Path
 
 import modal
 from data import MODEL, MODEL_REVISION, DATA_REVISION, ROOT, digest, messages
-from evaluator import evaluate
+from evaluator import EVALUATOR_VERSION, evaluate
 
 app = modal.App("coding-post-training-baseline")
 RUNTIME_MODULES = ("data", "evaluator")
@@ -94,6 +94,7 @@ def baseline(artifact, revision, run_id):
     assert artifact["revision"] == DATA_REVISION
     assert all(p["split"] == "development_smoke" for p in problems)
     report = {"run_id": run_id, "revision": revision, "model": MODEL, "model_revision": MODEL_REVISION,
+        "evaluator_version": EVALUATOR_VERSION,
         "dataset_revision": DATA_REVISION, "sample_sha256": artifact["sample_sha256"],
         "status": "running", "smoke_checks": [], "reference_checks": [], "results": [], "gpu_batches": []}
     dest = Path("/results") / f"{run_id}.json"
@@ -162,6 +163,8 @@ def baseline(artifact, revision, run_id):
             print(f"Completed and saved {len(report['results'])}/10 baseline problems", flush=True)
         report["status"] = "completed"
         report["greedy_accuracy"] = sum(r["reward"] for r in report["results"]) / 10
+        report["functional_accuracy_after_extraction"] = report["greedy_accuracy"]
+        report["raw_format_compliance"] = sum(r.get("raw_format_compliant", False) for r in report["results"]) / 10
     except Exception as exc:
         report["status"] = "failed"
         report["error"] = f"{type(exc).__name__}: {exc}"
