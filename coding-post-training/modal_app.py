@@ -286,13 +286,40 @@ _sft_loaded = None
     timeout=240, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
     volumes={"/results":results_volume})
 def sft_generate(problems,run_id,batch_index):
+    validate_sft_run(run_id)
+    if not 0 <= batch_index < 5:
+        raise ValueError("Invalid evaluation batch")
+    return generate_adapter_batch(problems,run_id,Path('/results')/run_id/f'eval-{batch_index}.json')
+
+
+def training_eval_destination(evaluation_id,batch_index):
+    import re
+    if not re.fullmatch(r"train-eval-[0-9TZ]+-[0-9a-f]{8}",evaluation_id) or not 0 <= batch_index < 8:
+        raise ValueError("Invalid training-evaluation run or batch")
+    return Path('/results')/evaluation_id/f'batch-{batch_index}.json'
+
+
+@app.function(image=training_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
+    timeout=240, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results":results_volume})
+def sft_training_generate(problems,source_run_id,evaluation_id,batch_index,adapter_files):
+    validate_sft_run(source_run_id)
+    destination=training_eval_destination(evaluation_id,batch_index)
+    results_volume.reload()
+    if destination.exists():
+        raise ValueError("Refusing to overwrite an existing evaluation batch")
+    from sft_core import file_manifest
+    if file_manifest(Path('/results')/source_run_id/'train/adapter')!=adapter_files:
+        raise ValueError("Adapter files differ from the recorded SFT checkpoint")
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    return generate_adapter_batch(problems,source_run_id,destination)
+
+
+def generate_adapter_batch(problems,run_id,destination):
     import torch
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer
     global _sft_loaded
-    validate_sft_run(run_id)
-    if not 0 <= batch_index < 5:
-        raise ValueError("Invalid evaluation batch")
     if _sft_loaded is None or _sft_loaded[0] != run_id:
         results_volume.reload()
         tokenizer = AutoTokenizer.from_pretrained('/model',local_files_only=True)
@@ -301,7 +328,6 @@ def sft_generate(problems,run_id,batch_index):
         model = PeftModel.from_pretrained(base, f'/results/{run_id}/train/adapter',is_trainable=False).eval()
         _sft_loaded = run_id,tokenizer,model
     def checkpoint(outputs):
-        dest = Path('/results')/run_id/f'eval-{batch_index}.json'
-        tmp = dest.with_suffix('.tmp');tmp.write_text(json.dumps({'outputs':outputs}));tmp.replace(dest)
+        tmp = destination.with_suffix('.tmp');tmp.write_text(json.dumps({'outputs':outputs}));tmp.replace(destination)
         results_volume.commit()
     return generate_batch(problems,samples=1,checkpoint=checkpoint,model_pair=_sft_loaded[1:])

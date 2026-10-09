@@ -814,3 +814,21 @@ Next, review one regression and the training loss curve before changing the
 recipe. Any subsequent run should change a stated hypothesis (for example, data
 coverage or update strength) and repeat the same development comparison. The
 final-test pool remains reserved.
+
+### Training accuracy versus training loss
+
+`uv run --extra inference --extra training python training_accuracy.py` evaluates
+the saved SFT adapter on the exact 64 training prompts. It performs no optimization.
+Only prompt fields reach the inference worker; reference solutions and cases stay
+with the local evaluator. The adapter's content hashes are verified, evaluation
+outputs use a separate run directory, and the same greedy decoding/512-token cap
+and Docker evaluator are retained. One end-to-end canary precedes the remaining
+63 answers. Commit/push before a paid run; the application allowance is $2.
+
+This metric differs from reference correctness (all 64 reference solutions passed
+514 supplied cases, twice) and from teacher-forced training NLL. NLL evaluates the
+probability of reference tokens when earlier reference tokens are supplied.
+Generated-code accuracy requires the model to produce the whole answer from the
+problem alone, then pass the tests. The previous full-training-set NLL bars
+(0.933 before / 0.299 after SFT) were never an accuracy measurement. Starting-model
+generated accuracy on these 64 training prompts has not been measured.
