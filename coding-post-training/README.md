@@ -523,3 +523,60 @@ success probability of one or zero. Only alignment-pool examples may become
 DPO/PPO/GRPO training data; development examples remain development-only. Audit
 apparent failures before using their labels, and retain format and truncation
 metrics separately from functional correctness.
+
+### Completed discovery run — October 9, 2026
+
+Run [`discovery-20261009T070510Z-3bb672d3`](https://modal.com/apps/cpbookbuilder/main/ap-zygxSP0zswo38PEDL1UOe8)
+used committed revision `3bb672d3`, 100 audited problems, and 400 stochastic
+completions. All 100 reference programs passed their 822 provided cases before
+inference. The [aggregate report](reports/discovery-2026-10-09.json) preserves the
+frozen evaluation result and provenance; full answers remain in ignored `runs/`.
+
+| Passing answers per problem | Problems |
+| --- | ---: |
+| 4 / 4 | 83 |
+| 1–3 / 4 | 8 |
+| 0 / 4 | 9 |
+
+Overall, **349/400 answers passed (87.25%)**. The broad sample scored 189/200
+(94.5%); the additional medium/hard sample scored 160/200 (80%). These are
+exploratory sampled-answer scores, not greedy or held-out final-test accuracy.
+There were 39 wrong answers, four execution errors, and eight truncated answers.
+All eight truncations came from two problems and count as failures under the
+predeclared 512-token budget; they do not establish inability to solve those tasks.
+Raw-source format compliance remained 0%; the evaluator accepts complete Python
+fences without changing their enclosed code.
+
+Two of the eight mixed groups belong to the alignment pool:
+
+| Candidate | Passing answers | Observed failure |
+| --- | ---: | --- |
+| `Prefill_19551_I`: minimum palindrome deletions | 2 / 4 | Incorrect greedy logic instead of minimum-deletion dynamic programming |
+| `Prefill_35466_I`: subarray sum that is a multiple of k | 1 / 4 | For k=0, looking only for a zero element misses multi-element zero-sum subarrays |
+
+An [independent local check](reports/discovery-2026-10-09-independent-checks.json)
+used eight additional cases per problem, with exhaustive small-input oracles.
+The same two palindrome answers and one subarray answer passed all additional
+cases. No new model calls were needed. The other mixed groups comprise five
+SFT-pool problems and one development problem; preserve those assignments.
+
+These give us real contrasting answers for DPO and nonconstant group rewards for
+GRPO. For the palindrome group, rewards `[0, 1, 0, 1]` have mean 0.5: correct
+answers are above the group mean and incorrect answers below it. This is evidence
+of useful training signal, not yet evidence that a trained model will generalize.
+The next learning step is to inspect the DP and greedy answers, then prepare the
+small SFT pilot before branching into alignment runs. No training has run yet.
+
+The run generated 55,291 tokens, used about 14.1 minutes inside GPU functions,
+and peaked at 8.05 GiB allocated GPU memory. The application estimate including
+its $0.25 setup reserve was **$0.93**. Modal's billing snapshot at
+2026-10-09 07:25 UTC reported **$0.676345** for this app; reporting may lag final
+metering. The app is stopped with zero tasks, and evaluation containers were
+removed. Unit/contract checks and real Docker isolation checks passed (19 tests
+across the validation runs).
+
+Keep the original score unchanged while investigating data quality. In particular,
+`Leetcode_41194_I` describes three-field operations but illustrates a two-field
+deletion, and `Prefill_23088_I` does not explicitly state the replacement-case
+convention. Those need specification review before becoming training feedback.
+The two alignment candidates above have clearer, independently confirmed failures.
