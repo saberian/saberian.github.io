@@ -50,7 +50,7 @@ class TrainingAccuracyContracts(unittest.TestCase):
 
     def test_every_planned_batch_is_accepted_including_tail(self):
         from data import evaluation_batches
-        for split,n in [('train',64),('test',300)]:
+        for split,n in [('train',64),('test',300),('validation',32)]:
             batches=evaluation_batches(list(range(n)))
             self.assertEqual([x for batch in batches for x in batch],list(range(n)))
             for i,batch in enumerate(batches):
@@ -75,3 +75,13 @@ class TrainingAccuracyContracts(unittest.TestCase):
             with self.assertRaises(ValueError):resume_report(bad,expected,ps)
         bad=copy.deepcopy(old);bad['model_revision']='changed'
         with self.assertRaises(ValueError):resume_report(bad,expected,ps)
+
+    def test_adapter_stages_are_separate_and_scope_is_validation_only(self):
+        from modal_app import adapter_destination
+        from training_accuracy import main
+        run='sft-20261009T160000Z-1234abcd'
+        self.assertNotEqual(adapter_destination(run,'train'),adapter_destination(run,'overfit'))
+        self.assertEqual(str(adapter_destination(run,'overfit')),f'/results/{run}/overfit/adapter')
+        with self.assertRaises(ValueError):adapter_destination(run,'../train')
+        for split in ('train','test'):
+            with self.assertRaises(ValueError):main('sft',split,checkpoint='overfit')

@@ -1056,3 +1056,17 @@ model. No development/test evaluation was performed for this deliberately overfi
 checkpoint. The earlier four-update pilot and this diagnostic differ in subset,
 number of epochs and effective batch size, so this is not an isolated causal test
 of update count alone. Keep this checkpoint separate from any model selected for RL.
+
+At the user's request, evaluate this diagnostic checkpoint on **only the existing
+32-problem development/validation set**, with no new 300-problem test evaluation:
+
+```sh
+uv run --extra inference --extra training python training_accuracy.py --policy sft --split validation --checkpoint overfit
+```
+
+The shared inference runner verifies the saved overfit adapter's hashes, keeps its
+cache separate from the first SFT adapter, and requires the exact frozen validation
+IDs. It retains greedy 512-token decoding and the existing evaluator, with a $2
+allowance. No optimization takes place; compare to the saved original-model 29/32
+baseline and the first pilot's 27/32. Remote persistence is once per completed
+batch for this diagnostic adapter.

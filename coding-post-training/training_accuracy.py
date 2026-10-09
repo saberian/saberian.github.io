@@ -38,16 +38,23 @@ def resume_report(previous, expected, problems):
     return previous
 
 
-def main(policy="sft", split="train", resume=None):
+def main(policy="sft", split="train", resume=None, checkpoint="pilot"):
     if policy not in ("base","sft"):
         raise ValueError("Unknown policy")
+    if checkpoint not in ('pilot','overfit') or (checkpoint=='overfit' and (policy!='sft' or split!='validation')):
+        raise ValueError('The overfit checkpoint is evaluated only on validation')
     revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     if subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip() or revision!=subprocess.check_output(['git','rev-parse','@{upstream}'],cwd=ROOT,text=True).strip():
         raise RuntimeError('Commit and push the exact runner before paid inference')
-    records,_,manifest,baseline=load_data()
+    records,development,manifest,baseline=load_data()
     source=json.loads((ROOT/'reports/sft-pilot-2026-10-09.json').read_text())
     if source['sample_sha256']!=manifest['sample_sha256'] or source['training_export_sha256']!=manifest['training_export_sha256'] or source['status']!='completed' or source['model_revision']!=baseline['model_revision']:
         raise ValueError('SFT checkpoint/data provenance mismatch')
+    if checkpoint=='overfit':
+        source=json.loads((ROOT/'reports/sft-overfit-15-2026-10-09.json').read_text())
+        subset=json.loads((ROOT/'manifests/overfit-15-v1.json').read_text())
+        if source['status']!='completed' or source['manifest_sha256']!=digest(subset) or source['model_revision']!=baseline['model_revision'] or source['decoding']!=baseline['decoding'] or source['evaluator_version']!=EVALUATOR_VERSION:
+            raise ValueError('Overfit checkpoint provenance mismatch')
     if policy == 'sft' and file_manifest(ROOT/source['training']['local_adapter_path'])!=source['training']['adapter_files']:
         raise ValueError('Local adapter files differ from recorded checkpoint')
     problems=training_problems(json.loads((ROOT/'data/sft-pilot-v1.json').read_text()),records)
@@ -61,6 +68,10 @@ def main(policy="sft", split="train", resume=None):
         validate_test(problems,pools,pilot)
         if digest(problems)!=test_manifest['sample_sha256'] or digest(pools)!=test_manifest['split_manifest_sha256'] or artifact['reference_runtime']!=baseline['reference_runtime']:
             raise ValueError('Frozen test provenance mismatch')
+    elif split=='validation':
+        problems=development
+        if len(problems)!=32 or digest(problems)!=baseline['development_sha256']:
+            raise ValueError('Expected the frozen 32 validation problems')
     elif split != 'train':raise ValueError('Unknown split')
     n=len(problems)
     budget=8.0 if split=='test' else 2.0
@@ -69,7 +80,8 @@ def main(policy="sft", split="train", resume=None):
     report={'run_id':run_id,'revision':revision,'status':'running','policy':policy,'split':split,'source_sft_run_id':source['run_id'] if policy=='sft' else None,
         'model':source['model'],'model_revision':source['model_revision'],
         'sample_sha256':manifest['sample_sha256'],'evaluation_problems_sha256':digest(problems),
-        'training_export_sha256':manifest['training_export_sha256'],
+        'training_export_sha256':source.get('training_export_sha256'),
+        'checkpoint':checkpoint,'checkpoint_records_sha256':source.get('records_sha256'),
         'adapter_files':source['training']['adapter_files'] if policy=='sft' else None,'evaluator_version':EVALUATOR_VERSION,
         'decoding':source['decoding'],'reference_runtime':baseline['reference_runtime'],
         'budget_usd':budget,'setup_reserve_usd':0.25,'resource_usd_per_second':RESOURCE_USD_PER_SECOND,
@@ -108,7 +120,8 @@ def main(policy="sft", split="train", resume=None):
                 try:
                     prompts=[{k:p[k] for k in ('id','question','signature')} for p in batch]
                     generated=(base_training_generate.remote(prompts,run_id,i) if policy=='base' else
-                        sft_training_generate.remote(prompts,source['run_id'],run_id,i,source['training']['adapter_files']))
+                        sft_training_generate.remote(prompts,source['run_id'],run_id,i,source['training']['adapter_files'],
+                            'overfit' if checkpoint=='overfit' else 'train'))
                 finally:
                     report['charged_wall_seconds']+=time.monotonic()-start+2
                     report['estimated_usd_with_setup_reserve']=0.25+report['charged_wall_seconds']*RESOURCE_USD_PER_SECOND
@@ -137,7 +150,8 @@ def main(policy="sft", split="train", resume=None):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--policy',choices=['base','sft'],default='sft')
-    parser.add_argument('--split',choices=['train','test'],default='train')
+    parser.add_argument('--split',choices=['train','test','validation'],default='train')
+    parser.add_argument('--checkpoint',choices=['pilot','overfit'],default='pilot')
     parser.add_argument('--resume')
     args=parser.parse_args()
-    main(args.policy,args.split,args.resume)
+    main(args.policy,args.split,args.resume,args.checkpoint)

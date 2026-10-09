@@ -295,8 +295,9 @@ def sft_generate(problems,run_id,batch_index):
 def training_eval_destination(evaluation_id,batch_index):
     import re
     from data import evaluation_batches
-    limit = len(evaluation_batches(list(range(300 if evaluation_id.startswith("test-eval-") else 64))))
-    if not re.fullmatch(r"(?:train|test)-eval-[0-9TZ]+-[0-9a-f]{8}",evaluation_id) or not 0 <= batch_index < limit:
+    count = 300 if evaluation_id.startswith("test-eval-") else 32 if evaluation_id.startswith("validation-eval-") else 64
+    limit = len(evaluation_batches(list(range(count))))
+    if not re.fullmatch(r"(?:train|test|validation)-eval-[0-9TZ]+-[0-9a-f]{8}",evaluation_id) or not 0 <= batch_index < limit:
         raise ValueError("Invalid training-evaluation run or batch")
     return Path('/results')/evaluation_id/f'batch-{batch_index}.json'
 
@@ -304,35 +305,47 @@ def training_eval_destination(evaluation_id,batch_index):
 @app.function(image=training_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
     timeout=240, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
     volumes={"/results":results_volume})
-def sft_training_generate(problems,source_run_id,evaluation_id,batch_index,adapter_files):
+def sft_training_generate(problems,source_run_id,evaluation_id,batch_index,adapter_files,stage='train'):
     validate_sft_run(source_run_id)
     destination=training_eval_destination(evaluation_id,batch_index)
     results_volume.reload()
     if destination.exists():
         raise ValueError("Refusing to overwrite an existing evaluation batch")
     from sft_core import file_manifest
-    if file_manifest(Path('/results')/source_run_id/'train/adapter')!=adapter_files:
+    if file_manifest(adapter_destination(source_run_id,stage))!=adapter_files:
         raise ValueError("Adapter files differ from the recorded SFT checkpoint")
     destination.parent.mkdir(parents=True,exist_ok=True)
-    return generate_adapter_batch(problems,source_run_id,destination)
+    return generate_adapter_batch(problems,source_run_id,destination,stage=stage)
 
 
-def generate_adapter_batch(problems,run_id,destination):
+def adapter_destination(run_id,stage):
+    validate_sft_run(run_id)
+    if stage not in ('train','overfit'):
+        raise ValueError('Unknown adapter stage')
+    return Path('/results')/run_id/stage/'adapter'
+
+
+def generate_adapter_batch(problems,run_id,destination,stage='train'):
     import torch
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer
     global _sft_loaded
-    if _sft_loaded is None or _sft_loaded[0] != run_id:
+    adapter = adapter_destination(run_id,stage)
+    cache_key = (run_id,stage)
+    if _sft_loaded is None or _sft_loaded[0] != cache_key:
         results_volume.reload()
         tokenizer = AutoTokenizer.from_pretrained('/model',local_files_only=True)
         base = AutoModelForCausalLM.from_pretrained('/model',local_files_only=True,
             dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda')
-        model = PeftModel.from_pretrained(base, f'/results/{run_id}/train/adapter',is_trainable=False).eval()
-        _sft_loaded = run_id,tokenizer,model
+        model = PeftModel.from_pretrained(base, adapter,is_trainable=False).eval()
+        _sft_loaded = cache_key,tokenizer,model
     def checkpoint(outputs):
         tmp = destination.with_suffix('.tmp');tmp.write_text(json.dumps({'outputs':outputs}));tmp.replace(destination)
         results_volume.commit()
-    return generate_batch(problems,samples=1,checkpoint=checkpoint,model_pair=_sft_loaded[1:])
+    result = generate_batch(problems,samples=1,checkpoint=checkpoint if stage=='train' else None,model_pair=_sft_loaded[1:])
+    if stage=='overfit':
+        checkpoint(result['outputs'])
+    return result
 
 
 @app.function(image=gpu_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
