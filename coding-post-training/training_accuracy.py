@@ -52,6 +52,14 @@ def recover_saved_batches(report, problems, read_batch):
         report['gpu_batches'].append({'recovered_from_volume':True,'batch_index':index})
 
 
+def read_saved_batch(volume, run_id, index):
+    try:
+        return json.loads(b''.join(volume.read_file(f'{run_id}/batch-{index}.json')))
+    except FileNotFoundError:
+        # Volume.read_file maps a missing remote file to the Python filesystem exception.
+        return None
+
+
 def main(policy="sft", split="train", resume=None, checkpoint="pilot"):
     if policy not in ("base","sft"):
         raise ValueError("Unknown policy")
@@ -123,13 +131,7 @@ def main(policy="sft", split="train", resume=None, checkpoint="pilot"):
         import modal
         from modal_app import app,sft_training_generate,base_training_generate,results_volume
         if resume:
-            from modal.exception import NotFoundError
-            def read_batch(index):
-                try:
-                    return json.loads(b''.join(results_volume.read_file(f'{run_id}/batch-{index}.json')))
-                except NotFoundError:
-                    return None
-            recover_saved_batches(report,problems,read_batch)
+            recover_saved_batches(report,problems,lambda index:read_saved_batch(results_volume,run_id,index))
             save()
         with modal.enable_output(),app.run():
             report['app_id']=app.app_id;save()

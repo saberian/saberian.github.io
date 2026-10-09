@@ -96,3 +96,15 @@ class TrainingAccuracyContracts(unittest.TestCase):
         self.assertEqual(len(report['gpu_batches']),3)
         self.assertTrue(report['gpu_batches'][2]['recovered_from_volume'])
         with self.assertRaises(ValueError):recover_saved_batches(report,ps,lambda i:saved)
+
+    def test_missing_volume_checkpoint_ends_recovery_without_gpu_retry(self):
+        from unittest.mock import Mock
+        from training_accuracy import read_saved_batch
+        volume=Mock()
+        volume.read_file.side_effect=FileNotFoundError('No next checkpoint')
+        self.assertIsNone(read_saved_batch(volume,'run',3))
+        volume.read_file.side_effect=None
+        volume.read_file.return_value=iter([b'{"outputs": []}'])
+        self.assertEqual(read_saved_batch(volume,'run',3),{'outputs':[]})
+        volume.read_file.side_effect=ConnectionError('offline')
+        with self.assertRaises(ConnectionError):read_saved_batch(volume,'run',3)
