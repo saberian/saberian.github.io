@@ -642,3 +642,40 @@ to regrade saved outputs. Freeze files refuse overwrite with changed content.
 Before training, inspect one JSONL row and explain which tokens contribute to
 loss. The next exercise will be a small adapter SFT run, followed by the **same**
 development evaluation to check both improvements and regressions.
+
+### Pre-SFT measurement (2026-10-09)
+
+The [frozen baseline report](reports/sft-pilot-baseline-2026-10-09.json), run from
+`5e64befe` on all 32 development problems, records **29/32 passing (90.625%)**:
+29 passed, two wrong answers, and one execution error. The evaluator credited
+231/240 cases; an execution error aborts a problem's batch and credits zero cases
+for that problem, so this case count is not an independent case-by-case accuracy.
+All responses completed within the token limit. All 32 used Markdown fences,
+which the evaluator accepted; raw-format compliance remains a separate 0/32.
+
+Output review matters as much as the aggregate score:
+
+- `Filter_27332_I`: a missing regex boundary accepts the first five digits of a
+  six-digit number. This is a clear implementation error.
+- `Filter_39729_I`: Qwen lowercases characters; tests preserve their case. The
+  question's instruction to ignore case sensitivity makes this ambiguous.
+- `Filter_85258_I`: Qwen raises on an empty input list; the test expects `[]`, but
+  the question does not specify behavior for invalid indices.
+
+Keep the frozen score, but do not interpret the latter two failures as reliable
+training opportunities. They remain development examples, never training rows.
+Any future clarification needs an explicitly versioned prompt/test contract and
+matching before/after evaluation; do not silently revise labels after seeing scores.
+The earlier manual audit reduced problems but did not eliminate specification
+ambiguity. This is a useful reason to inspect outputs, not just trust an accuracy
+number.
+
+The 64 SFT rows contain **7,452 supervised tokens**, with targets ranging from
+37 to 237 tokens. The 96 problems have 754 supplied test cases. All 25 tests passed
+in the validation run including real Docker isolation; actual pinned-tokenizer
+checks also verified all 64 label masks, prompt prefixes, lengths, and end tokens.
+The baseline generated 3,393 tokens, spent about 135.5 seconds inside GPU functions,
+and peaked at 7.69 GiB allocated GPU memory. Modal reported **$0.09982899** at
+07:57 UTC (billing may lag); the conservative estimate including its setup reserve
+was **$0.37** against the $1.50 allowance. The app stopped with zero tasks and no
+evaluation containers remained. No SFT optimization has run yet.
