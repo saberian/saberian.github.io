@@ -1,0 +1,768 @@
+{
+  "run_id": "train-eval-20261009T180005Z-1484fd25",
+  "revision": "1484fd25a126d731537edab1294f3b1376351e22",
+  "status": "completed",
+  "source_sft_run_id": "sft-20261009T155203Z-8ad64017",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "sample_sha256": "4fb53d6d7ebf36778fc5c23f57c5ac6036357c9eabb02c58f5341bf1e4d657ff",
+  "training_problems_sha256": "9d0f91f1cb5090090e30a5d55e54700aecf3f68a683353558694131042eeeaed",
+  "training_export_sha256": "147fb8800561213c383346af8b3db8edd898131180cdfcbab4b451bb68f5d6b7",
+  "adapter_files": {
+    "README.md": {
+      "sha256": "ab153471c6c0ce8eb92782cf74053ecdda24294809ac5bbdcef8705c84ad24ea",
+      "bytes": 5166
+    },
+    "adapter_config.json": {
+      "sha256": "8825816d12b6dc16a3ac8e6d1eda66f0eafe72a9f16bfcf1e5491f0b518d2ba3",
+      "bytes": 1220
+    },
+    "adapter_model.safetensors": {
+      "sha256": "e9d423228810165df3fdb2297269ac02ee00f66a976c9b423e3e61708f74e46a",
+      "bytes": 132187888
+    }
+  },
+  "evaluator_version": "python-output-v2",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 512
+  },
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "budget_usd": 2.0,
+  "setup_reserve_usd": 0.25,
+  "resource_usd_per_second": 0.00075572,
+  "charged_wall_seconds": 556.5283772079856,
+  "gpu_batches": [
+    {
+      "function_seconds": 7.979802253000003,
+      "load_seconds": 0.004161414000009245,
+      "peak_allocated_bytes": 8370055168,
+      "peak_reserved_bytes": 8489271296,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 73.04720791,
+      "load_seconds": 0.0010947929999929329,
+      "peak_allocated_bytes": 8386165760,
+      "peak_reserved_bytes": 8510242816,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 47.60546364799998,
+      "load_seconds": 0.0010710629999834964,
+      "peak_allocated_bytes": 8383299584,
+      "peak_reserved_bytes": 8510242816,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 49.635238571,
+      "load_seconds": 0.0009773250000080225,
+      "peak_allocated_bytes": 8417046528,
+      "peak_reserved_bytes": 8579448832,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 63.15540322999999,
+      "load_seconds": 0.0009694269999727112,
+      "peak_allocated_bytes": 8363381760,
+      "peak_reserved_bytes": 8579448832,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 44.78267734499997,
+      "load_seconds": 0.0008968219999587745,
+      "peak_allocated_bytes": 8278427136,
+      "peak_reserved_bytes": 8579448832,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 52.06085983700001,
+      "load_seconds": 0.0009311179999826891,
+      "peak_allocated_bytes": 8287699968,
+      "peak_reserved_bytes": 8579448832,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 38.58599729699995,
+      "load_seconds": 0.0008119659999579198,
+      "peak_allocated_bytes": 8329134080,
+      "peak_reserved_bytes": 8579448832,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    }
+  ],
+  "app_id": "ap-4iPTL5uXB7A2mP9SfXc1zz",
+  "estimated_usd_with_setup_reserve": 0.6705796252236189,
+  "summary": {
+    "problems": 64,
+    "passed": 57,
+    "accuracy": 0.890625,
+    "status_counts": {
+      "wrong_answer": 7,
+      "passed": 57
+    },
+    "raw_format_passed": 64,
+    "generated_tokens": 6627,
+    "passed_cases": 496,
+    "total_cases": 514
+  },
+  "results": [
+    {
+      "id": "Algorithm_20361_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 146
+    },
+    {
+      "id": "Algorithm_41202_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 14,
+      "total_cases": 14,
+      "raw_format_compliant": true,
+      "generated_tokens": 256
+    },
+    {
+      "id": "Apps_11888_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 87
+    },
+    {
+      "id": "Apps_14662_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 288
+    },
+    {
+      "id": "Apps_14754_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 137
+    },
+    {
+      "id": "Apps_16553_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 86
+    },
+    {
+      "id": "Apps_17117_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 55
+    },
+    {
+      "id": "Apps_2178_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 234
+    },
+    {
+      "id": "Apps_3223_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 304
+    },
+    {
+      "id": "Apps_480_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 51
+    },
+    {
+      "id": "Apps_5749_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 210
+    },
+    {
+      "id": "Apps_6492_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 46
+    },
+    {
+      "id": "Apps_7871_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 37
+    },
+    {
+      "id": "Apps_8123_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 111
+    },
+    {
+      "id": "Apps_8631_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 56
+    },
+    {
+      "id": "Code_Contests_35635_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 70
+    },
+    {
+      "id": "Code_Contests_40198_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 88
+    },
+    {
+      "id": "Codeforces_00027181_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 105
+    },
+    {
+      "id": "Codeforces_10427_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 89
+    },
+    {
+      "id": "Codeforces_14239_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 61
+    },
+    {
+      "id": "Data_Structure_41652_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 143
+    },
+    {
+      "id": "Evol_1469_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 114
+    },
+    {
+      "id": "Evol_5299_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 50
+    },
+    {
+      "id": "Evol_9946_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 4,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 196
+    },
+    {
+      "id": "Filter_113_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 53
+    },
+    {
+      "id": "Filter_13046_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 105
+    },
+    {
+      "id": "Filter_26162_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Filter_3471_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 49
+    },
+    {
+      "id": "Filter_37612_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 98
+    },
+    {
+      "id": "Filter_39172_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 77
+    },
+    {
+      "id": "Filter_47535_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 266
+    },
+    {
+      "id": "Filter_48511_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 16,
+      "total_cases": 16,
+      "raw_format_compliant": true,
+      "generated_tokens": 181
+    },
+    {
+      "id": "Filter_52882_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 98
+    },
+    {
+      "id": "Filter_56625_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 50
+    },
+    {
+      "id": "Filter_58003_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 231
+    },
+    {
+      "id": "Filter_6746_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 140
+    },
+    {
+      "id": "Filter_67993_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 4,
+      "total_cases": 4,
+      "raw_format_compliant": true,
+      "generated_tokens": 24
+    },
+    {
+      "id": "Filter_68073_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 68
+    },
+    {
+      "id": "Filter_68887_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 83
+    },
+    {
+      "id": "Prefill_10912_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 7,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 70
+    },
+    {
+      "id": "Prefill_10947_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Prefill_11984_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 140
+    },
+    {
+      "id": "Prefill_15989_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 61
+    },
+    {
+      "id": "Prefill_16125_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 36
+    },
+    {
+      "id": "Prefill_21426_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 44
+    },
+    {
+      "id": "Prefill_23493_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 34
+    },
+    {
+      "id": "Prefill_23965_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 124
+    },
+    {
+      "id": "Prefill_28477_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 93
+    },
+    {
+      "id": "Prefill_31266_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 172
+    },
+    {
+      "id": "Prefill_34153_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 16
+    },
+    {
+      "id": "Prefill_3467_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 82
+    },
+    {
+      "id": "Prefill_35390_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 84
+    },
+    {
+      "id": "Prefill_38350_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 65
+    },
+    {
+      "id": "Prefill_38802_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 6,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 176
+    },
+    {
+      "id": "Prefill_42928_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 133
+    },
+    {
+      "id": "Prefill_7450_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 3,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 73
+    },
+    {
+      "id": "Prefill_7890_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 15
+    },
+    {
+      "id": "Prefill_8828_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 97
+    },
+    {
+      "id": "Taco_18514_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 79
+    },
+    {
+      "id": "Taco_28221_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Taco_36012_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 41
+    },
+    {
+      "id": "Taco_41605_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 117
+    },
+    {
+      "id": "Taco_50585_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 58
+    },
+    {
+      "id": "Taco_66631_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 46
+    }
+  ],
+  "billing_snapshot": {
+    "as_of": "2026-10-09T18:09:50.759350+00:00",
+    "app_id": "ap-4iPTL5uXB7A2mP9SfXc1zz",
+    "rows_present": 1,
+    "reported_usd": 0.28587341,
+    "note": "Reporting may lag; no rows does not mean zero cost."
+  },
+  "cleanup": {
+    "app": {
+      "app_id": "ap-4iPTL5uXB7A2mP9SfXc1zz",
+      "description": "coding-post-training-baseline",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-10-09 11:00:07-07:00",
+      "stopped_at": "2026-10-09 11:09:14-07:00"
+    },
+    "evaluation_containers_remaining": 0
+  },
+  "interpretation": "Generated-code resubstitution accuracy on the same 64 problems used for SFT, not generalization accuracy or token NLL. Starting-model generated accuracy on these 64 was not measured. No training was performed in this run."
+}

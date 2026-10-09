@@ -832,3 +832,109 @@ Generated-code accuracy requires the model to produce the whole answer from the
 problem alone, then pass the tests. The previous full-training-set NLL bars
 (0.933 before / 0.299 after SFT) were never an accuracy measurement. Starting-model
 generated accuracy on these 64 training prompts has not been measured.
+
+### SFT concepts behind this run
+
+Both loss charts use average answer-token negative log likelihood (NLL), in
+**nats** because the logarithm is natural. NLL equals cross-entropy against the
+one-hot reference-token target. A single token assigned probability 0.5 incurs
+about 0.693 nats; probability 0.9 incurs about 0.105. Neither number is an error
+percentage. The four logged points are different accumulated training batches,
+measured before their respective updates. The full-set bars measure all 64
+reference answers before and after SFT. Even a program with mostly likely tokens
+can fail because of one crucial missing import or incorrect condition.
+
+LoRA leaves an existing matrix `W` frozen and learns a low-rank correction:
+
+```text
+Original layer: y = W x
+With LoRA:      y = W x + (alpha / rank) B(Ax)
+Trainable:      A and B
+Frozen:         W
+```
+
+The low-rank constraint applies to the correction, not the original matrix or the
+whole model. Here rank is 16 and alpha is 32, so the correction is scaled by 2.
+This scale is distinct from the optimizer learning rate. In every one of the
+36 transformer blocks, we adapt attention `q_proj`, `k_proj`, `v_proj`, `o_proj`
+and feed-forward `gate_proj`, `up_proj`, `down_proj`. The original projections,
+embeddings, normalization weights, and output head remain frozen. The saved
+adapter has 504 tensors: 36 blocks × 7 projections × two matrices.
+
+For a concrete attention query projection, the original matrix is 4096 × 2560
+(10,485,760 weights). Its LoRA matrices are 16 × 2560 and 4096 × 16: 106,496
+trainable weights. Across all adapted projections there are 33,030,144 trainable
+weights. These added matrices are the **adapter weights**, not a standalone LLM;
+the saved adapter requires the pinned base checkpoint.
+
+QLoRA combines LoRA with a quantized frozen backbone, commonly stored in 4-bit
+NF4. Adapter training remains in higher precision; it does not mean all forward
+or backward arithmetic runs in four bits. Our run used ordinary LoRA with a BF16
+backbone. Quantization primarily reduces backbone storage; activations and
+optimizer state still consume memory. The original QLoRA method also introduced
+double quantization and paged optimizers. [PEFT LoRA documentation](https://huggingface.co/docs/peft/en/conceptual_guides/lora),
+[QLoRA paper](https://arxiv.org/abs/2305.14314).
+
+Teacher forcing supplies the complete prompt and reference answer as inputs.
+A **causal attention mask** prevents each token position from seeing future
+positions, so one forward pass can compute next-token distributions at all
+positions in parallel. A separate **loss mask** excludes prompt and padding
+positions. A backward pass then computes gradients. In our configuration:
+
+```text
+One example: forward → masked loss → backward → accumulate gradients
+Repeat for 16 examples → clip accumulated gradient → one AdamW update → clear gradients
+64 examples → four optimizer updates
+```
+
+The microbatch size is 1; the effective batch size is 16 on one GPU. Accumulation
+lets each microbatch's activation graph be released after backward, rather than
+retaining graphs for all 16 examples. Our loss is the sum of answer-token losses
+divided by the total number of answer tokens across the effective batch. This
+also scales raw gradients by that denominator. A 100-token answer contributes
+ten times as many loss terms as a 10-token answer; this is not an equal-weight
+average of per-response mean losses. Gradient clipping at norm 1 is a separate
+operation, and AdamW further transforms the gradients into parameter updates.
+
+**Intermediate activations** are temporary values produced inside the network,
+such as a layer's input features and attention/MLP outputs. Backpropagation needs
+some of these to calculate derivatives. For `y = W x`, the gradient with respect
+to `W` depends on both the backward signal reaching `y` and the earlier input `x`.
+For LoRA, the gradient for `B` needs its input `Ax`; the gradient for `A` needs `x`
+and the backward signal through `B`. Freezing the backbone does not eliminate
+this computation: gradients must still travel through frozen operations to reach
+trainable adapters in earlier layers. Autograd saves required intermediates;
+gradient checkpointing instead recomputes some of them during backward, trading
+extra computation for memory. [PyTorch activation checkpointing](https://pytorch.org/blog/activation-checkpointing-techniques/).
+
+### Generated training-set accuracy (2026-10-09)
+
+The [inference-only report](reports/sft-training-accuracy-2026-10-09.json) evaluates
+the saved adapter on all 64 SFT training problems: **57/64 pass (89.0625%)**,
+with 496/514 individual cases passing. Seven programs return incorrect answers;
+none fail execution or hit the token cap. All 64 comply with raw-code formatting.
+The model generated 6,627 tokens. No weights were updated.
+
+| Measurement | Result | Meaning |
+| --- | ---: | --- |
+| Reference solutions passing supplied cases | 64/64 | Dataset-target validation |
+| After-SFT reference-token NLL | 0.2986 | Teacher-forced average token loss |
+| After-SFT generated training accuracy | 57/64 (89.0625%) | Performance on problems used in training |
+| After-SFT generated development accuracy | 27/32 (84.375%) | Performance on separate development problems |
+
+These are different measurements. We have not measured starting-model generated
+accuracy on these exact 64 problems, so this new result cannot establish an
+improvement in training-set correctness. The train/development difference alone
+also does not prove overfitting: the task sets and their difficulty mixes differ.
+
+The failed training IDs are `Algorithm_20361_I`, `Apps_16553_I`, `Apps_17117_I`,
+`Evol_9946_I`, `Prefill_10912_I`, `Prefill_38802_I`, and `Prefill_7450_I`. Preserve
+the frozen evaluation instead of changing its labels after observing these answers.
+
+Adapter hashes and exact training membership were verified locally and before
+cloud inference. The new membership/output-directory checks and seven existing
+inference contract checks passed. Modal reported **$0.28587341** at 18:09 UTC
+(reporting may lag); the conservative estimate including setup reserve was
+**$0.67**, within the $2 allowance. The app stopped with zero tasks and no evaluator
+containers remained. Answers remain in the ignored local run file and results
+volume; the aggregate report is committed.
