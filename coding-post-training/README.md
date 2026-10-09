@@ -1052,8 +1052,8 @@ stopped with zero tasks and no evaluator containers remained.
 
 This establishes that the pipeline can memorize the selected training problems and
 change greedy generated correctness. It does not establish a better general coding
-model. No development/test evaluation was performed for this deliberately overfit
-checkpoint. The earlier four-update pilot and this diagnostic differ in subset,
+model. A subsequent validation-only evaluation is recorded below; no new final-test
+evaluation was performed for this deliberately overfit checkpoint. The earlier four-update pilot and this diagnostic differ in subset,
 number of epochs and effective batch size, so this is not an isolated causal test
 of update count alone. Keep this checkpoint separate from any model selected for RL.
 
@@ -1070,3 +1070,27 @@ IDs. It retains greedy 512-token decoding and the existing evaluator, with a $2
 allowance. No optimization takes place; compare to the saved original-model 29/32
 baseline and the first pilot's 27/32. Remote persistence is once per completed
 batch for this diagnostic adapter.
+
+
+#### Validation-only follow-up
+
+The same saved overfit adapter passed **26/32 validation problems (81.25%)**, versus
+29/32 (90.63%) for the original checkpoint and 27/32 (84.38%) for the first SFT
+pilot. It passed 203/240 individual cases and produced 32/32 raw-format compliant
+answers. See `reports/sft-overfit-validation-2026-10-09.json`.
+
+| Set | Original model | 15-example overfit adapter |
+|---|---:|---:|
+| Selected training subset | 8/15 (53.33%) | 15/15 (100%) |
+| Existing validation set | 29/32 (90.63%) | 26/32 (81.25%) |
+
+This demonstrates in-sample memorization without improved validation correctness.
+No new training or 300-problem test evaluation took place. The validation run was
+interrupted by a local DNS error: 10 answers were already local and nine more were
+recovered from remote storage. Only the remaining 13 were generated afterward.
+The runner now handles the Volume API's `FileNotFoundError` for an absent next
+checkpoint, and validates recovered batch IDs before continuing. Nine local
+inference/recovery contract tests and real present/missing Volume reads passed.
+Both GPU apps stopped with zero tasks; no evaluator containers remained. Modal
+reported **$0.23399** for validation, including the interrupted app, at the time
+recorded in the report; provider metering may lag.
