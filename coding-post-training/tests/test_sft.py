@@ -67,6 +67,29 @@ class SFTContracts(unittest.TestCase):
                 self.assertEqual(n,name)
                 self.assertTrue(torch.allclose(p,q,atol=1e-6,rtol=1e-4),n)
 
+    def test_inference_removes_real_accelerate_autocast_wrapper(self):
+        # Isolate Accelerator global precision state from other CPU trainer tests.
+        import subprocess,sys
+        script = """
+import torch
+from accelerate import Accelerator
+from transformers import Qwen3Config,Qwen3ForCausalLM
+from types import SimpleNamespace
+from sft_core import inference_model
+torch.set_num_threads(1);torch.manual_seed(42)
+m=Qwen3ForCausalLM(Qwen3Config(vocab_size=32,hidden_size=16,intermediate_size=32,num_hidden_layers=1,num_attention_heads=2,num_key_value_heads=2,head_dim=8)).eval()
+x=torch.tensor([[3,4,5]])
+with torch.no_grad():expected=m(x).logits.clone()
+a=Accelerator(cpu=True,mixed_precision='bf16')
+m=a.prepare_model(m)
+assert hasattr(m,'_original_forward')
+m=inference_model(SimpleNamespace(model=m,accelerator=a))
+assert not hasattr(m,'_original_forward')
+with torch.no_grad():actual=m(x).logits
+assert torch.equal(expected,actual)
+"""
+        subprocess.run([sys.executable,'-c',script],check=True,capture_output=True,text=True)
+
     def test_real_training_freezes_backbone_and_reload_preserves_logits(self):
         model=self.model()
         original={n:p.detach().clone() for n,p in model.named_parameters()}

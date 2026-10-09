@@ -70,6 +70,13 @@ def make_trainer(model, tokenizer, records, output_dir, *, canary=False, cpu=Fal
         processing_class=tokenizer, data_collator=collator(tokenizer), compute_loss_func=answer_loss)
 
 
+def inference_model(trainer):
+    """Remove training-only autocast hooks before measuring/saving inference behavior."""
+    model = trainer.accelerator.unwrap_model(trainer.model, keep_fp32_wrapper=False)
+    model.gradient_checkpointing_disable()
+    return model.eval()
+
+
 def mean_nll(model, tokenizer, records):
     """Token-weighted reference-answer NLL, measured consistently before/after."""
     import torch
@@ -120,6 +127,7 @@ def train_adapter(records, run_id, stage, volume):
     before = mean_nll(model,tokenizer,chosen)
     trainer = make_trainer(model,tokenizer,chosen,dest/'trainer',canary=stage=='canary')
     output = trainer.train()
+    model = inference_model(trainer)
     after = mean_nll(model,tokenizer,chosen)
     if not torch.isfinite(torch.tensor([before,after])).all():
         raise ValueError('Nonfinite reference loss')
@@ -134,7 +142,7 @@ def train_adapter(records, run_id, stage, volume):
     model.eval()
     with torch.no_grad():
         expected = model(input_ids=probe,use_cache=False).logits.float().cpu()
-    report = {'stage':stage,'settings':SETTINGS,'examples':len(chosen),
+    report = {'stage':stage,'settings':SETTINGS | ({'accumulation':1,'epochs':8} if stage=='canary' else {}),'examples':len(chosen),
         'optimizer_steps':trainer.state.global_step,'reference_nll_before':before,'reference_nll_after':after,
         'training_metrics':output.metrics,'log_history':trainer.state.log_history,
         'trainable_parameters':sum(p.numel() for p in trainable.values()),

@@ -731,3 +731,14 @@ one-epoch checkpoint is chosen in advance; this pilot does not sweep settings.
 
 Implementation references: [PEFT LoRA](https://huggingface.co/docs/peft/en/package_reference/lora),
 [Transformers gradient accumulation](https://huggingface.co/docs/transformers/grad_accumulation).
+
+The first GPU canary exposed a precision-contract mismatch: Accelerate leaves a
+training-time autocast wrapper on the model, while a freshly loaded adapter uses
+ordinary inference precision. The runner now removes that wrapper through
+`accelerator.unwrap_model(..., keep_fp32_wrapper=False)` and disables gradient
+checkpointing before post-training NLL, export checks, and inference comparison.
+A CPU regression test uses Accelerate's actual BF16 wrapper and verifies exact
+restoration of the original inference outputs. This keeps the reload tolerance
+strict rather than widening it to hide a mismatch. The $4 allowance also reserves
+$0.25 for the initial terminated image build and rejected GPU canary; actual
+provider billing is recorded separately when available.

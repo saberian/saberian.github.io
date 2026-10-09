@@ -16,6 +16,7 @@ from sft_core import SETTINGS,validate_records
 
 BUDGET_USD=4.0
 SETUP_RESERVE_USD=0.25
+PRIOR_ATTEMPTS_RESERVE_USD=0.25
 
 
 def load_data():
@@ -72,19 +73,20 @@ def main():
         'baseline_run_id':baseline['run_id'],'evaluator_version':EVALUATOR_VERSION,
         'decoding':baseline['decoding'],'reference_runtime':baseline['reference_runtime'],
         'budget_usd':BUDGET_USD,'setup_reserve_usd':SETUP_RESERVE_USD,
+        'prior_attempts_reserve_usd':PRIOR_ATTEMPTS_RESERVE_USD,
         'resource_usd_per_second':RESOURCE_USD_PER_SECOND,'charged_wall_seconds':0,
         'raw_outputs':[],'results':[],'gpu_batches':[]}
     def save():
         temp=dest.with_suffix('.tmp');temp.write_text(json.dumps(report,indent=2)+'\n');temp.replace(dest)
     def call(fn,args,timeout):
         maximum=300+timeout+2
-        if SETUP_RESERVE_USD+(report['charged_wall_seconds']+maximum)*RESOURCE_USD_PER_SECOND>BUDGET_USD:
+        if PRIOR_ATTEMPTS_RESERVE_USD+SETUP_RESERVE_USD+(report['charged_wall_seconds']+maximum)*RESOURCE_USD_PER_SECOND>BUDGET_USD:
             raise RuntimeError('Stage budget cannot reserve the next complete call')
         started=time.monotonic()
         try:return fn.remote(*args)
         finally:
             report['charged_wall_seconds']+=time.monotonic()-started+2
-            report['estimated_usd_with_setup_reserve']=SETUP_RESERVE_USD+report['charged_wall_seconds']*RESOURCE_USD_PER_SECOND
+            report['estimated_usd_with_setup_reserve']=PRIOR_ATTEMPTS_RESERVE_USD+SETUP_RESERVE_USD+report['charged_wall_seconds']*RESOURCE_USD_PER_SECOND
             save()
     by_id={p['id']:p for p in dev}
     def grade(outputs):
