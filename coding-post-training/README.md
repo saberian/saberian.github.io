@@ -1144,3 +1144,25 @@ validation problems**. It reuses the original validation baseline, does not run 
 300-problem test set, and does not reuse the overfit adapter. Eight sampled answers
 are a very small, noisy diagnostic; identical seeds do not make them an unbiased
 estimate of generalization.
+
+#### Completed GRPO results (2026-10-09)
+
+The ten-round run completed all 20 optimizer updates on original Qwen plus a fresh
+LoRA adapter. Greedy training correctness improved **1/2 → 2/2**, and four fixed-seed
+samples per training problem improved **3/8 → 7/8**. Existing validation remained
+**29/32**: every problem retained its original pass/fail outcome. This shows learning
+on the selected training tasks without a measured validation gain. It does not
+establish superiority over the differently sized SFT experiments.
+
+Of 20 prompt groups, 12 had mixed rewards and eight had zero reward variance.
+Round 3 had zero task advantage for both prompts; KL gradients and optimizer
+momentum can still change parameters. Optimizer work took 64.7 seconds; generation,
+evaluation, checkpoint checks, and coordination brought app duration to about
+30 minutes. Both adapter reload checks had zero logit error. Five GRPO tests and
+nine existing inference/recovery tests passed before the paid run.
+
+Modal reported $1.34315 at 22:38 UTC (billing may lag), below the $4 allowance; the
+runner's separate conservative estimate was $2.93. The app stopped with zero tasks
+and no evaluator containers remained. No 300-problem test run was performed.
+See [RESULTS.md](RESULTS.md) and the
+[full GRPO report](reports/grpo-pilot-2026-10-09.json) for provenance and diagnostics.
