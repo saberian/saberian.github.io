@@ -1,0 +1,103 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "adapter_source_run_id": "sft-20261009T155203Z-8ad64017",
+  "evaluator_version": "python-output-v2",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 512
+  },
+  "splits": {
+    "train": {
+      "problems": 64,
+      "before_passed": 57,
+      "after_passed": 57,
+      "before_accuracy": 0.890625,
+      "after_accuracy": 0.890625,
+      "change_percentage_points": 0.0,
+      "before_run_id": "train-eval-20261009T183817Z-700cb18f",
+      "after_run_id": "train-eval-20261009T180005Z-1484fd25",
+      "improved_ids": [
+        "Filter_26162_I",
+        "Filter_48511_I",
+        "Filter_58003_I",
+        "Prefill_31266_I"
+      ],
+      "regressed_ids": [
+        "Apps_16553_I",
+        "Apps_17117_I",
+        "Prefill_10912_I",
+        "Prefill_38802_I"
+      ],
+      "before_raw_format_passed": 0,
+      "after_raw_format_passed": 64
+    },
+    "validation": {
+      "problems": 32,
+      "before_passed": 29,
+      "after_passed": 27,
+      "before_accuracy": 0.90625,
+      "after_accuracy": 0.84375,
+      "change_percentage_points": -6.25,
+      "before_run_id": "sft-pilot-baseline-20261009T075437Z-5e64befe",
+      "after_run_id": "sft-20261009T155203Z-8ad64017",
+      "improved_ids": [
+        "Filter_85258_I"
+      ],
+      "regressed_ids": [
+        "Algorithm_34333_I",
+        "Filter_51966_I",
+        "Leetcode_26807_I"
+      ],
+      "before_raw_format_passed": 0,
+      "after_raw_format_passed": 32
+    },
+    "test": {
+      "problems": 300,
+      "before_passed": 266,
+      "after_passed": 260,
+      "before_accuracy": 0.8866666666666667,
+      "after_accuracy": 0.8666666666666667,
+      "change_percentage_points": -2.0,
+      "before_run_id": "test-eval-20261009T183937Z-d4b1f2e9",
+      "after_run_id": "test-eval-20261009T192601Z-8a22573a",
+      "improved_ids": [
+        "Prefill_32604_I",
+        "Evol_2047_I",
+        "Prefill_22_I",
+        "Prefill_6943_I",
+        "Filter_14094_I",
+        "Prefill_36858_I",
+        "Filter_83966_I",
+        "Evol_1924_I",
+        "Prefill_18728_I",
+        "Taco_91980_I",
+        "Evol_1202_I",
+        "Filter_86075_I"
+      ],
+      "regressed_ids": [
+        "Filter_23984_I",
+        "Taco_69766_I",
+        "Filter_73367_I",
+        "Prefill_22183_I",
+        "Apps_8630_I",
+        "Algorithm_5146_I",
+        "Prefill_16986_I",
+        "Filter_84230_I",
+        "Prefill_40385_I",
+        "Apps_15462_I",
+        "Prefill_36164_I",
+        "Filter_2595_I",
+        "Code_Contests_41431_I",
+        "Prefill_14688_I",
+        "Taco_62032_I",
+        "Filter_21558_I",
+        "Filter_72371_I",
+        "Algorithm_30148_I"
+      ],
+      "before_raw_format_passed": 1,
+      "after_raw_format_passed": 294
+    }
+  },
+  "interpretation": "Greedy single-attempt supplied-test accuracy; train is in-sample, development was used during exploration, test selected independently from reserved families before either checkpoint was scored. Public-data pretraining contamination and finite/possibly ambiguous test contracts remain limitations. No new optimization was performed."
+}

@@ -6,6 +6,7 @@ from pathlib import Path
 TARGETS = ['q_proj', 'k_proj', 'v_proj', 'o_proj', 'gate_proj', 'up_proj', 'down_proj']
 SETTINGS = dict(rank=16, alpha=32, dropout=0.0, learning_rate=1e-4,
     microbatch=1, accumulation=16, epochs=1, seed=42, max_grad_norm=1.0)
+OVERFIT_SETTINGS = SETTINGS | dict(accumulation=5, epochs=20, max_steps=60)
 
 
 def validate_records(records, selected_ids, eos):
@@ -52,12 +53,15 @@ def answer_loss(outputs, labels, num_items_in_batch=None):
     return total / torch.as_tensor(count,device=total.device).clamp(min=1)
 
 
-def make_trainer(model, tokenizer, records, output_dir, *, canary=False, cpu=False):
+def make_trainer(model, tokenizer, records, output_dir, *, canary=False, cpu=False, settings=None):
     from datasets import Dataset
     from transformers import TrainingArguments, Trainer
-    args = TrainingArguments(output_dir=str(output_dir), num_train_epochs=1,
-        max_steps=8 if canary else -1, learning_rate=SETTINGS['learning_rate'],
-        per_device_train_batch_size=1, gradient_accumulation_steps=1 if canary else 16,
+    schedule = SETTINGS if settings is None else settings
+    if canary and settings is not None:
+        raise ValueError('Canary uses its own fixed schedule')
+    args = TrainingArguments(output_dir=str(output_dir), num_train_epochs=schedule['epochs'],
+        max_steps=8 if canary else schedule.get('max_steps', -1), learning_rate=schedule['learning_rate'],
+        per_device_train_batch_size=schedule['microbatch'], gradient_accumulation_steps=1 if canary else schedule['accumulation'],
         lr_scheduler_type='constant', warmup_steps=0, optim='adamw_torch', weight_decay=0.0,
         max_grad_norm=1.0, bf16=not cpu, fp16=False, use_cpu=cpu,
         gradient_checkpointing=True, gradient_checkpointing_kwargs={'use_reentrant':False},
@@ -98,7 +102,7 @@ def file_manifest(directory):
         for p in Path(directory).iterdir() if p.is_file()}
 
 
-def train_adapter(records, run_id, stage, volume):
+def train_adapter(records, run_id, stage, volume, *, settings=None, evaluate=None):
     import gc
     import importlib.metadata
     import time
@@ -125,7 +129,7 @@ def train_adapter(records, run_id, stage, volume):
         raise ValueError('Only LoRA parameters should be trainable')
     torch.cuda.reset_peak_memory_stats()
     before = mean_nll(model,tokenizer,chosen)
-    trainer = make_trainer(model,tokenizer,chosen,dest/'trainer',canary=stage=='canary')
+    trainer = make_trainer(model,tokenizer,chosen,dest/'trainer',canary=stage=='canary',settings=settings)
     output = trainer.train()
     model = inference_model(trainer)
     after = mean_nll(model,tokenizer,chosen)
@@ -142,7 +146,7 @@ def train_adapter(records, run_id, stage, volume):
     model.eval()
     with torch.no_grad():
         expected = model(input_ids=probe,use_cache=False).logits.float().cpu()
-    report = {'stage':stage,'settings':SETTINGS | ({'accumulation':1,'epochs':8} if stage=='canary' else {}),'examples':len(chosen),
+    report = {'stage':stage,'settings':(SETTINGS if settings is None else settings) | ({'accumulation':1,'epochs':8} if stage=='canary' else {}),'examples':len(chosen),
         'optimizer_steps':trainer.state.global_step,'reference_nll_before':before,'reference_nll_after':after,
         'training_metrics':output.metrics,'log_history':trainer.state.log_history,
         'trainable_parameters':sum(p.numel() for p in trainable.values()),
@@ -163,6 +167,10 @@ def train_adapter(records, run_id, stage, volume):
         raise ValueError(f'Adapter reload changed logits: {max_error}')
     report['adapter_files'] = file_manifest(adapter)
     report['volume_adapter_path'] = f'{run_id}/{stage}/adapter'
+    if evaluate is not None:
+        (dest/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+        volume.commit()
+        report['evaluation'] = evaluate(reloaded, tokenizer, dest)
     report['function_seconds'] = time.monotonic()-started
     (dest/'report.json').write_text(json.dumps(report,indent=2)+'\n')
     volume.commit()

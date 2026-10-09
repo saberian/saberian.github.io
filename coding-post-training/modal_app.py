@@ -349,3 +349,24 @@ def base_training_generate(problems,evaluation_id,batch_index):
         results_volume.commit()
     # The inference-only image and canonical base-model loader contain no adapter loading path.
     return generate_batch(problems,samples=1,checkpoint=checkpoint)
+
+
+@app.function(image=training_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
+    timeout=1200, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results":results_volume})
+def sft_overfit(records, problems, run_id):
+    from sft_core import train_adapter, OVERFIT_SETTINGS
+    validate_sft_run(run_id)
+    if len(records)!=15 or len({r['id'] for r in records})!=15 or [p['id'] for p in problems]!=[r['id'] for r in records]:
+        raise ValueError('Expected exactly 15 paired training examples')
+    if any(set(p)!={'id','question','signature'} for p in problems):
+        raise ValueError('Evaluation prompts must not contain references or cases')
+    def evaluate(model, tokenizer, destination):
+        outputs=[];metrics=[]
+        for start in range(0,15,9):
+            result=generate_batch(problems[start:start+9],model_pair=(tokenizer,model))
+            outputs.extend(result['outputs']);metrics.append({k:v for k,v in result.items() if k!='outputs'})
+            (destination/'generated.json').write_text(json.dumps({'outputs':outputs}))
+            results_volume.commit()
+        return {'outputs':outputs,'batches':metrics}
+    return train_adapter(records,run_id,'overfit',results_volume,settings=OVERFIT_SETTINGS,evaluate=evaluate)

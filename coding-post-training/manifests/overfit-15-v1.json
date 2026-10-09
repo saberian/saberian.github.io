@@ -1,0 +1,161 @@
+{
+  "source_manifest_sha256": "0a7f5779c2ea598cfda8a0bfd5a890d06ae865a778cc451b4a8189f224d548fb",
+  "baseline_run_id": "train-eval-20261009T183817Z-700cb18f",
+  "selection": "All seven original-model failures from the frozen 64 training examples, plus eight successes ordered by SHA256([42, overfit-15-v1, id]). No validation/test examples.",
+  "purpose": "Deliberately selected in-sample memorization diagnostic; not an unbiased evaluation or evidence of generalization.",
+  "sample_sha256": "e95be9394636ba8eba35713ce9f906d5a449fda9839c45343e4c564896163ce0",
+  "records_sha256": "3c09554ce9756d863871d4bec1e9cc4bfe37822029c002f7230e4b1fb321209e",
+  "before_passed": 8,
+  "problems": 15,
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 512
+  },
+  "evaluator_version": "python-output-v2",
+  "supervised_tokens_per_epoch": 1673,
+  "selected": [
+    {
+      "id": "Algorithm_20361_I",
+      "family_id": "Algorithm_20361_I",
+      "split": "sft_train",
+      "prompt_tokens": 432,
+      "target_tokens": 114,
+      "baseline_status": "wrong_answer",
+      "baseline_reward": 0
+    },
+    {
+      "id": "Evol_9946_I",
+      "family_id": "Evol_9946_I",
+      "split": "sft_train",
+      "prompt_tokens": 103,
+      "target_tokens": 195,
+      "baseline_status": "wrong_answer",
+      "baseline_reward": 0
+    },
+    {
+      "id": "Filter_26162_I",
+      "family_id": "Filter_26162_I",
+      "split": "sft_train",
+      "prompt_tokens": 120,
+      "target_tokens": 153,
+      "baseline_status": "wrong_answer",
+      "baseline_reward": 0
+    },
+    {
+      "id": "Filter_48511_I",
+      "family_id": "Filter_48511_I",
+      "split": "sft_train",
+      "prompt_tokens": 90,
+      "target_tokens": 118,
+      "baseline_status": "format_error",
+      "baseline_reward": 0
+    },
+    {
+      "id": "Filter_58003_I",
+      "family_id": "Filter_58003_I",
+      "split": "sft_train",
+      "prompt_tokens": 92,
+      "target_tokens": 79,
+      "baseline_status": "truncated",
+      "baseline_reward": 0
+    },
+    {
+      "id": "Prefill_31266_I",
+      "family_id": "Prefill_31266_I",
+      "split": "sft_train",
+      "prompt_tokens": 79,
+      "target_tokens": 79,
+      "baseline_status": "wrong_answer",
+      "baseline_reward": 0
+    },
+    {
+      "id": "Prefill_7450_I",
+      "family_id": "Prefill_7450_I",
+      "split": "sft_train",
+      "prompt_tokens": 56,
+      "target_tokens": 111,
+      "baseline_status": "wrong_answer",
+      "baseline_reward": 0
+    },
+    {
+      "id": "Prefill_7890_I",
+      "family_id": "Prefill_7890_I",
+      "split": "sft_train",
+      "prompt_tokens": 66,
+      "target_tokens": 37,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    },
+    {
+      "id": "Prefill_28477_I",
+      "family_id": "Prefill_28477_I",
+      "split": "sft_train",
+      "prompt_tokens": 81,
+      "target_tokens": 95,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    },
+    {
+      "id": "Apps_14662_I",
+      "family_id": "Apps_14662_I",
+      "split": "sft_train",
+      "prompt_tokens": 274,
+      "target_tokens": 178,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    },
+    {
+      "id": "Apps_14754_I",
+      "family_id": "Apps_14754_I",
+      "split": "sft_train",
+      "prompt_tokens": 353,
+      "target_tokens": 187,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    },
+    {
+      "id": "Filter_113_I",
+      "family_id": "Filter_113_I",
+      "split": "sft_train",
+      "prompt_tokens": 81,
+      "target_tokens": 68,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    },
+    {
+      "id": "Filter_68887_I",
+      "family_id": "Filter_68887_I",
+      "split": "sft_train",
+      "prompt_tokens": 119,
+      "target_tokens": 112,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    },
+    {
+      "id": "Filter_3471_I",
+      "family_id": "Filter_3471_I",
+      "split": "sft_train",
+      "prompt_tokens": 345,
+      "target_tokens": 70,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    },
+    {
+      "id": "Filter_67993_I",
+      "family_id": "Filter_67993_I",
+      "split": "sft_train",
+      "prompt_tokens": 93,
+      "target_tokens": 77,
+      "baseline_status": "passed",
+      "baseline_reward": 1
+    }
+  ]
+}

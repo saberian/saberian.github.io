@@ -111,3 +111,14 @@ assert torch.equal(expected,actual)
             with torch.no_grad():actual=loaded(**batch).logits
             self.assertTrue(torch.allclose(expected,actual,atol=1e-6,rtol=1e-6))
             self.assertTrue(torch.isfinite(torch.tensor(mean_nll(loaded,self.tokenizer,self.records))))
+
+    def test_overfit_schedule_executes_sixty_updates_on_fifteen_examples(self):
+        from sft_core import OVERFIT_SETTINGS
+        records=[copy.deepcopy(self.records[i%2])|{'id':str(i)} for i in range(15)]
+        with tempfile.TemporaryDirectory() as d:
+            trainer=make_trainer(self.model(),self.tokenizer,records,d,cpu=True,settings=OVERFIT_SETTINGS)
+            self.assertEqual(trainer.args.gradient_accumulation_steps,5)
+            self.assertEqual(trainer.args.per_device_train_batch_size,1)
+            trainer.train()
+            self.assertEqual(trainer.state.global_step,60)
+            self.assertEqual(trainer.state.epoch,20)

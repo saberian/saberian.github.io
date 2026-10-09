@@ -831,7 +831,7 @@ probability of reference tokens when earlier reference tokens are supplied.
 Generated-code accuracy requires the model to produce the whole answer from the
 problem alone, then pass the tests. The previous full-training-set NLL bars
 (0.933 before / 0.299 after SFT) were never an accuracy measurement. Starting-model
-generated accuracy on these 64 training prompts has not been measured.
+generated accuracy on these 64 training prompts was subsequently measured: 57/64 both before and after SFT.
 
 ### SFT concepts behind this run
 
@@ -962,3 +962,70 @@ single-example end-to-end canary before subsequent batches. Raw generations are
 saved before grading and kept ignored; aggregate reports and provenance are tracked.
 Exposing this test set means it must not become a source of fixes or checkpoint
 selection for later PPO/DPO/GRPO experiments.
+
+
+### Completed paired accuracy evaluation (October 9)
+
+| Set | Before SFT | After SFT |
+|---|---:|---:|
+| Training (64) | 57/64 (89.06%) | 57/64 (89.06%) |
+| Development (32) | 29/32 (90.63%) | 27/32 (84.38%) |
+| Held-out test (300) | 266/300 (88.67%) | 260/300 (86.67%) |
+
+See `reports/sft-accuracy-comparison-2026-10-09.json`. Test evaluation is now complete;
+earlier statements that the final-test pool remains reserved describe the earlier
+pilot stage. No new training was done for this comparison. A batch-boundary bug
+stopped the baseline at 298 answers; the remaining two were recovered without
+regenerating those 298. The runner now derives bounds from the shared batching
+function and supports provenance-checked recovery of complete saved batches.
+The three new evaluations cost $5.18 as reported by Modal at 20:41 UTC (metering
+may lag). All four apps, including the recovery attempt, stopped with zero tasks.
+Serial generation and unmerged adapter overhead made this runner slow; no
+performance improvement should be inferred from these experiments.
+
+### Fifteen-example SFT memorization diagnostic
+
+`overfit_data.py` freezes all seven baseline failures from the 64 audited training
+problems plus eight baseline successes in deterministic hash order. The starting
+score is **8/15 (53.33%)**. Five failures are wrong answers, one is a formatting
+failure, and one is truncation; we preserve this distinction. Neither development
+nor test examples participate in selection or training. This intentionally selected
+subset is a diagnostic, not a representative benchmark.
+
+`overfit_run.py` starts from the original pinned Qwen checkpoint and a fresh rank-16
+LoRA adapter, using the same attention/MLP targets, answer-token loss, BF16 backbone,
+and 1e-4 learning rate. Microbatch 1 × accumulation 5 gives effective batch 5;
+60 optimizer updates cover 20 epochs of 15 examples. This tests whether repeated
+supervision can change generated correctness, beyond the previous four-update
+pilot. A discarded one-example canary validates loss decrease, serialization and
+artifact download before fresh training. The final adapter is saved, reloaded,
+logit-checked, and used to generate exactly one greedy answer per selected problem.
+The fixed 512-token cap and existing evaluator remain unchanged. Results are saved
+in two evaluation chunks, rather than committing the remote volume after every
+answer. The complete experiment has a $4 allowance.
+
+Success criterion: **15/15 generated solutions pass their supplied cases**. Report
+actual accuracy even if this criterion is not met. Report before/after full-subset
+reference NLL separately; lower teacher-forced loss is not proof of correct free
+generation. A successful run demonstrates in-sample memorization only. It does not
+establish generalization or promise that RL will help.
+
+Selected examples:
+
+| ID | Task | Baseline |
+|---|---|---|
+| `Algorithm_20361_I` | `extract_numbers` | wrong_answer |
+| `Evol_9946_I` | `longest_repeated_substring` | wrong_answer |
+| `Filter_26162_I` | `has_mirrored_pairs` | wrong_answer |
+| `Filter_48511_I` | `is_prime` | format_error |
+| `Filter_58003_I` | `is_sorted_and_unique` | truncated |
+| `Prefill_31266_I` | `is_valid_phone_number` | wrong_answer |
+| `Prefill_7450_I` | `swap_adjacent_characters` | wrong_answer |
+| `Prefill_7890_I` | `is_sum_zero` | passed |
+| `Prefill_28477_I` | `count_set_bits` | passed |
+| `Apps_14662_I` | `find_unsorted_subarray` | passed |
+| `Apps_14754_I` | `largest_rectangle_area` | passed |
+| `Filter_113_I` | `longest_word` | passed |
+| `Filter_68887_I` | `rotate_string` | passed |
+| `Filter_3471_I` | `encrypt` | passed |
+| `Filter_67993_I` | `convert_negatives_to_positives` | passed |

@@ -1,0 +1,3289 @@
+{
+  "run_id": "test-eval-20261009T192601Z-8a22573a",
+  "revision": "8a22573a7c0ff837bcdf3474905450c574d39aef",
+  "status": "completed",
+  "policy": "sft",
+  "split": "test",
+  "source_sft_run_id": "sft-20261009T155203Z-8ad64017",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "sample_sha256": "4fb53d6d7ebf36778fc5c23f57c5ac6036357c9eabb02c58f5341bf1e4d657ff",
+  "evaluation_problems_sha256": "2adb9debfd0975fceff6100c54275324e27e6abd5dfe42ab50817ff079e8567e",
+  "training_export_sha256": "147fb8800561213c383346af8b3db8edd898131180cdfcbab4b451bb68f5d6b7",
+  "adapter_files": {
+    "README.md": {
+      "sha256": "ab153471c6c0ce8eb92782cf74053ecdda24294809ac5bbdcef8705c84ad24ea",
+      "bytes": 5166
+    },
+    "adapter_config.json": {
+      "sha256": "8825816d12b6dc16a3ac8e6d1eda66f0eafe72a9f16bfcf1e5491f0b518d2ba3",
+      "bytes": 1220
+    },
+    "adapter_model.safetensors": {
+      "sha256": "e9d423228810165df3fdb2297269ac02ee00f66a976c9b423e3e61708f74e46a",
+      "bytes": 132187888
+    }
+  },
+  "evaluator_version": "python-output-v2",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 512
+  },
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "budget_usd": 8.0,
+  "setup_reserve_usd": 0.25,
+  "resource_usd_per_second": 0.00075572,
+  "charged_wall_seconds": 3939.7749595848727,
+  "gpu_batches": [
+    {
+      "function_seconds": 13.199783602999997,
+      "load_seconds": 0.006384685000000445,
+      "peak_allocated_bytes": 8271453696,
+      "peak_reserved_bytes": 8388608000,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 103.576421585,
+      "load_seconds": 0.001208962999996288,
+      "peak_allocated_bytes": 8310015488,
+      "peak_reserved_bytes": 8430551040,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 72.897514258,
+      "load_seconds": 0.0013539329999900929,
+      "peak_allocated_bytes": 8345764352,
+      "peak_reserved_bytes": 8445231104,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 124.10858380299999,
+      "load_seconds": 0.00117956900001559,
+      "peak_allocated_bytes": 8364315136,
+      "peak_reserved_bytes": 8462008320,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 104.014829356,
+      "load_seconds": 0.0015877939999882074,
+      "peak_allocated_bytes": 8351442432,
+      "peak_reserved_bytes": 8482979840,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 147.73276165400006,
+      "load_seconds": 0.0012506460000167863,
+      "peak_allocated_bytes": 8375625216,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 131.95336889300006,
+      "load_seconds": 0.001214051000033578,
+      "peak_allocated_bytes": 8383802880,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 108.58305982399997,
+      "load_seconds": 0.0013362519999873257,
+      "peak_allocated_bytes": 8396773376,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 97.01485351600002,
+      "load_seconds": 0.0015577210000401465,
+      "peak_allocated_bytes": 8388015104,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 86.84441077800011,
+      "load_seconds": 0.0015591379999477795,
+      "peak_allocated_bytes": 8295772672,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 111.16424988000017,
+      "load_seconds": 0.0012587769999754528,
+      "peak_allocated_bytes": 8344634368,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 102.12563568600012,
+      "load_seconds": 0.0013612210000246705,
+      "peak_allocated_bytes": 8376242688,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 112.77506674899996,
+      "load_seconds": 0.0014456999999765685,
+      "peak_allocated_bytes": 8361722368,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 113.03664908600012,
+      "load_seconds": 0.0015548510000371607,
+      "peak_allocated_bytes": 8373535744,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 108.2708633499999,
+      "load_seconds": 0.001397957000108363,
+      "peak_allocated_bytes": 8387127808,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 124.64957581399995,
+      "load_seconds": 0.001313759999902686,
+      "peak_allocated_bytes": 8374034432,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 116.44991184500009,
+      "load_seconds": 0.002200649000087651,
+      "peak_allocated_bytes": 8368163328,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 109.73350014599987,
+      "load_seconds": 0.0018985140000040701,
+      "peak_allocated_bytes": 8372652032,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 120.42373656299992,
+      "load_seconds": 0.001283059000115827,
+      "peak_allocated_bytes": 8329653760,
+      "peak_reserved_bytes": 8524922880,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 157.1764240389998,
+      "load_seconds": 0.0012288869997973961,
+      "peak_allocated_bytes": 8417795584,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 115.09690266999996,
+      "load_seconds": 0.0015662889995837759,
+      "peak_allocated_bytes": 8372651008,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 115.47255411200013,
+      "load_seconds": 0.001172584999949322,
+      "peak_allocated_bytes": 8347742208,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 111.41378256200005,
+      "load_seconds": 0.001883116000044538,
+      "peak_allocated_bytes": 8392741376,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 137.65834239600008,
+      "load_seconds": 0.0014514330000565678,
+      "peak_allocated_bytes": 8347741184,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 109.05282110300004,
+      "load_seconds": 0.0023334009997597605,
+      "peak_allocated_bytes": 8355219968,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 94.90060069699985,
+      "load_seconds": 0.0013657819999934873,
+      "peak_allocated_bytes": 8377324032,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 77.6362056529997,
+      "load_seconds": 0.0015428819997396204,
+      "peak_allocated_bytes": 8282074112,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 144.9908115850003,
+      "load_seconds": 0.0015999080001165567,
+      "peak_allocated_bytes": 8375972864,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 121.73892590000014,
+      "load_seconds": 0.0013694839999516262,
+      "peak_allocated_bytes": 8375700480,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 135.1219481019998,
+      "load_seconds": 0.001626315999601502,
+      "peak_allocated_bytes": 8353240576,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 111.4349922020001,
+      "load_seconds": 0.0013473509998220834,
+      "peak_allocated_bytes": 8361717760,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 140.6340383290003,
+      "load_seconds": 0.0014509370002997457,
+      "peak_allocated_bytes": 8347742720,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 83.29318344800004,
+      "load_seconds": 0.0016727940001146635,
+      "peak_allocated_bytes": 8356106752,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 120.92166149000013,
+      "load_seconds": 0.00134376500000144,
+      "peak_allocated_bytes": 8413024768,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 18.657840120999936,
+      "load_seconds": 0.0012141760003032687,
+      "peak_allocated_bytes": 8321461248,
+      "peak_reserved_bytes": 8592031744,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    }
+  ],
+  "app_id": "ap-K10McQ0awaH02ZgEhTGAO1",
+  "estimated_usd_with_setup_reserve": 3.22736673245748,
+  "summary": {
+    "problems": 300,
+    "passed": 260,
+    "accuracy": 0.8666666666666667,
+    "status_counts": {
+      "wrong_answer": 31,
+      "passed": 260,
+      "execution_error": 7,
+      "truncated": 2
+    },
+    "raw_format_passed": 294,
+    "generated_tokens": 29584,
+    "passed_cases": 2269,
+    "total_cases": 2444
+  },
+  "results": [
+    {
+      "id": "Prefill_17439_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 101
+    },
+    {
+      "id": "Prefill_5719_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 165
+    },
+    {
+      "id": "Prefill_27687_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 310
+    },
+    {
+      "id": "Filter_85017_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 58
+    },
+    {
+      "id": "Filter_15968_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": false,
+      "generated_tokens": 69
+    },
+    {
+      "id": "Apps_4494_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 55
+    },
+    {
+      "id": "Filter_7468_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 116
+    },
+    {
+      "id": "Prefill_12409_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 3,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 16
+    },
+    {
+      "id": "Filter_44319_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 19
+    },
+    {
+      "id": "Prefill_35997_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 45
+    },
+    {
+      "id": "Prefill_5113_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 59
+    },
+    {
+      "id": "Filter_66005_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 46
+    },
+    {
+      "id": "Prefill_14740_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 111
+    },
+    {
+      "id": "Filter_81669_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 33
+    },
+    {
+      "id": "Taco_82041_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 136
+    },
+    {
+      "id": "Filter_21866_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 72
+    },
+    {
+      "id": "Filter_39860_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 4,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 58
+    },
+    {
+      "id": "Package_7431_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 46
+    },
+    {
+      "id": "Filter_53387_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 35
+    },
+    {
+      "id": "Filter_15276_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 142
+    },
+    {
+      "id": "Evol_6724_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 9,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 91
+    },
+    {
+      "id": "Evol_104_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 88
+    },
+    {
+      "id": "Filter_28456_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 133
+    },
+    {
+      "id": "Filter_28835_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 45
+    },
+    {
+      "id": "Package_9214_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 100
+    },
+    {
+      "id": "Prefill_15356_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 15,
+      "total_cases": 15,
+      "raw_format_compliant": true,
+      "generated_tokens": 166
+    },
+    {
+      "id": "Evol_54_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 140
+    },
+    {
+      "id": "Filter_37468_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 137
+    },
+    {
+      "id": "Filter_52412_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 15,
+      "total_cases": 15,
+      "raw_format_compliant": true,
+      "generated_tokens": 132
+    },
+    {
+      "id": "Prefill_15734_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 117
+    },
+    {
+      "id": "Filter_23984_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 6,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 75
+    },
+    {
+      "id": "Prefill_18479_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 14
+    },
+    {
+      "id": "Filter_68790_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 90
+    },
+    {
+      "id": "Taco_69766_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 8,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 231
+    },
+    {
+      "id": "Filter_73367_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 60
+    },
+    {
+      "id": "Filter_55251_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 20
+    },
+    {
+      "id": "Prefill_32604_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 90
+    },
+    {
+      "id": "Filter_34089_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 99
+    },
+    {
+      "id": "Evol_5367_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 165
+    },
+    {
+      "id": "Filter_87418_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 87
+    },
+    {
+      "id": "Prefill_22183_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 3,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 91
+    },
+    {
+      "id": "Prefill_18692_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 56
+    },
+    {
+      "id": "Taco_72708_I",
+      "status": "truncated",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 9,
+      "raw_format_compliant": false,
+      "generated_tokens": 512
+    },
+    {
+      "id": "Prefill_14848_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 103
+    },
+    {
+      "id": "Package_271_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 81
+    },
+    {
+      "id": "Apps_15835_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 53
+    },
+    {
+      "id": "Filter_38821_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 148
+    },
+    {
+      "id": "Package_6344_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 141
+    },
+    {
+      "id": "Apps_8630_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 197
+    },
+    {
+      "id": "Prefill_39826_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Filter_70070_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 99
+    },
+    {
+      "id": "Taco_61309_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 189
+    },
+    {
+      "id": "Prefill_36802_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 120
+    },
+    {
+      "id": "Apps_2806_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 78
+    },
+    {
+      "id": "Filter_42066_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 89
+    },
+    {
+      "id": "Prefill_16368_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 71
+    },
+    {
+      "id": "Apps_3880_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 121
+    },
+    {
+      "id": "Evol_2047_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 180
+    },
+    {
+      "id": "Filter_38224_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 126
+    },
+    {
+      "id": "Prefill_32867_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 142
+    },
+    {
+      "id": "Data_Structure_2232_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 103
+    },
+    {
+      "id": "Prefill_1740_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 110
+    },
+    {
+      "id": "Prefill_15420_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 39
+    },
+    {
+      "id": "Prefill_18169_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 24
+    },
+    {
+      "id": "Taco_95908_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 43
+    },
+    {
+      "id": "Package_1174_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 56
+    },
+    {
+      "id": "Filter_45117_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 15
+    },
+    {
+      "id": "Taco_63836_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 241
+    },
+    {
+      "id": "Filter_50516_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 103
+    },
+    {
+      "id": "Algorithm_5146_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 109
+    },
+    {
+      "id": "Taco_48801_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 106
+    },
+    {
+      "id": "Prefill_39370_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 107
+    },
+    {
+      "id": "Code_Contests_16057_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 35
+    },
+    {
+      "id": "Prefill_16986_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 68
+    },
+    {
+      "id": "Filter_71878_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 116
+    },
+    {
+      "id": "Prefill_8859_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 17
+    },
+    {
+      "id": "Filter_84230_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 4,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 64
+    },
+    {
+      "id": "Taco_28211_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 65
+    },
+    {
+      "id": "Prefill_32869_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 71
+    },
+    {
+      "id": "Apps_3848_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 107
+    },
+    {
+      "id": "Prefill_14692_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 87
+    },
+    {
+      "id": "Filter_23069_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 114
+    },
+    {
+      "id": "Evol_920_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 120
+    },
+    {
+      "id": "Filter_57629_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 134
+    },
+    {
+      "id": "Package_4067_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 117
+    },
+    {
+      "id": "Apps_1569_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 55
+    },
+    {
+      "id": "Prefill_40385_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 1,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 90
+    },
+    {
+      "id": "Prefill_1401_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 169
+    },
+    {
+      "id": "Filter_28763_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 16
+    },
+    {
+      "id": "Taco_31629_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 60
+    },
+    {
+      "id": "Prefill_24984_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 73
+    },
+    {
+      "id": "Taco_16012_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 27
+    },
+    {
+      "id": "Prefill_31054_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 96
+    },
+    {
+      "id": "Algorithm_1742_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 188
+    },
+    {
+      "id": "Filter_1291_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 59
+    },
+    {
+      "id": "Filter_75124_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 72
+    },
+    {
+      "id": "Prefill_36576_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 7,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 109
+    },
+    {
+      "id": "Filter_72709_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 83
+    },
+    {
+      "id": "Evol_9851_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 109
+    },
+    {
+      "id": "Filter_86004_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 97
+    },
+    {
+      "id": "Evol_8839_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 220
+    },
+    {
+      "id": "Filter_63972_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 69
+    },
+    {
+      "id": "Filter_42547_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 60
+    },
+    {
+      "id": "Package_6280_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 19,
+      "total_cases": 19,
+      "raw_format_compliant": true,
+      "generated_tokens": 188
+    },
+    {
+      "id": "Codeforces_2279_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 63
+    },
+    {
+      "id": "Prefill_22_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 12
+    },
+    {
+      "id": "Prefill_23994_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 63
+    },
+    {
+      "id": "Prefill_15561_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 73
+    },
+    {
+      "id": "Prefill_1899_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 206
+    },
+    {
+      "id": "Filter_66599_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 96
+    },
+    {
+      "id": "Taco_37398_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 157
+    },
+    {
+      "id": "Data_Structure_24695_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 145
+    },
+    {
+      "id": "Prefill_17480_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 122
+    },
+    {
+      "id": "Prefill_8911_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Filter_76547_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 204
+    },
+    {
+      "id": "Taco_3554_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 61
+    },
+    {
+      "id": "Prefill_25440_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 38
+    },
+    {
+      "id": "Taco_42360_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 70
+    },
+    {
+      "id": "Prefill_33777_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 85
+    },
+    {
+      "id": "Code_Contests_3297_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 14,
+      "total_cases": 14,
+      "raw_format_compliant": true,
+      "generated_tokens": 202
+    },
+    {
+      "id": "Filter_13541_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 140
+    },
+    {
+      "id": "Prefill_16650_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 66
+    },
+    {
+      "id": "Prefill_6943_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 163
+    },
+    {
+      "id": "Filter_81658_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 14
+    },
+    {
+      "id": "Filter_20761_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 17,
+      "total_cases": 17,
+      "raw_format_compliant": false,
+      "generated_tokens": 131
+    },
+    {
+      "id": "Taco_67107_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 49
+    },
+    {
+      "id": "Prefill_14458_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 64
+    },
+    {
+      "id": "Filter_25340_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 3,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 511
+    },
+    {
+      "id": "Filter_84942_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 15
+    },
+    {
+      "id": "Apps_15462_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 82
+    },
+    {
+      "id": "Apps_12689_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 30
+    },
+    {
+      "id": "Package_1446_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 72
+    },
+    {
+      "id": "Filter_9953_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 77
+    },
+    {
+      "id": "Filter_50470_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 120
+    },
+    {
+      "id": "Prefill_16251_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 34
+    },
+    {
+      "id": "Evol_3161_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 59
+    },
+    {
+      "id": "Filter_50251_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 17,
+      "total_cases": 17,
+      "raw_format_compliant": true,
+      "generated_tokens": 131
+    },
+    {
+      "id": "Prefill_26776_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 53
+    },
+    {
+      "id": "Codeforces_12411_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 162
+    },
+    {
+      "id": "Taco_27229_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 14,
+      "total_cases": 14,
+      "raw_format_compliant": true,
+      "generated_tokens": 195
+    },
+    {
+      "id": "Filter_28633_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 56
+    },
+    {
+      "id": "Filter_88222_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 153
+    },
+    {
+      "id": "Filter_84748_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 61
+    },
+    {
+      "id": "Algorithm_11915_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 107
+    },
+    {
+      "id": "Prefill_25358_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 27
+    },
+    {
+      "id": "Filter_64839_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 57
+    },
+    {
+      "id": "Taco_35475_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 52
+    },
+    {
+      "id": "Prefill_39599_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 17,
+      "total_cases": 17,
+      "raw_format_compliant": true,
+      "generated_tokens": 80
+    },
+    {
+      "id": "Prefill_22366_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 79
+    },
+    {
+      "id": "Apps_13664_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Data_Structure_1572_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 248
+    },
+    {
+      "id": "Filter_500_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 69
+    },
+    {
+      "id": "Prefill_21710_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 140
+    },
+    {
+      "id": "Evol_8257_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 109
+    },
+    {
+      "id": "Filter_55139_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 138
+    },
+    {
+      "id": "Prefill_30431_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 98
+    },
+    {
+      "id": "Prefill_21307_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 71
+    },
+    {
+      "id": "Prefill_6442_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 69
+    },
+    {
+      "id": "Prefill_19307_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 9,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 91
+    },
+    {
+      "id": "Filter_14094_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 290
+    },
+    {
+      "id": "Filter_5012_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 117
+    },
+    {
+      "id": "Evol_3177_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Filter_58329_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 82
+    },
+    {
+      "id": "Filter_15805_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 37
+    },
+    {
+      "id": "Taco_22593_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 119
+    },
+    {
+      "id": "Evol_4414_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 14,
+      "total_cases": 14,
+      "raw_format_compliant": true,
+      "generated_tokens": 296
+    },
+    {
+      "id": "Algorithm_46658_I",
+      "status": "truncated",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 9,
+      "raw_format_compliant": false,
+      "generated_tokens": 512
+    },
+    {
+      "id": "Filter_51468_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 81
+    },
+    {
+      "id": "Algorithm_3496_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 56
+    },
+    {
+      "id": "Prefill_11582_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 194
+    },
+    {
+      "id": "Prefill_580_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 41
+    },
+    {
+      "id": "Taco_3331_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 20
+    },
+    {
+      "id": "Prefill_37616_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 127
+    },
+    {
+      "id": "Evol_1150_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 43
+    },
+    {
+      "id": "Prefill_17067_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 92
+    },
+    {
+      "id": "Algorithm_16752_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 251
+    },
+    {
+      "id": "Apps_8513_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 54
+    },
+    {
+      "id": "Prefill_771_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 52
+    },
+    {
+      "id": "Prefill_34365_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 12
+    },
+    {
+      "id": "Prefill_3950_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 239
+    },
+    {
+      "id": "Prefill_36164_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 4,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 87
+    },
+    {
+      "id": "Apps_17486_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 226
+    },
+    {
+      "id": "Filter_2595_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 3,
+      "total_cases": 5,
+      "raw_format_compliant": false,
+      "generated_tokens": 27
+    },
+    {
+      "id": "Apps_4828_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 51
+    },
+    {
+      "id": "Filter_19379_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 104
+    },
+    {
+      "id": "Filter_86263_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 83
+    },
+    {
+      "id": "Filter_88518_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 9,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 81
+    },
+    {
+      "id": "Code_Contests_45898_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 234
+    },
+    {
+      "id": "Prefill_26133_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 36
+    },
+    {
+      "id": "Prefill_31524_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 10,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 46
+    },
+    {
+      "id": "Filter_87923_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 85
+    },
+    {
+      "id": "Filter_72624_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 158
+    },
+    {
+      "id": "Filter_11011_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 40
+    },
+    {
+      "id": "Prefill_23364_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 80
+    },
+    {
+      "id": "Prefill_23695_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 104
+    },
+    {
+      "id": "Code_Contests_41431_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 8,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 58
+    },
+    {
+      "id": "Prefill_14688_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 3,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 68
+    },
+    {
+      "id": "Taco_89843_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 137
+    },
+    {
+      "id": "Filter_47885_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 129
+    },
+    {
+      "id": "Prefill_8750_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 70
+    },
+    {
+      "id": "Apps_18193_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 44
+    },
+    {
+      "id": "Prefill_4351_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 111
+    },
+    {
+      "id": "Apps_19029_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 234
+    },
+    {
+      "id": "Prefill_3702_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 34
+    },
+    {
+      "id": "Filter_59508_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 104
+    },
+    {
+      "id": "Prefill_25194_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 69
+    },
+    {
+      "id": "Prefill_6238_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 244
+    },
+    {
+      "id": "Prefill_36858_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 133
+    },
+    {
+      "id": "Prefill_23510_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 59
+    },
+    {
+      "id": "Filter_79098_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 15,
+      "total_cases": 15,
+      "raw_format_compliant": true,
+      "generated_tokens": 147
+    },
+    {
+      "id": "Algorithm_45296_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 43
+    },
+    {
+      "id": "Apps_12417_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 15,
+      "total_cases": 15,
+      "raw_format_compliant": true,
+      "generated_tokens": 92
+    },
+    {
+      "id": "Filter_13205_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": false,
+      "generated_tokens": 48
+    },
+    {
+      "id": "Prefill_4385_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 88
+    },
+    {
+      "id": "Filter_11688_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 67
+    },
+    {
+      "id": "Taco_62032_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 176
+    },
+    {
+      "id": "Taco_34963_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 32
+    },
+    {
+      "id": "Filter_78234_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 163
+    },
+    {
+      "id": "Filter_21558_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 6,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 36
+    },
+    {
+      "id": "Filter_83966_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 17
+    },
+    {
+      "id": "Filter_44290_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 79
+    },
+    {
+      "id": "Filter_83479_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 64
+    },
+    {
+      "id": "Algorithm_38601_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 108
+    },
+    {
+      "id": "Filter_30682_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 40
+    },
+    {
+      "id": "Prefill_4379_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 58
+    },
+    {
+      "id": "Filter_32688_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 166
+    },
+    {
+      "id": "Prefill_32462_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 23
+    },
+    {
+      "id": "Prefill_13_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 79
+    },
+    {
+      "id": "Prefill_1370_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 191
+    },
+    {
+      "id": "Filter_40331_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 29
+    },
+    {
+      "id": "Prefill_17342_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 21
+    },
+    {
+      "id": "Prefill_23906_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 103
+    },
+    {
+      "id": "Prefill_23678_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 61
+    },
+    {
+      "id": "Prefill_32123_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 61
+    },
+    {
+      "id": "Evol_1924_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 20
+    },
+    {
+      "id": "Prefill_18728_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 22
+    },
+    {
+      "id": "Evol_9410_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 100
+    },
+    {
+      "id": "Prefill_11693_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 36
+    },
+    {
+      "id": "Data_Structure_35239_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 8,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 363
+    },
+    {
+      "id": "Prefill_10686_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 43
+    },
+    {
+      "id": "Filter_21626_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 54
+    },
+    {
+      "id": "Filter_81239_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 53
+    },
+    {
+      "id": "Taco_91980_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 57
+    },
+    {
+      "id": "Code_Contests_10537_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 80
+    },
+    {
+      "id": "Code_Contests_10342_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 4,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 113
+    },
+    {
+      "id": "Filter_14938_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 96
+    },
+    {
+      "id": "Filter_62914_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 20
+    },
+    {
+      "id": "Package_2855_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 145
+    },
+    {
+      "id": "Prefill_7917_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 100
+    },
+    {
+      "id": "Prefill_17145_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 26
+    },
+    {
+      "id": "Filter_9026_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 71
+    },
+    {
+      "id": "Prefill_25896_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 44
+    },
+    {
+      "id": "Prefill_24189_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 60
+    },
+    {
+      "id": "Filter_75608_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 76
+    },
+    {
+      "id": "Codeforces_12618_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 17,
+      "total_cases": 17,
+      "raw_format_compliant": true,
+      "generated_tokens": 226
+    },
+    {
+      "id": "Prefill_91_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 83
+    },
+    {
+      "id": "Filter_24633_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 17
+    },
+    {
+      "id": "Apps_4125_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 4,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 149
+    },
+    {
+      "id": "Algorithm_35834_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 15,
+      "total_cases": 15,
+      "raw_format_compliant": true,
+      "generated_tokens": 67
+    },
+    {
+      "id": "Evol_1202_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 98
+    },
+    {
+      "id": "Apps_4686_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 133
+    },
+    {
+      "id": "Prefill_27916_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 100
+    },
+    {
+      "id": "Taco_30800_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 75
+    },
+    {
+      "id": "Prefill_32133_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 126
+    },
+    {
+      "id": "Prefill_5983_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 53
+    },
+    {
+      "id": "Filter_42624_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 45
+    },
+    {
+      "id": "Filter_70167_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 35
+    },
+    {
+      "id": "Prefill_32941_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 215
+    },
+    {
+      "id": "Prefill_16263_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 22
+    },
+    {
+      "id": "Filter_27299_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 194
+    },
+    {
+      "id": "Apps_7747_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 22
+    },
+    {
+      "id": "Taco_60938_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 123
+    },
+    {
+      "id": "Filter_88233_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 261
+    },
+    {
+      "id": "Filter_41737_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 3,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 96
+    },
+    {
+      "id": "Prefill_39611_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 136
+    },
+    {
+      "id": "Prefill_39733_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 31
+    },
+    {
+      "id": "Filter_72371_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 87
+    },
+    {
+      "id": "Taco_11515_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 55
+    },
+    {
+      "id": "Filter_13570_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 207
+    },
+    {
+      "id": "Prefill_33172_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 12
+    },
+    {
+      "id": "Filter_28748_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 48
+    },
+    {
+      "id": "Filter_74859_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 33
+    },
+    {
+      "id": "Evol_9995_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 64
+    },
+    {
+      "id": "Prefill_22895_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 16
+    },
+    {
+      "id": "Filter_11360_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 54
+    },
+    {
+      "id": "Prefill_16233_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 104
+    },
+    {
+      "id": "Filter_13456_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 11,
+      "total_cases": 11,
+      "raw_format_compliant": true,
+      "generated_tokens": 125
+    },
+    {
+      "id": "Data_Structure_41640_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 51
+    },
+    {
+      "id": "Prefill_8098_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 72
+    },
+    {
+      "id": "Prefill_42043_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 224
+    },
+    {
+      "id": "Filter_41577_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 36
+    },
+    {
+      "id": "Algorithm_30148_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 158
+    },
+    {
+      "id": "Filter_86075_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 58
+    },
+    {
+      "id": "Filter_59141_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 13,
+      "total_cases": 13,
+      "raw_format_compliant": true,
+      "generated_tokens": 65
+    },
+    {
+      "id": "Filter_25511_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 145
+    },
+    {
+      "id": "Code_Contests_23070_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 10,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 134
+    },
+    {
+      "id": "Apps_2107_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 20
+    },
+    {
+      "id": "Filter_8340_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 17
+    },
+    {
+      "id": "Filter_24272_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 53
+    },
+    {
+      "id": "Taco_74790_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 63
+    }
+  ],
+  "cleanup": {
+    "app": {
+      "app_id": "ap-K10McQ0awaH02ZgEhTGAO1",
+      "description": "coding-post-training-baseline",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-10-09 12:26:02-07:00",
+      "stopped_at": "2026-10-09 13:30:41-07:00"
+    },
+    "previous_attempt_apps": [],
+    "evaluation_containers_remaining": 0
+  },
+  "billing_snapshot": {
+    "as_of": "2026-10-09T20:41:15.661227+00:00",
+    "apps": {
+      "ap-K10McQ0awaH02ZgEhTGAO1": {
+        "rows_present": 1,
+        "reported_usd": 2.92699862
+      },
+      "ap-ccQ9NnEzz8nsRsB6ENa5CB": {
+        "rows_present": 1,
+        "reported_usd": 0.41288203
+      },
+      "ap-UD1z92XbVZgxiOT93zuCA7": {
+        "rows_present": 1,
+        "reported_usd": 0.10035522
+      },
+      "ap-XldgBfXd0gHYO2DKddFx6p": {
+        "rows_present": 1,
+        "reported_usd": 1.73972118
+      }
+    },
+    "note": "Provider billing may lag final metering. Missing rows do not mean zero cost."
+  }
+}
