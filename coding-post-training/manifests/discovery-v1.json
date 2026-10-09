@@ -1,0 +1,1479 @@
+{
+  "dataset": "KodCode/KodCode-Light-RL-10K",
+  "revision": "dcf78a8bbba9a613b596ce993c4921a38687dfcc",
+  "split_manifest_sha256": "ef605f28004a10150ed8c0efa4572a8d301c15dafa742580ca4532862b1d8b93",
+  "sample_sha256": "a8ba2d33331b3f376b9d0e80698f2ed5809bda7bd263bbd902f383a3938fd557",
+  "selection": "50 broad then 50 medium/hard; SHA256([42, discovery-v1, id]) order; one per family; reference failures excluded; final-test and smoke families excluded",
+  "eligible_pool_counts": {
+    "final_test": 504,
+    "development": 1177,
+    "sft_train": 1678,
+    "alignment_train": 822
+  },
+  "eligible_difficulty_counts": {
+    "easy": 2855,
+    "hard": 589,
+    "medium": 737
+  },
+  "rejections": {
+    "Outside initial pure-function scope": 2930,
+    "Unsupported test body": 1521,
+    "Unsupported test module statement": 295,
+    "Only direct equality assertions supported": 118,
+    "Unsupported case value": 615,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11ba85310>": 1,
+    "Unsupported solution import": 1,
+    "Fixtures/decorators unsupported": 2,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11ba63810>": 1,
+    "Manual audit exclusion": 51,
+    "malformed node or string on line 12: <ast.BinOp object at 0x11ba6c6d0>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11bae20d0>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11bacfa50>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11bb01390>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11bae7250>": 1,
+    "malformed node or string on line 9: <ast.ListComp object at 0x11bad9c10>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11bb22a90>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11bb28c90>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11bb3d0d0>": 1,
+    "Require 3\u201320 literal cases": 23,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11bb4e290>": 1,
+    "Only positional direct function calls supported": 27,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11bb1f350>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11bb6e150>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x11bbec250>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11bbec350>": 1,
+    "malformed node or string on line 19: <ast.Subscript object at 0x11bc38510>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11bc44390>": 1,
+    "malformed node or string on line 31: <ast.BinOp object at 0x11bc47890>": 1,
+    "malformed node or string on line 10: <ast.BinOp object at 0x11bc645d0>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bc7cd10>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bcbdfd0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11bca1910>": 1,
+    "malformed node or string on line 11: <ast.BinOp object at 0x11bccc990>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11bcc5c10>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11bce85d0>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11bd002d0>": 1,
+    "malformed node or string on line 8: <ast.BinOp object at 0x11bd475d0>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11bd6b2d0>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bd70810>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11bd8cbd0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11bdace10>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x11bdedbd0>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11bde0450>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bdfe950>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11be04850>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11be4d1d0>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11be62510>": 1,
+    "malformed node or string on line 26: <ast.Call object at 0x11bea4490>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bea4250>": 1,
+    "malformed node or string on line 14: <ast.Call object at 0x11be8c190>": 1,
+    "malformed node or string on line 12: <ast.BinOp object at 0x11bee2110>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11be8d190>": 1,
+    "malformed node or string on line 12: <ast.BinOp object at 0x11bf0ff90>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11bf17c50>": 1,
+    "malformed node or string on line 34: <ast.Call object at 0x11bfcb310>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11bfe6150>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11bfdbc90>": 1,
+    "malformed node or string on line 26: <ast.Call object at 0x11bfe3990>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11bfe4790>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x11bff5d90>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11c059590>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11c08a390>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c0afe90>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11c0bca10>": 1,
+    "malformed node or string on line 13: <ast.ListComp object at 0x11c0be210>": 1,
+    "malformed node or string on line 5: <ast.BinOp object at 0x11c115710>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11c1554d0>": 1,
+    "malformed node or string on line 13: <ast.Call object at 0x11c173a10>": 1,
+    "malformed node or string on line 15: <ast.Call object at 0x11c191f10>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11c1647d0>": 1,
+    "malformed node or string on line 22: <ast.ListComp object at 0x11c185c90>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x11c1fd750>": 1,
+    "malformed node or string on line 16: <ast.ListComp object at 0x11c1fc490>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11c1c7150>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c220250>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11c2146d0>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11c215090>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11c23e5d0>": 1,
+    "malformed node or string on line 18: <ast.ListComp object at 0x11c245910>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11c25a350>": 1,
+    "malformed node or string on line 9: <ast.BinOp object at 0x11c296050>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11c2a9dd0>": 1,
+    "malformed node or string on line 8: <ast.BinOp object at 0x11c2fe7d0>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11c2cd790>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c2b4290>": 1,
+    "malformed node or string on line 34: <ast.BinOp object at 0x11c329bd0>": 1,
+    "malformed node or string on line 29: <ast.BinOp object at 0x11c33d2d0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c3386d0>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11c363450>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c36c990>": 1,
+    "malformed node or string on line 12: <ast.BinOp object at 0x11c3ba950>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11c3b9050>": 1,
+    "malformed node or string on line 25: <ast.Call object at 0x11c3efe10>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c42da10>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11c440310>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11c452710>": 1,
+    "malformed node or string on line 29: <ast.BinOp object at 0x11c4480d0>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11c47c6d0>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11c435750>": 1,
+    "malformed node or string on line 17: <ast.Constant object at 0x11c474610>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11c4d6850>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11c4d3810>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11c4d5dd0>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11c4e3550>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11c53dfd0>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x11c51b890>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11c518e90>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11c552510>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11c56bc90>": 1,
+    "malformed node or string on line 24: <ast.ListComp object at 0x11c57e110>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c57d350>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11c5b2750>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11c5de110>": 1,
+    "malformed node or string on line 2: <ast.Call object at 0x11c5e2610>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11c614250>": 1,
+    "malformed node or string on line 14: <ast.ListComp object at 0x11c67a910>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11c6bd110>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11c6f1510>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11c6f1950>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11c6fd210>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11c7191d0>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c731550>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11c753690>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c745150>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c761210>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11c780550>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11c7cd9d0>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11c7f8050>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11c83b810>": 1,
+    "malformed node or string on line 28: <ast.Call object at 0x11c88fa90>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11c881050>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11c8b41d0>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11c903350>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11c90c910>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c8e2390>": 1,
+    "malformed node or string on line 25: <ast.Call object at 0x11c94ee50>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c963250>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c961090>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11c91b0d0>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11c97a4d0>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11c963e50>": 1,
+    "malformed node or string on line 4: <ast.Lambda object at 0x11c97ad50>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c9acdd0>": 1,
+    "malformed node or string on line 31: <ast.BinOp object at 0x11c9d5e90>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11c9d5310>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11c9b7010>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11c9f4290>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c9e6950>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11ca274d0>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x11ca6fd10>": 1,
+    "malformed node or string on line 29: <ast.Call object at 0x11c6c6210>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11ca87590>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11ca77250>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11cab5490>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x11caaeb90>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11caac390>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11caa0e50>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11cae7d90>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11cb2c7d0>": 1,
+    "malformed node or string on line 26: <ast.ListComp object at 0x11cb1e6d0>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11cb32d90>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11cb4f790>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11cb81d10>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11cbc0750>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11cb93410>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11cbab1d0>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11cbeed50>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11cc04650>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11cc2b0d0>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11cc3b050>": 1,
+    "malformed node or string on line 11: <ast.Call object at 0x11cc3db10>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11cc56f10>": 1,
+    "malformed node or string on line 38: <ast.BinOp object at 0x11cc5d350>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11cca84d0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11cc9f0d0>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11ccded90>": 1,
+    "malformed node or string on line 13: <ast.Call object at 0x11cce2650>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11cd118d0>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11cd2b810>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11cd43a10>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11cd50a10>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11cd3fc50>": 1,
+    "malformed node or string on line 25: <ast.ListComp object at 0x11cdb6150>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11ce01a90>": 1,
+    "malformed node or string on line 22: <ast.ListComp object at 0x11ce292d0>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11ce31510>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11ce6d250>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11ceb44d0>": 1,
+    "malformed node or string on line 10: <ast.Call object at 0x11ceee7d0>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11ced7ad0>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11cf316d0>": 1,
+    "malformed node or string on line 5: <ast.BinOp object at 0x11cf4ba50>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11cf2fc10>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11cf6bd90>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11cf76e90>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11cf5ddd0>": 1,
+    "malformed node or string on line 16: <ast.ListComp object at 0x11cf84790>": 1,
+    "malformed node or string on line 9: <ast.BinOp object at 0x11cf7dc90>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11cfdabd0>": 1,
+    "malformed node or string on line 28: <ast.Call object at 0x11cff4e90>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11d013c10>": 1,
+    "malformed node or string on line 25: <ast.Call object at 0x11d0334d0>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11d02ca50>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11cff7850>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11d060950>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11d062450>": 1,
+    "malformed node or string on line 21: <ast.DictComp object at 0x11d091650>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11d0af590>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11d09ba90>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11d0f2390>": 1,
+    "malformed node or string on line 17: <ast.Call object at 0x11d10d1d0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11d132e90>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11d1a3ed0>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11d172710>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11d193d50>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11d179ad0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11d178550>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11d139d90>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11d1b58d0>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11d1acf50>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11d1c2e50>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x11d1c54d0>": 1,
+    "malformed node or string on line 32: <ast.ListComp object at 0x11d1dd390>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11d273c50>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11d2abe50>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11d2aa8d0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11d2f2710>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11d2f8810>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11d2abc50>": 1,
+    "malformed node or string on line 15: <ast.ListComp object at 0x11d2c1050>": 1,
+    "malformed node or string on line 22: <ast.ListComp object at 0x11d323710>": 1,
+    "malformed node or string on line 13: <ast.Call object at 0x11d3293d0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11d3a18d0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11d3a3e90>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11d34d8d0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11d42b0d0>": 1,
+    "malformed node or string on line 25: <ast.Call object at 0x11d43a450>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11d441f10>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x11d44d050>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11d469a10>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11d4a1610>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11ba34f50>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11d4d2450>": 1,
+    "malformed node or string on line 21: <ast.Call object at 0x11d4db850>": 1,
+    "malformed node or string on line 28: <ast.Call object at 0x11d52bd10>": 1
+  },
+  "reference_validation": [
+    {
+      "id": "Apps_6492_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_54184_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_53034_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_23493_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_44584_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_39172_I",
+      "status": "passed"
+    },
+    {
+      "id": "Leetcode_41194_I",
+      "status": "passed"
+    },
+    {
+      "id": "Algorithm_37500_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_26240_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_18088_I",
+      "status": "passed"
+    },
+    {
+      "id": "Algorithm_46728_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_14564_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_40487_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_16553_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_38145_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_31266_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_10386_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_68887_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_76024_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_42928_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_56625_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_87326_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_57895_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_8123_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_66631_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_10947_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_7608_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_16144_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_33724_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_68169_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_25199_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_41605_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_3471_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_14332_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_15639_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_27175_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_28041_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_41713_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_47535_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_52882_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_37612_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_67993_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_36012_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_17294_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_26491_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_23088_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_5174_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_3467_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_28477_I",
+      "status": "passed"
+    },
+    {
+      "id": "Algorithm_20361_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_38350_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_14304_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_38802_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_19551_I",
+      "status": "passed"
+    },
+    {
+      "id": "Evol_9946_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_27332_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_57749_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_29447_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_3223_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_11888_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_2178_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_14662_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_38218_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_35466_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_480_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_224_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_17571_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_80820_I",
+      "status": "passed"
+    },
+    {
+      "id": "Evol_1469_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_51229_I",
+      "status": "passed"
+    },
+    {
+      "id": "Data_Structure_41652_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_25633_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_67158_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_54449_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_6746_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_51966_I",
+      "status": "passed"
+    },
+    {
+      "id": "Evol_5299_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_50585_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_7450_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_75494_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_81860_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_14485_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_34977_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_42318_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_35390_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_52116_I",
+      "status": "passed"
+    },
+    {
+      "id": "Codeforces_10427_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_1746_I",
+      "status": "passed"
+    },
+    {
+      "id": "Code_Contests_35635_I",
+      "status": "passed"
+    },
+    {
+      "id": "Taco_443_I",
+      "status": "passed"
+    },
+    {
+      "id": "Algorithm_23329_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_113_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_23965_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_3001_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_26162_I",
+      "status": "passed"
+    },
+    {
+      "id": "Prefill_32752_I",
+      "status": "passed"
+    },
+    {
+      "id": "Apps_4688_I",
+      "status": "passed"
+    },
+    {
+      "id": "Evol_623_I",
+      "status": "passed"
+    },
+    {
+      "id": "Codeforces_00027181_I",
+      "status": "passed"
+    },
+    {
+      "id": "Filter_25989_I",
+      "status": "passed"
+    }
+  ],
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "audit_sha256": "63c39abe11d334b5f8c6aa52ad214c62e182d40753fd7ffa4bac2569ddbeb265",
+  "selected": [
+    {
+      "id": "Apps_6492_I",
+      "family_id": "Apps_6492_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 258
+    },
+    {
+      "id": "Filter_54184_I",
+      "family_id": "Filter_54184_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 60
+    },
+    {
+      "id": "Filter_53034_I",
+      "family_id": "Filter_53034_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 101
+    },
+    {
+      "id": "Prefill_23493_I",
+      "family_id": "Prefill_23493_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 98
+    },
+    {
+      "id": "Filter_44584_I",
+      "family_id": "Filter_44584_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 115
+    },
+    {
+      "id": "Filter_39172_I",
+      "family_id": "Filter_39172_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Leetcode_41194_I",
+      "family_id": "Algorithm_20291_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "hard",
+      "prompt_tokens": 252
+    },
+    {
+      "id": "Algorithm_37500_I",
+      "family_id": "Algorithm_37500_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 436
+    },
+    {
+      "id": "Prefill_26240_I",
+      "family_id": "Prefill_26240_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 123
+    },
+    {
+      "id": "Apps_18088_I",
+      "family_id": "Apps_12250_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "hard",
+      "prompt_tokens": 284
+    },
+    {
+      "id": "Algorithm_46728_I",
+      "family_id": "Algorithm_46728_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 472
+    },
+    {
+      "id": "Prefill_14564_I",
+      "family_id": "Prefill_14564_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 103
+    },
+    {
+      "id": "Filter_40487_I",
+      "family_id": "Filter_40487_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 58
+    },
+    {
+      "id": "Apps_16553_I",
+      "family_id": "Algorithm_7917_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "medium",
+      "prompt_tokens": 143
+    },
+    {
+      "id": "Taco_38145_I",
+      "family_id": "Taco_38145_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "medium",
+      "prompt_tokens": 579
+    },
+    {
+      "id": "Prefill_31266_I",
+      "family_id": "Prefill_31266_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 79
+    },
+    {
+      "id": "Filter_10386_I",
+      "family_id": "Filter_10386_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 123
+    },
+    {
+      "id": "Filter_68887_I",
+      "family_id": "Filter_68887_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "medium",
+      "prompt_tokens": 119
+    },
+    {
+      "id": "Filter_76024_I",
+      "family_id": "Filter_76024_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 62
+    },
+    {
+      "id": "Prefill_42928_I",
+      "family_id": "Prefill_42928_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 63
+    },
+    {
+      "id": "Filter_56625_I",
+      "family_id": "Filter_56625_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 78
+    },
+    {
+      "id": "Filter_87326_I",
+      "family_id": "Filter_87326_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 69
+    },
+    {
+      "id": "Filter_57895_I",
+      "family_id": "Filter_57895_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 100
+    },
+    {
+      "id": "Apps_8123_I",
+      "family_id": "Apps_8123_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "medium",
+      "prompt_tokens": 272
+    },
+    {
+      "id": "Taco_66631_I",
+      "family_id": "Taco_66631_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 206
+    },
+    {
+      "id": "Prefill_10947_I",
+      "family_id": "Prefill_10947_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 67
+    },
+    {
+      "id": "Apps_7608_I",
+      "family_id": "Apps_7608_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 220
+    },
+    {
+      "id": "Prefill_16144_I",
+      "family_id": "Prefill_16144_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Prefill_33724_I",
+      "family_id": "Prefill_33724_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 64
+    },
+    {
+      "id": "Filter_68169_I",
+      "family_id": "Filter_68169_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Prefill_25199_I",
+      "family_id": "Prefill_25199_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 60
+    },
+    {
+      "id": "Taco_41605_I",
+      "family_id": "Taco_41605_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "hard",
+      "prompt_tokens": 244
+    },
+    {
+      "id": "Filter_3471_I",
+      "family_id": "Filter_3471_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 345
+    },
+    {
+      "id": "Prefill_14332_I",
+      "family_id": "Prefill_14332_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 70
+    },
+    {
+      "id": "Prefill_15639_I",
+      "family_id": "Prefill_15639_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 74
+    },
+    {
+      "id": "Prefill_27175_I",
+      "family_id": "Prefill_27175_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 84
+    },
+    {
+      "id": "Taco_28041_I",
+      "family_id": "Taco_28041_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "medium",
+      "prompt_tokens": 458
+    },
+    {
+      "id": "Prefill_41713_I",
+      "family_id": "Prefill_41713_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 69
+    },
+    {
+      "id": "Filter_47535_I",
+      "family_id": "Filter_47535_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Filter_52882_I",
+      "family_id": "Filter_52882_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 105
+    },
+    {
+      "id": "Filter_37612_I",
+      "family_id": "Filter_37612_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 100
+    },
+    {
+      "id": "Filter_67993_I",
+      "family_id": "Filter_67993_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 93
+    },
+    {
+      "id": "Taco_36012_I",
+      "family_id": "Taco_36012_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 147
+    },
+    {
+      "id": "Prefill_17294_I",
+      "family_id": "Prefill_17294_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 88
+    },
+    {
+      "id": "Prefill_26491_I",
+      "family_id": "Prefill_26491_I",
+      "split": "alignment_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 86
+    },
+    {
+      "id": "Prefill_23088_I",
+      "family_id": "Prefill_23088_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "hard",
+      "prompt_tokens": 82
+    },
+    {
+      "id": "Prefill_5174_I",
+      "family_id": "Prefill_5174_I",
+      "split": "development",
+      "stratum": "broad",
+      "difficulty": "medium",
+      "prompt_tokens": 84
+    },
+    {
+      "id": "Prefill_3467_I",
+      "family_id": "Prefill_3467_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 151
+    },
+    {
+      "id": "Prefill_28477_I",
+      "family_id": "Prefill_28477_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Algorithm_20361_I",
+      "family_id": "Algorithm_20361_I",
+      "split": "sft_train",
+      "stratum": "broad",
+      "difficulty": "easy",
+      "prompt_tokens": 432
+    },
+    {
+      "id": "Prefill_38350_I",
+      "family_id": "Prefill_38350_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 102
+    },
+    {
+      "id": "Apps_14304_I",
+      "family_id": "Apps_14304_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 278
+    },
+    {
+      "id": "Prefill_38802_I",
+      "family_id": "Prefill_38802_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 103
+    },
+    {
+      "id": "Prefill_19551_I",
+      "family_id": "Prefill_19551_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 113
+    },
+    {
+      "id": "Evol_9946_I",
+      "family_id": "Evol_9946_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 103
+    },
+    {
+      "id": "Filter_27332_I",
+      "family_id": "Filter_27332_I",
+      "split": "development",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 91
+    },
+    {
+      "id": "Taco_57749_I",
+      "family_id": "Taco_57749_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 283
+    },
+    {
+      "id": "Prefill_29447_I",
+      "family_id": "Prefill_29447_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 74
+    },
+    {
+      "id": "Apps_3223_I",
+      "family_id": "Apps_3223_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 248
+    },
+    {
+      "id": "Apps_11888_I",
+      "family_id": "Apps_11888_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 324
+    },
+    {
+      "id": "Apps_2178_I",
+      "family_id": "Apps_2178_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 277
+    },
+    {
+      "id": "Apps_14662_I",
+      "family_id": "Apps_14662_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 274
+    },
+    {
+      "id": "Prefill_38218_I",
+      "family_id": "Prefill_38218_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 109
+    },
+    {
+      "id": "Prefill_35466_I",
+      "family_id": "Prefill_35466_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 73
+    },
+    {
+      "id": "Apps_480_I",
+      "family_id": "Apps_17860_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 191
+    },
+    {
+      "id": "Apps_224_I",
+      "family_id": "Apps_224_I",
+      "split": "development",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 184
+    },
+    {
+      "id": "Filter_17571_I",
+      "family_id": "Filter_17571_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 147
+    },
+    {
+      "id": "Filter_80820_I",
+      "family_id": "Filter_80820_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 138
+    },
+    {
+      "id": "Evol_1469_I",
+      "family_id": "Evol_1469_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 314
+    },
+    {
+      "id": "Filter_51229_I",
+      "family_id": "Filter_51229_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 151
+    },
+    {
+      "id": "Data_Structure_41652_I",
+      "family_id": "Codeforces_7273_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 549
+    },
+    {
+      "id": "Filter_25633_I",
+      "family_id": "Filter_25633_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 86
+    },
+    {
+      "id": "Filter_67158_I",
+      "family_id": "Filter_67158_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Filter_54449_I",
+      "family_id": "Filter_54449_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 119
+    },
+    {
+      "id": "Filter_6746_I",
+      "family_id": "Filter_6746_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 409
+    },
+    {
+      "id": "Filter_51966_I",
+      "family_id": "Filter_51966_I",
+      "split": "development",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 156
+    },
+    {
+      "id": "Evol_5299_I",
+      "family_id": "Evol_5299_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 125
+    },
+    {
+      "id": "Taco_50585_I",
+      "family_id": "Taco_50585_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 239
+    },
+    {
+      "id": "Prefill_7450_I",
+      "family_id": "Prefill_7450_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 56
+    },
+    {
+      "id": "Filter_75494_I",
+      "family_id": "Filter_75494_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 65
+    },
+    {
+      "id": "Filter_81860_I",
+      "family_id": "Filter_81860_I",
+      "split": "development",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 122
+    },
+    {
+      "id": "Apps_14485_I",
+      "family_id": "Algorithm_25716_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 192
+    },
+    {
+      "id": "Prefill_34977_I",
+      "family_id": "Prefill_34977_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 62
+    },
+    {
+      "id": "Prefill_42318_I",
+      "family_id": "Prefill_42318_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 73
+    },
+    {
+      "id": "Prefill_35390_I",
+      "family_id": "Prefill_35390_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 106
+    },
+    {
+      "id": "Taco_52116_I",
+      "family_id": "Taco_52116_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 370
+    },
+    {
+      "id": "Codeforces_10427_I",
+      "family_id": "Algorithm_21298_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 415
+    },
+    {
+      "id": "Prefill_1746_I",
+      "family_id": "Prefill_1746_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Code_Contests_35635_I",
+      "family_id": "Algorithm_23193_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 468
+    },
+    {
+      "id": "Taco_443_I",
+      "family_id": "Taco_443_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 231
+    },
+    {
+      "id": "Algorithm_23329_I",
+      "family_id": "Algorithm_23329_I",
+      "split": "development",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 472
+    },
+    {
+      "id": "Filter_113_I",
+      "family_id": "Filter_113_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Prefill_23965_I",
+      "family_id": "Prefill_23965_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 97
+    },
+    {
+      "id": "Apps_3001_I",
+      "family_id": "Apps_3001_I",
+      "split": "development",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 246
+    },
+    {
+      "id": "Filter_26162_I",
+      "family_id": "Filter_26162_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 120
+    },
+    {
+      "id": "Prefill_32752_I",
+      "family_id": "Prefill_32752_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 118
+    },
+    {
+      "id": "Apps_4688_I",
+      "family_id": "Algorithm_37867_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 288
+    },
+    {
+      "id": "Evol_623_I",
+      "family_id": "Evol_623_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 141
+    },
+    {
+      "id": "Codeforces_00027181_I",
+      "family_id": "Codeforces_00027181_I",
+      "split": "sft_train",
+      "stratum": "medium_hard",
+      "difficulty": "hard",
+      "prompt_tokens": 474
+    },
+    {
+      "id": "Filter_25989_I",
+      "family_id": "Filter_25989_I",
+      "split": "alignment_train",
+      "stratum": "medium_hard",
+      "difficulty": "medium",
+      "prompt_tokens": 159
+    }
+  ]
+}

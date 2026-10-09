@@ -1,4 +1,4 @@
-"""Ten-problem baseline. No training, exposed endpoint, or persistent GPU service."""
+"""Bounded baseline and discovery inference; no training or serving endpoint."""
 
 import json
 import subprocess
@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import modal
-from data import MODEL, MODEL_REVISION, DATA_REVISION, ROOT, digest, messages
+from data import MODEL, MODEL_REVISION, DATA_REVISION, ROOT, digest, tokenize_prompt
 from evaluator import EVALUATOR_VERSION, evaluate
 
 app = modal.App("coding-post-training-baseline")
@@ -40,13 +40,24 @@ _loaded = None
 @app.function(image=gpu_image, gpu="A100-80GB", cpu=(2, 2), memory=(16384, 16384),
     timeout=600, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2)
 def generate(problems):
+    return generate_batch(problems, samples=1)
+
+
+def trim_completion(completion, eos):
+    """Remove batch padding after the first EOS, retaining EOS in token counts."""
+    eos = [eos] if isinstance(eos, int) else eos
+    end = next((i + 1 for i, token in enumerate(completion) if token in eos), None)
+    return (completion[:end], True) if end is not None else (completion, False)
+
+
+def generate_batch(problems, samples=1, checkpoint=None):
     import importlib.metadata
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     global _loaded
     started = time.monotonic()
-    assert 1 <= len(problems) <= 9
+    assert 1 <= len(problems) <= 9 and samples in (1, 4)
     torch.manual_seed(42)
     if _loaded is None:
         tokenizer = AutoTokenizer.from_pretrained("/model", local_files_only=True)
@@ -58,31 +69,59 @@ def generate(problems):
     torch.cuda.reset_peak_memory_stats()
     outputs = []
     for problem in problems:
-        prompt = tokenizer.apply_chat_template(messages(problem), tokenize=False, add_generation_prompt=True)
-        inputs = tokenizer(prompt, return_tensors="pt", add_special_tokens=False).to("cuda")
+        inputs = tokenize_prompt(problem, tokenizer, return_tensors="pt").to("cuda")
         prompt_tokens = inputs["input_ids"].shape[1]
         if prompt_tokens > 1024:
             raise ValueError(f"Prompt exceeds agreed limit: {problem['id']}")
+        seed = 42 if samples == 1 else int(digest([42, problem["id"]])[:8], 16)
+        if samples > 1:
+            torch.manual_seed(seed)
         torch.cuda.synchronize()
         before = time.monotonic()
         with torch.inference_mode():
-            sequence = model.generate(**inputs, max_new_tokens=512, do_sample=False,
-                temperature=None, top_p=None, top_k=None, pad_token_id=tokenizer.eos_token_id)
+            sequences = model.generate(**inputs, max_new_tokens=512,
+                do_sample=samples > 1, num_return_sequences=samples,
+                temperature=1.0 if samples > 1 else None,
+                top_p=1.0 if samples > 1 else None, top_k=0 if samples > 1 else None,
+                pad_token_id=tokenizer.eos_token_id)
         torch.cuda.synchronize()
-        completion = sequence[0, prompt_tokens:].tolist()
+        group_seconds = time.monotonic() - before
         eos = model.generation_config.eos_token_id
-        eos = [eos] if isinstance(eos, int) else eos
-        terminated = bool(completion and completion[-1] in eos)
-        outputs.append({"id": problem["id"], "code": tokenizer.decode(completion, skip_special_tokens=True),
-            "prompt_tokens": prompt_tokens, "generated_tokens": len(completion),
-            "terminated": terminated, "generation_seconds": time.monotonic() - before})
-        print(json.dumps({k: v for k, v in outputs[-1].items() if k != "code"}), flush=True)
+        for index, sequence in enumerate(sequences):
+            completion = sequence[prompt_tokens:].tolist()
+            # Batched generation pads shorter answers; retain through first EOS.
+            completion, terminated = trim_completion(completion, eos)
+            outputs.append({"id": problem["id"], "sample_index": index, "seed": seed,
+                "code": tokenizer.decode(completion, skip_special_tokens=True),
+                "prompt_tokens": prompt_tokens, "generated_tokens": len(completion),
+                "terminated": terminated, "generation_seconds": group_seconds / samples})
+            print(json.dumps({k: v for k, v in outputs[-1].items() if k != "code"}), flush=True)
+        if checkpoint:
+            checkpoint(outputs)
     return {"outputs": outputs, "function_seconds": time.monotonic() - started,
         "load_seconds": loaded_at - started,
         "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
         "peak_reserved_bytes": torch.cuda.max_memory_reserved(),
         "gpu": torch.cuda.get_device_name(), "cuda": torch.version.cuda,
         "versions": {p: importlib.metadata.version(p) for p in ("torch", "transformers", "accelerate", "modal")}}
+
+
+@app.function(image=gpu_image, gpu="A100-80GB", cpu=(2, 2), memory=(16384, 16384),
+    timeout=240, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results": results_volume})
+def discover_generate(problems, run_id, batch_index):
+    import re
+    if not re.fullmatch(r"discovery-[0-9TZ]+-[0-9a-f]{8}", run_id):
+        raise ValueError("Invalid run ID")
+    if not 0 <= batch_index < 12:
+        raise ValueError("Too many batches")
+    destination = Path("/results") / f"{run_id}-batch-{batch_index}.json"
+    def checkpoint(outputs):
+        temporary = destination.with_suffix('.tmp')
+        temporary.write_text(json.dumps({"outputs": outputs}))
+        temporary.replace(destination)
+        results_volume.commit()
+    return generate_batch(problems, samples=4, checkpoint=checkpoint)
 
 
 @app.function(image=cpu_image, timeout=1800, retries=0, cpu=(1, 1), memory=(2048, 2048),

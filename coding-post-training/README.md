@@ -448,3 +448,78 @@ For a later scaling study, add vLLM weight synchronization, compare full fine-tu
 The task, model family, branch structure, and budget are decided. The remaining empirical decisions are the eligible dataset size, supported case protocol, exact dependency lock, achievable microbatch/context size, critic warm-up duration, stopping thresholds, and the number of final evaluation problems affordable within the remaining credits. Record each resolution here and in configuration files before the corresponding experiment.
 
 **Next learning checkpoint:** review the baseline's correctness, failure categories, token lengths, and GPU measurements together before designing the SFT run.
+
+## Difficulty-discovery experiment: 100 problems × 4 answers
+
+The ten-problem greedy smoke replay scored 10/10. Before training, we therefore
+look for a measurable capability gap using `discovery_data.py` and `discovery.py`.
+This experiment samples four answers per prompt at temperature 1, top-p 1, top-k
+0, with a 512-token completion limit. It is a stochastic discovery experiment,
+not a repeat of the greedy baseline and not final-test evaluation.
+
+**“Supported by our test parser”** means all tests can be converted into explicit
+JSON inputs and expected outputs without executing dataset test code. For example,
+`assert add(2, 3) == 5` is supported. Loops, helper calls, fixtures, keyword
+arguments, approximate comparisons, floats, and tuple-valued cases are currently
+unsupported. We reject the entire problem if any test is unsupported. This is an
+engineering limitation of our evaluator, not a statement about model ability.
+Parser acceptance also does not establish that the expected answers are correct.
+
+Preparation groups all 10,000 source records transitively by shared seed IDs,
+normalized prompt text, normalized solution AST, and manually identified links.
+Integer and text seed IDs are normalized together conservatively, which can
+merge unrelated source families. Existing smoke families remain development-only.
+Hash-assigned pools use nominal 50% SFT / 25% alignment / 10% development / 15%
+final-test allocation by family, so example counts need not follow those ratios.
+These are frozen source pools, not fully validated training datasets or a claim
+that all semantic duplicates have been found. The earlier 1,000/500/200/300 study
+sizes remain targets for later validated subsets.
+
+From eligible training/development pools, select 50 broadly, then 50 additional
+medium/hard examples in seeded hash order, with one example per family. Exclude
+smoke families and final-test families. Dataset difficulty labels are teacher
+metadata, not measured Qwen performance. Validate every selected reference in
+restricted local Docker. Audit prompts against tests before inference; record
+rejections and additional family links in `manifests/discovery-audit.json`.
+Reference agreement alone cannot detect a shared mistake in the solution and tests.
+
+```bash
+cd coding-post-training
+uv run --extra inference python discovery_data.py
+RUN_DOCKER_TESTS=1 uv run python -m unittest discover -s tests -v
+# Commit and push the prepared manifests and runner before this paid step:
+uv run python discovery.py
+```
+
+Frozen manifests refuse silent overwrites. Revisions after publication need new
+versioned manifests. Source data and full responses remain under ignored `data/`
+and `runs/`. Only prompts reach the GPU; generated code runs exclusively in local
+Docker. Generation shares the baseline's model loader, prompt, tokenizer, and EOS
+handling, with four sequences batched per prompt. Each prompt gets a recorded
+seed independent of batch boundaries. Different hardware/library versions can
+still change sampled answers.
+
+The runner first generates, retrieves, saves, and locally grades one four-answer
+canary, including container cleanup. Then it submits batches of at most nine
+prompts, with one A100-80GB worker and no automatic retries. Each cloud call has a
+240-second execution timeout and a 300-second startup timeout. Raw completions
+are checkpointed to the Modal Volume after every problem and saved locally after
+each batch, before grading. The GPU app ends before grading the remaining answers.
+A failed run never turns infrastructure errors into zero-reward examples.
+
+The initial allowance is **$3**. The application reserves $0.25 for setup and uses
+$0.00075572/second for A100-80GB + 2 CPU cores + 16 GiB RAM at
+[Modal's published rates](https://modal.com/pricing), checked October 8, 2026.
+Before each batch it reserves the next call's maximum startup/execution/idle time;
+it stops with partial results if that would exceed the allowance. Accounted time
+is remote wall time plus a two-second idle allowance per call. These are
+conservative estimates, not a provider-enforced dollar cap or a billed total.
+
+Report separate broad and medium/hard results. A prompt with 1–3 correct answers
+out of four is a candidate for preference pairs and relative-reward learning;
+4/4 offers no within-group binary reward contrast in this sample, and 0/4 needs
+failure analysis. Neither four successes nor four failures proves an underlying
+success probability of one or zero. Only alignment-pool examples may become
+DPO/PPO/GRPO training data; development examples remain development-only. Audit
+apparent failures before using their labels, and retain format and truncation
+metrics separately from functional correctness.

@@ -64,6 +64,30 @@ def extract_cases(source, entry_point):
     return cases
 
 
+def parse_problem(row):
+    """Shared pure-function eligibility and literal-test contract."""
+    if any(term in row["question"].lower() for term in ("complexity", "print", "file", "random", "input()", "database", "numpy")):
+        raise ValueError("Outside initial pure-function scope")
+    info = row["test_info"]
+    if len(info) != 1:
+        raise ValueError("Ambiguous entry point")
+    entry = info[0]["function_name"]
+    cases = extract_cases(row["test"], entry)
+    tree = ast.parse(row["solution"])
+    definitions = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == entry]
+    if len(definitions) != 1 or definitions[0].decorator_list:
+        raise ValueError("Missing/ambiguous entry-point definition")
+    node = definitions[0]
+    signature = f"def {entry}({ast.unparse(node.args)}):"
+    seed_ids = ast.literal_eval(row["metadata"].get("seed_ids", "[]"))
+    if not isinstance(seed_ids, list) or not all(type(x) in (str, int) for x in seed_ids):
+        raise ValueError("Invalid family metadata")
+    return {"id": row["question_id"], "question": row["question"],
+        "entry_point": entry, "signature": signature,
+        "reference_solution": row["solution"], "cases": cases,
+        "source_seed_ids": seed_ids}
+
+
 def prepare():
     from huggingface_hub import hf_hub_download
     import pyarrow.parquet as pq
@@ -79,31 +103,15 @@ def prepare():
         try:
             if row["question_id"] in exclusions:
                 raise ValueError("Manual audit: " + exclusions[row["question_id"]])
-            if any(term in row["question"].lower() for term in ("complexity", "print", "file", "random", "input()", "database", "numpy")):
-                raise ValueError("Outside initial pure-function scope")
-            info = row["test_info"]
-            if len(info) != 1:
-                raise ValueError("Ambiguous entry point")
-            entry = info[0]["function_name"]
-            cases = extract_cases(row["test"], entry)
-            tree = ast.parse(row["solution"])
-            definitions = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == entry]
-            if len(definitions) != 1 or definitions[0].decorator_list:
-                raise ValueError("Missing/ambiguous entry-point definition")
-            node = definitions[0]
-            signature = f"def {entry}({ast.unparse(node.args)}):"
-            seed_ids = ast.literal_eval(row["metadata"].get("seed_ids", "[]"))
-            if not isinstance(seed_ids, list) or not all(isinstance(x, str) for x in seed_ids):
+            parsed = parse_problem(row)
+            seed_ids = parsed["source_seed_ids"]
+            # Preserve the original smoke selection; discovery accepts numeric IDs.
+            if not all(isinstance(x, str) for x in seed_ids):
                 raise ValueError("Invalid family metadata")
             family_keys = set(seed_ids) | {digest(row["question"].strip()), digest(row["solution"].strip())}
             if family_keys & families:
                 raise ValueError("Duplicate family in development sample")
-            problem = {
-                "id": row["question_id"], "split": "development_smoke",
-                "question": row["question"], "entry_point": entry,
-                "signature": signature, "reference_solution": row["solution"],
-                "cases": cases, "source_seed_ids": seed_ids,
-            }
+            problem = {**parsed, "split": "development_smoke"}
             selected.append(problem)
             families.update(family_keys)
             if len(selected) == 10:
@@ -137,6 +145,12 @@ def messages(problem):
         {"role": "system", "content": "Write only Python source code. Do not include Markdown fences, explanations, tests, or interactive input."},
         {"role": "user", "content": problem["question"] + "\n\nRequired function signature:\n" + problem["signature"]},
     ]
+
+
+def tokenize_prompt(problem, tokenizer, **kwargs):
+    """Use exactly the same chat rendering and tokenization locally and on GPU."""
+    rendered = tokenizer.apply_chat_template(messages(problem), tokenize=False, add_generation_prompt=True)
+    return tokenizer(rendered, add_special_tokens=False, **kwargs)
 
 
 if __name__ == "__main__":
