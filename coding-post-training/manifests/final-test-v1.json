@@ -1,0 +1,3959 @@
+{
+  "dataset": "KodCode/KodCode-Light-RL-10K",
+  "revision": "dcf78a8bbba9a613b596ce993c4921a38687dfcc",
+  "sample_sha256": "2adb9debfd0975fceff6100c54275324e27e6abd5dfe42ab50817ff079e8567e",
+  "split_manifest_sha256": "ef605f28004a10150ed8c0efa4572a8d301c15dafa742580ca4532862b1d8b93",
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "reference_checks": [
+    {
+      "id": "Prefill_17439_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_5719_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_27687_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_85017_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_15968_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_4494_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_7468_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_12409_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_44319_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_35997_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_5113_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_66005_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_14740_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_81669_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_82041_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_21866_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_39860_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_7431_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_53387_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_15276_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_6724_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_104_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_28456_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_28835_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_9214_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_15356_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_54_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_37468_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_52412_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_15734_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_23984_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_18479_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_68790_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_69766_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_73367_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_55251_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_32604_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_34089_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_5367_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_87418_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_22183_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_18692_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_72708_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_14848_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_271_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_15835_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_38821_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_6344_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_8630_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_39826_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_70070_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_61309_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_36802_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_2806_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_42066_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_16368_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_3880_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_2047_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_38224_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_32867_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Data_Structure_2232_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_1740_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_15420_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_18169_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_95908_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_1174_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_45117_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_63836_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_50516_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_5146_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_48801_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_39370_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_16057_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_16986_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_71878_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_8859_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_84230_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_28211_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_32869_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_3848_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_14692_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_23069_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_920_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_57629_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_4067_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_1569_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_40385_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_1401_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_28763_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_31629_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_24984_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_16012_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_31054_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_1742_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_1291_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_75124_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_36576_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_72709_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_9851_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_86004_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_8839_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_63972_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_42547_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_6280_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Codeforces_2279_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_22_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23994_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_15561_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_1899_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_66599_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_37398_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Data_Structure_24695_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_17480_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_8911_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_76547_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_3554_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_25440_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_42360_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_33777_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_3297_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_13541_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_16650_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_6943_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_81658_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_20761_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_67107_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_14458_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_25340_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_84942_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_15462_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_12689_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_1446_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_9953_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_50470_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_16251_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_3161_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_50251_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_26776_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Codeforces_12411_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_27229_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_28633_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_88222_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_84748_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_11915_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_25358_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_64839_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_35475_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_39599_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_22366_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_13664_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Data_Structure_1572_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_500_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_21710_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_8257_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_55139_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_30431_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_21307_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_6442_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_19307_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_14094_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_5012_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_3177_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_58329_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_15805_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_22593_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_4414_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_46658_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_51468_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_3496_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_11582_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_580_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_3331_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_37616_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_1150_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_17067_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_16752_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_8513_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_771_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_34365_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_3950_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_36164_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_17486_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_2595_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_4828_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_19379_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_86263_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_88518_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_45898_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_26133_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_31524_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_87923_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_72624_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_11011_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23364_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23695_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_41431_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_14688_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_89843_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_47885_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_8750_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_18193_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_4351_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_19029_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_3702_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_59508_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_25194_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_6238_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_36858_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23510_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_79098_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_45296_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_12417_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_13205_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_4385_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_11688_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_62032_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_34963_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_78234_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_21558_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_83966_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_44290_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_83479_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_38601_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_30682_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_4379_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_32688_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_32462_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_13_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_1370_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_40331_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_17342_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23906_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23678_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_32123_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_1924_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_18728_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_9410_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_11693_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Data_Structure_35239_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_10686_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_21626_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_81239_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_91980_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_10537_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_10342_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_14938_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_62914_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Package_2855_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_7917_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_17145_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_9026_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_25896_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_24189_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_75608_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Codeforces_12618_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_91_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_24633_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_4125_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_35834_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_1202_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_4686_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_27916_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_30800_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_32133_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_5983_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_42624_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_70167_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_32941_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_16263_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_27299_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_7747_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_60938_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_88233_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_41737_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_39611_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_39733_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_72371_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_11515_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_13570_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_33172_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_28748_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_74859_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_9995_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_22895_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_11360_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_16233_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_13456_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Data_Structure_41640_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_8098_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_42043_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_41577_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_30148_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_86075_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_59141_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_25511_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_23070_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_2107_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_8340_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_24272_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_74790_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    }
+  ],
+  "selection": "SHA256([42, final-test-v1, id]); final_test pool only; unique families and normalized implementations, disjoint from pilot; references pass twice; no model scores used.",
+  "limitations": "Automatic reference agreement is not a complete manual semantic audit. Public dataset pretraining contamination is unknown.",
+  "rejections": {
+    "Outside initial pure-function scope": 330,
+    "Unsupported test body": 179,
+    "Unsupported test module statement": 30,
+    "malformed node or string on line 23: <ast.BinOp object at 0x119655190>": 1,
+    "Unsupported case value": 74,
+    "Require 3\u201320 literal cases": 2,
+    "malformed node or string on line 11: <ast.BinOp object at 0x121073750>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x121073510>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x121087350>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x1210828d0>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x121090c50>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x1210c7390>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11b66d910>": 1,
+    "Only positional direct function calls supported": 3,
+    "malformed node or string on line 22: <ast.BinOp object at 0x121119090>": 1,
+    "Only direct equality assertions supported": 10,
+    "malformed node or string on line 16: <ast.Call object at 0x121131210>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x12113cd90>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x12112efd0>": 1,
+    "malformed node or string on line 24: <ast.ListComp object at 0x12112f690>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x12112ad50>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x121132f50>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x121182510>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x12115fa90>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x1210fc7d0>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x1210fe810>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x1211e40d0>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x1211d6c10>": 1,
+    "malformed node or string on line 25: <ast.ListComp object at 0x121221890>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x121130b50>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x121229710>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x12111a7d0>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x1211e0990>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x121251c10>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x121290a10>": 1,
+    "malformed node or string on line 21: <ast.Call object at 0x1212b7c50>": 1,
+    "malformed node or string on line 28: <ast.Call object at 0x1212be750>": 1
+  },
+  "selected": [
+    {
+      "id": "Prefill_17439_I",
+      "family_id": "Prefill_17439_I",
+      "implementation_key": "f1d535973e36b4359a01a2943d2be207c667b39d023745bbeb69cc3e9b8277bf",
+      "prompt_tokens": 87
+    },
+    {
+      "id": "Prefill_5719_I",
+      "family_id": "Prefill_5719_I",
+      "implementation_key": "0d6ac3ee33a217927be5f47e708cfc782bfb43545a1403c685fd56fc2ee67613",
+      "prompt_tokens": 74
+    },
+    {
+      "id": "Prefill_27687_I",
+      "family_id": "Prefill_27687_I",
+      "implementation_key": "8e12a7700433a4d44ea5b5da73d60ca9959086d8592134e3a27d0129c485e9da",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Filter_85017_I",
+      "family_id": "Filter_85017_I",
+      "implementation_key": "03615932ca6ec596533efc914c7512166fe5ab0b40376036e1a40bee13bf0fb6",
+      "prompt_tokens": 171
+    },
+    {
+      "id": "Filter_15968_I",
+      "family_id": "Filter_15968_I",
+      "implementation_key": "eee3408a02eeb1b59c0e5f384c0921f50269a3a8f92761e3515bf756172b751b",
+      "prompt_tokens": 225
+    },
+    {
+      "id": "Apps_4494_I",
+      "family_id": "Apps_4494_I",
+      "implementation_key": "2a51d997288f3b7b13f8b502b8aac5b6185d3eed369dc81622390e0e0a38920d",
+      "prompt_tokens": 229
+    },
+    {
+      "id": "Filter_7468_I",
+      "family_id": "Filter_7468_I",
+      "implementation_key": "4f80e8dc673638a356030e99d540b8535f1a6c1b0078e6aa75f357d85f125806",
+      "prompt_tokens": 79
+    },
+    {
+      "id": "Prefill_12409_I",
+      "family_id": "Prefill_12409_I",
+      "implementation_key": "4f1c78d10473b8fbc5d95f691f595df64ce88889c5efc49094456901311cbb28",
+      "prompt_tokens": 91
+    },
+    {
+      "id": "Filter_44319_I",
+      "family_id": "Filter_44319_I",
+      "implementation_key": "b3e4c4e7577215170481123c0514ef211860407b88b68623c7f6bf26bd825e24",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Prefill_35997_I",
+      "family_id": "Prefill_35997_I",
+      "implementation_key": "0c58d1b0312703a5f585ef0f6d1c96099540c587e69cc4bce488ee2fe5e63b0f",
+      "prompt_tokens": 67
+    },
+    {
+      "id": "Prefill_5113_I",
+      "family_id": "Prefill_5113_I",
+      "implementation_key": "3d3cb2b3dd0654dbbb922b869fdb0380c4eb6029d015e5d19191abc2ec10ada0",
+      "prompt_tokens": 73
+    },
+    {
+      "id": "Filter_66005_I",
+      "family_id": "Filter_66005_I",
+      "implementation_key": "f32379d96bb70f329e8e0918c2cfabfeb58261a805cf24b15005cee43d916936",
+      "prompt_tokens": 68
+    },
+    {
+      "id": "Prefill_14740_I",
+      "family_id": "Prefill_14740_I",
+      "implementation_key": "2745023f59fa670d689ddb84501f4176b2e12451cd0773b2d060e0d9cee91610",
+      "prompt_tokens": 90
+    },
+    {
+      "id": "Filter_81669_I",
+      "family_id": "Filter_81669_I",
+      "implementation_key": "7b48d2c3e4cacceaeaff3b330e014abc7b5f2d228d67d76f434c16d198d4a6a6",
+      "prompt_tokens": 113
+    },
+    {
+      "id": "Taco_82041_I",
+      "family_id": "Data_Structure_26330_I",
+      "implementation_key": "364098f61b04b408601d78fbe071cfb76f67fe92d5fe21159e4e4dee6900d140",
+      "prompt_tokens": 269
+    },
+    {
+      "id": "Filter_21866_I",
+      "family_id": "Filter_21866_I",
+      "implementation_key": "ea0edc703bad1a165d07ea833783127235181b51b7719c7910a96f1fdd6a13a7",
+      "prompt_tokens": 196
+    },
+    {
+      "id": "Filter_39860_I",
+      "family_id": "Filter_39860_I",
+      "implementation_key": "0d322de7607d06c0152cb26c627016170ecaaf4b773b91cd3c718a005c109881",
+      "prompt_tokens": 97
+    },
+    {
+      "id": "Package_7431_I",
+      "family_id": "Package_7431_I",
+      "implementation_key": "3f7565dda775ec9d8b6ec4eb936ca4aa9dcfcb32dc1de416afac4028519258cf",
+      "prompt_tokens": 350
+    },
+    {
+      "id": "Filter_53387_I",
+      "family_id": "Filter_53387_I",
+      "implementation_key": "542cac23e4afcab7cc6b476ee8d9078ccd8c5128de9e3e0deea8fcc170fa5f5a",
+      "prompt_tokens": 78
+    },
+    {
+      "id": "Filter_15276_I",
+      "family_id": "Filter_15276_I",
+      "implementation_key": "9fba3212335f97c1ccfcb53fde552973761e748bbda43e57ad91528c53da7b74",
+      "prompt_tokens": 206
+    },
+    {
+      "id": "Evol_6724_I",
+      "family_id": "Evol_6724_I",
+      "implementation_key": "5921753207d9ee53f07293017739cc2702e52f32d83b04a2cf87c7b148f58e39",
+      "prompt_tokens": 90
+    },
+    {
+      "id": "Evol_104_I",
+      "family_id": "Evol_104_I",
+      "implementation_key": "518c82561371a46bda2b09df6ac65438acd97f5da8200493eb43ad3fe0f81dc8",
+      "prompt_tokens": 148
+    },
+    {
+      "id": "Filter_28456_I",
+      "family_id": "Filter_28456_I",
+      "implementation_key": "0af3287599a22c659be0d4de2fa50b1d21a54628863a65b4d095c2414b0056fa",
+      "prompt_tokens": 101
+    },
+    {
+      "id": "Filter_28835_I",
+      "family_id": "Filter_28835_I",
+      "implementation_key": "d6f829eb5af82c79b41a0c629585825d87ae86fab7fec99f7200d4e5854cb4e3",
+      "prompt_tokens": 88
+    },
+    {
+      "id": "Package_9214_I",
+      "family_id": "Package_9214_I",
+      "implementation_key": "96ef2f3251d804ac84da94722fe7c17c4f2cf02a34f6b559016d88e94e9ac50c",
+      "prompt_tokens": 410
+    },
+    {
+      "id": "Prefill_15356_I",
+      "family_id": "Prefill_15356_I",
+      "implementation_key": "becf9e0956cc658fd9ba2ad8f72a1cb84974143d65581383b1add7178824ec56",
+      "prompt_tokens": 161
+    },
+    {
+      "id": "Evol_54_I",
+      "family_id": "Evol_54_I",
+      "implementation_key": "805ed7749961c42820969acaf435cb3e4e4919007e2bad250873ba86e5509655",
+      "prompt_tokens": 256
+    },
+    {
+      "id": "Filter_37468_I",
+      "family_id": "Filter_37468_I",
+      "implementation_key": "4c31996122438f5242e20a77c0de59c4b084d061fb1d2ee8a05f2eca29417a58",
+      "prompt_tokens": 67
+    },
+    {
+      "id": "Filter_52412_I",
+      "family_id": "Filter_52412_I",
+      "implementation_key": "ce36c394b6edc52d92b8d57f6e3c62780087598b2766d03752bb94ff9832666c",
+      "prompt_tokens": 64
+    },
+    {
+      "id": "Prefill_15734_I",
+      "family_id": "Prefill_15734_I",
+      "implementation_key": "b5cf01abe4930bfe9c931e0f13e212cecac49068eb2aaaab2c3b545152e92956",
+      "prompt_tokens": 113
+    },
+    {
+      "id": "Filter_23984_I",
+      "family_id": "Filter_23984_I",
+      "implementation_key": "aeba61ed816a2887e1e819f121e452762d04e1e21c625ff83b7da41406b36c6b",
+      "prompt_tokens": 102
+    },
+    {
+      "id": "Prefill_18479_I",
+      "family_id": "Prefill_18479_I",
+      "implementation_key": "db1e684fc7cbd27d0a259344ac75cf3df90c5d8c3cf96523915367592c26c9ef",
+      "prompt_tokens": 63
+    },
+    {
+      "id": "Filter_68790_I",
+      "family_id": "Filter_68790_I",
+      "implementation_key": "68d99bd1a5c7be525c52dcb85c53e41161188051812163e48f5d63331b0d2183",
+      "prompt_tokens": 70
+    },
+    {
+      "id": "Taco_69766_I",
+      "family_id": "Taco_58629_I",
+      "implementation_key": "2db3bab14ff1fd1aacd65a6fc463162a545d184009ff7ba160d478088fd66ef1",
+      "prompt_tokens": 368
+    },
+    {
+      "id": "Filter_73367_I",
+      "family_id": "Filter_73367_I",
+      "implementation_key": "dc69a106a36e7f667964f5578161908f4855e480ae9ffbef0dd36dac7e07e926",
+      "prompt_tokens": 120
+    },
+    {
+      "id": "Filter_55251_I",
+      "family_id": "Filter_55251_I",
+      "implementation_key": "c3766909d552027bba8c8ef8e642cbd02bd2539e72f817212b259e2eb7849ee5",
+      "prompt_tokens": 84
+    },
+    {
+      "id": "Prefill_32604_I",
+      "family_id": "Prefill_32604_I",
+      "implementation_key": "842fcc02a8fc7e192b7b5cd3a56312be8abb42857e62b0975c1b0467fd1675a1",
+      "prompt_tokens": 65
+    },
+    {
+      "id": "Filter_34089_I",
+      "family_id": "Filter_34089_I",
+      "implementation_key": "92c4944f5aa9a080cd4a68a2d7346f05424d0458a12d292b842c0afe054d110d",
+      "prompt_tokens": 91
+    },
+    {
+      "id": "Evol_5367_I",
+      "family_id": "Evol_5367_I",
+      "implementation_key": "f193f45a0803d78343e6b70a805711554ed1102d1503f779448321872cdd2992",
+      "prompt_tokens": 109
+    },
+    {
+      "id": "Filter_87418_I",
+      "family_id": "Filter_87418_I",
+      "implementation_key": "d30205590113c4a0f7d4010c39f744ec7a1d06946f7689f2e12af88388d3477d",
+      "prompt_tokens": 372
+    },
+    {
+      "id": "Prefill_22183_I",
+      "family_id": "Prefill_22183_I",
+      "implementation_key": "c9841bf1c131593cf048d8b68ad56819b4fc80cbeaa1a149c0725ac166a85a72",
+      "prompt_tokens": 109
+    },
+    {
+      "id": "Prefill_18692_I",
+      "family_id": "Prefill_18692_I",
+      "implementation_key": "28ede78d75d7cc2ec43f5e813b47d146f5bb028d88ea2fe4aed6428691520dc3",
+      "prompt_tokens": 99
+    },
+    {
+      "id": "Taco_72708_I",
+      "family_id": "Taco_72708_I",
+      "implementation_key": "a886919b7ede1b6e7647f82aaf2541c36e900841c28f921d0e3a7aeed0ed4c5d",
+      "prompt_tokens": 371
+    },
+    {
+      "id": "Prefill_14848_I",
+      "family_id": "Prefill_14848_I",
+      "implementation_key": "ce207275429761e165eeae67cb4a28f70291159791171a0af3b3320050e01dc8",
+      "prompt_tokens": 91
+    },
+    {
+      "id": "Package_271_I",
+      "family_id": "Package_271_I",
+      "implementation_key": "70a1ed9570a9172e25351b026da6fa4e5f2c4a867f99c43e407ceb00c6da0811",
+      "prompt_tokens": 383
+    },
+    {
+      "id": "Apps_15835_I",
+      "family_id": "Apps_15835_I",
+      "implementation_key": "0fcd16240fcc60b0ff25704fd45e22bea93fa044706aff32c9efc26223673af0",
+      "prompt_tokens": 174
+    },
+    {
+      "id": "Filter_38821_I",
+      "family_id": "Filter_38821_I",
+      "implementation_key": "0eed75182911318828004f9c06e607ce1d0b622cd2554d68450fdeddb87f8030",
+      "prompt_tokens": 65
+    },
+    {
+      "id": "Package_6344_I",
+      "family_id": "Package_6344_I",
+      "implementation_key": "2bc365cfbe39ef9ac36db137ece2a4201214755027a824700c574fccf483eeb8",
+      "prompt_tokens": 279
+    },
+    {
+      "id": "Apps_8630_I",
+      "family_id": "Apps_70_I",
+      "implementation_key": "5ca35fe07753e712b469df271cce250a093f4bf6126ac076342670afd717eba0",
+      "prompt_tokens": 246
+    },
+    {
+      "id": "Prefill_39826_I",
+      "family_id": "Prefill_39826_I",
+      "implementation_key": "78ad345624d64ddf0b94bceda76d183b160bf819fbadc4c437ebdf2ebf664519",
+      "prompt_tokens": 125
+    },
+    {
+      "id": "Filter_70070_I",
+      "family_id": "Filter_70070_I",
+      "implementation_key": "7c591cf0340bfec788abc28397b3a35b31a0096c84b6289cebdb9a2fc85e74ba",
+      "prompt_tokens": 80
+    },
+    {
+      "id": "Taco_61309_I",
+      "family_id": "Apps_17685_I",
+      "implementation_key": "a7ae8ebe2bb03bff6d4d3ba00d6ea2722c42987d631d4990ccbd8493feccf54b",
+      "prompt_tokens": 388
+    },
+    {
+      "id": "Prefill_36802_I",
+      "family_id": "Prefill_36802_I",
+      "implementation_key": "cfd3458d17ea1a13414d13eb489a85f2747fca55db4f441fb3b6bc801ff35d7a",
+      "prompt_tokens": 55
+    },
+    {
+      "id": "Apps_2806_I",
+      "family_id": "Apps_2806_I",
+      "implementation_key": "579c225d02473dbdef2718a3715291351c6e18aee008d6160d03ddfdac5f0269",
+      "prompt_tokens": 476
+    },
+    {
+      "id": "Filter_42066_I",
+      "family_id": "Filter_42066_I",
+      "implementation_key": "977dc6b75c849c3d2d7deb8d0e5176d3df15ba1889a0885ed1e44bedd6e1e5dc",
+      "prompt_tokens": 70
+    },
+    {
+      "id": "Prefill_16368_I",
+      "family_id": "Prefill_16368_I",
+      "implementation_key": "8f24366c340128ec804227f228ec4b9bf80e44b123785eb9cb01eaa0ac1eff61",
+      "prompt_tokens": 95
+    },
+    {
+      "id": "Apps_3880_I",
+      "family_id": "Apps_3880_I",
+      "implementation_key": "8dd076eb26b30518195273984f3cb71ae2d31e7353e750c8e321ddbdf1c31f93",
+      "prompt_tokens": 148
+    },
+    {
+      "id": "Evol_2047_I",
+      "family_id": "Evol_2047_I",
+      "implementation_key": "d496e5de06018fc295c4b245217266c3a8ab20e369dfe82997f305e6e3db9bc6",
+      "prompt_tokens": 438
+    },
+    {
+      "id": "Filter_38224_I",
+      "family_id": "Filter_38224_I",
+      "implementation_key": "fe8ce7644973768419087b9956861e7b81773dce08701db7d1aaacb379ebe095",
+      "prompt_tokens": 105
+    },
+    {
+      "id": "Prefill_32867_I",
+      "family_id": "Prefill_32867_I",
+      "implementation_key": "8006473b77d3581580e26b9b9edc86faf9b548cbc4f799fcd7465e8025ed2650",
+      "prompt_tokens": 90
+    },
+    {
+      "id": "Data_Structure_2232_I",
+      "family_id": "Data_Structure_2232_I",
+      "implementation_key": "39e8c9e99d7c42f3145918a09b0a4820175674e65cdb85e0d8e37cf03f4cda52",
+      "prompt_tokens": 512
+    },
+    {
+      "id": "Prefill_1740_I",
+      "family_id": "Prefill_1740_I",
+      "implementation_key": "fe30a9b3885df841b522532f607d8b0e3e22e711dda7f9e7da2808a7288212f3",
+      "prompt_tokens": 61
+    },
+    {
+      "id": "Prefill_15420_I",
+      "family_id": "Prefill_15420_I",
+      "implementation_key": "64637054bc79a0a233912243d50e8c81416574b7eaa9857ac1253df9aaed3c55",
+      "prompt_tokens": 75
+    },
+    {
+      "id": "Prefill_18169_I",
+      "family_id": "Prefill_18169_I",
+      "implementation_key": "89fdea2a3fc842a7feb79329fefb9e04d76e1f7834f6ddd60fcf74f93d3379a7",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Taco_95908_I",
+      "family_id": "Taco_95908_I",
+      "implementation_key": "27204d2dbb4862f7a8c0b5ee40f395a743b2215aeae9cb9ebc69160e645527d6",
+      "prompt_tokens": 198
+    },
+    {
+      "id": "Package_1174_I",
+      "family_id": "Package_1174_I",
+      "implementation_key": "685f50d9f8f75daad034a200e6c93bab58539bb976f6847a05d2bca0c187f7e0",
+      "prompt_tokens": 369
+    },
+    {
+      "id": "Filter_45117_I",
+      "family_id": "Filter_45117_I",
+      "implementation_key": "2b83ed6033270d094ffb2e591fbaf6d1b9ae7099d455479ad02280b7c89275d0",
+      "prompt_tokens": 69
+    },
+    {
+      "id": "Taco_63836_I",
+      "family_id": "Taco_63836_I",
+      "implementation_key": "94f7c177671eb254f82ac7bc909d7a7e9f2fdc8422a4eec079ebfc082e0daceb",
+      "prompt_tokens": 344
+    },
+    {
+      "id": "Filter_50516_I",
+      "family_id": "Filter_50516_I",
+      "implementation_key": "0dc2fab7ee85c0b4dd8f205be0b6102fee6d8f07f85defb1fa99e9e905f1d555",
+      "prompt_tokens": 91
+    },
+    {
+      "id": "Algorithm_5146_I",
+      "family_id": "Algorithm_5146_I",
+      "implementation_key": "b3a157f0cb5d50ed1ad740e72b9d33dd20730c1c79d6a4c9bc010add4c48124a",
+      "prompt_tokens": 493
+    },
+    {
+      "id": "Taco_48801_I",
+      "family_id": "Taco_48801_I",
+      "implementation_key": "19289243851fbb29c2a5948d474763c9425da7905fc5b085880f1b6649a72773",
+      "prompt_tokens": 377
+    },
+    {
+      "id": "Prefill_39370_I",
+      "family_id": "Prefill_39370_I",
+      "implementation_key": "200cab33d5bf3d4e07c3b5dd8e2728a8fd520c2df4c9242c4de2453080036b56",
+      "prompt_tokens": 94
+    },
+    {
+      "id": "Code_Contests_16057_I",
+      "family_id": "Code_Contests_16057_I",
+      "implementation_key": "e26d46e40246159d1225e963462a8fdcdeaf5816ec0e1a684a50b863f9dcd448",
+      "prompt_tokens": 278
+    },
+    {
+      "id": "Prefill_16986_I",
+      "family_id": "Prefill_16986_I",
+      "implementation_key": "ad59c58fe8b921edc356b0f85777a4e52b92f612906b3a71ea132c1123efd8eb",
+      "prompt_tokens": 98
+    },
+    {
+      "id": "Filter_71878_I",
+      "family_id": "Filter_71878_I",
+      "implementation_key": "861c93b2ddf7f0daca19bcc5301d484653c3483ccdf04ce9b6dc87446c0475f1",
+      "prompt_tokens": 60
+    },
+    {
+      "id": "Prefill_8859_I",
+      "family_id": "Prefill_8859_I",
+      "implementation_key": "7199dde1be3394576bc8260bbdef1ea6484a988a03be22b394de4c0a06f3dcff",
+      "prompt_tokens": 92
+    },
+    {
+      "id": "Filter_84230_I",
+      "family_id": "Filter_84230_I",
+      "implementation_key": "a1d2a98ace61bad39fd6f5406d8a62ab8a72528b65c8ed7c6229480d7f1d64a8",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Taco_28211_I",
+      "family_id": "Taco_28211_I",
+      "implementation_key": "3b6502c5ae14328a7c2a733ff7fa5b75f949b43a5165fe884b4eae40367780a5",
+      "prompt_tokens": 156
+    },
+    {
+      "id": "Prefill_32869_I",
+      "family_id": "Prefill_32869_I",
+      "implementation_key": "23c6ef79793325738f137d1f6dc299564435c281db32c1ad476a8eb51b73b610",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Apps_3848_I",
+      "family_id": "Apps_3848_I",
+      "implementation_key": "54a1591b5caa593ca79c4c8dcf367575854bf3640b647161d3db71c9b3ab2372",
+      "prompt_tokens": 131
+    },
+    {
+      "id": "Prefill_14692_I",
+      "family_id": "Prefill_14692_I",
+      "implementation_key": "85f96899afc4bad85d00860194ac13e722b9f70485060d5c1476b8392faa1e5a",
+      "prompt_tokens": 80
+    },
+    {
+      "id": "Filter_23069_I",
+      "family_id": "Filter_23069_I",
+      "implementation_key": "b8812b3168732fae42ce2f740eb88366abbc6969e816786cbb4877715bc72b54",
+      "prompt_tokens": 178
+    },
+    {
+      "id": "Evol_920_I",
+      "family_id": "Evol_920_I",
+      "implementation_key": "3b902e53849fe9fc973d896c681dd32839cb93d9e458e5e4050a04175a19e071",
+      "prompt_tokens": 129
+    },
+    {
+      "id": "Filter_57629_I",
+      "family_id": "Filter_57629_I",
+      "implementation_key": "7b8248edff2544fc74828852a74a524da21928ac6c1deb11c31ff83c882bccae",
+      "prompt_tokens": 121
+    },
+    {
+      "id": "Package_4067_I",
+      "family_id": "Package_4067_I",
+      "implementation_key": "489c5d6a7f0a9b037f1d9fc81654c73aabdd041e604c202fcfb9dfbef9665c81",
+      "prompt_tokens": 346
+    },
+    {
+      "id": "Apps_1569_I",
+      "family_id": "Apps_1569_I",
+      "implementation_key": "aa2ca72770c138971136d8fdf142ba65c5912da3849c4bfcc43f42bb6574fda8",
+      "prompt_tokens": 266
+    },
+    {
+      "id": "Prefill_40385_I",
+      "family_id": "Prefill_40385_I",
+      "implementation_key": "c507c7abeff377babd623dfb626d64918b1ffcec6fcf32f8b51451f552829ff9",
+      "prompt_tokens": 59
+    },
+    {
+      "id": "Prefill_1401_I",
+      "family_id": "Prefill_1401_I",
+      "implementation_key": "081aae272cd304c2f529fba922eb1eeca2bca66b54486a7f7f7dbfa9a10e27b1",
+      "prompt_tokens": 82
+    },
+    {
+      "id": "Filter_28763_I",
+      "family_id": "Filter_28763_I",
+      "implementation_key": "426fc31ffd1d6e667378c91522a0b55c0b2b8ae13cf9a168ec669022fb938bec",
+      "prompt_tokens": 65
+    },
+    {
+      "id": "Taco_31629_I",
+      "family_id": "Taco_15506_I",
+      "implementation_key": "398c56bee4781a85db696c978ebb2aef7df1801fdafe6b8183dc25ba77abe3ae",
+      "prompt_tokens": 163
+    },
+    {
+      "id": "Prefill_24984_I",
+      "family_id": "Prefill_24984_I",
+      "implementation_key": "466f8b407061e6e825f176250f7f4dbf7bf2b0f0462c355634d47e58095c7123",
+      "prompt_tokens": 99
+    },
+    {
+      "id": "Taco_16012_I",
+      "family_id": "Taco_16012_I",
+      "implementation_key": "e59c44c61bdf9c4c5f8ad2b8ff18a22425e71492086386ca7dc5d1de24e4f203",
+      "prompt_tokens": 216
+    },
+    {
+      "id": "Prefill_31054_I",
+      "family_id": "Prefill_31054_I",
+      "implementation_key": "21006750eafa3956970ac8d925f8fd55cdcf314eb45c574c75db746c973da578",
+      "prompt_tokens": 68
+    },
+    {
+      "id": "Algorithm_1742_I",
+      "family_id": "Algorithm_1742_I",
+      "implementation_key": "5b2edaca0274b751b86e16f64dc8d2162cebef116ffa5bd0c9e8ef6857df206e",
+      "prompt_tokens": 450
+    },
+    {
+      "id": "Filter_1291_I",
+      "family_id": "Filter_1291_I",
+      "implementation_key": "3b1bc5c74f45b70124d3480dca3a4f16a111409fd373e543fff37cd7dadfe970",
+      "prompt_tokens": 102
+    },
+    {
+      "id": "Filter_75124_I",
+      "family_id": "Filter_75124_I",
+      "implementation_key": "af01f08515e6c306e9643be226599e760f4139ca1b1ca604e8f33b8c5eff3e5e",
+      "prompt_tokens": 61
+    },
+    {
+      "id": "Prefill_36576_I",
+      "family_id": "Prefill_36576_I",
+      "implementation_key": "79f7df59ced4bcd9c0d800f31933504de84f771edec55f102c38db651653e113",
+      "prompt_tokens": 78
+    },
+    {
+      "id": "Filter_72709_I",
+      "family_id": "Filter_72709_I",
+      "implementation_key": "bb17b0d12fb8ea47506f550959f0676d7431a095d74dbb46798980388265d994",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Evol_9851_I",
+      "family_id": "Evol_9851_I",
+      "implementation_key": "c275b58f37dd4ca08a04606f40c4d37eb401dc54f1a51005215be40069422d2b",
+      "prompt_tokens": 207
+    },
+    {
+      "id": "Filter_86004_I",
+      "family_id": "Filter_86004_I",
+      "implementation_key": "4f4583ff2046cb8565efbbe760b183cdacbb61f52f1a27f3ad5e65a0774aca6b",
+      "prompt_tokens": 93
+    },
+    {
+      "id": "Evol_8839_I",
+      "family_id": "Evol_8839_I",
+      "implementation_key": "a4c5de74a572b9587ea84340065417c293acb2c863c16566f05b0100397c959c",
+      "prompt_tokens": 85
+    },
+    {
+      "id": "Filter_63972_I",
+      "family_id": "Filter_63972_I",
+      "implementation_key": "6889c75a84bd1415b59414ffc7f9ce85b802d7e1d5cf1b4b1ee754e4ed776f87",
+      "prompt_tokens": 54
+    },
+    {
+      "id": "Filter_42547_I",
+      "family_id": "Filter_42547_I",
+      "implementation_key": "27123ec1c985a9ab067ff0789f0ed8403ee08c5d23a3fa949be64b25ee6c4aa1",
+      "prompt_tokens": 82
+    },
+    {
+      "id": "Package_6280_I",
+      "family_id": "Package_6280_I",
+      "implementation_key": "6816f6d18262022e1dddcb930efc4045385be265d82ad3e2432e9f663a3845aa",
+      "prompt_tokens": 368
+    },
+    {
+      "id": "Codeforces_2279_I",
+      "family_id": "Codeforces_2279_I",
+      "implementation_key": "27716550d8867681fdfff49c6ce9939aa952b1809404f45bb82ce55f6b0e0888",
+      "prompt_tokens": 404
+    },
+    {
+      "id": "Prefill_22_I",
+      "family_id": "Prefill_22_I",
+      "implementation_key": "e307d3f16d9892c325b47f95771934f2ad1c7fee7325cb226f6a012bc055f9fe",
+      "prompt_tokens": 64
+    },
+    {
+      "id": "Prefill_23994_I",
+      "family_id": "Prefill_23994_I",
+      "implementation_key": "21f2e074aca42585bc08e531dc3815fbf4058d7b21c08a1bfe83aa05494b9c81",
+      "prompt_tokens": 82
+    },
+    {
+      "id": "Prefill_15561_I",
+      "family_id": "Prefill_15561_I",
+      "implementation_key": "10c3fc2061d42c9648101a8db3e1b41273e142a298478330fdf3aa55850b6f4a",
+      "prompt_tokens": 95
+    },
+    {
+      "id": "Prefill_1899_I",
+      "family_id": "Prefill_1899_I",
+      "implementation_key": "1ac5eea126119ab6dc4e5b46a8f0dcaef56c2ea14f38cab3e1cc4ee5799f5719",
+      "prompt_tokens": 82
+    },
+    {
+      "id": "Filter_66599_I",
+      "family_id": "Filter_66599_I",
+      "implementation_key": "5c309a2d2f50b043d15ff0da6015d68c3bf40549e7f36ada693158dceb87a47d",
+      "prompt_tokens": 94
+    },
+    {
+      "id": "Taco_37398_I",
+      "family_id": "Taco_37398_I",
+      "implementation_key": "1342df15162907575602c65a4b65b099dccc52f877bec2f9c92bbc53a0f79ff8",
+      "prompt_tokens": 281
+    },
+    {
+      "id": "Data_Structure_24695_I",
+      "family_id": "Data_Structure_12462_I",
+      "implementation_key": "348cfecbfb40fcb8b252e00d1a52b1192d6c92c3a4f39419b850f1f96955f4d1",
+      "prompt_tokens": 407
+    },
+    {
+      "id": "Prefill_17480_I",
+      "family_id": "Prefill_17480_I",
+      "implementation_key": "af3a0e41b293d048718de05ebc7f826bc043754d74e72dfc4914bb8406785d2e",
+      "prompt_tokens": 129
+    },
+    {
+      "id": "Prefill_8911_I",
+      "family_id": "Prefill_8911_I",
+      "implementation_key": "fe18ae3f8f6505e5921dd76c400cad9fbf60a6b1eb191a9ebd3854f8267c6761",
+      "prompt_tokens": 92
+    },
+    {
+      "id": "Filter_76547_I",
+      "family_id": "Filter_76547_I",
+      "implementation_key": "ad11bf3a91409bb9311fe1af9e6b6e77b5b214e43453d510f87764c87cab1a5c",
+      "prompt_tokens": 110
+    },
+    {
+      "id": "Taco_3554_I",
+      "family_id": "Taco_3554_I",
+      "implementation_key": "57d023593494f7d027e87b8a36b7de3061c2b9e8a3ddd4d476e75138a4778358",
+      "prompt_tokens": 316
+    },
+    {
+      "id": "Prefill_25440_I",
+      "family_id": "Prefill_25440_I",
+      "implementation_key": "8df57b6e3e5b7aef75ed6f2dd80d7cc410e3df157ccc0295e7c1bd23aa534912",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Taco_42360_I",
+      "family_id": "Taco_42360_I",
+      "implementation_key": "feea88dd3cfc5b9a2a7ae99548d100b8240ebd899421ce415d63764a304078e7",
+      "prompt_tokens": 444
+    },
+    {
+      "id": "Prefill_33777_I",
+      "family_id": "Prefill_33777_I",
+      "implementation_key": "7f2c1ef307341a226b4d5a3611fa1527900cf4130245fe509f4b51acd819fbd9",
+      "prompt_tokens": 80
+    },
+    {
+      "id": "Code_Contests_3297_I",
+      "family_id": "Code_Contests_3297_I",
+      "implementation_key": "96db2011c6887611c32db45191001f4e666d72e865f95a600329fadb9301ca1d",
+      "prompt_tokens": 490
+    },
+    {
+      "id": "Filter_13541_I",
+      "family_id": "Filter_13541_I",
+      "implementation_key": "772584b1e6a28b6599521690fa977aee078514499994559e755c0451659ade35",
+      "prompt_tokens": 181
+    },
+    {
+      "id": "Prefill_16650_I",
+      "family_id": "Prefill_16650_I",
+      "implementation_key": "77c774786a02957c981cdb947c358a3fb34b9a8e2ae5ea695e97f309801754e6",
+      "prompt_tokens": 83
+    },
+    {
+      "id": "Prefill_6943_I",
+      "family_id": "Prefill_6943_I",
+      "implementation_key": "ecb52c62ee6698e7c5cfc3c05ca3e4b58edaaf1290c680113d7d56240f4e1d4d",
+      "prompt_tokens": 103
+    },
+    {
+      "id": "Filter_81658_I",
+      "family_id": "Filter_81658_I",
+      "implementation_key": "b8b23389050a80a0ac2d14154377cc3f99cf9db680f6da4669960f101fa4a6e3",
+      "prompt_tokens": 111
+    },
+    {
+      "id": "Filter_20761_I",
+      "family_id": "Filter_20761_I",
+      "implementation_key": "85a78259611bace96776b034a3eef4ac42348bd946c35415d91b6da86f444c6c",
+      "prompt_tokens": 463
+    },
+    {
+      "id": "Taco_67107_I",
+      "family_id": "Algorithm_40695_I",
+      "implementation_key": "b1b6be76679825b3e2af82da9f415b35661b0de73855865c4b583d3f0cb97865",
+      "prompt_tokens": 340
+    },
+    {
+      "id": "Prefill_14458_I",
+      "family_id": "Prefill_14458_I",
+      "implementation_key": "cf0a9b92243b7bf4d591368f9de73da5a2fbffb44685d7319b3ced42a533e3bc",
+      "prompt_tokens": 98
+    },
+    {
+      "id": "Filter_25340_I",
+      "family_id": "Filter_25340_I",
+      "implementation_key": "f63b807f69da46d0bb2b89ab737405a21d6adf8d3ef46f16790d36e7a5531275",
+      "prompt_tokens": 358
+    },
+    {
+      "id": "Filter_84942_I",
+      "family_id": "Filter_84942_I",
+      "implementation_key": "970f267f4e383cda16b91a5824a5a49c22816e739eab5de2f45832de63647d15",
+      "prompt_tokens": 74
+    },
+    {
+      "id": "Apps_15462_I",
+      "family_id": "Apps_15462_I",
+      "implementation_key": "ba26b5f95ce8a431d2ebddab70a03658177330e2386e1dc0d7505188dda870c5",
+      "prompt_tokens": 320
+    },
+    {
+      "id": "Apps_12689_I",
+      "family_id": "Apps_12689_I",
+      "implementation_key": "b4032fa64862a0d0fd4f2ac364f15ed98c9a49785084a7912a55cb3e6600360d",
+      "prompt_tokens": 288
+    },
+    {
+      "id": "Package_1446_I",
+      "family_id": "Package_1446_I",
+      "implementation_key": "7d976262156b1a63727caec20c86d3553322fbc078bb066707a04eb21e92fd01",
+      "prompt_tokens": 306
+    },
+    {
+      "id": "Filter_9953_I",
+      "family_id": "Filter_9953_I",
+      "implementation_key": "033acfd9adc097c87b650ca230d2fcf90fd7c51ed65b2985f9f144c282af4d4c",
+      "prompt_tokens": 233
+    },
+    {
+      "id": "Filter_50470_I",
+      "family_id": "Filter_50470_I",
+      "implementation_key": "5c7a9f6db14e67ede8c04a27ef14c2db5ec8517e0bfe48d6b37d4edc3a52b469",
+      "prompt_tokens": 116
+    },
+    {
+      "id": "Prefill_16251_I",
+      "family_id": "Prefill_16251_I",
+      "implementation_key": "e167d3324a4b8375220cb4eec529580f787bb07e8513556dc488059431d54ea8",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Evol_3161_I",
+      "family_id": "Evol_3161_I",
+      "implementation_key": "b54773c15dd555c3fde0c0cacbfd7788f8520091665cabd70bf8a662285d7000",
+      "prompt_tokens": 232
+    },
+    {
+      "id": "Filter_50251_I",
+      "family_id": "Filter_50251_I",
+      "implementation_key": "448f6b8939f7fd2f93ce2d2d7a2fbf1dba04ba336ef84b251fe12c22ed85f4c5",
+      "prompt_tokens": 132
+    },
+    {
+      "id": "Prefill_26776_I",
+      "family_id": "Prefill_26776_I",
+      "implementation_key": "93b4f7de33a427a65388daaec05efb8ac164794de52c646aaa4b3cd800d47a54",
+      "prompt_tokens": 102
+    },
+    {
+      "id": "Codeforces_12411_I",
+      "family_id": "Apps_16289_I",
+      "implementation_key": "c0744da04a70ebdcea25944d9c210c14388e8c89706fda2bc94a2a08f635faee",
+      "prompt_tokens": 425
+    },
+    {
+      "id": "Taco_27229_I",
+      "family_id": "Taco_27229_I",
+      "implementation_key": "73f0a2002e4a4e433a936693a5e0d13d2fdfef6cffe2c645f2807507608fd0f1",
+      "prompt_tokens": 149
+    },
+    {
+      "id": "Filter_28633_I",
+      "family_id": "Filter_28633_I",
+      "implementation_key": "b646209b5ea966e512f15ffecbc2b660672f0bf037d9cc748f899e8f087a164f",
+      "prompt_tokens": 69
+    },
+    {
+      "id": "Filter_88222_I",
+      "family_id": "Filter_88222_I",
+      "implementation_key": "c01ee987c95b1fa49329aefdb4eb40d8db89e2528e32061f27e520f1d1ada3df",
+      "prompt_tokens": 59
+    },
+    {
+      "id": "Filter_84748_I",
+      "family_id": "Filter_84748_I",
+      "implementation_key": "af70963a3faf3e095141152155a1d434b3595b69c477901eadf9ac2a28dd5609",
+      "prompt_tokens": 68
+    },
+    {
+      "id": "Algorithm_11915_I",
+      "family_id": "Algorithm_11915_I",
+      "implementation_key": "85b8458bd5eb71ecfde0111782bd0e5c07ba32d439c3c9a0c71efdaef34f5718",
+      "prompt_tokens": 375
+    },
+    {
+      "id": "Prefill_25358_I",
+      "family_id": "Prefill_25358_I",
+      "implementation_key": "0a9c3994a1c4f96110c39ea5f5e32b329952ff550aa4b06ca85222a35ccf739d",
+      "prompt_tokens": 99
+    },
+    {
+      "id": "Filter_64839_I",
+      "family_id": "Filter_64839_I",
+      "implementation_key": "25811f5bccff80df4a31631f87f30b9378b056710f9646e9f2cf97a1df41cf3c",
+      "prompt_tokens": 62
+    },
+    {
+      "id": "Taco_35475_I",
+      "family_id": "Taco_35475_I",
+      "implementation_key": "ec253badf07b24e04b4041dcf4556b926e5d51b48b0e77bdb7a529aa4873c150",
+      "prompt_tokens": 172
+    },
+    {
+      "id": "Prefill_39599_I",
+      "family_id": "Prefill_39599_I",
+      "implementation_key": "649c06b56941f21bfd69fdc05e59cfe833dab9643bd0706fd60dc50827ad4e48",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Prefill_22366_I",
+      "family_id": "Prefill_22366_I",
+      "implementation_key": "7f6c26cc89d02d99419cc83fb2cb45b8708c4815a7facf3fc4a8dbf63a87f10c",
+      "prompt_tokens": 90
+    },
+    {
+      "id": "Apps_13664_I",
+      "family_id": "Algorithm_23219_I",
+      "implementation_key": "41168fe57ddcb96fd44235bc0130a210517e260dcdb09e9aa825a4cd0f2b91ac",
+      "prompt_tokens": 287
+    },
+    {
+      "id": "Data_Structure_1572_I",
+      "family_id": "Data_Structure_10789_I",
+      "implementation_key": "745dfb23d5f30c91c192942aa1e7745a4c9a67519a48b81ec3264678b8ede184",
+      "prompt_tokens": 441
+    },
+    {
+      "id": "Filter_500_I",
+      "family_id": "Filter_500_I",
+      "implementation_key": "4144c37aa3a2e329a4e62da4d030ff1f5e17a94f8f6bfaaae9198d0f2645ec7e",
+      "prompt_tokens": 111
+    },
+    {
+      "id": "Prefill_21710_I",
+      "family_id": "Prefill_21710_I",
+      "implementation_key": "6f02c0cae10c8d2c8afe30b935fa8aa19878b2dc67bd78b2cb00607b5c834f98",
+      "prompt_tokens": 113
+    },
+    {
+      "id": "Evol_8257_I",
+      "family_id": "Evol_8257_I",
+      "implementation_key": "f78f70fcced437b9ca2431db29b72d72c3d8cc9e959fa824fd70f7badceb55f9",
+      "prompt_tokens": 142
+    },
+    {
+      "id": "Filter_55139_I",
+      "family_id": "Filter_55139_I",
+      "implementation_key": "3ccf33088e6abc28776a576078e1b6de2a204233ba639d1720839438ddd377dd",
+      "prompt_tokens": 105
+    },
+    {
+      "id": "Prefill_30431_I",
+      "family_id": "Prefill_30431_I",
+      "implementation_key": "e2e595ede48f53c7cac1987797965362591ed8fabaf6efda4cc3ccac3ca42581",
+      "prompt_tokens": 127
+    },
+    {
+      "id": "Prefill_21307_I",
+      "family_id": "Prefill_21307_I",
+      "implementation_key": "9e149db464f8f9887b50c11acc6af2c759d6a9d1f05505d3f62617d829b6226f",
+      "prompt_tokens": 64
+    },
+    {
+      "id": "Prefill_6442_I",
+      "family_id": "Prefill_6442_I",
+      "implementation_key": "be7f495cba3afbc7906f68ddbda1ea3fa58dc6106fcf4689b5716effb6d677f0",
+      "prompt_tokens": 98
+    },
+    {
+      "id": "Prefill_19307_I",
+      "family_id": "Prefill_19307_I",
+      "implementation_key": "90b84de6c35a72f1cbb1a5136c4b0958061ec583a57e804014c490304794fcbb",
+      "prompt_tokens": 64
+    },
+    {
+      "id": "Filter_14094_I",
+      "family_id": "Filter_14094_I",
+      "implementation_key": "e96bdbf1993591d24f0f160cdc1d26ee85363ea742494ea27c39e64a4eb42734",
+      "prompt_tokens": 103
+    },
+    {
+      "id": "Filter_5012_I",
+      "family_id": "Filter_5012_I",
+      "implementation_key": "5013044e47eeafbf7711d6fd6f039554c6477104e89cac9f10d7861d5640e406",
+      "prompt_tokens": 163
+    },
+    {
+      "id": "Evol_3177_I",
+      "family_id": "Evol_3177_I",
+      "implementation_key": "4332af93b5a832e174a30f178b93fd937840903e6c414dc807f7af96cd0484ab",
+      "prompt_tokens": 293
+    },
+    {
+      "id": "Filter_58329_I",
+      "family_id": "Filter_58329_I",
+      "implementation_key": "b46c8faa5a55c4f1aba1519886ba2e21440e50ab4c57350ca10c40cbd91a4951",
+      "prompt_tokens": 85
+    },
+    {
+      "id": "Filter_15805_I",
+      "family_id": "Filter_15805_I",
+      "implementation_key": "7dc47086726c18b5e53db27171f2c7eaf960ef1a8ac10ba1f708db0ac23c474a",
+      "prompt_tokens": 105
+    },
+    {
+      "id": "Taco_22593_I",
+      "family_id": "Taco_22593_I",
+      "implementation_key": "5df1fb472e8bcd411f3560284dfc166d0e31e51c6fa9cfd28565f4c59c8cbcbb",
+      "prompt_tokens": 244
+    },
+    {
+      "id": "Evol_4414_I",
+      "family_id": "Evol_4414_I",
+      "implementation_key": "e24a627db4d80c72ca2ccb830179393c5389c509bd634bfa56c003049117c424",
+      "prompt_tokens": 335
+    },
+    {
+      "id": "Algorithm_46658_I",
+      "family_id": "Algorithm_46658_I",
+      "implementation_key": "3f203d5aff66dc5adda98eaf9b50426cf639c0fd2478cb103a0cdffd470f723a",
+      "prompt_tokens": 507
+    },
+    {
+      "id": "Filter_51468_I",
+      "family_id": "Filter_51468_I",
+      "implementation_key": "65893172a79b32c2b4148307f9f4db0a914c4765919ca2e366eaec84c1d8ea86",
+      "prompt_tokens": 69
+    },
+    {
+      "id": "Algorithm_3496_I",
+      "family_id": "Algorithm_3496_I",
+      "implementation_key": "a13a001408cc27b7279041c5473d19406f208702dca42ae812f37dfa35061e15",
+      "prompt_tokens": 544
+    },
+    {
+      "id": "Prefill_11582_I",
+      "family_id": "Prefill_11582_I",
+      "implementation_key": "434d858b00be206b8a68030b0edc881caff4a9a6a4662d725317d655b4587d50",
+      "prompt_tokens": 115
+    },
+    {
+      "id": "Prefill_580_I",
+      "family_id": "Prefill_580_I",
+      "implementation_key": "f1d883a784f45921fa00e242ce490b8ee7d9bbf75cb97e0fdc53855b3f237ee8",
+      "prompt_tokens": 74
+    },
+    {
+      "id": "Taco_3331_I",
+      "family_id": "Taco_3331_I",
+      "implementation_key": "187189eda6de9b66ce42f68816e080d29576d8f9edb791b4baca3782394d0528",
+      "prompt_tokens": 121
+    },
+    {
+      "id": "Prefill_37616_I",
+      "family_id": "Prefill_37616_I",
+      "implementation_key": "89acc842966281ce9dd2ccef12e440542eb38e56c9818a0c5949a9666f4ab330",
+      "prompt_tokens": 89
+    },
+    {
+      "id": "Evol_1150_I",
+      "family_id": "Evol_1150_I",
+      "implementation_key": "ac56ba7e91830162651086950927ac4f1a363c21494840169be323352975fec8",
+      "prompt_tokens": 163
+    },
+    {
+      "id": "Prefill_17067_I",
+      "family_id": "Prefill_17067_I",
+      "implementation_key": "f987fbd4b56b2bed7edc5091a9967d662f7e5af483c7f51f770d9ff5e5f584ae",
+      "prompt_tokens": 123
+    },
+    {
+      "id": "Algorithm_16752_I",
+      "family_id": "Algorithm_16752_I",
+      "implementation_key": "556fb187e46824f0b60fca5e1a18f46438a234a0ad519a2524b9410f806c3a75",
+      "prompt_tokens": 441
+    },
+    {
+      "id": "Apps_8513_I",
+      "family_id": "Apps_8513_I",
+      "implementation_key": "1bc71ddf172a3e9ec114ead86ff4c31c1601d7a7aee0a8a6d7823db98cf43280",
+      "prompt_tokens": 150
+    },
+    {
+      "id": "Prefill_771_I",
+      "family_id": "Prefill_771_I",
+      "implementation_key": "0f6b85702bf99a5b678e02afed6666dbcd152ada0fb3877a978df56e639cc795",
+      "prompt_tokens": 76
+    },
+    {
+      "id": "Prefill_34365_I",
+      "family_id": "Prefill_34365_I",
+      "implementation_key": "51b6b40549829a764aed94917ffbfea9acb50d577be0040d983e77d975bce93f",
+      "prompt_tokens": 63
+    },
+    {
+      "id": "Prefill_3950_I",
+      "family_id": "Prefill_3950_I",
+      "implementation_key": "fe2d05cf6fa2da863b65c836cc2fb7754f53e42d192e11cc06b2b0362fdd0f90",
+      "prompt_tokens": 107
+    },
+    {
+      "id": "Prefill_36164_I",
+      "family_id": "Prefill_36164_I",
+      "implementation_key": "ca4de235f7ab2c904ad03c24318342bd2722b923e853d8baf11dee5803a82066",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Apps_17486_I",
+      "family_id": "Apps_17486_I",
+      "implementation_key": "b4c204c7f065d3822f94862c8de1cf427a1ea555e03e0839a1cbfbf68251d839",
+      "prompt_tokens": 185
+    },
+    {
+      "id": "Filter_2595_I",
+      "family_id": "Filter_2595_I",
+      "implementation_key": "d15f82f8afb8e93a53eceb6dc3aac3d6ef463c5de6582baeb9a070f5f0e1b68f",
+      "prompt_tokens": 271
+    },
+    {
+      "id": "Apps_4828_I",
+      "family_id": "Algorithm_15433_I",
+      "implementation_key": "cc58b3e2937acf89cf7d375331241500f0f885af09437ba7fb45313a9b896efa",
+      "prompt_tokens": 189
+    },
+    {
+      "id": "Filter_19379_I",
+      "family_id": "Filter_19379_I",
+      "implementation_key": "bda39690205b4ecdfa5d730d78497b5cb3222544cf2d78eb1f9672759e5386dd",
+      "prompt_tokens": 242
+    },
+    {
+      "id": "Filter_86263_I",
+      "family_id": "Filter_86263_I",
+      "implementation_key": "734e7fa33a7021bb959fada90058f944eb5c65b67eceb43484b154c847677321",
+      "prompt_tokens": 224
+    },
+    {
+      "id": "Filter_88518_I",
+      "family_id": "Filter_88518_I",
+      "implementation_key": "fb67fbb6c305a3660e85e0eaa809c6aba39f1923d7bb9aaf794225f9f5f9fc30",
+      "prompt_tokens": 178
+    },
+    {
+      "id": "Code_Contests_45898_I",
+      "family_id": "Algorithm_21329_I",
+      "implementation_key": "94eca984176d71b7155680af209f4dc3cebf7eb9ab94b44c8484a755ce99aba3",
+      "prompt_tokens": 316
+    },
+    {
+      "id": "Prefill_26133_I",
+      "family_id": "Prefill_26133_I",
+      "implementation_key": "c0a2771026766096ffc90496388a60e3b0150e691257deb1108c52854567ca17",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Prefill_31524_I",
+      "family_id": "Prefill_31524_I",
+      "implementation_key": "11d9900dd20fcfd545eb9fb70fcc7ad9089749b06c6f19b6c834a5c21a76a0c2",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Filter_87923_I",
+      "family_id": "Filter_87923_I",
+      "implementation_key": "9bf05d97dde78292a924916f0ad34f3fb2a7ff3e104c98b545aedb09b7e0f267",
+      "prompt_tokens": 180
+    },
+    {
+      "id": "Filter_72624_I",
+      "family_id": "Filter_72624_I",
+      "implementation_key": "161159dccf7838266ee6ec5bcb60e92f998caafb9c20b5a8625e0c08bcdae5fd",
+      "prompt_tokens": 106
+    },
+    {
+      "id": "Filter_11011_I",
+      "family_id": "Filter_11011_I",
+      "implementation_key": "6ff33daf1b9cf9485e9d2b680fcf3b189d0035abab355efe708e9ff760238ea4",
+      "prompt_tokens": 114
+    },
+    {
+      "id": "Prefill_23364_I",
+      "family_id": "Prefill_23364_I",
+      "implementation_key": "d9018433c462a8c06b521241f22b8a2f4e6d299f260bcbf73acfeb62c012a748",
+      "prompt_tokens": 109
+    },
+    {
+      "id": "Prefill_23695_I",
+      "family_id": "Prefill_23695_I",
+      "implementation_key": "8029cbebe96b13da3dda30197ab73fc5d2eba72a3428c50cea669736ce5d24e9",
+      "prompt_tokens": 86
+    },
+    {
+      "id": "Code_Contests_41431_I",
+      "family_id": "Code_Contests_41431_I",
+      "implementation_key": "485b03dea9242d4550d7276cfcec70340a4a005f41ead65705de38d9072bfdd1",
+      "prompt_tokens": 509
+    },
+    {
+      "id": "Prefill_14688_I",
+      "family_id": "Prefill_14688_I",
+      "implementation_key": "b971999d416985acd8076985669433980ae73c349cedcc7a1dadbfff89862540",
+      "prompt_tokens": 93
+    },
+    {
+      "id": "Taco_89843_I",
+      "family_id": "Taco_89843_I",
+      "implementation_key": "231b0d7076f35a0aa0113ed54fba06c6a95a526124cbe658e5ba2cf836381701",
+      "prompt_tokens": 274
+    },
+    {
+      "id": "Filter_47885_I",
+      "family_id": "Filter_47885_I",
+      "implementation_key": "a0657fe6b4e775165e54990d29e6ab077f6785589c570f3b2aabd319353c43be",
+      "prompt_tokens": 90
+    },
+    {
+      "id": "Prefill_8750_I",
+      "family_id": "Prefill_8750_I",
+      "implementation_key": "3a1bd34bfb67b104f13e302ec1e7616e03cb7d75fb0186d78cc08fe74416298d",
+      "prompt_tokens": 58
+    },
+    {
+      "id": "Apps_18193_I",
+      "family_id": "Apps_18193_I",
+      "implementation_key": "8170f033742dbcb212ec3ffc059b5bc2e8df7673a384f5ec4d74b597fb63fe0f",
+      "prompt_tokens": 187
+    },
+    {
+      "id": "Prefill_4351_I",
+      "family_id": "Prefill_4351_I",
+      "implementation_key": "79f17ad7b6823cc833688ef43344dca937f75beef3719b147773a943def06b0f",
+      "prompt_tokens": 59
+    },
+    {
+      "id": "Apps_19029_I",
+      "family_id": "Algorithm_13933_I",
+      "implementation_key": "e0306e99e9127c51a0fef86c8053b2ff4641c9589124e14a017991806dc1cca3",
+      "prompt_tokens": 290
+    },
+    {
+      "id": "Prefill_3702_I",
+      "family_id": "Prefill_3702_I",
+      "implementation_key": "082231c1d45a794649a43474482031d2e9744d286d056056f518e3618477598c",
+      "prompt_tokens": 119
+    },
+    {
+      "id": "Filter_59508_I",
+      "family_id": "Filter_59508_I",
+      "implementation_key": "97a1dcfbfa9d62733cc398e3216cba7e083d0af15fc088f628c7d963ecacf29c",
+      "prompt_tokens": 113
+    },
+    {
+      "id": "Prefill_25194_I",
+      "family_id": "Prefill_25194_I",
+      "implementation_key": "26b60f8271ba21fbee5bafed86a31224995a83d687a52fb906408a78c42f7132",
+      "prompt_tokens": 64
+    },
+    {
+      "id": "Prefill_6238_I",
+      "family_id": "Prefill_6238_I",
+      "implementation_key": "f6e30f94ae02023e3fabe70aa01e2e5855843a9af64443104a427d80e905d132",
+      "prompt_tokens": 99
+    },
+    {
+      "id": "Prefill_36858_I",
+      "family_id": "Prefill_36858_I",
+      "implementation_key": "715e56794e964b98453eb880b9150cf94078a3b0ef98bc52c4c73e05ceccb71f",
+      "prompt_tokens": 90
+    },
+    {
+      "id": "Prefill_23510_I",
+      "family_id": "Prefill_23510_I",
+      "implementation_key": "ed8e4f81214aaee2f9a6931694c2f2069d566e0d9aae463761925a5d95b022de",
+      "prompt_tokens": 100
+    },
+    {
+      "id": "Filter_79098_I",
+      "family_id": "Filter_79098_I",
+      "implementation_key": "bd73961eb0a6835b7cd3bf785166f899ccdf8249acbe958596bd03b1c7fd3bda",
+      "prompt_tokens": 85
+    },
+    {
+      "id": "Algorithm_45296_I",
+      "family_id": "Algorithm_45296_I",
+      "implementation_key": "5fd517200ddf623dd13a7a6f89c8e0784cc560ad5670df05683ecbf6162605c1",
+      "prompt_tokens": 371
+    },
+    {
+      "id": "Apps_12417_I",
+      "family_id": "Apps_12417_I",
+      "implementation_key": "7f644e8246c57bb271fd7d545287624ff8213d013500d5515704047719ed7d6c",
+      "prompt_tokens": 312
+    },
+    {
+      "id": "Filter_13205_I",
+      "family_id": "Filter_13205_I",
+      "implementation_key": "795462ec837188a5705771f18417f5cb97a1f7219393287b13a09813e8852c7f",
+      "prompt_tokens": 175
+    },
+    {
+      "id": "Prefill_4385_I",
+      "family_id": "Prefill_4385_I",
+      "implementation_key": "cde7d1ece08f23a5df6f33ad145422ef039ce27c05aa6affcecf8fa23df547bc",
+      "prompt_tokens": 107
+    },
+    {
+      "id": "Filter_11688_I",
+      "family_id": "Filter_11688_I",
+      "implementation_key": "77c65a81642544af82df2da48c9778bb2772c312d591c05b477a30fbe83e48fc",
+      "prompt_tokens": 83
+    },
+    {
+      "id": "Taco_62032_I",
+      "family_id": "Taco_62032_I",
+      "implementation_key": "a8a2f953ddff4188a992ecba367bc21e8ede7eb549f259072439ea8ffff0b960",
+      "prompt_tokens": 271
+    },
+    {
+      "id": "Taco_34963_I",
+      "family_id": "Taco_34963_I",
+      "implementation_key": "c80dd66f0a18cc2313cd9545e0774dd1698318ee6e2ada6abcbe2c185a19eadd",
+      "prompt_tokens": 382
+    },
+    {
+      "id": "Filter_78234_I",
+      "family_id": "Filter_78234_I",
+      "implementation_key": "956fcdd97d6d0c02e371a8aa26f1e002cda5b20638ad96a16c609e3ccbe851dc",
+      "prompt_tokens": 124
+    },
+    {
+      "id": "Filter_21558_I",
+      "family_id": "Filter_21558_I",
+      "implementation_key": "95b27c765a35dc93a71cb0e80dc5158f99c24f7abe45a586b2aebdcd090cd890",
+      "prompt_tokens": 100
+    },
+    {
+      "id": "Filter_83966_I",
+      "family_id": "Filter_83966_I",
+      "implementation_key": "003730e5896210cb41009f55617ab64ccec648d31c6e4d9a47af1eedfbfc8944",
+      "prompt_tokens": 138
+    },
+    {
+      "id": "Filter_44290_I",
+      "family_id": "Filter_44290_I",
+      "implementation_key": "01b15289037922b6f8c47ca9dff1c538d7e16d7921c2e0739c29063588e5e0c5",
+      "prompt_tokens": 70
+    },
+    {
+      "id": "Filter_83479_I",
+      "family_id": "Filter_83479_I",
+      "implementation_key": "8e4a06aa5a29763853af8b32c2c8d16e3171696da8c8555e016e8c2777f0668c",
+      "prompt_tokens": 363
+    },
+    {
+      "id": "Algorithm_38601_I",
+      "family_id": "Algorithm_38601_I",
+      "implementation_key": "60ccf614ae5b913824d4759da9477a7e59bf358d229f0e1f34c3f5d297202a8c",
+      "prompt_tokens": 454
+    },
+    {
+      "id": "Filter_30682_I",
+      "family_id": "Filter_30682_I",
+      "implementation_key": "dfa6baf07d0a37d57b8e9c0312722da53be4e15f6b415cf3dbc99118d8a10bf9",
+      "prompt_tokens": 85
+    },
+    {
+      "id": "Prefill_4379_I",
+      "family_id": "Prefill_4379_I",
+      "implementation_key": "86760ce52648f35b35fda2c0003d283881445fb6bd3e8d393194f17eb97c3cf6",
+      "prompt_tokens": 95
+    },
+    {
+      "id": "Filter_32688_I",
+      "family_id": "Filter_32688_I",
+      "implementation_key": "f1b01a31db3cb43a534ad9880e8bfbee07645cf075bde060c651d3dc3d4c8cde",
+      "prompt_tokens": 76
+    },
+    {
+      "id": "Prefill_32462_I",
+      "family_id": "Prefill_32462_I",
+      "implementation_key": "00368c411e379740512f958f18ae1ccc3f69f40463035d5afdb2375ce591450f",
+      "prompt_tokens": 61
+    },
+    {
+      "id": "Prefill_13_I",
+      "family_id": "Prefill_13_I",
+      "implementation_key": "386d4d3f00303efd96135f8f70c24cbf0e696126a5f154b41edf3c16eb545bca",
+      "prompt_tokens": 84
+    },
+    {
+      "id": "Prefill_1370_I",
+      "family_id": "Prefill_1370_I",
+      "implementation_key": "5db7305b660f37945875913d9ae9835f0cef265912c97248ce04c4ab3416fbec",
+      "prompt_tokens": 69
+    },
+    {
+      "id": "Filter_40331_I",
+      "family_id": "Filter_40331_I",
+      "implementation_key": "8def4b9e53193ae1476d8f89967d2fb958ea5559250d8328b4887b662e7e4837",
+      "prompt_tokens": 82
+    },
+    {
+      "id": "Prefill_17342_I",
+      "family_id": "Prefill_17342_I",
+      "implementation_key": "2e9d89c76b40495bdc618848b37d24f0b8845046f0a6a4a19758c822cb1686ee",
+      "prompt_tokens": 59
+    },
+    {
+      "id": "Prefill_23906_I",
+      "family_id": "Prefill_23906_I",
+      "implementation_key": "deee82d5254cd5fa9e8d3b1c57f22d6dd3c36fada8eee5a039b71e10ba5a20a8",
+      "prompt_tokens": 91
+    },
+    {
+      "id": "Prefill_23678_I",
+      "family_id": "Prefill_23678_I",
+      "implementation_key": "c818a51a264d49f062716b95982d9e7cdb6363d18fc0e1ffc15010bc838e4b50",
+      "prompt_tokens": 80
+    },
+    {
+      "id": "Prefill_32123_I",
+      "family_id": "Prefill_32123_I",
+      "implementation_key": "d777589256ba3a341b5362539e7616c68064c1ce303645ac68507fa0cae46823",
+      "prompt_tokens": 109
+    },
+    {
+      "id": "Evol_1924_I",
+      "family_id": "Evol_1924_I",
+      "implementation_key": "c09b6286ec963ca42c5e53838f8c0fe70d05d7cf0e226cef53aa3029475db92e",
+      "prompt_tokens": 77
+    },
+    {
+      "id": "Prefill_18728_I",
+      "family_id": "Prefill_18728_I",
+      "implementation_key": "111219b92f659cd496bfd4587326d9114bf843c180123efefc40aaa56d534620",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Evol_9410_I",
+      "family_id": "Evol_9410_I",
+      "implementation_key": "568cc32e8379d7562f8a86296ecf13e907c717c953d7d1ba4e7361549ad540a1",
+      "prompt_tokens": 96
+    },
+    {
+      "id": "Prefill_11693_I",
+      "family_id": "Prefill_11693_I",
+      "implementation_key": "068dfee51a9369dfd1cc4d4882de34971ed0dd1aac1368d1a1d914abbfe935d6",
+      "prompt_tokens": 63
+    },
+    {
+      "id": "Data_Structure_35239_I",
+      "family_id": "Algorithm_15162_I",
+      "implementation_key": "6a8801f1442194ffb0c95c9112ebf9c7662eb71bcdd8dcba55a991df4deb4f6b",
+      "prompt_tokens": 449
+    },
+    {
+      "id": "Prefill_10686_I",
+      "family_id": "Prefill_10686_I",
+      "implementation_key": "15e142527fb68f058c1dd2157fd08ac7b393cb56ec6d2d359dbd8c432b7de559",
+      "prompt_tokens": 73
+    },
+    {
+      "id": "Filter_21626_I",
+      "family_id": "Filter_21626_I",
+      "implementation_key": "31e2b2c7cff6ece8fff33432fd4764b525f61f5e7d22a685186204a3f5d42a67",
+      "prompt_tokens": 129
+    },
+    {
+      "id": "Filter_81239_I",
+      "family_id": "Filter_81239_I",
+      "implementation_key": "bff07b2382fd6c3d12a34dcf337fc2fe7e05cd245efcb08a1fcdf8d9e148acbd",
+      "prompt_tokens": 86
+    },
+    {
+      "id": "Taco_91980_I",
+      "family_id": "Taco_91980_I",
+      "implementation_key": "d088ad36ab94babee0ae33e186e25b3c3af3afa6da9ef60918faf454d4099c13",
+      "prompt_tokens": 259
+    },
+    {
+      "id": "Code_Contests_10537_I",
+      "family_id": "Code_Contests_10537_I",
+      "implementation_key": "5a8ee8c9dfd9713b59dd3f5af39e8f849faef8d66441ef8b21b73c0c0fb03365",
+      "prompt_tokens": 270
+    },
+    {
+      "id": "Code_Contests_10342_I",
+      "family_id": "Algorithm_2249_I",
+      "implementation_key": "eae95d8ad8d893826f01b658c6c755ca8b025595017fa212362661f81edf2988",
+      "prompt_tokens": 239
+    },
+    {
+      "id": "Filter_14938_I",
+      "family_id": "Filter_14938_I",
+      "implementation_key": "076fa323c88fa69d8f4ec5a8bc3a00a7e972c424cc8ec92c02dd3e55405a5350",
+      "prompt_tokens": 341
+    },
+    {
+      "id": "Filter_62914_I",
+      "family_id": "Filter_62914_I",
+      "implementation_key": "2dd9dc24e406bded469fc8b9f3c120e62940292fa8fdb72315f24eba41120b32",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Package_2855_I",
+      "family_id": "Package_2855_I",
+      "implementation_key": "803d7095f491b67ae92d6a6964a2bc302d73c1df56e445e2688621212998f8ac",
+      "prompt_tokens": 448
+    },
+    {
+      "id": "Prefill_7917_I",
+      "family_id": "Prefill_7917_I",
+      "implementation_key": "28258b5f13db9d95830cde30a7468b9f980c290dbbbc1c31d56bdfcfdb0d5a15",
+      "prompt_tokens": 109
+    },
+    {
+      "id": "Prefill_17145_I",
+      "family_id": "Prefill_17145_I",
+      "implementation_key": "fcfed323efc0ebc939c3705a810c5d7a9497498c05046f92d7518b1ca8a400a9",
+      "prompt_tokens": 70
+    },
+    {
+      "id": "Filter_9026_I",
+      "family_id": "Filter_9026_I",
+      "implementation_key": "1f6346b0b988f0e5083733e9ef1d5e5f3f8caaab67de88f9a2b31ca869c4fe5f",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Prefill_25896_I",
+      "family_id": "Prefill_25896_I",
+      "implementation_key": "6b5f810ba97f46dcb4fa13c2dde533364aed028feb5fb08b8fdd830f2cad763d",
+      "prompt_tokens": 162
+    },
+    {
+      "id": "Prefill_24189_I",
+      "family_id": "Prefill_24189_I",
+      "implementation_key": "81811c14e206091c9cbcf4b944d7d5d5383e9e222346a5891f2799e9897799c7",
+      "prompt_tokens": 185
+    },
+    {
+      "id": "Filter_75608_I",
+      "family_id": "Filter_75608_I",
+      "implementation_key": "b0c539c044d02b798845f33cc2a4eab6c706413f9dc78854be91a4635dacbf7a",
+      "prompt_tokens": 103
+    },
+    {
+      "id": "Codeforces_12618_I",
+      "family_id": "Codeforces_12618_I",
+      "implementation_key": "29047c269eb670fa6de2a84410714ad0b67d0ad49e595384ed46f11d18f30b74",
+      "prompt_tokens": 296
+    },
+    {
+      "id": "Prefill_91_I",
+      "family_id": "Prefill_91_I",
+      "implementation_key": "23abacab283ecf1a7d677877e5729698a9799e288610ec3efbbf5ed2fb3d5e8a",
+      "prompt_tokens": 87
+    },
+    {
+      "id": "Filter_24633_I",
+      "family_id": "Filter_24633_I",
+      "implementation_key": "903e33167cee1c942408375228b45e5afb9ffaecab208232f82100f56520f958",
+      "prompt_tokens": 145
+    },
+    {
+      "id": "Apps_4125_I",
+      "family_id": "Apps_4125_I",
+      "implementation_key": "9fb3b5b0b6ddbd85a2e7e9e7e14b432f220443572d5c98e86b924aace023539e",
+      "prompt_tokens": 272
+    },
+    {
+      "id": "Algorithm_35834_I",
+      "family_id": "Algorithm_35834_I",
+      "implementation_key": "3b244676eababa6dce2070e60c837d2f59331cec94fe217ef03601850f97ffbc",
+      "prompt_tokens": 375
+    },
+    {
+      "id": "Evol_1202_I",
+      "family_id": "Evol_1202_I",
+      "implementation_key": "e013f20d6b56b1d51cb818b925675f00af7483bb654b6d175458c98e9623e968",
+      "prompt_tokens": 135
+    },
+    {
+      "id": "Apps_4686_I",
+      "family_id": "Apps_4686_I",
+      "implementation_key": "436cfd11990eed0e8fa5b32ed7f7a58a01e3beaa45f2be47fe3f1260b085aea7",
+      "prompt_tokens": 288
+    },
+    {
+      "id": "Prefill_27916_I",
+      "family_id": "Prefill_27916_I",
+      "implementation_key": "1daa14719b51f73bcf6348926bfeec954b9497ba64aa30e9b8d64ee3a615d929",
+      "prompt_tokens": 180
+    },
+    {
+      "id": "Taco_30800_I",
+      "family_id": "Taco_30800_I",
+      "implementation_key": "e5843fdf340571819cf04d42e17daee8934d1983ed3d6a9551432f6d7b8a771e",
+      "prompt_tokens": 404
+    },
+    {
+      "id": "Prefill_32133_I",
+      "family_id": "Prefill_32133_I",
+      "implementation_key": "54048131e937e4effda500f845890db6f34dba392f12cefa252bce6799449b8d",
+      "prompt_tokens": 110
+    },
+    {
+      "id": "Prefill_5983_I",
+      "family_id": "Prefill_5983_I",
+      "implementation_key": "bc4f76638aa3eab246056e0388ea788c08fe4fa08314ae66b58e8815d2102c67",
+      "prompt_tokens": 64
+    },
+    {
+      "id": "Filter_42624_I",
+      "family_id": "Filter_42624_I",
+      "implementation_key": "76794ec83f433a0298c25986547dd89fdc0f6b4ec83add21612d9af8e65ed82f",
+      "prompt_tokens": 65
+    },
+    {
+      "id": "Filter_70167_I",
+      "family_id": "Filter_70167_I",
+      "implementation_key": "664bf9d77f775b5982371e3717d25d9fec57becd1bd66ec2ac41713409edf6b0",
+      "prompt_tokens": 61
+    },
+    {
+      "id": "Prefill_32941_I",
+      "family_id": "Prefill_32941_I",
+      "implementation_key": "84449148c0df2c32aedc2160585ae34837731c43ad865dec71062120207e7360",
+      "prompt_tokens": 81
+    },
+    {
+      "id": "Prefill_16263_I",
+      "family_id": "Prefill_16263_I",
+      "implementation_key": "7c8f350410b2630302ffa0678eca0255ea885bf2133a88efdff17cca524accca",
+      "prompt_tokens": 65
+    },
+    {
+      "id": "Filter_27299_I",
+      "family_id": "Filter_27299_I",
+      "implementation_key": "990fdf5e73c6edded2df17ee2fa9f9282645d5abdda7b0945847dc4958c76266",
+      "prompt_tokens": 85
+    },
+    {
+      "id": "Apps_7747_I",
+      "family_id": "Apps_7747_I",
+      "implementation_key": "86545e61e08e9ca053709ad079f76724022e44bdb952900eae856a0089b49f4d",
+      "prompt_tokens": 185
+    },
+    {
+      "id": "Taco_60938_I",
+      "family_id": "Taco_60938_I",
+      "implementation_key": "12488dd3375d2c4e20b84901a0b53a89b91a2cf37d29ff7473531cff85578201",
+      "prompt_tokens": 268
+    },
+    {
+      "id": "Filter_88233_I",
+      "family_id": "Filter_88233_I",
+      "implementation_key": "10f8e679187de007dcbea095cc38f80e3bb2c59d2300ad41eea4c5d5c70c06c6",
+      "prompt_tokens": 84
+    },
+    {
+      "id": "Filter_41737_I",
+      "family_id": "Filter_41737_I",
+      "implementation_key": "7e75868f530e2ea5a046f47fbee337b2e30ae21ff342ac9729755afa7129b033",
+      "prompt_tokens": 116
+    },
+    {
+      "id": "Prefill_39611_I",
+      "family_id": "Prefill_39611_I",
+      "implementation_key": "ba4c6fd2c03b149772040d606a8399c61a8fe3461bea6f2c7d82f479ac8398d6",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Prefill_39733_I",
+      "family_id": "Prefill_39733_I",
+      "implementation_key": "cd31b526d7a6e8d1d379343a8f0027c8b43d6a1923d7b9d47bdf3d40b147edc2",
+      "prompt_tokens": 113
+    },
+    {
+      "id": "Filter_72371_I",
+      "family_id": "Filter_72371_I",
+      "implementation_key": "3c31e46a7b783d638c3ffbf7b6b5165dc7c42899ad362ef8dbfa8d486ddb03aa",
+      "prompt_tokens": 66
+    },
+    {
+      "id": "Taco_11515_I",
+      "family_id": "Taco_11515_I",
+      "implementation_key": "6c528f0aab30200f242d09be2fb78268cba87277685b75fce1fbdbde0fa459ef",
+      "prompt_tokens": 121
+    },
+    {
+      "id": "Filter_13570_I",
+      "family_id": "Filter_13570_I",
+      "implementation_key": "257db10d0d3b3ae86a3aa38fc45c5568b49a04de14d2db07d88bc3f5d49cd70b",
+      "prompt_tokens": 324
+    },
+    {
+      "id": "Prefill_33172_I",
+      "family_id": "Prefill_33172_I",
+      "implementation_key": "d24c7133f7f043a902508a37b518f2c691c71e6d2d63e195bed3389338d45bdb",
+      "prompt_tokens": 59
+    },
+    {
+      "id": "Filter_28748_I",
+      "family_id": "Filter_28748_I",
+      "implementation_key": "5a48e33a23f51f2a63cb99b558eccad9e5cc2702ef953cb261cb876e572976b1",
+      "prompt_tokens": 103
+    },
+    {
+      "id": "Filter_74859_I",
+      "family_id": "Filter_74859_I",
+      "implementation_key": "e56c59183118d5108f2f725174ca96ddc4377426ee7e6f79547bc9c0a1c85f9d",
+      "prompt_tokens": 96
+    },
+    {
+      "id": "Evol_9995_I",
+      "family_id": "Evol_9995_I",
+      "implementation_key": "c628e90b71e108971c26fb5ed3ca95c260c8775b134e3afadb45e1ebd3e45b1c",
+      "prompt_tokens": 385
+    },
+    {
+      "id": "Prefill_22895_I",
+      "family_id": "Prefill_22895_I",
+      "implementation_key": "fbc2c7688532b39c9fb3df19c00f632f42587a98609c7dc0f2da35168233800b",
+      "prompt_tokens": 72
+    },
+    {
+      "id": "Filter_11360_I",
+      "family_id": "Filter_11360_I",
+      "implementation_key": "bb781b5a4530c5360882d8421aff176d91b5a58ff2bf4cfdeb8f4bc894cc78df",
+      "prompt_tokens": 374
+    },
+    {
+      "id": "Prefill_16233_I",
+      "family_id": "Prefill_16233_I",
+      "implementation_key": "d4bb2e41b84ea97b1b2b548b5b4548e91b9f73045d512b831f88d3c9e7dc450b",
+      "prompt_tokens": 79
+    },
+    {
+      "id": "Filter_13456_I",
+      "family_id": "Filter_13456_I",
+      "implementation_key": "adf29d1512e399c2731e24f7a5f37e163a8b8be144ea6d5f4a8acea82800ca39",
+      "prompt_tokens": 184
+    },
+    {
+      "id": "Data_Structure_41640_I",
+      "family_id": "Algorithm_40375_I",
+      "implementation_key": "d6cbe3897b781dbbbf1fcdf0b385a7708f6efe2accacf5032457c10813079b1d",
+      "prompt_tokens": 320
+    },
+    {
+      "id": "Prefill_8098_I",
+      "family_id": "Prefill_8098_I",
+      "implementation_key": "23dd563210902dc1512fe33ea3e3fe83ce92d09bd293414fa848aa23ffd0b9f7",
+      "prompt_tokens": 61
+    },
+    {
+      "id": "Prefill_42043_I",
+      "family_id": "Prefill_42043_I",
+      "implementation_key": "800ca010983193a74f9cb71fe15549e29bd0f94c4c71c4628d56886d1b351f00",
+      "prompt_tokens": 94
+    },
+    {
+      "id": "Filter_41577_I",
+      "family_id": "Filter_41577_I",
+      "implementation_key": "8b4f907befe5ff4f8f2bf72c61689820155939fe2141823c6e41eec62087e941",
+      "prompt_tokens": 122
+    },
+    {
+      "id": "Algorithm_30148_I",
+      "family_id": "Algorithm_30148_I",
+      "implementation_key": "6fb54a28db1e305ebf168eb154d15f8559161a40b42265fa18df417151ec53bc",
+      "prompt_tokens": 515
+    },
+    {
+      "id": "Filter_86075_I",
+      "family_id": "Filter_86075_I",
+      "implementation_key": "5924d9cae40439981b19d4c08c8ff2fb5fb104494f00d0fceca2339dca92b8fd",
+      "prompt_tokens": 195
+    },
+    {
+      "id": "Filter_59141_I",
+      "family_id": "Filter_59141_I",
+      "implementation_key": "a9204f64f9f294ffd47ff587f67e2f5aacdc4b2e9abda657c2f64cc889617092",
+      "prompt_tokens": 68
+    },
+    {
+      "id": "Filter_25511_I",
+      "family_id": "Filter_25511_I",
+      "implementation_key": "499d9b9c59ef0189dbe7132b726a5e5924a427f4bb4538cb1a0ac06ff2afee6f",
+      "prompt_tokens": 83
+    },
+    {
+      "id": "Code_Contests_23070_I",
+      "family_id": "Code_Contests_23070_I",
+      "implementation_key": "aac0dc87638b5e8f00e06f1955a396816c26020cb74affc6cba38a9f9d0d26c3",
+      "prompt_tokens": 341
+    },
+    {
+      "id": "Apps_2107_I",
+      "family_id": "Algorithm_25285_I",
+      "implementation_key": "15348a7a24b44f67ab6e291da941eaca3347917715c7cbbb02d773613f5333fd",
+      "prompt_tokens": 210
+    },
+    {
+      "id": "Filter_8340_I",
+      "family_id": "Filter_8340_I",
+      "implementation_key": "6f519dd6b4e321f1cc79be194a65752fd85eaeda692ee5cc3f6a89f8d30e3e2b",
+      "prompt_tokens": 135
+    },
+    {
+      "id": "Filter_24272_I",
+      "family_id": "Filter_24272_I",
+      "implementation_key": "44e5b72ddf451c17fdad9fa6b7e2ca75543d97d26800d066aacfdb13636bb74c",
+      "prompt_tokens": 188
+    },
+    {
+      "id": "Taco_74790_I",
+      "family_id": "Taco_74790_I",
+      "implementation_key": "214ffbafb9f5136d2012ef765fc45acefd08906f24722a34695420f14c0aef3c",
+      "prompt_tokens": 266
+    }
+  ]
+}
