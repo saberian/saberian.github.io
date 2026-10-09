@@ -383,3 +383,32 @@ def sft_overfit(records, problems, run_id):
             results_volume.commit()
         return {'outputs':outputs,'batches':metrics}
     return train_adapter(records,run_id,'overfit',results_volume,settings=OVERFIT_SETTINGS,evaluate=evaluate)
+
+
+grpo_image = training_image.add_local_python_source('grpo_core','grpo_worker',copy=True)
+
+@app.cls(image=grpo_image,gpu="A100-80GB",cpu=(2,2),memory=(16384,16384),
+    timeout=600,startup_timeout=300,retries=0,max_containers=1,scaledown_window=60,
+    volumes={"/results":results_volume})
+class GRPOWorker:
+    run_id: str = modal.parameter()
+
+    @modal.enter()
+    def setup(self):
+        from grpo_worker import Engine
+        self.engine=Engine(self.run_id,results_volume)
+
+    @modal.method()
+    def rollout(self,round_index,problems):return self.engine.rollout(round_index,problems)
+
+    @modal.method()
+    def update(self,round_index,outputs_digest,rewards):return self.engine.update(round_index,outputs_digest,rewards)
+
+    @modal.method()
+    def verify_reload(self):return self.engine.verify_reload()
+
+    @modal.method()
+    def evaluate(self,problems,samples,label):return self.engine.evaluate(problems,samples,label)
+
+    @modal.method()
+    def finish(self):return self.engine.finish()

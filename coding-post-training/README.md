@@ -1094,3 +1094,53 @@ inference/recovery contract tests and real present/missing Volume reads passed.
 Both GPU apps stopped with zero tasks; no evaluator containers remained. Modal
 reported **$0.23399** for validation, including the interrupted app, at the time
 recorded in the report; provider metering may lag.
+
+### GRPO diagnostic: original Qwen, verified execution rewards
+
+The current outcomes and revised plan are summarized in [RESULTS.md](RESULTS.md).
+All earlier results were committed before implementing this experiment. The two
+training problems are `Prefill_19551_I` and `Prefill_35466_I`, the previously audited
+mixed-success **alignment-pool** tasks. They are independent of the 32 development
+problems. Their original supplied-case reward contracts remain unchanged. This is
+a two-problem diagnostic, not a broad benchmark or an equal-data SFT comparison.
+
+`grpo_core.py` implements the original-style clipped GRPO objective explicitly using
+PyTorch/PEFT, with the same code exercised by real CPU model tests and on the GPU.
+It does not claim to be TRL's current default objective: recent TRL defaults use a
+different length reduction and omit KL unless requested. Here each response's token
+losses are averaged, then the eight responses are averaged. Group advantages use
+population standard deviation plus 1e-4; constant groups get zero task advantage
+but may still receive a KL gradient. The sampled-token KL estimator is
+`exp(logp_ref - logp) - (logp_ref - logp) - 1`.
+[Original GRPO](https://arxiv.org/abs/2402.03300),
+[TRL objective variants](https://huggingface.co/docs/trl/grpo_trainer).
+
+Settings: two prompts × four sampled completions per rollout, ten fresh rollout
+rounds, two optimizer passes per rollout (20 updates), AdamW at 1e-5 without weight
+decay, gradient clipping 1, policy-ratio clipping 0.2, and reference KL coefficient
+0.02. Rank-16 LoRA uses the existing attention/MLP target modules and a frozen BF16
+backbone. The original checkpoint is the fixed reference, evaluated by disabling
+the adapter; no value model or separate reward model is trained. Sampling uses
+temperature 1, top-p 1, top-k 0, no dropout, and a 512-token cap. Prompt tokens and
+post-EOS padding are excluded from the loss; sampled EOS is included. Truncated
+responses get reward zero, retaining their sampled-token trajectory for learning.
+
+A stateful A100 worker generates complete groups of four in one batched generation
+call per prompt. The host grades code in the same isolated Docker evaluator and
+returns numeric rewards only. The GPU receives neither expected test outputs nor
+reference solutions. Behavior log probabilities are captured before any update;
+reference probabilities remain fixed. Complete rollout records, adapter parameters,
+and optimizer state are checkpointed. Duplicate rollout/update requests are checked
+by version and output hash to avoid applying an update twice after a network loss.
+The first round must have mixed rewards, improve its surrogate objective, and pass
+an exact-logit checkpoint reload before further rounds proceed.
+
+The local coordinator is `uv run --extra inference --extra training python grpo_run.py`.
+The combined training and evaluation allowance is $4, including conservative
+startup/call/idle reservations. It measures greedy accuracy on the two training
+problems before/after, four fixed-seed samples per problem before/after, reward and
+optimization diagnostics per round, and greedy accuracy on **only the existing 32
+validation problems**. It reuses the original validation baseline, does not run the
+300-problem test set, and does not reuse the overfit adapter. Eight sampled answers
+are a very small, noisy diagnostic; identical seeds do not make them an unbiased
+estimate of generalization.

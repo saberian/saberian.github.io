@@ -1,0 +1,32 @@
+{
+  "selected_ids": [
+    "Prefill_19551_I",
+    "Prefill_35466_I"
+  ],
+  "sample_sha256": "ba81ef78e12ec2012617b20887c2fff7e31fd386402d96c7d47153522da1b8d4",
+  "discovery_manifest_sha256": "d4735b57eb2013a995d75dbc36000623ee23321aee2f9ffea66c1b9d05c67ee8",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "reference_checks": [
+    {
+      "id": "Prefill_19551_I",
+      "status": "passed",
+      "cases": 9
+    },
+    {
+      "id": "Prefill_35466_I",
+      "status": "passed",
+      "cases": 11
+    }
+  ],
+  "evaluator_version": "python-output-v2",
+  "selection": "The two previously independently audited mixed-outcome alignment groups; chosen from training-only discovery results, never validation/test scores.",
+  "limitations": "Only two training problems; diagnostic of learning mechanics, not broad generalization. Preserve original supplied-test rewards and prompt ambiguities, including a singleton palindrome case outside the stated minimum length."
+}
