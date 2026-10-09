@@ -1,4 +1,5 @@
 """Measure generated-code accuracy on all 64 frozen SFT training problems, without training."""
+import argparse
 from collections import Counter
 from datetime import datetime,timezone
 import json
@@ -20,7 +21,9 @@ def training_problems(artifact,records):
     return problems
 
 
-def main():
+def main(policy="sft", split="train"):
+    if policy not in ("base","sft"):
+        raise ValueError("Unknown policy")
     revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     if subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip() or revision!=subprocess.check_output(['git','rev-parse','@{upstream}'],cwd=ROOT,text=True).strip():
         raise RuntimeError('Commit and push the exact runner before paid inference')
@@ -28,18 +31,31 @@ def main():
     source=json.loads((ROOT/'reports/sft-pilot-2026-10-09.json').read_text())
     if source['sample_sha256']!=manifest['sample_sha256'] or source['training_export_sha256']!=manifest['training_export_sha256'] or source['status']!='completed' or source['model_revision']!=baseline['model_revision']:
         raise ValueError('SFT checkpoint/data provenance mismatch')
-    if file_manifest(ROOT/source['training']['local_adapter_path'])!=source['training']['adapter_files']:
+    if policy == 'sft' and file_manifest(ROOT/source['training']['local_adapter_path'])!=source['training']['adapter_files']:
         raise ValueError('Local adapter files differ from recorded checkpoint')
     problems=training_problems(json.loads((ROOT/'data/sft-pilot-v1.json').read_text()),records)
-    run_id=datetime.now(timezone.utc).strftime('train-eval-%Y%m%dT%H%M%SZ-')+revision[:8]
+    if split == 'test':
+        from test_data import validate_test
+        artifact=json.loads((ROOT/'data/final-test-v1.json').read_text())
+        test_manifest=json.loads((ROOT/'manifests/final-test-v1.json').read_text())
+        pools=json.loads((ROOT/'manifests/family-pools-v1.json').read_text())
+        pilot=json.loads((ROOT/'data/sft-pilot-v1.json').read_text())['problems']
+        problems=artifact['problems']
+        validate_test(problems,pools,pilot)
+        if digest(problems)!=test_manifest['sample_sha256'] or digest(pools)!=test_manifest['split_manifest_sha256'] or artifact['reference_runtime']!=baseline['reference_runtime']:
+            raise ValueError('Frozen test provenance mismatch')
+    elif split != 'train':raise ValueError('Unknown split')
+    n=len(problems)
+    budget=8.0 if split=='test' else 2.0
+    run_id=datetime.now(timezone.utc).strftime(f'{split}-eval-%Y%m%dT%H%M%SZ-')+revision[:8]
     destination=ROOT/'runs'/f'{run_id}.json'
-    report={'run_id':run_id,'revision':revision,'status':'running','source_sft_run_id':source['run_id'],
+    report={'run_id':run_id,'revision':revision,'status':'running','policy':policy,'split':split,'source_sft_run_id':source['run_id'] if policy=='sft' else None,
         'model':source['model'],'model_revision':source['model_revision'],
-        'sample_sha256':manifest['sample_sha256'],'training_problems_sha256':digest(problems),
+        'sample_sha256':manifest['sample_sha256'],'evaluation_problems_sha256':digest(problems),
         'training_export_sha256':manifest['training_export_sha256'],
-        'adapter_files':source['training']['adapter_files'],'evaluator_version':EVALUATOR_VERSION,
+        'adapter_files':source['training']['adapter_files'] if policy=='sft' else None,'evaluator_version':EVALUATOR_VERSION,
         'decoding':source['decoding'],'reference_runtime':baseline['reference_runtime'],
-        'budget_usd':2.0,'setup_reserve_usd':0.25,'resource_usd_per_second':RESOURCE_USD_PER_SECOND,
+        'budget_usd':budget,'setup_reserve_usd':0.25,'resource_usd_per_second':RESOURCE_USD_PER_SECOND,
         'charged_wall_seconds':0,'raw_outputs':[],'results':[],'gpu_batches':[]}
     runner=lambda req:run_docker(req,baseline['reference_runtime']['id'])
     def save():
@@ -56,16 +72,18 @@ def main():
         if evaluate_with_runner(probe,'def f(x): return x',runner)['reward']!=1:
             raise RuntimeError('Local evaluator canary failed')
         import modal
-        from modal_app import app,sft_training_generate
+        from modal_app import app,sft_training_generate,base_training_generate
         with modal.enable_output(),app.run():
             report['app_id']=app.app_id;save()
-            batches=[problems[:1]]+[problems[i:i+9] for i in range(1,64,9)]
+            batches=[problems[:1]]+[problems[i:i+9] for i in range(1,n,9)]
             for i,batch in enumerate(batches):
-                if not can_start_batch(report['charged_wall_seconds'],budget_usd=2.0):
+                if not can_start_batch(report['charged_wall_seconds'],budget_usd=budget):
                     raise RuntimeError('Budget cannot reserve the next complete call')
                 start=time.monotonic()
                 try:
-                    generated=sft_training_generate.remote([{k:p[k] for k in ('id','question','signature')} for p in batch],source['run_id'],run_id,i,source['training']['adapter_files'])
+                    prompts=[{k:p[k] for k in ('id','question','signature')} for p in batch]
+                    generated=(base_training_generate.remote(prompts,run_id,i) if policy=='base' else
+                        sft_training_generate.remote(prompts,source['run_id'],run_id,i,source['training']['adapter_files']))
                 finally:
                     report['charged_wall_seconds']+=time.monotonic()-start+2
                     report['estimated_usd_with_setup_reserve']=0.25+report['charged_wall_seconds']*RESOURCE_USD_PER_SECOND
@@ -75,11 +93,11 @@ def main():
                 if [o['id'] for o in generated['outputs']]!=[p['id'] for p in batch] or any(o['sample_index']!=0 for o in generated['outputs']):
                     raise ValueError('Unexpected inference IDs/sample count')
                 if i==0:grade(generated['outputs'])
-                print(f'Saved {len(report["raw_outputs"])}/64 training-set answers.',flush=True)
+                print(f'Saved {len(report["raw_outputs"])}/{n} {split}-set answers.',flush=True)
         grade(report['raw_outputs'][1:])
-        if len(report['results'])!=64:raise ValueError('Incomplete evaluation')
-        report['summary']={'problems':64,'passed':sum(r['reward'] for r in report['results']),
-            'accuracy':sum(r['reward'] for r in report['results'])/64,
+        if len(report['results'])!=n:raise ValueError('Incomplete evaluation')
+        report['summary']={'problems':n,'passed':sum(r['reward'] for r in report['results']),
+            'accuracy':sum(r['reward'] for r in report['results'])/n,
             'status_counts':dict(Counter(r['status'] for r in report['results'])),
             'raw_format_passed':sum(r['raw_format_compliant'] for r in report['results']),
             'generated_tokens':sum(r['generated_tokens'] for r in report['results']),
@@ -91,4 +109,9 @@ def main():
     print(destination,flush=True)
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--policy',choices=['base','sft'],default='sft')
+    parser.add_argument('--split',choices=['train','test'],default='train')
+    args=parser.parse_args()
+    main(args.policy,args.split)

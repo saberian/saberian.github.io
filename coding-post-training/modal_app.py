@@ -294,7 +294,8 @@ def sft_generate(problems,run_id,batch_index):
 
 def training_eval_destination(evaluation_id,batch_index):
     import re
-    if not re.fullmatch(r"train-eval-[0-9TZ]+-[0-9a-f]{8}",evaluation_id) or not 0 <= batch_index < 8:
+    limit = 34 if evaluation_id.startswith("test-eval-") else 8
+    if not re.fullmatch(r"(?:train|test)-eval-[0-9TZ]+-[0-9a-f]{8}",evaluation_id) or not 0 <= batch_index < limit:
         raise ValueError("Invalid training-evaluation run or batch")
     return Path('/results')/evaluation_id/f'batch-{batch_index}.json'
 
@@ -331,3 +332,19 @@ def generate_adapter_batch(problems,run_id,destination):
         tmp = destination.with_suffix('.tmp');tmp.write_text(json.dumps({'outputs':outputs}));tmp.replace(destination)
         results_volume.commit()
     return generate_batch(problems,samples=1,checkpoint=checkpoint,model_pair=_sft_loaded[1:])
+
+
+@app.function(image=gpu_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
+    timeout=240, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results":results_volume})
+def base_training_generate(problems,evaluation_id,batch_index):
+    destination=training_eval_destination(evaluation_id,batch_index)
+    results_volume.reload()
+    if destination.exists():
+        raise ValueError("Refusing to overwrite an existing evaluation batch")
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    def checkpoint(outputs):
+        tmp=destination.with_suffix('.tmp');tmp.write_text(json.dumps({'outputs':outputs}));tmp.replace(destination)
+        results_volume.commit()
+    # The inference-only image and canonical base-model loader contain no adapter loading path.
+    return generate_batch(problems,samples=1,checkpoint=checkpoint)

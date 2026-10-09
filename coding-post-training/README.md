@@ -938,3 +938,27 @@ inference contract checks passed. Modal reported **$0.28587341** at 18:09 UTC
 **$0.67**, within the $2 allowance. The app stopped with zero tasks and no evaluator
 containers remained. Answers remain in the ignored local run file and results
 volume; the aggregate report is committed.
+
+### Complete SFT accuracy comparison protocol
+
+The requested comparison reuses the saved 32-problem development evaluations and
+64-problem after-SFT training evaluation. `training_accuracy.py --policy base`
+measures the original pinned checkpoint on the same training prompts. No further
+training takes place.
+
+`test_data.py` freezes 300 problems from the previously reserved final-test family
+pool in deterministic hash order. It excludes known audit problems and duplicate
+families/normalized implementations, including matches to the 96 pilot problems.
+Every selected reference passes the supplied cases twice in the same isolated
+runtime. This is automated reference validation, not exhaustive human semantic
+review; shared reference/test mistakes and unknown pretraining contamination remain
+limitations. Selection never uses either checkpoint's scores.
+
+After committing the manifest, run `training_accuracy.py --split test --policy base`
+and `training_accuracy.py --split test --policy sft`. Both use identical greedy
+512-token decoding, prompt construction, and Python-output-v2 grading. The budget
+allowance is $8 per 300-problem run ($2 for the missing training baseline), with a
+single-example end-to-end canary before subsequent batches. Raw generations are
+saved before grading and kept ignored; aggregate reports and provenance are tracked.
+Exposing this test set means it must not become a source of fixes or checkpoint
+selection for later PPO/DPO/GRPO experiments.
