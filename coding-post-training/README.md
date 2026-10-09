@@ -1029,3 +1029,30 @@ Selected examples:
 | `Filter_68887_I` | `rotate_string` | passed |
 | `Filter_3471_I` | `encrypt` | passed |
 | `Filter_67993_I` | `convert_negatives_to_positives` | passed |
+
+
+#### Diagnostic result: 8/15 → 15/15
+
+The 60-update experiment completed successfully. All seven previously failing
+problems now pass; all eight previous successes remain correct. All 15 outputs
+are raw-format compliant. See `reports/sft-overfit-15-2026-10-09.json` for the
+per-problem scores and provenance.
+
+| Measure | Before | After |
+|---|---:|---:|
+| Generated-code accuracy on selected training problems | 8/15 (53.33%) | 15/15 (100%) |
+| Full-subset reference-token NLL (nats) | 0.930229 | 0.000039932 |
+
+The fresh rank-16 adapter received 60 updates at 1e-4, effective batch 5, across
+20 epochs. Actual optimizer training took 158.7 seconds; the complete app, including
+canary, model loading, adapter verification, answer generation and retrieval, ran
+about seven minutes. Modal reported $0.30554 at 20:52 UTC (may lag); the conservative
+estimate including setup reserve was $0.55 against a $4 allowance. The GPU app
+stopped with zero tasks and no evaluator containers remained.
+
+This establishes that the pipeline can memorize the selected training problems and
+change greedy generated correctness. It does not establish a better general coding
+model. No development/test evaluation was performed for this deliberately overfit
+checkpoint. The earlier four-update pilot and this diagnostic differ in subset,
+number of epochs and effective batch size, so this is not an isolated causal test
+of update count alone. Keep this checkpoint separate from any model selected for RL.
