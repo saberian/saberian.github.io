@@ -580,3 +580,65 @@ Keep the original score unchanged while investigating data quality. In particula
 deletion, and `Prefill_23088_I` does not explicitly state the replacement-case
 convention. Those need specification review before becoming training feedback.
 The two alignment candidates above have clearer, independently confirmed failures.
+
+## Step 3: a frozen SFT pilot and its before-training score
+
+The pilot uses **64 SFT demonstrations and 32 development problems** from the
+existing family pools. Alignment and final-test pools remain reserved. This is a
+small pipeline exercise, not enough data to establish broad coding improvements.
+Development is for iteration; some of its tasks were already examined during
+discovery, so it is not an untouched final test.
+
+An SFT example is the same system instruction and problem/signature used at
+inference, followed by the dataset's reference Python solution as the assistant
+answer. We retain the reference text, including any comments and docstrings.
+We do not train on sampled incorrect answers or include execution tests in the
+training export. `data/sft-pilot-v1-train.jsonl` contains the 64 conversations,
+token IDs, attention masks, and labels; `data/sft-pilot-v1.json` contains the
+separate problems and grading cases. Both are local, ignored dataset artifacts.
+The committed `manifests/sft-pilot-v1.json` records their provenance and hashes.
+
+**What does the model learn here?** Each answer token is a supervised next-token
+prediction. Prompt positions have label `-100`, which means ignore their loss;
+answer tokens and the final end-of-turn token retain their token IDs as labels.
+The model still reads the prompt. A future trainer must preserve these masks and
+mask padding too; a causal language model performs the one-token label shift.
+We verify the training prefix equals the actual inference prompt, allow at most
+1,024 prompt and 512 target tokens, and reject oversized examples instead of
+cutting off Python code. No optimizer or adapter training runs in this step.
+
+Preparation checks original source-family separation, screens identifier-normalized
+reference implementations, and includes manual checks for equivalent tasks with
+different implementations. These checks reduce leakage without proving absence
+of semantic duplicates. Every selected reference passes its supplied cases in two
+fresh isolated Docker executions. Passing those cases alone is insufficient:
+manual target review found several bugs, documented with independent countercases
+in `reports/sft-pilot-reference-audit.json`. Exclusions and review IDs are recorded
+in `manifests/sft-pilot-audit.json`; we exclude faulty or ambiguous demonstrations
+rather than silently repair their labels. Some algorithm-specific tasks are also
+excluded because our output grader cannot verify the requested implementation.
+The remaining tests are finite and do not prove complete correctness or performance
+at the largest input sizes.
+
+From this directory:
+
+```bash
+uv run --extra inference python pilot_data.py prepare
+# Review all IDs listed in needs_review; update the audit and prepare again if excluded.
+uv run --extra inference python pilot_data.py freeze
+RUN_DOCKER_TESTS=1 uv run --extra inference python -m unittest discover -s tests -v
+# Commit and push the exact runner and frozen manifests before spending GPU credits.
+uv run --extra inference python pilot_baseline.py
+```
+
+The baseline uses greedy decoding on development only, with the same 512-token
+response cap and evaluator as the future after-SFT comparison. It generates and
+grades one canary before continuing, checkpoints answers, ends the GPU app before
+local bulk grading, and reserves the next call's maximum configured runtime before
+starting it. Its $1.50 application allowance includes a $0.25 setup reserve; this
+is a conservative estimate, not a provider-enforced billing cap. Do not rerun just
+to regrade saved outputs. Freeze files refuse overwrite with changed content.
+
+Before training, inspect one JSONL row and explain which tokens contribute to
+loss. The next exercise will be a small adapter SFT run, followed by the **same**
+development evaluation to check both improvements and regressions.

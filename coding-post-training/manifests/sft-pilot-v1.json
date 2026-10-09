@@ -1,0 +1,1741 @@
+{
+  "dataset": "KodCode/KodCode-Light-RL-10K",
+  "revision": "dcf78a8bbba9a613b596ce993c4921a38687dfcc",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "split_manifest_sha256": "ef605f28004a10150ed8c0efa4572a8d301c15dafa742580ca4532862b1d8b93",
+  "audit_sha256": "01a7f3608a33b2e01487ccbeba0d8f4f7b3d470767dfc2eed4cd425bd9499f8c",
+  "sample_sha256": "4fb53d6d7ebf36778fc5c23f57c5ac6036357c9eabb02c58f5341bf1e4d657ff",
+  "reference_checks": [
+    {
+      "id": "Filter_61800_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_85258_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_36259_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_34333_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_35411_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_62758_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_39729_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_7366_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_41176_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_8026_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_16539_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_54735_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_28966_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_83939_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_20542_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_20482_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_30696_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_44584_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_23329_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_51966_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_224_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_81860_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_87326_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_38145_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Leetcode_26807_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_5174_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_57895_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_3001_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_27332_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_54184_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_14332_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_41713_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_48511_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_7871_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_13046_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_34153_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_28221_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_58003_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_21426_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_40198_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_14754_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_11984_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_8631_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_17117_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_41202_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_15989_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_7890_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Codeforces_14239_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_16125_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_10912_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_18514_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_68073_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_8828_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_5749_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Data_Structure_41652_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Codeforces_00027181_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_1469_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23493_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_10947_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_26162_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_2178_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_37612_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_113_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_41605_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Codeforces_10427_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_35390_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_9946_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_50585_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Evol_5299_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_3467_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_31266_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_66631_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_480_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_38350_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_16553_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_67993_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_3471_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Taco_36012_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_39172_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_14662_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_11888_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Algorithm_20361_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_6746_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Code_Contests_35635_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_3223_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_42928_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_23965_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_38802_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_7450_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_68887_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_8123_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_47535_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_56625_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Filter_52882_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Prefill_28477_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "id": "Apps_6492_I",
+      "statuses": [
+        "passed",
+        "passed"
+      ]
+    }
+  ],
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "rejections": {
+    "Outside initial pure-function scope": 2087,
+    "Unsupported test body": 1033,
+    "Audit exclusion": 68,
+    "Unsupported case value": 390,
+    "malformed node or string on line 19: <ast.BinOp object at 0x119059190>": 1,
+    "Fixtures/decorators unsupported": 2,
+    "malformed node or string on line 18: <ast.BinOp object at 0x119029650>": 1,
+    "Only direct equality assertions supported": 86,
+    "Unsupported test module statement": 215,
+    "malformed node or string on line 12: <ast.BinOp object at 0x118fe8c10>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x1190d2250>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x116519390>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x118fe8810>": 1,
+    "malformed node or string on line 9: <ast.ListComp object at 0x1164fee50>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x119071a50>": 1,
+    "Require 3\u201320 literal cases": 18,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11b82e790>": 1,
+    "Only positional direct function calls supported": 17,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11b815f90>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11b852210>": 1,
+    "Reference contains top-level demonstration calls": 8,
+    "malformed node or string on line 19: <ast.Subscript object at 0x11b876e90>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11b889c90>": 1,
+    "malformed node or string on line 31: <ast.BinOp object at 0x11b8a5650>": 1,
+    "Prompt/target exceeds the 1024/512 token contract; never truncate": 1,
+    "malformed node or string on line 10: <ast.BinOp object at 0x11b8c2d10>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11b8c0bd0>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11b8e6ad0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11b8e4ad0>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11b90a890>": 1,
+    "malformed node or string on line 8: <ast.BinOp object at 0x1190856d0>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11b93b3d0>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x11b99fc50>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11b8d2d10>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11b8bc350>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11b9faf10>": 1,
+    "malformed node or string on line 14: <ast.Call object at 0x11b9fbf10>": 1,
+    "malformed node or string on line 12: <ast.BinOp object at 0x11b93cd50>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11ba25490>": 1,
+    "malformed node or string on line 12: <ast.BinOp object at 0x11b9fba90>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11ba1fe50>": 1,
+    "malformed node or string on line 34: <ast.Call object at 0x11ba9b910>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11baa97d0>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11babf1d0>": 1,
+    "malformed node or string on line 26: <ast.Call object at 0x11babd0d0>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11baf6350>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11baf96d0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11bb26c90>": 1,
+    "malformed node or string on line 13: <ast.ListComp object at 0x11bb27290>": 1,
+    "malformed node or string on line 5: <ast.BinOp object at 0x11baf93d0>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11bb4fb90>": 1,
+    "malformed node or string on line 15: <ast.Call object at 0x11bb7f1d0>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11bb65cd0>": 1,
+    "malformed node or string on line 22: <ast.ListComp object at 0x11bbab190>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x11b9aa710>": 1,
+    "malformed node or string on line 16: <ast.ListComp object at 0x118ff7390>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11bbe7b10>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11b7d4b50>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11bbf7dd0>": 1,
+    "malformed node or string on line 18: <ast.ListComp object at 0x11b9d5ed0>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11babf610>": 1,
+    "malformed node or string on line 9: <ast.BinOp object at 0x11bc21410>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11bc3c650>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11bc533d0>": 1,
+    "malformed node or string on line 34: <ast.BinOp object at 0x119061990>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11bc5ba50>": 1,
+    "malformed node or string on line 12: <ast.BinOp object at 0x11bcbe8d0>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11bc44350>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11bcc0510>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11bd16d90>": 1,
+    "malformed node or string on line 29: <ast.BinOp object at 0x11bc7b850>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11bd26090>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11bd3b290>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11bd60dd0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11bc30390>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11bd60690>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11bd74f90>": 1,
+    "malformed node or string on line 26: <ast.BinOp object at 0x11bb40c90>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11bd968d0>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11bd8af90>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11bdb4490>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bdb4e90>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11bd8c6d0>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11bdec550>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11be0d6d0>": 1,
+    "malformed node or string on line 14: <ast.ListComp object at 0x11be43ed0>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11bb50a50>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11be83790>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11bdef250>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11be90d90>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bd5b210>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11bdc8e90>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11bf03d10>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11bf1f690>": 1,
+    "malformed node or string on line 28: <ast.Call object at 0x11be38210>": 1,
+    "malformed node or string on line 23: <ast.Call object at 0x11bf59fd0>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11bf70ed0>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11bf729d0>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11bf82910>": 1,
+    "malformed node or string on line 25: <ast.Call object at 0x11bfb8ad0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11bfd49d0>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11bfcc4d0>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11bfcd390>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11bfb4b50>": 1,
+    "malformed node or string on line 31: <ast.BinOp object at 0x11c003850>": 1,
+    "malformed node or string on line 20: <ast.BinOp object at 0x11bfff490>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11c00fc10>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11be5a250>": 1,
+    "malformed node or string on line 29: <ast.Call object at 0x11c066b10>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11c065090>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11c04b010>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x11bfcd650>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11c067110>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11b96a1d0>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11bf60950>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c084f90>": 1,
+    "malformed node or string on line 26: <ast.ListComp object at 0x11c0c8390>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11c0c78d0>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c0e5290>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11c026090>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11c0c8b90>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11be332d0>": 1,
+    "malformed node or string on line 7: <ast.BinOp object at 0x11c0f7150>": 1,
+    "malformed node or string on line 15: <ast.BinOp object at 0x11c129390>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11c13d890>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11c13f690>": 1,
+    "malformed node or string on line 11: <ast.Call object at 0x11c12bdd0>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c142610>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11bd8ea90>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11c194ed0>": 1,
+    "malformed node or string on line 13: <ast.Call object at 0x11c195350>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11c1abd10>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11c174790>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c1ac8d0>": 1,
+    "malformed node or string on line 13: <ast.BinOp object at 0x11c100fd0>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c1fb710>": 1,
+    "malformed node or string on line 22: <ast.ListComp object at 0x11c14ca50>": 1,
+    "malformed node or string on line 23: <ast.BinOp object at 0x11c21c750>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c245c50>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c24b2d0>": 1,
+    "malformed node or string on line 10: <ast.Call object at 0x11c20d250>": 1,
+    "malformed node or string on line 5: <ast.BinOp object at 0x11c1d2990>": 1,
+    "malformed node or string on line 22: <ast.Call object at 0x11be79fd0>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11c2b9c90>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c2decd0>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11c2e99d0>": 1,
+    "malformed node or string on line 25: <ast.Call object at 0x11c24b710>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11c323110>": 1,
+    "malformed node or string on line 16: <ast.BinOp object at 0x11c310c10>": 1,
+    "malformed node or string on line 21: <ast.DictComp object at 0x11c336850>": 1,
+    "malformed node or string on line 19: <ast.Call object at 0x11c334d90>": 1,
+    "malformed node or string on line 17: <ast.BinOp object at 0x11c32a650>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c35e290>": 1,
+    "malformed node or string on line 17: <ast.Call object at 0x11c37d410>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c397d10>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c3cb550>": 1,
+    "malformed node or string on line 16: <ast.Call object at 0x11c3a4890>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c197010>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11c3d4150>": 1,
+    "malformed node or string on line 24: <ast.BinOp object at 0x11c385250>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11c3c98d0>": 1,
+    "malformed node or string on line 28: <ast.BinOp object at 0x11c2c15d0>": 1,
+    "malformed node or string on line 4: <ast.Call object at 0x11c3e3f10>": 1,
+    "malformed node or string on line 32: <ast.ListComp object at 0x11c413810>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c42ac90>": 1,
+    "malformed node or string on line 19: <ast.BinOp object at 0x11c1ac490>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11c45cf50>": 1,
+    "malformed node or string on line 15: <ast.ListComp object at 0x11c46b150>": 1,
+    "malformed node or string on line 22: <ast.ListComp object at 0x11c470090>": 1,
+    "malformed node or string on line 13: <ast.Call object at 0x11c472dd0>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c4aba90>": 1,
+    "malformed node or string on line 4: <ast.BinOp object at 0x11c43d090>": 1,
+    "malformed node or string on line 14: <ast.BinOp object at 0x11c32b410>": 1,
+    "malformed node or string on line 22: <ast.BinOp object at 0x11c4ccbd0>": 1,
+    "malformed node or string on line 25: <ast.Call object at 0x11c4d1290>": 1,
+    "malformed node or string on line 21: <ast.BinOp object at 0x11c405e50>": 1,
+    "malformed node or string on line 25: <ast.BinOp object at 0x11c4f2a50>": 1,
+    "malformed node or string on line 18: <ast.BinOp object at 0x11c53cdd0>": 1
+  },
+  "needs_review": [],
+  "training_export_sha256": "147fb8800561213c383346af8b3db8edd898131180cdfcbab4b451bb68f5d6b7",
+  "selection": "Audited IDs first, then SHA256([42, sft-pilot-v1, id]); development first; unique source families and identifier-normalized implementations; all references pass twice; no Qwen scores used for selection.",
+  "selected": [
+    {
+      "id": "Algorithm_23329_I",
+      "split": "development",
+      "family_id": "Algorithm_23329_I",
+      "implementation_key": "6a1100f83243457e682739f482112ce8e909e221abd821ab99ba9c6a3dcea947",
+      "difficulty": "medium",
+      "prompt_tokens": 472,
+      "target_tokens": 83
+    },
+    {
+      "id": "Algorithm_34333_I",
+      "split": "development",
+      "family_id": "Algorithm_34333_I",
+      "implementation_key": "af6978a4dd1fe7a41e0d05b5e4834ed2aa96e955e35f085bed9b3c4412b13498",
+      "difficulty": "hard",
+      "prompt_tokens": 377,
+      "target_tokens": 142
+    },
+    {
+      "id": "Algorithm_41176_I",
+      "split": "development",
+      "family_id": "Algorithm_41176_I",
+      "implementation_key": "1a3570b32a2ead4380cc327052195285be4aab2ce67067db330c428c32e8159d",
+      "difficulty": "easy",
+      "prompt_tokens": 403,
+      "target_tokens": 99
+    },
+    {
+      "id": "Apps_16539_I",
+      "split": "development",
+      "family_id": "Algorithm_30508_I",
+      "implementation_key": "76deccd3f0dcfc8222aeeceabed646814fa2fe23619834417e3fd664ed35c6b5",
+      "difficulty": "easy",
+      "prompt_tokens": 338,
+      "target_tokens": 57
+    },
+    {
+      "id": "Apps_224_I",
+      "split": "development",
+      "family_id": "Apps_224_I",
+      "implementation_key": "27231f212a16ad2fecee5271259e29e60bd18970c8c6556d9bd99b17b0453a11",
+      "difficulty": "medium",
+      "prompt_tokens": 184,
+      "target_tokens": 108
+    },
+    {
+      "id": "Apps_3001_I",
+      "split": "development",
+      "family_id": "Apps_3001_I",
+      "implementation_key": "5520a07b912da75d11dff153ce795dccd0a963a095fd9cc2cca9a5aea8c308e2",
+      "difficulty": "medium",
+      "prompt_tokens": 246,
+      "target_tokens": 85
+    },
+    {
+      "id": "Filter_27332_I",
+      "split": "development",
+      "family_id": "Filter_27332_I",
+      "implementation_key": "87ce3d03c8711c250500447fd023fd26e1613193fee1667530f21285e5f37019",
+      "difficulty": "medium",
+      "prompt_tokens": 91,
+      "target_tokens": 98
+    },
+    {
+      "id": "Filter_39729_I",
+      "split": "development",
+      "family_id": "Filter_39729_I",
+      "implementation_key": "79a55ed8734299990e34274d9da809206bd0149b54673b9c0ae287da30a917eb",
+      "difficulty": "easy",
+      "prompt_tokens": 89,
+      "target_tokens": 106
+    },
+    {
+      "id": "Filter_44584_I",
+      "split": "development",
+      "family_id": "Filter_44584_I",
+      "implementation_key": "befc39a2bd2e8d9d7d32c566486205b822c6694b3fa838c71c242358cdc06abb",
+      "difficulty": "easy",
+      "prompt_tokens": 115,
+      "target_tokens": 52
+    },
+    {
+      "id": "Filter_51966_I",
+      "split": "development",
+      "family_id": "Filter_51966_I",
+      "implementation_key": "608d9d5a79a33a6516112de276d2a42b4af12c14ac3a983d7bce9a878a4c7720",
+      "difficulty": "medium",
+      "prompt_tokens": 156,
+      "target_tokens": 109
+    },
+    {
+      "id": "Filter_54184_I",
+      "split": "development",
+      "family_id": "Filter_54184_I",
+      "implementation_key": "d284958403445560418c8462465c65f9cd5959b1a8ac26a695166ed6e8320541",
+      "difficulty": "easy",
+      "prompt_tokens": 60,
+      "target_tokens": 97
+    },
+    {
+      "id": "Filter_54735_I",
+      "split": "development",
+      "family_id": "Filter_54735_I",
+      "implementation_key": "af2a8c7c5ca9ee977b5ea69a9c0834f7cb3504424210516c3df13c06793f465d",
+      "difficulty": "easy",
+      "prompt_tokens": 119,
+      "target_tokens": 94
+    },
+    {
+      "id": "Filter_57895_I",
+      "split": "development",
+      "family_id": "Filter_57895_I",
+      "implementation_key": "de8590e72a577e3e9aa2f0b00c6116731839b410473d1ffdf7d030747bcc8c36",
+      "difficulty": "easy",
+      "prompt_tokens": 100,
+      "target_tokens": 77
+    },
+    {
+      "id": "Filter_61800_I",
+      "split": "development",
+      "family_id": "Filter_61800_I",
+      "implementation_key": "e255afab53308e96af145990d9810fc8331805886497f470d9c2a1fb046a9c36",
+      "difficulty": "easy",
+      "prompt_tokens": 66,
+      "target_tokens": 33
+    },
+    {
+      "id": "Filter_81860_I",
+      "split": "development",
+      "family_id": "Filter_81860_I",
+      "implementation_key": "5ba4a0eb6fc96cf2352ea7b9db63219198b381faec029f6195016d040fb32a89",
+      "difficulty": "medium",
+      "prompt_tokens": 122,
+      "target_tokens": 88
+    },
+    {
+      "id": "Filter_83939_I",
+      "split": "development",
+      "family_id": "Filter_83939_I",
+      "implementation_key": "074654c7c0948e99836752de216cc9d922e31a1cb7d073194d362a71de8474f0",
+      "difficulty": "medium",
+      "prompt_tokens": 77,
+      "target_tokens": 150
+    },
+    {
+      "id": "Filter_85258_I",
+      "split": "development",
+      "family_id": "Filter_85258_I",
+      "implementation_key": "e06ca0911c245bb2ef6acaabee5a7f95779e22ddb8418feef18746e283448ba3",
+      "difficulty": "hard",
+      "prompt_tokens": 74,
+      "target_tokens": 96
+    },
+    {
+      "id": "Filter_87326_I",
+      "split": "development",
+      "family_id": "Filter_87326_I",
+      "implementation_key": "2e448ed2c21b77d3d7ac5959aa4436fce8e3d971daec6db63e2ab99bba00ca5b",
+      "difficulty": "easy",
+      "prompt_tokens": 69,
+      "target_tokens": 65
+    },
+    {
+      "id": "Leetcode_26807_I",
+      "split": "development",
+      "family_id": "Algorithm_10040_I",
+      "implementation_key": "b726de73c8310cc944e52a0dd5719e58c8d8b8ac80c2547adef3f18610bbbcfd",
+      "difficulty": "hard",
+      "prompt_tokens": 148,
+      "target_tokens": 169
+    },
+    {
+      "id": "Prefill_14332_I",
+      "split": "development",
+      "family_id": "Prefill_14332_I",
+      "implementation_key": "0717231dc19323b4ddf18ec957ade539ae34394d74e1c2a4590aa6249966a7d3",
+      "difficulty": "easy",
+      "prompt_tokens": 70,
+      "target_tokens": 49
+    },
+    {
+      "id": "Prefill_20482_I",
+      "split": "development",
+      "family_id": "Prefill_20482_I",
+      "implementation_key": "e5700fc22e6506c04953382bacd226473f336b8cecf06008dcec35f44e4b23ac",
+      "difficulty": "easy",
+      "prompt_tokens": 64,
+      "target_tokens": 80
+    },
+    {
+      "id": "Prefill_20542_I",
+      "split": "development",
+      "family_id": "Prefill_20542_I",
+      "implementation_key": "a2dc4816d14f89e6e01d4ad417935488dfb24ee93019756106a5b5302375e2ca",
+      "difficulty": "easy",
+      "prompt_tokens": 55,
+      "target_tokens": 31
+    },
+    {
+      "id": "Prefill_28966_I",
+      "split": "development",
+      "family_id": "Prefill_28966_I",
+      "implementation_key": "bf44557559e33fed6cb9772bdc9b44d4d4fb03badc4fa354b70da96f8565462b",
+      "difficulty": "medium",
+      "prompt_tokens": 76,
+      "target_tokens": 118
+    },
+    {
+      "id": "Prefill_30696_I",
+      "split": "development",
+      "family_id": "Prefill_30696_I",
+      "implementation_key": "901e224c22b6ea249da35d1678672dd1da3777d916c7737a875d3ec50887d025",
+      "difficulty": "hard",
+      "prompt_tokens": 67,
+      "target_tokens": 39
+    },
+    {
+      "id": "Prefill_36259_I",
+      "split": "development",
+      "family_id": "Prefill_36259_I",
+      "implementation_key": "e1ce1276fc344a686feed3d8116fed994638c9fa6bef863813396b45356bd4d7",
+      "difficulty": "easy",
+      "prompt_tokens": 64,
+      "target_tokens": 77
+    },
+    {
+      "id": "Prefill_41713_I",
+      "split": "development",
+      "family_id": "Prefill_41713_I",
+      "implementation_key": "63792c646b88007d459d06618b0235c93fadba64ffb7e3e189fadedb2afa8a45",
+      "difficulty": "easy",
+      "prompt_tokens": 69,
+      "target_tokens": 53
+    },
+    {
+      "id": "Prefill_5174_I",
+      "split": "development",
+      "family_id": "Prefill_5174_I",
+      "implementation_key": "391c96f700f1fd893e7fce318f34b07543c771bc922c62e5c5dbb465e81e2d49",
+      "difficulty": "medium",
+      "prompt_tokens": 84,
+      "target_tokens": 114
+    },
+    {
+      "id": "Prefill_7366_I",
+      "split": "development",
+      "family_id": "Prefill_7366_I",
+      "implementation_key": "e80daabba8758e0ae16da25c4adc6c976ec422919186de3ca91132e945b58b50",
+      "difficulty": "easy",
+      "prompt_tokens": 116,
+      "target_tokens": 75
+    },
+    {
+      "id": "Prefill_8026_I",
+      "split": "development",
+      "family_id": "Prefill_8026_I",
+      "implementation_key": "cc6b0c607aa833a004d3451c747b6f836e4daffcc51a2218efa115896c468c33",
+      "difficulty": "easy",
+      "prompt_tokens": 84,
+      "target_tokens": 137
+    },
+    {
+      "id": "Taco_35411_I",
+      "split": "development",
+      "family_id": "Taco_35411_I",
+      "implementation_key": "23e36a6e5a2d821a38144630948d08177c430a88189e2f52b014e8656a2b0b47",
+      "difficulty": "medium",
+      "prompt_tokens": 459,
+      "target_tokens": 166
+    },
+    {
+      "id": "Taco_38145_I",
+      "split": "development",
+      "family_id": "Taco_38145_I",
+      "implementation_key": "51f0fd01637fcccec00a088324177415af9d4c836cffc30dd6a09f2f30b4b68a",
+      "difficulty": "medium",
+      "prompt_tokens": 579,
+      "target_tokens": 117
+    },
+    {
+      "id": "Taco_62758_I",
+      "split": "development",
+      "family_id": "Taco_20051_I",
+      "implementation_key": "13a907d3a4794353ce6ba8efbce3bd962b5e7244eee79337927362d1f85b0883",
+      "difficulty": "easy",
+      "prompt_tokens": 178,
+      "target_tokens": 107
+    },
+    {
+      "id": "Algorithm_20361_I",
+      "split": "sft_train",
+      "family_id": "Algorithm_20361_I",
+      "implementation_key": "d2f098f5d957f0fb775792ff0e0649d558bc7543dfbadb880827db9685a581ed",
+      "difficulty": "easy",
+      "prompt_tokens": 432,
+      "target_tokens": 114
+    },
+    {
+      "id": "Algorithm_41202_I",
+      "split": "sft_train",
+      "family_id": "Algorithm_41202_I",
+      "implementation_key": "a630f967bfd9f5ed6ad02016b85571d521f903051e7838248a9ce6cb24580d45",
+      "difficulty": "medium",
+      "prompt_tokens": 486,
+      "target_tokens": 111
+    },
+    {
+      "id": "Apps_11888_I",
+      "split": "sft_train",
+      "family_id": "Apps_11888_I",
+      "implementation_key": "6ca58aefc7c4227b52aac344190e60b979b93b6aee2dbe3d91a41ac573ff25a6",
+      "difficulty": "hard",
+      "prompt_tokens": 324,
+      "target_tokens": 119
+    },
+    {
+      "id": "Apps_14662_I",
+      "split": "sft_train",
+      "family_id": "Apps_14662_I",
+      "implementation_key": "e91b4961d6509365093774733ac6ca326a901d4050a8062fe129ef80e4b1decc",
+      "difficulty": "medium",
+      "prompt_tokens": 274,
+      "target_tokens": 178
+    },
+    {
+      "id": "Apps_14754_I",
+      "split": "sft_train",
+      "family_id": "Apps_14754_I",
+      "implementation_key": "471f2e20e0251ec07cf8161610d0148bca35e172cf5701ce02d78a8f0eb32347",
+      "difficulty": "easy",
+      "prompt_tokens": 353,
+      "target_tokens": 187
+    },
+    {
+      "id": "Apps_16553_I",
+      "split": "sft_train",
+      "family_id": "Algorithm_7917_I",
+      "implementation_key": "6871f1eee075bd29d90a8d4a833dc538f32db49c56c87123ece8ac0a6742e79d",
+      "difficulty": "medium",
+      "prompt_tokens": 143,
+      "target_tokens": 134
+    },
+    {
+      "id": "Apps_17117_I",
+      "split": "sft_train",
+      "family_id": "Apps_17117_I",
+      "implementation_key": "4adeb67de88d83bf034438746506999f94dddd8db1f3965b6c7cd70ab8bb8a2f",
+      "difficulty": "medium",
+      "prompt_tokens": 313,
+      "target_tokens": 204
+    },
+    {
+      "id": "Apps_2178_I",
+      "split": "sft_train",
+      "family_id": "Apps_2178_I",
+      "implementation_key": "bf2354c16b3b267bf4ed354f4f5c575e0463b2ebd6e1439c403064a6b160445b",
+      "difficulty": "hard",
+      "prompt_tokens": 277,
+      "target_tokens": 161
+    },
+    {
+      "id": "Apps_3223_I",
+      "split": "sft_train",
+      "family_id": "Apps_3223_I",
+      "implementation_key": "0bb80168731e2015dcef23141ae4615bd5874eac392ed332e41954f372e9f939",
+      "difficulty": "hard",
+      "prompt_tokens": 248,
+      "target_tokens": 207
+    },
+    {
+      "id": "Apps_480_I",
+      "split": "sft_train",
+      "family_id": "Apps_17860_I",
+      "implementation_key": "598164e659b43dffbadc62bfce80bfbf7831ba760a0893de457fa812280c56fb",
+      "difficulty": "hard",
+      "prompt_tokens": 191,
+      "target_tokens": 96
+    },
+    {
+      "id": "Apps_5749_I",
+      "split": "sft_train",
+      "family_id": "Apps_12250_I",
+      "implementation_key": "59b38f3a6a8ddbb18122598e667beb38f69ce2eb6a27325e7b93e74079942e2b",
+      "difficulty": "hard",
+      "prompt_tokens": 213,
+      "target_tokens": 144
+    },
+    {
+      "id": "Apps_6492_I",
+      "split": "sft_train",
+      "family_id": "Apps_6492_I",
+      "implementation_key": "2572699d87ab927043ce4c17ab52c08289b63a09064d885d634c92b0a074ff5c",
+      "difficulty": "easy",
+      "prompt_tokens": 258,
+      "target_tokens": 58
+    },
+    {
+      "id": "Apps_7871_I",
+      "split": "sft_train",
+      "family_id": "Apps_1690_I",
+      "implementation_key": "b2b6e415c4a2d62de5cc06862aa3b55823e639e4436952285ec6b65ab3581af1",
+      "difficulty": "easy",
+      "prompt_tokens": 279,
+      "target_tokens": 100
+    },
+    {
+      "id": "Apps_8123_I",
+      "split": "sft_train",
+      "family_id": "Apps_8123_I",
+      "implementation_key": "1fcbed9127012c293130b89636b4747e32d7fcdc4ca81e8a6a1c8603f01e2bdc",
+      "difficulty": "medium",
+      "prompt_tokens": 272,
+      "target_tokens": 140
+    },
+    {
+      "id": "Apps_8631_I",
+      "split": "sft_train",
+      "family_id": "Apps_8631_I",
+      "implementation_key": "add7c1f2eddea9e812c31ed0fbfbadab9070e7470d874f1cdc54ba21f46b338d",
+      "difficulty": "easy",
+      "prompt_tokens": 236,
+      "target_tokens": 86
+    },
+    {
+      "id": "Code_Contests_35635_I",
+      "split": "sft_train",
+      "family_id": "Algorithm_23193_I",
+      "implementation_key": "3f66e676f4f32f3eb971a66b8f87132adfd341b5d35f7e7472c414094dc78c3f",
+      "difficulty": "medium",
+      "prompt_tokens": 468,
+      "target_tokens": 86
+    },
+    {
+      "id": "Code_Contests_40198_I",
+      "split": "sft_train",
+      "family_id": "Code_Contests_40198_I",
+      "implementation_key": "5181f92bd3a30a5d96cb65b57c6971beb9b1d61d9ff8d35cc7cbf3daf5c4f165",
+      "difficulty": "medium",
+      "prompt_tokens": 257,
+      "target_tokens": 111
+    },
+    {
+      "id": "Codeforces_00027181_I",
+      "split": "sft_train",
+      "family_id": "Codeforces_00027181_I",
+      "implementation_key": "69feec76197ed7df3a0b6be5d2ef8a9ef4de1d755a4c3a459bb6ee56b57715f7",
+      "difficulty": "hard",
+      "prompt_tokens": 474,
+      "target_tokens": 74
+    },
+    {
+      "id": "Codeforces_10427_I",
+      "split": "sft_train",
+      "family_id": "Algorithm_21298_I",
+      "implementation_key": "28ac6796d0d7d07bbbd6dbbbbc475324b5cfff31243ae04aa13950451e3e44f1",
+      "difficulty": "hard",
+      "prompt_tokens": 415,
+      "target_tokens": 212
+    },
+    {
+      "id": "Codeforces_14239_I",
+      "split": "sft_train",
+      "family_id": "Codeforces_14239_I",
+      "implementation_key": "386bbd505caab4e51bfc5a8ebd3dd022e4fb6c297f366cb964ff6aff0d212fcc",
+      "difficulty": "easy",
+      "prompt_tokens": 150,
+      "target_tokens": 156
+    },
+    {
+      "id": "Data_Structure_41652_I",
+      "split": "sft_train",
+      "family_id": "Codeforces_7273_I",
+      "implementation_key": "882e7212483203125552aa730f604d3c175178a17008b4ead58c3b05f9f314aa",
+      "difficulty": "hard",
+      "prompt_tokens": 549,
+      "target_tokens": 200
+    },
+    {
+      "id": "Evol_1469_I",
+      "split": "sft_train",
+      "family_id": "Evol_1469_I",
+      "implementation_key": "de6dd65d1627c0b1d126e9e0852b0076d2877e8b4f12a1ada895fc29df6521d3",
+      "difficulty": "medium",
+      "prompt_tokens": 314,
+      "target_tokens": 129
+    },
+    {
+      "id": "Evol_5299_I",
+      "split": "sft_train",
+      "family_id": "Evol_5299_I",
+      "implementation_key": "274df291e2cfd3eb7e6bc2155392f97e862501954b704385f796b1f64b04d656",
+      "difficulty": "medium",
+      "prompt_tokens": 125,
+      "target_tokens": 114
+    },
+    {
+      "id": "Evol_9946_I",
+      "split": "sft_train",
+      "family_id": "Evol_9946_I",
+      "implementation_key": "200575c49f3065e55b2cb884ae58c27445b83775b4a41861ed66926e5ad80393",
+      "difficulty": "hard",
+      "prompt_tokens": 103,
+      "target_tokens": 195
+    },
+    {
+      "id": "Filter_113_I",
+      "split": "sft_train",
+      "family_id": "Filter_113_I",
+      "implementation_key": "3dd93a33e08281b54585d9f27553acc5f9afe1619393247cb0acd460d6a072b5",
+      "difficulty": "medium",
+      "prompt_tokens": 81,
+      "target_tokens": 68
+    },
+    {
+      "id": "Filter_13046_I",
+      "split": "sft_train",
+      "family_id": "Filter_13046_I",
+      "implementation_key": "f407b47183c8dea26b318f678c342225c64acbdd9cbc352be27cab581dc1808c",
+      "difficulty": "easy",
+      "prompt_tokens": 93,
+      "target_tokens": 71
+    },
+    {
+      "id": "Filter_26162_I",
+      "split": "sft_train",
+      "family_id": "Filter_26162_I",
+      "implementation_key": "f21b5a73542b96b8c263955e76b13506720706443b59e7fccee7e55fa1020d53",
+      "difficulty": "medium",
+      "prompt_tokens": 120,
+      "target_tokens": 153
+    },
+    {
+      "id": "Filter_3471_I",
+      "split": "sft_train",
+      "family_id": "Filter_3471_I",
+      "implementation_key": "3caf507a99a57fd09d31417b76cf2675e1030354b7d8178160e7934a888d7b50",
+      "difficulty": "easy",
+      "prompt_tokens": 345,
+      "target_tokens": 70
+    },
+    {
+      "id": "Filter_37612_I",
+      "split": "sft_train",
+      "family_id": "Filter_37612_I",
+      "implementation_key": "59ca49f22f830c1e706ba9a74d9665955fdd9f94f40e85a7f9da2b2b661a9392",
+      "difficulty": "easy",
+      "prompt_tokens": 100,
+      "target_tokens": 89
+    },
+    {
+      "id": "Filter_39172_I",
+      "split": "sft_train",
+      "family_id": "Filter_39172_I",
+      "implementation_key": "36d40430d736bdb6d7007445bb2a7d7112f8882a6d42868fdf139261c681297e",
+      "difficulty": "easy",
+      "prompt_tokens": 72,
+      "target_tokens": 52
+    },
+    {
+      "id": "Filter_47535_I",
+      "split": "sft_train",
+      "family_id": "Filter_47535_I",
+      "implementation_key": "69c0f96f8e005ef2042c0fb458583f9eccf045a5c2f2ffb7ab029d32c77d8776",
+      "difficulty": "easy",
+      "prompt_tokens": 66,
+      "target_tokens": 237
+    },
+    {
+      "id": "Filter_48511_I",
+      "split": "sft_train",
+      "family_id": "Filter_48511_I",
+      "implementation_key": "0cd99364fbf79d0352fa52993c2c8e50252b91c4762983a09054c39ba09cf2bf",
+      "difficulty": "easy",
+      "prompt_tokens": 90,
+      "target_tokens": 118
+    },
+    {
+      "id": "Filter_52882_I",
+      "split": "sft_train",
+      "family_id": "Filter_52882_I",
+      "implementation_key": "116f5fb99a20b94d598aac9ad096ebd0de3951116be9f8c2183dc029499adb43",
+      "difficulty": "easy",
+      "prompt_tokens": 105,
+      "target_tokens": 85
+    },
+    {
+      "id": "Filter_56625_I",
+      "split": "sft_train",
+      "family_id": "Filter_56625_I",
+      "implementation_key": "73dedaa111c2696a6cc25e22d17e1d6eb395396193c25bb0ad4a8b7891fb9ede",
+      "difficulty": "easy",
+      "prompt_tokens": 78,
+      "target_tokens": 86
+    },
+    {
+      "id": "Filter_58003_I",
+      "split": "sft_train",
+      "family_id": "Filter_58003_I",
+      "implementation_key": "b3af0cb6afd7cec8e04442ef952dd0adaf378d58825165a60dd680f8bc65f1ca",
+      "difficulty": "easy",
+      "prompt_tokens": 92,
+      "target_tokens": 79
+    },
+    {
+      "id": "Filter_6746_I",
+      "split": "sft_train",
+      "family_id": "Filter_6746_I",
+      "implementation_key": "0a2ee5412d1cd4edd4e82f371a0873d22e82cf55387942e5cd875cf89434a404",
+      "difficulty": "medium",
+      "prompt_tokens": 409,
+      "target_tokens": 139
+    },
+    {
+      "id": "Filter_67993_I",
+      "split": "sft_train",
+      "family_id": "Filter_67993_I",
+      "implementation_key": "0b8c350af6b98cb44058fe72d10876f6338f9b5f4e59b3567aec97c7591b2ac7",
+      "difficulty": "easy",
+      "prompt_tokens": 93,
+      "target_tokens": 77
+    },
+    {
+      "id": "Filter_68073_I",
+      "split": "sft_train",
+      "family_id": "Filter_68073_I",
+      "implementation_key": "40e20daf1b1728e34df9a99574721e697262a6cdf46f1d0d0542085180825960",
+      "difficulty": "easy",
+      "prompt_tokens": 86,
+      "target_tokens": 81
+    },
+    {
+      "id": "Filter_68887_I",
+      "split": "sft_train",
+      "family_id": "Filter_68887_I",
+      "implementation_key": "d1dc5d975ec922c1aabef82e25bc7f11042b89a68748998bcb8d00a5ebc4d3f0",
+      "difficulty": "medium",
+      "prompt_tokens": 119,
+      "target_tokens": 112
+    },
+    {
+      "id": "Prefill_10912_I",
+      "split": "sft_train",
+      "family_id": "Prefill_10912_I",
+      "implementation_key": "71c77a0ec8d3fb20a0731081f0259c6cfad1f16c3c5d35a983451840ccfb5000",
+      "difficulty": "hard",
+      "prompt_tokens": 73,
+      "target_tokens": 94
+    },
+    {
+      "id": "Prefill_10947_I",
+      "split": "sft_train",
+      "family_id": "Prefill_10947_I",
+      "implementation_key": "b7e9a6a62013764b8db5ae85b125216688a4e8d0b1f1eaec823ecdc447ea4de0",
+      "difficulty": "easy",
+      "prompt_tokens": 67,
+      "target_tokens": 83
+    },
+    {
+      "id": "Prefill_11984_I",
+      "split": "sft_train",
+      "family_id": "Prefill_11984_I",
+      "implementation_key": "fcd1b405ad3e4f84df564177e88991d50481b1562070cdc0dac7316807ae496c",
+      "difficulty": "easy",
+      "prompt_tokens": 64,
+      "target_tokens": 133
+    },
+    {
+      "id": "Prefill_15989_I",
+      "split": "sft_train",
+      "family_id": "Prefill_15989_I",
+      "implementation_key": "b45ad6dca4933eec7cfdeb74f67b4c8c8500e492d9636f2606549abd4d3d1ab5",
+      "difficulty": "easy",
+      "prompt_tokens": 76,
+      "target_tokens": 166
+    },
+    {
+      "id": "Prefill_16125_I",
+      "split": "sft_train",
+      "family_id": "Prefill_16125_I",
+      "implementation_key": "b4fdb87fd85aed9e95e8c004173ea7bf38ce7c79a494c90136eb31edca406578",
+      "difficulty": "medium",
+      "prompt_tokens": 77,
+      "target_tokens": 90
+    },
+    {
+      "id": "Prefill_21426_I",
+      "split": "sft_train",
+      "family_id": "Prefill_21426_I",
+      "implementation_key": "becfa8846d4a22ab64d5ecd68c06271bf0cbdfafa2dec702a1dec67d2cb0b8f1",
+      "difficulty": "easy",
+      "prompt_tokens": 86,
+      "target_tokens": 110
+    },
+    {
+      "id": "Prefill_23493_I",
+      "split": "sft_train",
+      "family_id": "Prefill_23493_I",
+      "implementation_key": "9020025379fd66ae293bdc527ea3c5da4672e87e4e4b048ae8536cb057948985",
+      "difficulty": "easy",
+      "prompt_tokens": 98,
+      "target_tokens": 57
+    },
+    {
+      "id": "Prefill_23965_I",
+      "split": "sft_train",
+      "family_id": "Prefill_23965_I",
+      "implementation_key": "c54a7f0a0d7757e0a3b34ef882f0c0c247b4bff863e9ed755b55495ec1a27150",
+      "difficulty": "medium",
+      "prompt_tokens": 97,
+      "target_tokens": 151
+    },
+    {
+      "id": "Prefill_28477_I",
+      "split": "sft_train",
+      "family_id": "Prefill_28477_I",
+      "implementation_key": "ecaf18d8c3f66986283f7930c22e5850acfd877c859448e0ad1a2c6781583035",
+      "difficulty": "easy",
+      "prompt_tokens": 81,
+      "target_tokens": 95
+    },
+    {
+      "id": "Prefill_31266_I",
+      "split": "sft_train",
+      "family_id": "Prefill_31266_I",
+      "implementation_key": "2dcd162fea97074a6c1a0313bebd0e2f435b57d113727ce1c94411a926149411",
+      "difficulty": "easy",
+      "prompt_tokens": 79,
+      "target_tokens": 79
+    },
+    {
+      "id": "Prefill_34153_I",
+      "split": "sft_train",
+      "family_id": "Prefill_34153_I",
+      "implementation_key": "a178ca22a201aedbb9a3802dc8c841f798c20fa5b7a55b20534afed8d42ae6d6",
+      "difficulty": "easy",
+      "prompt_tokens": 65,
+      "target_tokens": 90
+    },
+    {
+      "id": "Prefill_3467_I",
+      "split": "sft_train",
+      "family_id": "Prefill_3467_I",
+      "implementation_key": "e8e2d7bc7188096c3e6556743edbbae74faf8bd8bce2a7281f174cd0d686dea5",
+      "difficulty": "easy",
+      "prompt_tokens": 151,
+      "target_tokens": 171
+    },
+    {
+      "id": "Prefill_35390_I",
+      "split": "sft_train",
+      "family_id": "Prefill_35390_I",
+      "implementation_key": "40c1cb7b783c05ece07344689dad44b87e04eb336d0b422f80b3f3d2efb1678a",
+      "difficulty": "hard",
+      "prompt_tokens": 106,
+      "target_tokens": 81
+    },
+    {
+      "id": "Prefill_38350_I",
+      "split": "sft_train",
+      "family_id": "Prefill_38350_I",
+      "implementation_key": "66548bcc711f84ad8b7f795ccae2c4a293d4882ed43196067e03e0ff2fad2a91",
+      "difficulty": "hard",
+      "prompt_tokens": 102,
+      "target_tokens": 128
+    },
+    {
+      "id": "Prefill_38802_I",
+      "split": "sft_train",
+      "family_id": "Prefill_38802_I",
+      "implementation_key": "be3688c1af6dcfe3d4f0ed1ebe5161648dcda4b2493597c2a5bccd602a6a9eff",
+      "difficulty": "hard",
+      "prompt_tokens": 103,
+      "target_tokens": 179
+    },
+    {
+      "id": "Prefill_42928_I",
+      "split": "sft_train",
+      "family_id": "Prefill_42928_I",
+      "implementation_key": "2d62f350743b49c5d59fe84d6affcae7a09031e4edcd278e81ab9d10e59fd37c",
+      "difficulty": "easy",
+      "prompt_tokens": 63,
+      "target_tokens": 121
+    },
+    {
+      "id": "Prefill_7450_I",
+      "split": "sft_train",
+      "family_id": "Prefill_7450_I",
+      "implementation_key": "5f551582ce4c9ed8ed9388a42f72bbd325fdff4e44677c3ebf5f715b40150a17",
+      "difficulty": "hard",
+      "prompt_tokens": 56,
+      "target_tokens": 111
+    },
+    {
+      "id": "Prefill_7890_I",
+      "split": "sft_train",
+      "family_id": "Prefill_7890_I",
+      "implementation_key": "51796ccfe35d065c5e31cf492d66bf11347908624d41db37766ca55fde56dfdf",
+      "difficulty": "easy",
+      "prompt_tokens": 66,
+      "target_tokens": 37
+    },
+    {
+      "id": "Prefill_8828_I",
+      "split": "sft_train",
+      "family_id": "Prefill_8828_I",
+      "implementation_key": "b178bf42638c562ac5f172dce9e1099ba4a2fbfd6a14d35d96a52e422ed47042",
+      "difficulty": "easy",
+      "prompt_tokens": 97,
+      "target_tokens": 83
+    },
+    {
+      "id": "Taco_18514_I",
+      "split": "sft_train",
+      "family_id": "Taco_18514_I",
+      "implementation_key": "56b781dfc5c7c87a9802bba737c0dabe26b584cdebf6c2c0906ef7a470cd2c21",
+      "difficulty": "easy",
+      "prompt_tokens": 288,
+      "target_tokens": 68
+    },
+    {
+      "id": "Taco_28221_I",
+      "split": "sft_train",
+      "family_id": "Taco_27846_I",
+      "implementation_key": "b1f5b5c14cd3826fbb12542e2d7ad0d3cad994b648d9071f3c68f455eb82e836",
+      "difficulty": "easy",
+      "prompt_tokens": 237,
+      "target_tokens": 93
+    },
+    {
+      "id": "Taco_36012_I",
+      "split": "sft_train",
+      "family_id": "Taco_36012_I",
+      "implementation_key": "2e86d76d85d43ec5832b01eabd4d2cab886d2a8cf309e47f24633ead52e58a10",
+      "difficulty": "easy",
+      "prompt_tokens": 147,
+      "target_tokens": 67
+    },
+    {
+      "id": "Taco_41605_I",
+      "split": "sft_train",
+      "family_id": "Taco_41605_I",
+      "implementation_key": "43944119a9760a9b1a9048f46774c2129ac80fbc17981cb64da44927784402eb",
+      "difficulty": "hard",
+      "prompt_tokens": 244,
+      "target_tokens": 154
+    },
+    {
+      "id": "Taco_50585_I",
+      "split": "sft_train",
+      "family_id": "Taco_50585_I",
+      "implementation_key": "290e4c95d4b0e749667079401ef7e6e014b152f1101191e58ea03b233984e7f3",
+      "difficulty": "medium",
+      "prompt_tokens": 239,
+      "target_tokens": 113
+    },
+    {
+      "id": "Taco_66631_I",
+      "split": "sft_train",
+      "family_id": "Taco_66631_I",
+      "implementation_key": "f879718b5a72d7ef891ed9a32abdd69a01b0bd165755e5fb402eb55ae98139bc",
+      "difficulty": "easy",
+      "prompt_tokens": 206,
+      "target_tokens": 65
+    }
+  ],
+  "training_tokens": 7452
+}

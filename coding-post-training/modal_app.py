@@ -115,13 +115,27 @@ def discover_generate(problems, run_id, batch_index):
         raise ValueError("Invalid run ID")
     if not 0 <= batch_index < 12:
         raise ValueError("Too many batches")
+    return checkpointed_generate(problems, run_id, batch_index, samples=4)
+
+
+@app.function(image=gpu_image, gpu="A100-80GB", cpu=(2, 2), memory=(16384, 16384),
+    timeout=240, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results": results_volume})
+def pilot_generate(problems, run_id, batch_index):
+    import re
+    if not re.fullmatch(r"sft-pilot-baseline-[0-9TZ]+-[0-9a-f]{8}", run_id) or not 0 <= batch_index < 5:
+        raise ValueError("Invalid pilot run or batch")
+    return checkpointed_generate(problems, run_id, batch_index, samples=1)
+
+
+def checkpointed_generate(problems, run_id, batch_index, samples):
     destination = Path("/results") / f"{run_id}-batch-{batch_index}.json"
     def checkpoint(outputs):
         temporary = destination.with_suffix('.tmp')
         temporary.write_text(json.dumps({"outputs": outputs}))
         temporary.replace(destination)
         results_volume.commit()
-    return generate_batch(problems, samples=4, checkpoint=checkpoint)
+    return generate_batch(problems, samples=samples, checkpoint=checkpoint)
 
 
 @app.function(image=cpu_image, timeout=1800, retries=0, cpu=(1, 1), memory=(2048, 2048),

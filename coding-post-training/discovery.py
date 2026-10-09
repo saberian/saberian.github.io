@@ -16,8 +16,8 @@ RESOURCE_USD_PER_SECOND = 0.000694 + 2 * 0.0000131 + 16 * 0.00000222
 CALL_RESERVE_SECONDS = 300 + 240 + 2
 
 
-def can_start_batch(charged_seconds):
-    return SETUP_RESERVE_USD + (charged_seconds + CALL_RESERVE_SECONDS) * RESOURCE_USD_PER_SECOND <= BUDGET_USD
+def can_start_batch(charged_seconds, budget_usd=BUDGET_USD):
+    return SETUP_RESERVE_USD + (charged_seconds + CALL_RESERVE_SECONDS) * RESOURCE_USD_PER_SECOND <= budget_usd
 
 
 def validate_artifact(artifact, manifest, pools):

@@ -1,0 +1,115 @@
+{
+  "runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "checks": [
+    {
+      "id": "Taco_95541_I",
+      "cases": [
+        {
+          "args": [
+            "ab"
+          ],
+          "expected": true
+        }
+      ],
+      "reference_status": "wrong_answer"
+    },
+    {
+      "id": "Filter_68169_I",
+      "cases": [
+        {
+          "args": [
+            "A\t a\n"
+          ],
+          "expected": {
+            "a": 2
+          }
+        }
+      ],
+      "reference_status": "wrong_answer"
+    },
+    {
+      "id": "Filter_80820_I",
+      "cases": [
+        {
+          "args": [
+            "a_b",
+            "ab"
+          ],
+          "expected": true
+        }
+      ],
+      "reference_status": "wrong_answer"
+    },
+    {
+      "id": "Filter_73661_I",
+      "cases": [
+        {
+          "args": [
+            "192.168.01.1"
+          ],
+          "expected": false
+        }
+      ],
+      "reference_status": "wrong_answer"
+    },
+    {
+      "id": "Apps_4688_I",
+      "cases": [
+        {
+          "args": [
+            ""
+          ],
+          "expected": false
+        }
+      ],
+      "reference_status": "execution_error"
+    },
+    {
+      "id": "Prefill_1746_I",
+      "cases": [
+        {
+          "args": [
+            -5
+          ],
+          "expected": "-101"
+        }
+      ],
+      "reference_status": "wrong_answer"
+    },
+    {
+      "id": "Filter_72274_I",
+      "cases": [
+        {
+          "args": [
+            "concatenate cat",
+            1
+          ],
+          "expected": "concatenate dog"
+        }
+      ],
+      "reference_status": "wrong_answer"
+    },
+    {
+      "id": "Filter_51229_I",
+      "cases": [
+        {
+          "args": [
+            "HELLO-WORLD"
+          ],
+          "expected": [
+            "HELLO-WORLD"
+          ]
+        }
+      ],
+      "reference_status": "wrong_answer"
+    }
+  ],
+  "note": "Additional small cases authored during pilot review. These records are excluded from the pilot; discovery scores remain unchanged."
+}
