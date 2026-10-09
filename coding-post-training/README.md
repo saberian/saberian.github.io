@@ -742,3 +742,75 @@ restoration of the original inference outputs. This keeps the reload tolerance
 strict rather than widening it to hide a mismatch. The $4 allowance also reserves
 $0.25 for the initial terminated image build and rejected GPU canary; actual
 provider billing is recorded separately when available.
+
+### First SFT result (2026-10-09)
+
+The [completed run report](reports/sft-pilot-2026-10-09.json) records a one-epoch
+pilot from `8ad64017`, following a passing single-example overfit and adapter
+reload canary. The final checkpoint was selected in advance; no development-based
+hyperparameter sweep was performed.
+
+| Measurement | Starting Qwen | After SFT |
+| --- | ---: | ---: |
+| Development problems passed | 29/32 (90.625%) | 27/32 (84.375%) |
+| Raw-code format compliance | 0/32 | 32/32 |
+| Training-reference token NLL | 0.9330 | 0.2986 |
+| Generated development tokens | 3,393 | 2,562 |
+
+All responses completed within the 512-token cap. The evaluator accepts the
+baseline's fences, so its correctness score was not penalized for those fences.
+The SFT run learned raw-code output and better fit the demonstrations, but **did
+not improve functional accuracy**. Training loss measures how well the model
+predicts reference answer tokens; it is not a code-execution reward.
+
+The paired comparison found one improvement and three regressions:
+
+- `Filter_85258_I` now uses ordinary slicing and passes the empty-list case.
+  That case was already flagged as underspecified; do not treat it as strong
+  evidence of a general coding improvement.
+- `Algorithm_34333_I` now omits the import for its `Sequence` type annotation,
+  so the otherwise plausible implementation fails in the pinned Python runtime.
+- `Filter_51966_I` now crashes when parsing an empty string. The supplied test
+  expects an empty dictionary, although the question does not specify empty-input
+  behavior explicitly.
+- `Leetcode_26807_I` remembers only the first occurrence of each prefix balance,
+  rather than counting all previous matching balances. For `010101`, it counts
+  five balanced substrings instead of nine.
+
+The original zipcode-regex and case-preservation failures remain. Keep these
+observations in development; do not move their answers into training. We have
+only 32 problems and one seed, with known specification ambiguities. This is
+useful pipeline evidence, not a reliable estimate of broad model quality or proof
+that SFT in general harms performance. Preserve the pilot as an exploratory
+checkpoint rather than promote it as a stronger coding model.
+
+Only **33,030,144 LoRA parameters** were trained (about 0.81% of the adapted model's
+parameters). The optimizer portion took **49.504 seconds** for four updates,
+processing 7,452 supervised answer tokens. Including loading, before/after NLL,
+saving, and reload verification, the training function took **88.207 seconds**.
+Peak memory was **9.46 GiB allocated / 15.47 GiB reserved**; the latter includes
+PyTorch's caching allocator. These measurements exclude any implication that a
+GPU with exactly that advertised capacity is sufficient, or that longer contexts
+and larger microbatches would have the same footprint.
+
+The final adapter is 132,187,888 bytes (about 126 MiB), saved on Modal's results
+volume at `sft-20261009T155203Z-8ad64017/train/adapter` and downloaded to
+`checkpoints/sft-20261009T155203Z-8ad64017/train/adapter/`. Its SHA256 is
+`e9d423228810165df3fdb2297269ac02ee00f66a976c9b423e3e61708f74e46a`.
+The backbone is still the pinned Qwen revision; the adapter is not a standalone
+model. Both the canary and final adapter reload checks had **zero** maximum logit
+difference after correcting the inference precision contract.
+
+Thirty local checks passed across validation runs, including real Docker
+isolation and real CPU training. The conservative application estimate is
+**$0.86**, including $0.25 setup and $0.25 prior-attempt reserves, against the $4
+allowance. As of 16:00 UTC, Modal's billing report had no rows for these three apps;
+actual charges are pending, not zero. All three apps are stopped with zero tasks,
+and no evaluation containers remain. Full answers, adapters, and dataset records
+remain local/ignored; the committed report records metrics, provenance, and the
+failed setup/canary attempts transparently.
+
+Next, review one regression and the training loss curve before changing the
+recipe. Any subsequent run should change a stated hypothesis (for example, data
+coverage or update strength) and repeat the same development comparison. The
+final-test pool remains reserved.

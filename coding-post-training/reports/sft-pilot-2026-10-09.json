@@ -1,0 +1,747 @@
+{
+  "run_id": "sft-20261009T155203Z-8ad64017",
+  "revision": "8ad640174e996abd24013f0de635abb9e225100c",
+  "status": "completed",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "settings": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.0,
+    "learning_rate": 0.0001,
+    "microbatch": 1,
+    "accumulation": 16,
+    "epochs": 1,
+    "seed": 42,
+    "max_grad_norm": 1.0
+  },
+  "training_export_sha256": "147fb8800561213c383346af8b3db8edd898131180cdfcbab4b451bb68f5d6b7",
+  "sample_sha256": "4fb53d6d7ebf36778fc5c23f57c5ac6036357c9eabb02c58f5341bf1e4d657ff",
+  "development_sha256": "c4db49609ebb4134358cdf16324a0411403d2463ca9e21c658b9e44267b20a1b",
+  "baseline_run_id": "sft-pilot-baseline-20261009T075437Z-5e64befe",
+  "evaluator_version": "python-output-v2",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 512
+  },
+  "reference_runtime": {
+    "id": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+    "digests": [
+      "python@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db"
+    ],
+    "architecture": "arm64",
+    "os": "linux"
+  },
+  "budget_usd": 4.0,
+  "setup_reserve_usd": 0.25,
+  "prior_attempts_reserve_usd": 0.25,
+  "resource_usd_per_second": 0.00075572,
+  "charged_wall_seconds": 471.9561471248744,
+  "gpu_batches": [
+    {
+      "function_seconds": 8.929448323000003,
+      "load_seconds": 0.009064413000000826,
+      "peak_allocated_bytes": 8382316544,
+      "peak_reserved_bytes": 8489271296,
+      "gpu": "NVIDIA A100 80GB PCIe",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 76.95108823300001,
+      "load_seconds": 0.0007921159999995098,
+      "peak_allocated_bytes": 8362227200,
+      "peak_reserved_bytes": 8489271296,
+      "gpu": "NVIDIA A100 80GB PCIe",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 73.56486067899999,
+      "load_seconds": 0.0008091929999949343,
+      "peak_allocated_bytes": 8309978624,
+      "peak_reserved_bytes": 8489271296,
+      "gpu": "NVIDIA A100 80GB PCIe",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 60.132929847000014,
+      "load_seconds": 0.0007516910000049393,
+      "peak_allocated_bytes": 8276774400,
+      "peak_reserved_bytes": 8489271296,
+      "gpu": "NVIDIA A100 80GB PCIe",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    },
+    {
+      "function_seconds": 48.57200027600001,
+      "load_seconds": 0.0010450970000022153,
+      "peak_allocated_bytes": 8426775552,
+      "peak_reserved_bytes": 8579448832,
+      "gpu": "NVIDIA A100 80GB PCIe",
+      "cuda": "13.0",
+      "versions": {
+        "torch": "2.14.1",
+        "transformers": "5.19.0",
+        "accelerate": "1.15.0",
+        "modal": "1.6.1"
+      }
+    }
+  ],
+  "app_id": "ap-aJIswntbV2CLTa9QHUmijJ",
+  "estimated_usd_with_setup_reserve": 0.8566666995052101,
+  "canary": {
+    "stage": "canary",
+    "settings": {
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.0,
+      "learning_rate": 0.0001,
+      "microbatch": 1,
+      "accumulation": 1,
+      "epochs": 8,
+      "seed": 42,
+      "max_grad_norm": 1.0
+    },
+    "examples": 1,
+    "optimizer_steps": 8,
+    "reference_nll_before": 1.2970184087753296,
+    "reference_nll_after": 0.012996471486985683,
+    "training_metrics": {
+      "train_runtime": 5.2249,
+      "train_samples_per_second": 1.531,
+      "train_steps_per_second": 1.531,
+      "train_loss": 0.4875583699904382,
+      "epoch": 8.0
+    },
+    "log_history": [
+      {
+        "loss": 1.2970184087753296,
+        "grad_norm": 4.272448539733887,
+        "learning_rate": 0.0001,
+        "epoch": 1.0,
+        "step": 1
+      },
+      {
+        "loss": 1.0546181201934814,
+        "grad_norm": 3.0501348972320557,
+        "learning_rate": 0.0001,
+        "epoch": 2.0,
+        "step": 2
+      },
+      {
+        "loss": 0.706780195236206,
+        "grad_norm": 2.2981555461883545,
+        "learning_rate": 0.0001,
+        "epoch": 3.0,
+        "step": 3
+      },
+      {
+        "loss": 0.40712764859199524,
+        "grad_norm": 1.5951169729232788,
+        "learning_rate": 0.0001,
+        "epoch": 4.0,
+        "step": 4
+      },
+      {
+        "loss": 0.22201929986476898,
+        "grad_norm": 1.0122119188308716,
+        "learning_rate": 0.0001,
+        "epoch": 5.0,
+        "step": 5
+      },
+      {
+        "loss": 0.12292135506868362,
+        "grad_norm": 0.7681443691253662,
+        "learning_rate": 0.0001,
+        "epoch": 6.0,
+        "step": 6
+      },
+      {
+        "loss": 0.06133055314421654,
+        "grad_norm": 0.5708851218223572,
+        "learning_rate": 0.0001,
+        "epoch": 7.0,
+        "step": 7
+      },
+      {
+        "loss": 0.02865137904882431,
+        "grad_norm": 0.3808205723762512,
+        "learning_rate": 0.0001,
+        "epoch": 8.0,
+        "step": 8
+      },
+      {
+        "train_runtime": 5.2249,
+        "train_samples_per_second": 1.531,
+        "train_steps_per_second": 1.531,
+        "total_flos": 96092734832640.0,
+        "train_loss": 0.4875583699904382,
+        "epoch": 8.0,
+        "step": 8
+      }
+    ],
+    "trainable_parameters": 33030144,
+    "total_parameters": 4055498240,
+    "supervised_tokens_per_epoch": 114,
+    "peak_allocated_bytes": 9617677824,
+    "peak_reserved_bytes": 10496245760,
+    "versions": {
+      "torch": "2.14.1",
+      "transformers": "5.19.0",
+      "peft": "0.21.2",
+      "datasets": "5.1.0",
+      "accelerate": "1.15.0"
+    },
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "adapter_reload_max_logit_error": 0.0,
+    "adapter_files": {
+      "README.md": {
+        "sha256": "ab153471c6c0ce8eb92782cf74053ecdda24294809ac5bbdcef8705c84ad24ea",
+        "bytes": 5166
+      },
+      "adapter_config.json": {
+        "sha256": "ec7cd71a355e7a98be6ffff1d77172eee69a7ca0722c76cae2ae92d58ff1abc4",
+        "bytes": 1220
+      },
+      "adapter_model.safetensors": {
+        "sha256": "39fb89ca95f2c3ec5d13527944b2df88a5265da9c6c7e41aa35e17fab6719326",
+        "bytes": 132187888
+      }
+    },
+    "volume_adapter_path": "sft-20261009T155203Z-8ad64017/canary/adapter",
+    "function_seconds": 19.637068820999996,
+    "local_adapter_path": "checkpoints/sft-20261009T155203Z-8ad64017/canary/adapter"
+  },
+  "training": {
+    "stage": "train",
+    "settings": {
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.0,
+      "learning_rate": 0.0001,
+      "microbatch": 1,
+      "accumulation": 16,
+      "epochs": 1,
+      "seed": 42,
+      "max_grad_norm": 1.0
+    },
+    "examples": 64,
+    "optimizer_steps": 4,
+    "reference_nll_before": 0.9330355130172007,
+    "reference_nll_after": 0.29858009947910785,
+    "training_metrics": {
+      "train_runtime": 49.504,
+      "train_samples_per_second": 1.293,
+      "train_steps_per_second": 0.081,
+      "train_loss": 0.6856491565704346,
+      "epoch": 1.0
+    },
+    "log_history": [
+      {
+        "loss": 0.9191436767578125,
+        "grad_norm": 2.5154435634613037,
+        "learning_rate": 0.0001,
+        "epoch": 0.25,
+        "step": 1
+      },
+      {
+        "loss": 0.8145349621772766,
+        "grad_norm": 2.4140372276306152,
+        "learning_rate": 0.0001,
+        "epoch": 0.5,
+        "step": 2
+      },
+      {
+        "loss": 0.5493581295013428,
+        "grad_norm": 1.754140853881836,
+        "learning_rate": 0.0001,
+        "epoch": 0.75,
+        "step": 3
+      },
+      {
+        "loss": 0.4595598578453064,
+        "grad_norm": 1.1804755926132202,
+        "learning_rate": 0.0001,
+        "epoch": 1.0,
+        "step": 4
+      },
+      {
+        "train_runtime": 49.504,
+        "train_samples_per_second": 1.293,
+        "train_steps_per_second": 0.081,
+        "total_flos": 429491406167040.0,
+        "train_loss": 0.6856491565704346,
+        "epoch": 1.0,
+        "step": 4
+      }
+    ],
+    "trainable_parameters": 33030144,
+    "total_parameters": 4055498240,
+    "supervised_tokens_per_epoch": 7452,
+    "peak_allocated_bytes": 10160885760,
+    "peak_reserved_bytes": 16607346688,
+    "versions": {
+      "torch": "2.14.1",
+      "transformers": "5.19.0",
+      "peft": "0.21.2",
+      "datasets": "5.1.0",
+      "accelerate": "1.15.0"
+    },
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "adapter_reload_max_logit_error": 0.0,
+    "adapter_files": {
+      "README.md": {
+        "sha256": "ab153471c6c0ce8eb92782cf74053ecdda24294809ac5bbdcef8705c84ad24ea",
+        "bytes": 5166
+      },
+      "adapter_config.json": {
+        "sha256": "8825816d12b6dc16a3ac8e6d1eda66f0eafe72a9f16bfcf1e5491f0b518d2ba3",
+        "bytes": 1220
+      },
+      "adapter_model.safetensors": {
+        "sha256": "e9d423228810165df3fdb2297269ac02ee00f66a976c9b423e3e61708f74e46a",
+        "bytes": 132187888
+      }
+    },
+    "volume_adapter_path": "sft-20261009T155203Z-8ad64017/train/adapter",
+    "function_seconds": 88.206536657,
+    "local_adapter_path": "checkpoints/sft-20261009T155203Z-8ad64017/train/adapter"
+  },
+  "summary": {
+    "problems": 32,
+    "passed": 27,
+    "status_counts": {
+      "passed": 27,
+      "execution_error": 2,
+      "wrong_answer": 3
+    },
+    "raw_format_passed": 32,
+    "generated_tokens": 2562,
+    "improved_ids": [
+      "Filter_85258_I"
+    ],
+    "regressed_ids": [
+      "Algorithm_34333_I",
+      "Filter_51966_I",
+      "Leetcode_26807_I"
+    ]
+  },
+  "results": [
+    {
+      "id": "Algorithm_23329_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 72
+    },
+    {
+      "id": "Algorithm_34333_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 10,
+      "raw_format_compliant": true,
+      "generated_tokens": 186
+    },
+    {
+      "id": "Algorithm_41176_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 59
+    },
+    {
+      "id": "Apps_16539_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 51
+    },
+    {
+      "id": "Apps_224_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 48
+    },
+    {
+      "id": "Apps_3001_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 43
+    },
+    {
+      "id": "Filter_27332_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 11,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 44
+    },
+    {
+      "id": "Filter_39729_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 5,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 81
+    },
+    {
+      "id": "Filter_44584_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 83
+    },
+    {
+      "id": "Filter_51966_I",
+      "status": "execution_error",
+      "reward": 0,
+      "passed_cases": 0,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 109
+    },
+    {
+      "id": "Filter_54184_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 69
+    },
+    {
+      "id": "Filter_54735_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 68
+    },
+    {
+      "id": "Filter_57895_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 39
+    },
+    {
+      "id": "Filter_61800_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 66
+    },
+    {
+      "id": "Filter_81860_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 22
+    },
+    {
+      "id": "Filter_83939_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 93
+    },
+    {
+      "id": "Filter_85258_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 39
+    },
+    {
+      "id": "Filter_87326_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 17
+    },
+    {
+      "id": "Leetcode_26807_I",
+      "status": "wrong_answer",
+      "reward": 0,
+      "passed_cases": 6,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 301
+    },
+    {
+      "id": "Prefill_14332_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 29
+    },
+    {
+      "id": "Prefill_20482_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 5,
+      "total_cases": 5,
+      "raw_format_compliant": true,
+      "generated_tokens": 20
+    },
+    {
+      "id": "Prefill_20542_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 12,
+      "total_cases": 12,
+      "raw_format_compliant": true,
+      "generated_tokens": 126
+    },
+    {
+      "id": "Prefill_28966_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 8,
+      "total_cases": 8,
+      "raw_format_compliant": true,
+      "generated_tokens": 104
+    },
+    {
+      "id": "Prefill_30696_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 38
+    },
+    {
+      "id": "Prefill_36259_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 79
+    },
+    {
+      "id": "Prefill_41713_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 30
+    },
+    {
+      "id": "Prefill_5174_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 108
+    },
+    {
+      "id": "Prefill_7366_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 17
+    },
+    {
+      "id": "Prefill_8026_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 7,
+      "total_cases": 7,
+      "raw_format_compliant": true,
+      "generated_tokens": 132
+    },
+    {
+      "id": "Taco_35411_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 250
+    },
+    {
+      "id": "Taco_38145_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 9,
+      "total_cases": 9,
+      "raw_format_compliant": true,
+      "generated_tokens": 65
+    },
+    {
+      "id": "Taco_62758_I",
+      "status": "passed",
+      "reward": 1,
+      "passed_cases": 6,
+      "total_cases": 6,
+      "raw_format_compliant": true,
+      "generated_tokens": 74
+    }
+  ],
+  "comparison": {
+    "baseline_passed": 29,
+    "sft_passed": 27,
+    "problems": 32,
+    "baseline_accuracy": 0.90625,
+    "sft_accuracy": 0.84375,
+    "accuracy_change_percentage_points": -6.25,
+    "baseline_raw_format_passed": 0,
+    "sft_raw_format_passed": 32,
+    "baseline_generated_tokens": 3393,
+    "sft_generated_tokens": 2562,
+    "sft_passed_cases": 219,
+    "total_cases": 240
+  },
+  "change_review": [
+    {
+      "id": "Algorithm_34333_I",
+      "change": "regression",
+      "finding": "Uses Sequence in an annotation without importing it; standalone code fails under the pinned Python 3.12 evaluator."
+    },
+    {
+      "id": "Filter_51966_I",
+      "change": "regression",
+      "finding": "Splitting an empty input into key:value pairs raises an exception. Empty-input behavior is not explicitly specified, so this is a robustness/contract-sensitive failure."
+    },
+    {
+      "id": "Leetcode_26807_I",
+      "change": "regression",
+      "finding": "Stores only the first position for each prefix balance instead of counting every previous matching prefix. Undercounts balanced substrings; 010101 has nine, but this algorithm counts five."
+    },
+    {
+      "id": "Filter_85258_I",
+      "change": "improvement",
+      "finding": "Now uses ordinary slicing and returns an empty list for the empty input. This is one of the previously flagged specification ambiguities, not strong evidence of a general coding gain."
+    }
+  ],
+  "unchanged_failure_ids": [
+    "Filter_27332_I",
+    "Filter_39729_I"
+  ],
+  "interpretation": "Demonstration NLL and raw-code formatting improve, but frozen development functional accuracy falls. One fixed ambiguous case and three regressions do not establish broad transfer. Preserve this exploratory checkpoint; do not promote it as a stronger coding model or train on development failures.",
+  "attempts": [
+    {
+      "run_id": "sft-20261009T154506Z-93f199e3",
+      "app_id": "ap-dqZ0f66gN2RWuONuEZPxIR",
+      "outcome": "Model-cache image build terminated with SIGTERM before GPU training."
+    },
+    {
+      "run_id": "sft-20261009T154806Z-93f199e3",
+      "app_id": "ap-p8XDEOjGIVlv2HdZ8byCga",
+      "outcome": "Single-example canary learned, but reload verification rejected a training-autocast versus inference-precision mismatch (max logit error 1.0625). No full pilot or development generation ran."
+    },
+    {
+      "run_id": "sft-20261009T155203Z-8ad64017",
+      "app_id": "ap-aJIswntbV2CLTa9QHUmijJ",
+      "outcome": "Corrected inference contract; canary, pilot, adapter download/reload, and 32 development evaluations completed."
+    }
+  ],
+  "billing_snapshot": {
+    "as_of": "2026-10-09T16:00:58.744288+00:00",
+    "apps": {
+      "ap-dqZ0f66gN2RWuONuEZPxIR": {
+        "reported_usd": 0.0,
+        "rows_present": 0
+      },
+      "ap-p8XDEOjGIVlv2HdZ8byCga": {
+        "reported_usd": 0.0,
+        "rows_present": 0
+      },
+      "ap-aJIswntbV2CLTa9QHUmijJ": {
+        "reported_usd": 0.0,
+        "rows_present": 0
+      }
+    },
+    "note": "Provider billing can lag. An absent row or zero is not evidence the run was free."
+  },
+  "cleanup": {
+    "apps": [
+      {
+        "app_id": "ap-aJIswntbV2CLTa9QHUmijJ",
+        "description": "coding-post-training-baseline",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-10-09 08:52:03-07:00",
+        "stopped_at": "2026-10-09 09:00:04-07:00"
+      },
+      {
+        "app_id": "ap-p8XDEOjGIVlv2HdZ8byCga",
+        "description": "coding-post-training-baseline",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-10-09 08:48:06-07:00",
+        "stopped_at": "2026-10-09 08:49:43-07:00"
+      },
+      {
+        "app_id": "ap-dqZ0f66gN2RWuONuEZPxIR",
+        "description": "coding-post-training-baseline",
+        "state": "stopped",
+        "tasks": "0",
+        "created_at": "2026-10-09 08:45:07-07:00",
+        "stopped_at": "2026-10-09 08:46:50-07:00"
+      }
+    ],
+    "evaluation_containers_remaining": 0
+  },
+  "validation": "25 existing unit/contract/Docker checks plus five real CPU training/precision checks passed across validation runs; full-model GPU canary and final adapter reload each had zero maximum logit difference."
+}
