@@ -155,3 +155,8 @@ def tokenize_prompt(problem, tokenizer, **kwargs):
 
 if __name__ == "__main__":
     prepare()
+
+
+def evaluation_batches(problems):
+    """One canary, followed by batches of at most nine (including the tail)."""
+    return [problems[:1]]+[problems[i:i+9] for i in range(1,len(problems),9)]

@@ -39,11 +39,39 @@ class TrainingAccuracyContracts(unittest.TestCase):
     def test_test_batch_bounds_and_disjointness(self):
         from test_data import validate_test
         run='test-eval-20261009T160000Z-1234abcd'
-        self.assertIn('batch-33.json',str(training_eval_destination(run,33)))
-        with self.assertRaises(ValueError):training_eval_destination(run,34)
+        self.assertIn('batch-34.json',str(training_eval_destination(run,34)))
+        with self.assertRaises(ValueError):training_eval_destination(run,35)
         ps=[{'id':str(i),'family_id':str(i),'implementation_key':str(i)} for i in range(300)]
         pools={'assignments':{p['id']:{'family_id':p['family_id'],'split':'final_test'} for p in ps}}
         validate_test(ps,pools,[])
         with self.assertRaises(ValueError):validate_test(ps,pools,[ps[0]])
         pools['assignments']['0']['split']='sft_train'
         with self.assertRaises(ValueError):validate_test(ps,pools,[])
+
+    def test_every_planned_batch_is_accepted_including_tail(self):
+        from data import evaluation_batches
+        for split,n in [('train',64),('test',300)]:
+            batches=evaluation_batches(list(range(n)))
+            self.assertEqual([x for batch in batches for x in batch],list(range(n)))
+            for i,batch in enumerate(batches):
+                self.assertTrue(1<=len(batch)<=9)
+                training_eval_destination(f'{split}-eval-20261009T160000Z-1234abcd',i)
+            with self.assertRaises(ValueError):training_eval_destination(f'{split}-eval-20261009T160000Z-1234abcd',len(batches))
+
+    def test_resume_preserves_answers_and_rejects_partial_batches(self):
+        from training_accuracy import resume_report
+        from data import evaluation_batches
+        ps=[{'id':str(i)} for i in range(300)]
+        keys=('policy','split','model_revision','source_sft_run_id','evaluation_problems_sha256','training_export_sha256','adapter_files','evaluator_version','decoding','reference_runtime','budget_usd')
+        expected={k:None for k in keys};expected['revision']='new'
+        old=expected|{'status':'failed','app_id':'old-app','error':'boundary','revision':'old',
+            'gpu_batches':[{}]*34,'raw_outputs':[{'id':str(i),'sample_index':0} for i in range(298)],'results':[{'id':'0'}]}
+        recovered=resume_report(copy.deepcopy(old),expected,ps)
+        self.assertEqual(recovered['raw_outputs'],old['raw_outputs'])
+        self.assertEqual(len(evaluation_batches(ps)[len(recovered['gpu_batches']):][0]),2)
+        self.assertEqual(recovered['attempts'][0]['revision'],'old')
+        for key in ('raw_outputs','gpu_batches'):
+            bad=copy.deepcopy(old);bad[key].pop()
+            with self.assertRaises(ValueError):resume_report(bad,expected,ps)
+        bad=copy.deepcopy(old);bad['model_revision']='changed'
+        with self.assertRaises(ValueError):resume_report(bad,expected,ps)

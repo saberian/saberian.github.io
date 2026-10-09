@@ -6,7 +6,7 @@ import json
 import subprocess
 import time
 
-from data import ROOT,digest
+from data import ROOT,digest,evaluation_batches
 from discovery import can_start_batch,RESOURCE_USD_PER_SECOND
 from evaluator import EVALUATOR_VERSION,evaluate_with_runner
 from local_runner import run_docker
@@ -21,7 +21,24 @@ def training_problems(artifact,records):
     return problems
 
 
-def main(policy="sft", split="train"):
+def resume_report(previous, expected, problems):
+    for key in ('policy','split','model_revision','source_sft_run_id','evaluation_problems_sha256',
+                'training_export_sha256','adapter_files','evaluator_version','decoding','reference_runtime','budget_usd'):
+        if previous[key]!=expected[key]:raise ValueError(f'Resume provenance mismatch: {key}')
+    if previous['status']!='failed':raise ValueError('Only a failed run may resume')
+    batches=evaluation_batches(problems)
+    completed=len(previous['gpu_batches'])
+    ids=[p['id'] for batch in batches[:completed] for p in batch]
+    if [o['id'] for o in previous['raw_outputs']]!=ids or any(o['sample_index']!=0 for o in previous['raw_outputs']):
+        raise ValueError('Resume requires complete, ordered saved batches')
+    if [r['id'] for r in previous['results']]!=ids[:len(previous['results'])]:
+        raise ValueError('Invalid graded prefix')
+    previous.setdefault('attempts',[]).append({k:previous[k] for k in ('app_id','revision','error')})
+    previous['revision']=expected['revision'];previous['status']='running';previous.pop('error')
+    return previous
+
+
+def main(policy="sft", split="train", resume=None):
     if policy not in ("base","sft"):
         raise ValueError("Unknown policy")
     revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
@@ -57,6 +74,12 @@ def main(policy="sft", split="train"):
         'decoding':source['decoding'],'reference_runtime':baseline['reference_runtime'],
         'budget_usd':budget,'setup_reserve_usd':0.25,'resource_usd_per_second':RESOURCE_USD_PER_SECOND,
         'charged_wall_seconds':0,'raw_outputs':[],'results':[],'gpu_batches':[]}
+    if resume:
+        import re
+        if not re.fullmatch(fr'{split}-eval-[0-9TZ]+-[0-9a-f]{{8}}',resume):raise ValueError('Invalid resume run ID')
+        destination=ROOT/'runs'/f'{resume}.json'
+        report=resume_report(json.loads(destination.read_text()),report,problems)
+        run_id=resume
     runner=lambda req:run_docker(req,baseline['reference_runtime']['id'])
     def save():
         tmp=destination.with_suffix('.tmp');tmp.write_text(json.dumps(report,indent=2)+'\n');tmp.replace(destination)
@@ -75,8 +98,10 @@ def main(policy="sft", split="train"):
         from modal_app import app,sft_training_generate,base_training_generate
         with modal.enable_output(),app.run():
             report['app_id']=app.app_id;save()
-            batches=[problems[:1]]+[problems[i:i+9] for i in range(1,n,9)]
+            batches=evaluation_batches(problems)
+            completed=len(report['gpu_batches'])
             for i,batch in enumerate(batches):
+                if i<completed:continue
                 if not can_start_batch(report['charged_wall_seconds'],budget_usd=budget):
                     raise RuntimeError('Budget cannot reserve the next complete call')
                 start=time.monotonic()
@@ -94,7 +119,7 @@ def main(policy="sft", split="train"):
                     raise ValueError('Unexpected inference IDs/sample count')
                 if i==0:grade(generated['outputs'])
                 print(f'Saved {len(report["raw_outputs"])}/{n} {split}-set answers.',flush=True)
-        grade(report['raw_outputs'][1:])
+        grade(report['raw_outputs'][len(report['results']):])
         if len(report['results'])!=n:raise ValueError('Incomplete evaluation')
         report['summary']={'problems':n,'passed':sum(r['reward'] for r in report['results']),
             'accuracy':sum(r['reward'] for r in report['results'])/n,
@@ -113,5 +138,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--policy',choices=['base','sft'],default='sft')
     parser.add_argument('--split',choices=['train','test'],default='train')
+    parser.add_argument('--resume')
     args=parser.parse_args()
-    main(args.policy,args.split)
+    main(args.policy,args.split,args.resume)

@@ -294,7 +294,8 @@ def sft_generate(problems,run_id,batch_index):
 
 def training_eval_destination(evaluation_id,batch_index):
     import re
-    limit = 34 if evaluation_id.startswith("test-eval-") else 8
+    from data import evaluation_batches
+    limit = len(evaluation_batches(list(range(300 if evaluation_id.startswith("test-eval-") else 64))))
     if not re.fullmatch(r"(?:train|test)-eval-[0-9TZ]+-[0-9a-f]{8}",evaluation_id) or not 0 <= batch_index < limit:
         raise ValueError("Invalid training-evaluation run or batch")
     return Path('/results')/evaluation_id/f'batch-{batch_index}.json'
