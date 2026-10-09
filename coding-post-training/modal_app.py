@@ -50,7 +50,7 @@ def trim_completion(completion, eos):
     return (completion[:end], True) if end is not None else (completion, False)
 
 
-def generate_batch(problems, samples=1, checkpoint=None):
+def generate_batch(problems, samples=1, checkpoint=None, model_pair=None):
     import importlib.metadata
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -59,12 +59,12 @@ def generate_batch(problems, samples=1, checkpoint=None):
     started = time.monotonic()
     assert 1 <= len(problems) <= 9 and samples in (1, 4)
     torch.manual_seed(42)
-    if _loaded is None:
+    if model_pair is None and _loaded is None:
         tokenizer = AutoTokenizer.from_pretrained("/model", local_files_only=True)
         model = AutoModelForCausalLM.from_pretrained("/model", dtype=torch.bfloat16,
             local_files_only=True, attn_implementation="sdpa").to("cuda").eval()
         _loaded = tokenizer, model
-    tokenizer, model = _loaded
+    tokenizer, model = model_pair if model_pair is not None else _loaded
     loaded_at = time.monotonic()
     torch.cuda.reset_peak_memory_stats()
     outputs = []
@@ -249,3 +249,59 @@ def main():
     report = call.get()
     (out / f"{run_id}.json").write_text(json.dumps(report, indent=2) + "\n")
     print(f"Baseline completed: {report['greedy_accuracy']:.0%} greedy accuracy (10 development problems)", flush=True)
+
+
+training_image = gpu_image.uv_sync(str(ROOT), extras=["inference", "training"], uv_version="0.10.10").add_local_python_source("sft_core", copy=True)
+
+
+def validate_sft_run(run_id):
+    import re
+    if not re.fullmatch(r"sft-[0-9TZ]+-[0-9a-f]{8}", run_id):
+        raise ValueError("Invalid SFT run ID")
+
+
+@app.function(image=training_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
+    timeout=300, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results":results_volume})
+def sft_canary(records, run_id):
+    from sft_core import train_adapter
+    validate_sft_run(run_id)
+    return train_adapter(records,run_id,"canary",results_volume)
+
+
+@app.function(image=training_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
+    timeout=900, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results":results_volume})
+def sft_train(records, run_id):
+    from sft_core import train_adapter
+    validate_sft_run(run_id)
+    if len(records) != 64:
+        raise ValueError("Expected 64 frozen training records")
+    return train_adapter(records,run_id,"train",results_volume)
+
+
+_sft_loaded = None
+
+@app.function(image=training_image, gpu="A100-80GB", cpu=(2,2), memory=(16384,16384),
+    timeout=240, startup_timeout=300, retries=0, max_containers=1, scaledown_window=2,
+    volumes={"/results":results_volume})
+def sft_generate(problems,run_id,batch_index):
+    import torch
+    from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+    global _sft_loaded
+    validate_sft_run(run_id)
+    if not 0 <= batch_index < 5:
+        raise ValueError("Invalid evaluation batch")
+    if _sft_loaded is None or _sft_loaded[0] != run_id:
+        results_volume.reload()
+        tokenizer = AutoTokenizer.from_pretrained('/model',local_files_only=True)
+        base = AutoModelForCausalLM.from_pretrained('/model',local_files_only=True,
+            dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda')
+        model = PeftModel.from_pretrained(base, f'/results/{run_id}/train/adapter',is_trainable=False).eval()
+        _sft_loaded = run_id,tokenizer,model
+    def checkpoint(outputs):
+        dest = Path('/results')/run_id/f'eval-{batch_index}.json'
+        tmp = dest.with_suffix('.tmp');tmp.write_text(json.dumps({'outputs':outputs}));tmp.replace(dest)
+        results_volume.commit()
+    return generate_batch(problems,samples=1,checkpoint=checkpoint,model_pair=_sft_loaded[1:])

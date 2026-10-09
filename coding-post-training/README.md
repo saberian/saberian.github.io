@@ -25,7 +25,7 @@ The first learning step is to inspect three real dataset records and map each pr
 | Experiments | Starting model → SFT; then independent DPO, PPO, and GRPO branches from the same SFT checkpoint |
 | Reward | Binary correctness from a trusted test controller; no learned reward model initially |
 | Compute | Modal; initially one A100 80GB, subject to a measured memory and cost check |
-| Training software | TRL for SFT/DPO/GRPO; a small, explicitly tested PyTorch/Transformers PPO implementation |
+| Training software | Transformers Trainer + PEFT for SFT; TRL planned for DPO/GRPO; an explicitly tested PyTorch/Transformers PPO implementation |
 | First deliverable | Reliable data and evaluator, followed by baseline evaluation and one SFT smoke run |
 | Out of scope initially | Repository editing, multi-turn agents, web access, learned reward models, OPO, distributed training, leaderboard claims |
 
@@ -679,3 +679,55 @@ and peaked at 7.69 GiB allocated GPU memory. Modal reported **$0.09982899** at
 07:57 UTC (billing may lag); the conservative estimate including its setup reserve
 was **$0.37** against the $1.50 allowance. The app stopped with zero tasks and no
 evaluation containers remained. No SFT optimization has run yet.
+
+
+## Step 4: first LoRA SFT run
+
+Run `uv run --extra inference --extra training python sft_run.py` after committing
+and pushing the exact runner. This uses the frozen 64 examples and the same 32
+problems, prompt template, 512-token greedy decoding, and evaluator as the baseline.
+No development or final-test answers enter training.
+
+The pilot uses Transformers `Trainer` with PEFT 0.21.2 and the pinned dependency
+lock. TRL 1.15.0's SFT loss path requires Triton even for its CPU test path; the
+standard Trainer lets us exercise the **same** masked cross-entropy and collator
+on a tiny local CPU Qwen and the real CUDA model. No library monkey patches or
+platform-specific loss substitutions are used. Future DPO/GRPO trainers are
+separate decisions.
+
+- **LoRA:** rank 16, alpha 32, dropout zero on `q_proj`, `k_proj`, `v_proj`,
+  `o_proj`, `gate_proj`, `up_proj`, and `down_proj`. Base weights remain BF16 and
+  frozen; PEFT manages trainable adapter precision. No quantization.
+- **Optimization:** AdamW, learning rate `1e-4`, constant schedule, no warm-up,
+  zero weight decay, gradient norm clipping at 1, seed 42.
+- **Batching:** one example per microbatch; accumulate 16 examples per optimizer
+  step. One epoch over 64 examples means **four updates**, not 64 updates.
+  Gradient checkpointing trades extra forward computation for activation memory.
+- **Loss:** shifted next-token cross-entropy in FP32, summed over answer tokens
+  and divided by the total supervised-token count across the accumulated batch.
+  This avoids giving a short microbatch disproportionate weight. Prompt and
+  padding labels are `-100`; the answer's end token contributes to loss.
+- **Canary:** eight updates on one training example, requiring at least a 5%
+  reference-loss reduction. Save/reload logits must agree within `1e-5` absolute
+  and relative tolerance, and downloaded adapter hashes must match. Then discard
+  this adapter and start the full pilot from fresh base weights and optimizer.
+- **Artifacts:** adapters persist on the results volume and are downloaded under
+  ignored `checkpoints/<run-id>/`. Run records include losses, trainable parameter
+  counts, memory peaks, paired evaluation changes, and dependency versions.
+
+Local checks compare the loss to independently computed cross-entropy, compare
+accumulated versus full-batch gradients and optimizer updates for unequal target
+lengths, verify only LoRA parameters change, and reload a real saved tiny adapter.
+The full-model GPU canary validates CUDA/BF16 execution before the pilot. Training
+and evaluation use a single A100 80GB per function, no automatic retries, bounded
+calls, durable outputs, and a $4 application allowance including a $0.25 setup
+reserve. The allowance is not a provider-enforced billing cap.
+
+Reference-answer NLL is measured over the same 64 training answers before and
+after SFT. A decrease shows the model fits demonstrations better; correctness on
+the separate development problems is the check for transfer. Keep all gains and
+regressions, including the previously documented ambiguous cases. The final
+one-epoch checkpoint is chosen in advance; this pilot does not sweep settings.
+
+Implementation references: [PEFT LoRA](https://huggingface.co/docs/peft/en/package_reference/lora),
+[Transformers gradient accumulation](https://huggingface.co/docs/transformers/grad_accumulation).
