@@ -85,3 +85,14 @@ class TrainingAccuracyContracts(unittest.TestCase):
         with self.assertRaises(ValueError):adapter_destination(run,'../train')
         for split in ('train','test'):
             with self.assertRaises(ValueError):main('sft',split,checkpoint='overfit')
+
+    def test_recovery_reuses_completed_remote_batch_after_lost_response(self):
+        from training_accuracy import recover_saved_batches
+        ps=[{'id':str(i)} for i in range(32)]
+        report={'gpu_batches':[{},{}],'raw_outputs':[{'id':str(i),'sample_index':0} for i in range(10)]}
+        saved={'outputs':[{'id':str(i),'sample_index':0} for i in range(10,19)]}
+        recover_saved_batches(report,ps,lambda i:saved if i==2 else None)
+        self.assertEqual(len(report['raw_outputs']),19)
+        self.assertEqual(len(report['gpu_batches']),3)
+        self.assertTrue(report['gpu_batches'][2]['recovered_from_volume'])
+        with self.assertRaises(ValueError):recover_saved_batches(report,ps,lambda i:saved)

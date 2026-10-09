@@ -38,6 +38,20 @@ def resume_report(previous, expected, problems):
     return previous
 
 
+def recover_saved_batches(report, problems, read_batch):
+    """Recover committed remote results when response delivery failed after generation."""
+    batches=evaluation_batches(problems)
+    for index in range(len(report['gpu_batches']),len(batches)):
+        saved=read_batch(index)
+        if saved is None:
+            break
+        outputs=saved['outputs']
+        if [o['id'] for o in outputs]!=[p['id'] for p in batches[index]] or any(o['sample_index']!=0 for o in outputs):
+            raise ValueError('Remote checkpoint is incomplete or mismatched; do not regenerate blindly')
+        report['raw_outputs'].extend(outputs)
+        report['gpu_batches'].append({'recovered_from_volume':True,'batch_index':index})
+
+
 def main(policy="sft", split="train", resume=None, checkpoint="pilot"):
     if policy not in ("base","sft"):
         raise ValueError("Unknown policy")
@@ -107,7 +121,16 @@ def main(policy="sft", split="train", resume=None, checkpoint="pilot"):
         if evaluate_with_runner(probe,'def f(x): return x',runner)['reward']!=1:
             raise RuntimeError('Local evaluator canary failed')
         import modal
-        from modal_app import app,sft_training_generate,base_training_generate
+        from modal_app import app,sft_training_generate,base_training_generate,results_volume
+        if resume:
+            from modal.exception import NotFoundError
+            def read_batch(index):
+                try:
+                    return json.loads(b''.join(results_volume.read_file(f'{run_id}/batch-{index}.json')))
+                except NotFoundError:
+                    return None
+            recover_saved_batches(report,problems,read_batch)
+            save()
         with modal.enable_output(),app.run():
             report['app_id']=app.app_id;save()
             batches=evaluation_batches(problems)
